@@ -5,7 +5,7 @@
 ## 2. Header
 
 - [x] 2.1 `validateHeader`: canonical header and positions
-- [ ] 2.2 `validateHeader`: order, case, spaces, extra columns, byte order mark
+- [x] 2.2 `validateHeader`: order, case, spaces, extra columns, byte order mark
 - [ ] 2.3 `validateHeader`: missing, duplicated and empty header
 
 ## 3. Strict value parsers
