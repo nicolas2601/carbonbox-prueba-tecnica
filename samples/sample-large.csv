@@ -1,0 +1,5001 @@
+category,amount,unit,date
+Electricity,1380.35,kWh,2024-06-17
+Natural Gas,1091.76,m3,2024-06-13
+Transportation,476.17,km,2024-10-01
+Waste,1897.18,kg,2024-07-26
+Water,1290.51,m3,2024-05-05
+Diesel,1994.09,L,2024-06-14
+Business Travel,1207.63,km,2024-09-17
+"Fuel, Diesel",1043.75,L,2024-06-22
+Electricity,525.43,kWh,2024-01-12
+Natural Gas,1230.24,m3,2024-10-09
+Transportation,1705.56,km,2024-11-30
+Waste,1406.10,kg,2024-07-24
+Water,1859.91,m3,2024-08-29
+Diesel,177.45,L,2024-01-08
+Business Travel,4.59,km,2024-12-28
+"Fuel, Diesel",709.71,L,2024-11-15
+Electricity,1112.83,kWh,2024-07-02
+Natural Gas,535.39,m3,2024-12-29
+Transportation,1497.89,km,2024-03-28
+Waste,145.00,kg,2024-07-29
+Water,557.31,m3,2024-02-15
+Diesel,642.49,L,2024-09-28
+Business Travel,409.79,km,2024-03-15
+"Fuel, Diesel",1246.29,L,2024-08-27
+Electricity,1455.83,kWh,2024-11-14
+Natural Gas,1917.41,m3,2024-06-04
+Transportation,393.47,km,2024-07-26
+Waste,895.66,kg,2024-06-16
+Water,1720.41,m3,2024-08-24
+Diesel,1425.38,L,2024-01-01
+Business Travel,253.59,km,2024-05-02
+"Fuel, Diesel",451.86,L,2024-01-10
+Electricity,697.76,kWh,2024-01-11
+Natural Gas,569.68,m3,2024-09-21
+Transportation,793.95,km,2024-05-08
+Waste,1004.28,kg,2024-03-27
+Water,1079.44,m3,2024-09-05
+Diesel,1907.99,L,2024-06-07
+Business Travel,790.16,km,2024-02-13
+"Fuel, Diesel",751.75,L,2024-10-12
+Electricity,1937.03,kWh,2024-01-29
+Natural Gas,93.81,m3,2024-09-11
+Transportation,87.29,km,2024-12-11
+Waste,506.55,kg,2024-12-02
+Water,882.25,m3,2024-07-20
+Diesel,942.88,L,2024-09-21
+Business Travel,1822.52,km,2024-05-13
+"Fuel, Diesel",1323.23,L,2024-02-02
+Electricity,1352.15,kWh,2024-08-21
+Natural Gas,624.58,m3,2024-02-13
+Transportation,1772.80,km,2024-12-06
+Waste,252.59,kg,2024-04-19
+Water,1019.25,m3,2024-10-02
+Diesel,978.33,L,2024-06-08
+Business Travel,827.50,km,2024-04-03
+"Fuel, Diesel",220.53,L,2024-05-01
+Electricity,1326.70,kWh,2024-02-29
+Natural Gas,954.99,m3,2024-07-18
+Transportation,586.09,km,2024-06-04
+Waste,31.99,kg,2024-10-14
+Water,148.42,m3,2024-04-11
+Diesel,183.31,L,2024-10-25
+Business Travel,80.77,km,2024-09-02
+"Fuel, Diesel",499.84,L,2024-11-24
+Electricity,1574.31,kWh,2024-04-02
+Natural Gas,661.26,m3,2024-02-12
+Transportation,1624.13,km,2024-05-24
+Waste,698.78,kg,2024-03-15
+Water,820.34,m3,2024-11-30
+Diesel,572.50,L,2024-08-11
+Business Travel,1781.82,km,2024-06-28
+"Fuel, Diesel",344.29,L,2024-12-30
+Electricity,263.74,kWh,2024-12-20
+Natural Gas,227.77,m3,2024-05-20
+Transportation,1470.20,km,2024-12-20
+Waste,296.45,kg,2024-08-09
+Water,603.15,m3,2024-07-25
+Diesel,131.29,L,2024-11-14
+Business Travel,1178.97,km,2024-12-01
+"Fuel, Diesel",1188.96,L,2024-06-25
+Electricity,1143.78,kWh,2024-02-18
+Natural Gas,1172.15,m3,2024-02-08
+Transportation,1318.90,km,2024-09-30
+Waste,182.94,kg,2024-02-05
+Water,1207.57,m3,2024-07-24
+Diesel,940.75,L,2024-10-09
+Business Travel,1694.38,km,2024-10-12
+"Fuel, Diesel",1845.91,L,2024-08-28
+Electricity,668.33,kWh,2024-08-30
+Natural Gas,170.20,m3,2024-01-28
+Transportation,101.17,km,2024-02-12
+Waste,1155.64,kg,2024-08-18
+Water,1611.91,m3,2024-12-22
+Diesel,1302.69,L,2024-06-04
+Business Travel,49.01,km,2024-11-07
+"Fuel, Diesel",629.12,L,2024-01-31
+Electricity,1121.35,kWh,2024-11-10
+Natural Gas,1180.94,m3,2024-12-04
+Transportation,1609.29,km,2024-07-25
+Waste,1576.40,kg,2024-10-31
+Water,1187.05,m3,2024-12-03
+Diesel,1864.58,L,2024-09-07
+Business Travel,1387.68,km,2024-02-27
+"Fuel, Diesel",1479.55,L,2024-05-27
+Electricity,1741.89,kWh,2024-09-27
+Natural Gas,1571.58,m3,2024-12-09
+Transportation,1621.84,km,2024-12-25
+Waste,1496.52,kg,2024-10-23
+Water,821.43,m3,2024-11-23
+Diesel,1744.63,L,2024-12-21
+Business Travel,404.02,km,2024-04-17
+"Fuel, Diesel",90.10,L,2024-02-21
+Electricity,1849.06,kWh,2024-05-04
+Natural Gas,242.55,m3,2024-11-14
+Transportation,1028.76,km,2024-12-30
+Waste,781.76,kg,2024-12-18
+Water,46.11,m3,2024-01-21
+Diesel,656.73,L,2024-01-27
+Business Travel,465.50,km,2024-09-25
+"Fuel, Diesel",30.61,L,2024-07-12
+Electricity,1967.07,kWh,2024-01-11
+Natural Gas,1752.48,m3,2024-09-30
+Transportation,956.28,km,2024-04-05
+Waste,1237.31,kg,2024-10-20
+Water,159.70,m3,2024-07-20
+Diesel,1035.48,L,2024-12-17
+Business Travel,738.39,km,2024-02-23
+"Fuel, Diesel",872.91,L,2024-04-20
+Electricity,950.20,kWh,2024-10-26
+Natural Gas,443.18,m3,2024-09-09
+Transportation,1892.00,km,2024-10-12
+Waste,732.84,kg,2024-09-30
+Water,1353.38,m3,2024-11-03
+Diesel,161.19,L,2024-08-10
+Business Travel,1312.83,km,2024-09-13
+"Fuel, Diesel",315.75,L,2024-07-12
+Electricity,1107.80,kWh,2024-09-05
+Natural Gas,564.69,m3,2024-09-21
+Transportation,809.81,km,2024-03-22
+Waste,1327.46,kg,2024-12-18
+Water,1835.93,m3,2024-12-27
+Diesel,284.86,L,2024-10-16
+Business Travel,327.75,km,2024-05-22
+"Fuel, Diesel",309.84,L,2024-05-29
+Electricity,1329.31,kWh,2024-11-09
+Natural Gas,400.25,m3,2024-08-01
+Transportation,294.96,km,2024-03-24
+Waste,1394.74,kg,2024-02-23
+Water,958.70,m3,2024-12-27
+Diesel,753.21,L,2024-12-01
+Business Travel,1095.94,km,2024-04-29
+"Fuel, Diesel",1182.86,L,2024-02-06
+Electricity,209.24,kWh,2024-03-04
+Natural Gas,391.28,m3,2024-07-17
+Transportation,1669.01,km,2024-09-20
+Waste,1747.69,kg,2024-05-11
+Water,340.61,m3,2024-01-29
+Diesel,133.64,L,2024-10-26
+Business Travel,1228.99,km,2024-01-29
+"Fuel, Diesel",1764.42,L,2024-07-08
+Electricity,1172.18,kWh,2024-05-08
+Natural Gas,1262.44,m3,2024-03-16
+Transportation,114.84,km,2024-03-23
+Waste,1763.79,kg,2024-10-28
+Water,993.17,m3,2024-01-16
+Diesel,339.27,L,2024-07-30
+Business Travel,1762.33,km,2024-12-16
+"Fuel, Diesel",1511.09,L,2024-02-24
+Electricity,1597.80,kWh,2024-04-27
+Natural Gas,146.56,m3,2024-05-03
+Transportation,1801.69,km,2024-03-06
+Waste,1509.97,kg,2024-10-02
+Water,445.46,m3,2024-07-12
+Diesel,753.93,L,2024-05-05
+Business Travel,280.23,km,2024-05-07
+"Fuel, Diesel",631.41,L,2024-11-16
+Electricity,1945.85,kWh,2024-07-12
+Natural Gas,709.68,m3,2024-08-30
+Transportation,1010.09,km,2024-03-28
+Waste,1867.59,kg,2024-02-23
+Water,1869.15,m3,2024-05-14
+Diesel,357.14,L,2024-02-16
+Business Travel,40.78,km,2024-01-06
+"Fuel, Diesel",210.84,L,2024-10-11
+Electricity,881.16,kWh,2024-04-04
+Natural Gas,1276.07,m3,2024-09-10
+Transportation,1256.92,km,2024-08-09
+Waste,657.50,kg,2024-08-11
+Water,1203.47,m3,2024-11-15
+Diesel,1849.11,L,2024-08-18
+Business Travel,1100.88,km,2024-05-31
+"Fuel, Diesel",336.84,L,2024-12-11
+Electricity,398.62,kWh,2024-12-09
+Natural Gas,953.16,m3,2024-07-08
+Transportation,420.39,km,2024-04-27
+Waste,764.97,kg,2024-03-07
+Water,280.24,m3,2024-02-29
+Diesel,1775.79,L,2024-01-18
+Business Travel,1441.28,km,2024-01-03
+"Fuel, Diesel",223.77,L,2024-04-17
+Electricity,948.22,kWh,2024-06-14
+Natural Gas,1756.63,m3,2024-08-22
+Transportation,1865.04,km,2024-08-03
+Waste,264.75,kg,2024-02-10
+Water,1948.86,m3,2024-06-19
+Diesel,653.80,L,2024-11-21
+Business Travel,91.55,km,2024-07-26
+"Fuel, Diesel",337.98,L,2024-05-19
+Electricity,560.02,kWh,2024-06-16
+Natural Gas,735.31,m3,2024-10-12
+Transportation,1566.71,km,2024-02-02
+Waste,546.02,kg,2024-09-14
+Water,1201.30,m3,2024-06-12
+Diesel,1095.47,L,2024-10-12
+Business Travel,255.09,km,2024-07-05
+"Fuel, Diesel",522.77,L,2024-03-18
+Electricity,1969.16,kWh,2024-09-11
+Natural Gas,96.29,m3,2024-09-05
+Transportation,1237.60,km,2024-04-14
+Waste,437.43,kg,2024-02-14
+Water,297.11,m3,2024-07-02
+Diesel,1933.86,L,2024-04-14
+Business Travel,434.14,km,2024-03-06
+"Fuel, Diesel",123.37,L,2024-01-20
+Electricity,1740.85,kWh,2024-04-18
+Natural Gas,1329.81,m3,2024-12-02
+Transportation,1451.24,km,2024-09-30
+Waste,332.07,kg,2024-03-10
+Water,1888.43,m3,2024-01-29
+Diesel,347.69,L,2024-09-18
+Business Travel,1554.74,km,2024-03-07
+"Fuel, Diesel",111.99,L,2024-03-30
+Electricity,1395.39,kWh,2024-02-09
+Natural Gas,1334.35,m3,2024-09-28
+Transportation,767.45,km,2024-06-10
+Waste,312.50,kg,2024-03-22
+Water,144.96,m3,2024-12-28
+Diesel,1986.41,L,2024-12-09
+Business Travel,91.78,km,2024-09-10
+"Fuel, Diesel",1212.78,L,2024-01-08
+Electricity,533.15,kWh,2024-12-29
+Natural Gas,541.59,m3,2024-11-07
+Transportation,857.41,km,2024-01-28
+Waste,275.72,kg,2024-10-27
+Water,1878.98,m3,2024-09-24
+Diesel,1095.17,L,2024-03-13
+Business Travel,1193.97,km,2024-10-06
+"Fuel, Diesel",26.84,L,2024-04-22
+Electricity,1959.58,kWh,2024-02-22
+Natural Gas,1041.39,m3,2024-03-25
+Transportation,1628.64,km,2024-05-17
+Waste,58.19,kg,2024-09-11
+Water,1670.37,m3,2024-10-12
+Diesel,639.82,L,2024-12-03
+Business Travel,1808.85,km,2024-08-22
+"Fuel, Diesel",1157.24,L,2024-07-21
+Electricity,810.21,kWh,2024-05-28
+Natural Gas,706.83,m3,2024-12-14
+Transportation,349.94,km,2024-06-05
+Waste,1560.81,kg,2024-06-22
+Water,991.56,m3,2024-12-02
+Diesel,431.92,L,2024-07-13
+Business Travel,1807.79,km,2024-01-26
+"Fuel, Diesel",1333.97,L,2024-07-11
+Electricity,1675.64,kWh,2024-07-30
+Natural Gas,1319.19,m3,2024-12-30
+Transportation,776.49,km,2024-12-24
+Waste,873.94,kg,2024-07-10
+Water,1332.58,m3,2024-07-17
+Diesel,1253.72,L,2024-04-04
+Business Travel,1110.99,km,2024-08-15
+"Fuel, Diesel",1539.01,L,2024-02-16
+Electricity,1726.56,kWh,2024-09-23
+Natural Gas,692.97,m3,2024-01-18
+Transportation,274.77,km,2024-09-30
+Waste,402.41,kg,2024-09-28
+Water,1326.02,m3,2024-12-22
+Diesel,983.18,L,2024-12-17
+Business Travel,812.48,km,2024-12-28
+"Fuel, Diesel",1131.27,L,2024-03-20
+Electricity,1838.74,kWh,2024-07-07
+Natural Gas,800.83,m3,2024-05-02
+Transportation,947.59,km,2024-09-25
+Waste,990.48,kg,2024-05-23
+Water,1872.06,m3,2024-10-11
+Diesel,718.97,L,2024-12-05
+Business Travel,305.09,km,2024-04-26
+"Fuel, Diesel",1971.62,L,2024-06-01
+Electricity,1718.01,kWh,2024-06-26
+Natural Gas,1898.68,m3,2024-05-31
+Transportation,759.10,km,2024-07-18
+Waste,46.87,kg,2024-11-28
+Water,1263.46,m3,2024-01-24
+Diesel,905.45,L,2024-09-11
+Business Travel,405.52,km,2024-07-01
+"Fuel, Diesel",547.89,L,2024-12-01
+Electricity,1025.29,kWh,2024-05-23
+Natural Gas,650.60,m3,2024-01-03
+Transportation,659.75,km,2024-09-09
+Waste,1669.76,kg,2024-09-11
+Water,310.55,m3,2024-10-25
+Diesel,1457.69,L,2024-11-10
+Business Travel,479.28,km,2024-06-29
+"Fuel, Diesel",99.86,L,2024-04-19
+Electricity,501.59,kWh,2024-07-08
+Natural Gas,253.90,m3,2024-10-14
+Transportation,1711.36,km,2024-11-29
+Waste,771.78,kg,2024-12-19
+Water,1466.24,m3,2024-03-08
+Diesel,1886.46,L,2024-11-21
+Business Travel,1565.70,km,2024-08-23
+"Fuel, Diesel",744.24,L,2024-05-06
+Electricity,1092.97,kWh,2024-12-21
+Natural Gas,564.06,m3,2024-03-20
+Transportation,212.05,km,2024-06-24
+Waste,1205.00,kg,2024-07-11
+Water,1951.02,m3,2024-10-24
+Diesel,1423.24,L,2024-12-10
+Business Travel,1502.94,km,2024-12-26
+"Fuel, Diesel",1599.74,L,2024-11-08
+Electricity,1075.59,kWh,2024-01-03
+Natural Gas,219.80,m3,2024-05-07
+Transportation,821.27,km,2024-07-09
+Waste,1885.97,kg,2024-08-10
+Water,877.96,m3,2024-02-24
+Diesel,1145.22,L,2024-08-28
+Business Travel,53.00,km,2024-07-22
+"Fuel, Diesel",911.97,L,2024-06-11
+Electricity,1180.68,kWh,2024-05-05
+Natural Gas,768.02,m3,2024-08-19
+Transportation,1684.81,km,2024-04-24
+Waste,920.66,kg,2024-09-04
+Water,377.70,m3,2024-10-02
+Diesel,100.26,L,2024-01-02
+Business Travel,26.71,km,2024-09-16
+"Fuel, Diesel",178.54,L,2024-05-15
+Electricity,1719.55,kWh,2024-06-16
+Natural Gas,788.83,m3,2024-09-26
+Transportation,1559.77,km,2024-08-13
+Waste,1729.53,kg,2024-03-27
+Water,723.47,m3,2024-08-11
+Diesel,1431.96,L,2024-01-23
+Business Travel,408.71,km,2024-06-08
+"Fuel, Diesel",273.97,L,2024-05-06
+Electricity,1708.59,kWh,2024-12-03
+Natural Gas,20.54,m3,2024-05-12
+Transportation,939.59,km,2024-12-23
+Waste,1172.46,kg,2024-08-26
+Water,1456.07,m3,2024-06-13
+Diesel,504.60,L,2024-11-05
+Business Travel,1482.47,km,2024-08-29
+"Fuel, Diesel",1574.78,L,2024-05-02
+Electricity,1994.27,kWh,2024-09-13
+Natural Gas,1484.66,m3,2024-01-17
+Transportation,1179.05,km,2024-01-12
+Waste,1673.80,kg,2024-12-14
+Water,508.88,m3,2024-01-18
+Diesel,1028.18,L,2024-02-14
+Business Travel,1955.31,km,2024-07-27
+"Fuel, Diesel",84.41,L,2024-05-22
+Electricity,378.12,kWh,2024-06-17
+Natural Gas,1610.92,m3,2024-12-24
+Transportation,1619.23,km,2024-11-01
+Waste,1347.36,kg,2024-08-26
+Water,1332.86,m3,2024-07-18
+Diesel,1183.39,L,2024-03-17
+Business Travel,83.36,km,2024-11-30
+"Fuel, Diesel",1558.25,L,2024-06-09
+Electricity,741.78,kWh,2024-11-24
+Natural Gas,362.23,m3,2024-10-26
+Transportation,712.56,km,2024-03-02
+Waste,121.38,kg,2024-07-22
+Water,21.54,m3,2024-10-06
+Diesel,1746.63,L,2024-10-20
+Business Travel,796.58,km,2024-04-27
+"Fuel, Diesel",1628.66,L,2024-02-13
+Electricity,171.94,kWh,2024-01-12
+Natural Gas,1359.72,m3,2024-07-02
+Transportation,1147.79,km,2024-11-02
+Waste,1863.56,kg,2024-07-31
+Water,436.05,m3,2024-07-05
+Diesel,214.99,L,2024-10-14
+Business Travel,823.77,km,2024-08-13
+"Fuel, Diesel",1929.96,L,2024-07-29
+Electricity,85.38,kWh,2024-07-14
+Natural Gas,7.71,m3,2024-01-20
+Transportation,975.00,km,2024-01-03
+Waste,506.08,kg,2024-07-23
+Water,1330.06,m3,2024-11-22
+Diesel,931.29,L,2024-01-13
+Business Travel,1817.53,km,2024-02-16
+"Fuel, Diesel",223.40,L,2024-04-12
+Electricity,1353.96,kWh,2024-01-14
+Natural Gas,1618.74,m3,2024-05-27
+Transportation,730.60,km,2024-07-01
+Waste,170.54,kg,2024-01-19
+Water,1474.86,m3,2024-08-21
+Diesel,1209.03,L,2024-03-25
+Business Travel,1479.32,km,2024-12-31
+"Fuel, Diesel",522.20,L,2024-11-03
+Electricity,1429.61,kWh,2024-06-07
+Natural Gas,1538.54,m3,2024-03-14
+Transportation,562.32,km,2024-02-10
+Waste,1293.01,kg,2024-03-02
+Water,784.29,m3,2024-05-24
+Diesel,1457.42,L,2024-09-08
+Business Travel,684.41,km,2024-07-04
+"Fuel, Diesel",1216.52,L,2024-10-26
+Electricity,1469.34,kWh,2024-03-17
+Natural Gas,1271.04,m3,2024-08-13
+Transportation,1354.23,km,2024-12-04
+Waste,749.01,kg,2024-05-16
+Water,1439.77,m3,2024-01-21
+Diesel,1306.38,L,2024-02-22
+Business Travel,606.90,km,2024-05-15
+"Fuel, Diesel",1198.48,L,2024-07-15
+Electricity,1460.25,kWh,2024-09-26
+Natural Gas,603.40,m3,2024-02-29
+Transportation,1851.71,km,2024-08-15
+Waste,1978.50,kg,2024-04-19
+Water,1015.32,m3,2024-01-23
+Diesel,1731.51,L,2024-08-05
+Business Travel,1844.73,km,2024-01-22
+"Fuel, Diesel",1987.16,L,2024-11-22
+Electricity,1344.51,kWh,2024-08-09
+Natural Gas,1730.94,m3,2024-07-07
+Transportation,1786.50,km,2024-10-17
+Waste,1110.92,kg,2024-07-24
+Water,1602.52,m3,2024-09-20
+Diesel,1179.14,L,2024-02-01
+Business Travel,1544.66,km,2024-02-11
+"Fuel, Diesel",1853.58,L,2024-03-02
+Electricity,144.36,kWh,2024-12-01
+Natural Gas,1382.21,m3,2024-04-19
+Transportation,1001.63,km,2024-04-03
+Waste,1090.15,kg,2024-07-27
+Water,935.52,m3,2024-07-06
+Diesel,1691.30,L,2024-07-16
+Business Travel,527.26,km,2024-06-15
+"Fuel, Diesel",1945.73,L,2024-11-07
+Electricity,1087.13,kWh,2024-08-12
+Natural Gas,943.98,m3,2024-12-08
+Transportation,576.48,km,2024-05-11
+Waste,1799.50,kg,2024-05-03
+Water,1516.07,m3,2024-05-30
+Diesel,1030.70,L,2024-07-24
+Business Travel,411.96,km,2024-09-11
+"Fuel, Diesel",413.54,L,2024-06-09
+Electricity,730.22,kWh,2024-10-11
+Natural Gas,586.17,m3,2024-06-02
+Transportation,1951.76,km,2024-04-21
+Waste,186.77,kg,2024-04-19
+Water,1738.49,m3,2024-03-09
+Diesel,805.78,L,2024-04-03
+Business Travel,742.00,km,2024-06-13
+"Fuel, Diesel",533.89,L,2024-04-03
+Electricity,86.11,kWh,2024-12-13
+Natural Gas,1386.97,m3,2024-03-01
+Transportation,54.50,km,2024-06-15
+Waste,389.20,kg,2024-02-14
+Water,1014.67,m3,2024-09-26
+Diesel,595.67,L,2024-01-13
+Business Travel,109.45,km,2024-08-27
+"Fuel, Diesel",835.62,L,2024-04-05
+Electricity,1747.36,kWh,2024-06-11
+Natural Gas,1457.71,m3,2024-10-15
+Transportation,423.06,km,2024-08-24
+Waste,1858.48,kg,2024-07-05
+Water,899.08,m3,2024-05-14
+Diesel,75.20,L,2024-06-07
+Business Travel,1280.21,km,2024-11-15
+"Fuel, Diesel",1224.52,L,2024-11-13
+Electricity,1011.62,kWh,2024-08-28
+Natural Gas,67.97,m3,2024-12-10
+Transportation,332.13,km,2024-07-01
+Waste,1485.74,kg,2024-01-13
+Water,213.78,m3,2024-02-19
+Diesel,1139.92,L,2024-12-03
+Business Travel,319.01,km,2024-08-11
+"Fuel, Diesel",1108.34,L,2024-09-30
+Electricity,1006.59,kWh,2024-05-19
+Natural Gas,1770.50,m3,2024-02-13
+Transportation,1917.72,km,2024-09-24
+Waste,1726.59,kg,2024-12-05
+Water,173.40,m3,2024-02-24
+Diesel,31.06,L,2024-09-19
+Business Travel,1714.41,km,2024-08-19
+"Fuel, Diesel",1521.78,L,2024-08-25
+Electricity,1815.08,kWh,2024-02-10
+Natural Gas,526.28,m3,2024-06-17
+Transportation,1302.19,km,2024-06-23
+Waste,726.08,kg,2024-11-28
+Water,1510.14,m3,2024-11-16
+Diesel,1460.57,L,2024-08-04
+Business Travel,1503.78,km,2024-04-06
+"Fuel, Diesel",1251.49,L,2024-03-18
+Electricity,1599.95,kWh,2024-05-14
+Natural Gas,1829.48,m3,2024-08-01
+Transportation,1719.19,km,2024-08-03
+Waste,443.71,kg,2024-12-26
+Water,1598.80,m3,2024-06-19
+Diesel,736.09,L,2024-09-12
+Business Travel,398.35,km,2024-09-18
+"Fuel, Diesel",961.08,L,2024-10-09
+Electricity,1729.15,kWh,2024-01-02
+Natural Gas,832.46,m3,2024-05-14
+Transportation,638.75,km,2024-12-16
+Waste,778.44,kg,2024-04-09
+Water,1581.73,m3,2024-01-20
+Diesel,1885.99,L,2024-05-14
+Business Travel,908.14,km,2024-05-21
+"Fuel, Diesel",1316.09,L,2024-03-05
+Electricity,1900.71,kWh,2024-07-09
+Natural Gas,470.82,m3,2024-10-20
+Transportation,892.17,km,2024-10-29
+Waste,1693.67,kg,2024-10-23
+Water,1493.88,m3,2024-01-28
+Diesel,1784.30,L,2024-12-05
+Business Travel,467.04,km,2024-03-09
+"Fuel, Diesel",1109.05,L,2024-08-08
+Electricity,1267.75,kWh,2024-05-15
+Natural Gas,1588.33,m3,2024-10-06
+Transportation,1797.13,km,2024-02-04
+Waste,1342.27,kg,2024-05-12
+Water,1387.77,m3,2024-08-02
+Diesel,275.79,L,2024-07-09
+Business Travel,557.73,km,2024-11-02
+"Fuel, Diesel",1384.42,L,2024-05-12
+Electricity,1563.44,kWh,2024-04-13
+Natural Gas,1061.97,m3,2024-11-07
+Transportation,282.61,km,2024-08-19
+Waste,191.55,kg,2024-03-28
+Water,458.49,m3,2024-07-25
+Diesel,300.92,L,2024-11-27
+Business Travel,1836.74,km,2024-03-11
+"Fuel, Diesel",1563.61,L,2024-09-19
+Electricity,226.04,kWh,2024-07-25
+Natural Gas,1926.93,m3,2024-03-12
+Transportation,13.92,km,2024-08-09
+Waste,1148.29,kg,2024-02-11
+Water,168.74,m3,2024-03-24
+Diesel,20.86,L,2024-04-13
+Business Travel,1259.42,km,2024-07-18
+"Fuel, Diesel",1569.99,L,2024-09-10
+Electricity,1523.91,kWh,2024-06-03
+Natural Gas,1501.60,m3,2024-04-06
+Transportation,517.70,km,2024-10-09
+Waste,1683.70,kg,2024-10-25
+Water,1373.75,m3,2024-05-06
+Diesel,942.46,L,2024-02-02
+Business Travel,1204.96,km,2024-12-13
+"Fuel, Diesel",1953.89,L,2024-11-21
+Electricity,1680.45,kWh,2024-04-08
+Natural Gas,1512.57,m3,2024-09-03
+Transportation,306.92,km,2024-10-19
+Waste,1958.46,kg,2024-03-01
+Water,1446.37,m3,2024-07-22
+Diesel,43.30,L,2024-10-31
+Business Travel,601.37,km,2024-07-10
+"Fuel, Diesel",17.59,L,2024-04-19
+Electricity,1999.17,kWh,2024-01-14
+Natural Gas,219.64,m3,2024-01-07
+Transportation,5.88,km,2024-08-01
+Waste,947.70,kg,2024-10-10
+Water,1402.00,m3,2024-08-31
+Diesel,1896.65,L,2024-11-19
+Business Travel,50.47,km,2024-10-05
+"Fuel, Diesel",1940.31,L,2024-02-08
+Electricity,1988.63,kWh,2024-06-30
+Natural Gas,540.81,m3,2024-08-27
+Transportation,1475.21,km,2024-07-21
+Waste,566.00,kg,2024-11-11
+Water,1023.63,m3,2024-12-23
+Diesel,796.48,L,2024-04-21
+Business Travel,952.94,km,2024-11-09
+"Fuel, Diesel",903.24,L,2024-07-06
+Electricity,487.50,kWh,2024-07-22
+Natural Gas,177.28,m3,2024-07-19
+Transportation,936.87,km,2024-12-27
+Waste,1792.39,kg,2024-01-24
+Water,1986.84,m3,2024-08-04
+Diesel,882.48,L,2024-08-26
+Business Travel,633.27,km,2024-01-02
+"Fuel, Diesel",1214.52,L,2024-07-17
+Electricity,789.51,kWh,2024-08-03
+Natural Gas,1738.45,m3,2024-01-20
+Transportation,99.12,km,2024-04-30
+Waste,795.36,kg,2024-04-02
+Water,984.77,m3,2024-09-23
+Diesel,265.03,L,2024-10-15
+Business Travel,1464.78,km,2024-09-18
+"Fuel, Diesel",434.22,L,2024-11-12
+Electricity,1768.46,kWh,2024-09-25
+Natural Gas,866.94,m3,2024-09-29
+Transportation,1281.59,km,2024-06-27
+Waste,1057.86,kg,2024-05-02
+Water,853.14,m3,2024-01-10
+Diesel,1150.21,L,2024-09-15
+Business Travel,1994.61,km,2024-02-17
+"Fuel, Diesel",1499.40,L,2024-08-04
+Electricity,1003.24,kWh,2024-03-18
+Natural Gas,363.56,m3,2024-03-24
+Transportation,540.22,km,2024-03-01
+Waste,1502.27,kg,2024-01-31
+Water,1695.25,m3,2024-11-14
+Diesel,1964.81,L,2024-04-28
+Business Travel,68.76,km,2024-05-04
+"Fuel, Diesel",849.05,L,2024-02-06
+Electricity,1902.83,kWh,2024-08-25
+Natural Gas,312.32,m3,2024-12-13
+Transportation,792.26,km,2024-02-27
+Waste,615.44,kg,2024-12-07
+Water,6.99,m3,2024-09-10
+Diesel,1481.33,L,2024-04-24
+Business Travel,1957.02,km,2024-09-05
+"Fuel, Diesel",549.12,L,2024-11-03
+Electricity,831.25,kWh,2024-05-14
+Natural Gas,205.43,m3,2024-01-02
+Transportation,941.32,km,2024-09-03
+Waste,573.68,kg,2024-10-22
+Water,1801.81,m3,2024-04-18
+Diesel,942.95,L,2024-11-26
+Business Travel,1478.03,km,2024-01-21
+"Fuel, Diesel",417.51,L,2024-02-26
+Electricity,232.65,kWh,2024-09-19
+Natural Gas,1068.33,m3,2024-12-15
+Transportation,1002.32,km,2024-08-26
+Waste,1367.73,kg,2024-12-01
+Water,1735.75,m3,2024-02-24
+Diesel,188.57,L,2024-09-11
+Business Travel,1124.25,km,2024-04-04
+"Fuel, Diesel",149.08,L,2024-01-30
+Electricity,1756.21,kWh,2024-05-17
+Natural Gas,1584.63,m3,2024-08-24
+Transportation,1226.50,km,2024-01-20
+Waste,927.81,kg,2024-08-01
+Water,232.42,m3,2024-09-21
+Diesel,1777.81,L,2024-06-23
+Business Travel,1186.97,km,2024-04-07
+"Fuel, Diesel",1440.62,L,2024-03-03
+Electricity,1381.21,kWh,2024-09-03
+Natural Gas,221.17,m3,2024-01-04
+Transportation,1226.46,km,2024-03-15
+Waste,1248.56,kg,2024-01-16
+Water,608.01,m3,2024-10-12
+Diesel,1115.95,L,2024-01-10
+Business Travel,881.31,km,2024-07-24
+"Fuel, Diesel",115.91,L,2024-04-22
+Electricity,542.01,kWh,2024-11-22
+Natural Gas,1352.96,m3,2024-11-19
+Transportation,1101.09,km,2024-01-28
+Waste,514.11,kg,2024-04-07
+Water,196.31,m3,2024-09-13
+Diesel,579.00,L,2024-12-10
+Business Travel,1471.22,km,2024-06-12
+"Fuel, Diesel",250.66,L,2024-07-02
+Electricity,1253.05,kWh,2024-08-02
+Natural Gas,1388.26,m3,2024-10-25
+Transportation,560.64,km,2024-08-16
+Waste,1223.02,kg,2024-10-08
+Water,1473.65,m3,2024-10-16
+Diesel,1638.69,L,2024-06-07
+Business Travel,1394.46,km,2024-05-09
+"Fuel, Diesel",297.54,L,2024-09-20
+Electricity,1233.84,kWh,2024-11-23
+Natural Gas,893.48,m3,2024-11-21
+Transportation,51.66,km,2024-02-01
+Waste,313.31,kg,2024-06-03
+Water,1183.96,m3,2024-08-08
+Diesel,987.41,L,2024-02-25
+Business Travel,1387.65,km,2024-02-27
+"Fuel, Diesel",1211.16,L,2024-09-11
+Electricity,1033.98,kWh,2024-11-07
+Natural Gas,718.28,m3,2024-07-11
+Transportation,1882.04,km,2024-04-20
+Waste,1287.45,kg,2024-04-06
+Water,1463.75,m3,2024-03-24
+Diesel,663.29,L,2024-12-29
+Business Travel,1611.21,km,2024-06-25
+"Fuel, Diesel",573.09,L,2024-09-22
+Electricity,1158.11,kWh,2024-09-12
+Natural Gas,120.49,m3,2024-04-19
+Transportation,1346.02,km,2024-01-07
+Waste,337.37,kg,2024-04-24
+Water,967.09,m3,2024-08-20
+Diesel,175.15,L,2024-11-29
+Business Travel,774.41,km,2024-01-12
+"Fuel, Diesel",716.88,L,2024-07-02
+Electricity,1191.01,kWh,2024-03-11
+Natural Gas,891.17,m3,2024-09-30
+Transportation,1849.13,km,2024-03-16
+Waste,469.44,kg,2024-05-22
+Water,1990.67,m3,2024-12-16
+Diesel,627.51,L,2024-09-27
+Business Travel,1260.32,km,2024-11-15
+"Fuel, Diesel",852.99,L,2024-12-02
+Electricity,922.49,kWh,2024-12-07
+Natural Gas,1479.56,m3,2024-03-11
+Transportation,33.25,km,2024-05-17
+Waste,1629.49,kg,2024-11-29
+Water,1598.70,m3,2024-10-29
+Diesel,845.59,L,2024-12-26
+Business Travel,250.87,km,2024-10-13
+"Fuel, Diesel",1193.85,L,2024-11-19
+Electricity,1472.45,kWh,2024-08-29
+Natural Gas,1118.11,m3,2024-07-17
+Transportation,901.58,km,2024-11-19
+Waste,827.82,kg,2024-09-19
+Water,748.01,m3,2024-09-03
+Diesel,1500.32,L,2024-08-28
+Business Travel,851.80,km,2024-07-12
+"Fuel, Diesel",1078.87,L,2024-02-13
+Electricity,415.89,kWh,2024-07-27
+Natural Gas,1947.48,m3,2024-02-09
+Transportation,943.67,km,2024-03-30
+Waste,264.15,kg,2024-11-19
+Water,1413.00,m3,2024-01-16
+Diesel,1233.34,L,2024-01-29
+Business Travel,1217.68,km,2024-03-14
+"Fuel, Diesel",1099.36,L,2024-12-30
+Electricity,907.85,kWh,2024-08-19
+Natural Gas,1141.53,m3,2024-06-02
+Transportation,1260.36,km,2024-06-15
+Waste,1452.67,kg,2024-07-10
+Water,1710.64,m3,2024-11-25
+Diesel,781.98,L,2024-09-09
+Business Travel,1676.91,km,2024-07-11
+"Fuel, Diesel",1223.63,L,2024-05-01
+Electricity,808.47,kWh,2024-11-25
+Natural Gas,1032.32,m3,2024-01-13
+Transportation,688.86,km,2024-04-15
+Waste,1347.04,kg,2024-08-10
+Water,1025.47,m3,2024-12-19
+Diesel,1104.28,L,2024-11-12
+Business Travel,1856.72,km,2024-02-28
+"Fuel, Diesel",921.92,L,2024-03-15
+Electricity,1807.97,kWh,2024-10-26
+Natural Gas,1235.11,m3,2024-05-07
+Transportation,927.66,km,2024-08-15
+Waste,465.35,kg,2024-10-12
+Water,1134.64,m3,2024-12-29
+Diesel,1503.98,L,2024-09-22
+Business Travel,1808.16,km,2024-01-10
+"Fuel, Diesel",1291.43,L,2024-10-08
+Electricity,551.66,kWh,2024-07-18
+Natural Gas,773.38,m3,2024-05-31
+Transportation,1661.63,km,2024-09-29
+Waste,1015.15,kg,2024-02-28
+Water,1332.85,m3,2024-02-11
+Diesel,1755.53,L,2024-12-15
+Business Travel,1131.12,km,2024-08-10
+"Fuel, Diesel",1181.31,L,2024-01-27
+Electricity,1764.88,kWh,2024-04-03
+Natural Gas,203.79,m3,2024-10-01
+Transportation,1686.93,km,2024-08-31
+Waste,1018.44,kg,2024-03-02
+Water,1557.38,m3,2024-02-16
+Diesel,229.07,L,2024-08-11
+Business Travel,99.31,km,2024-04-07
+"Fuel, Diesel",1317.67,L,2024-11-08
+Electricity,1378.11,kWh,2024-06-16
+Natural Gas,1741.22,m3,2024-02-23
+Transportation,36.06,km,2024-06-08
+Waste,436.68,kg,2024-04-28
+Water,1513.11,m3,2024-10-31
+Diesel,15.45,L,2024-12-05
+Business Travel,785.26,km,2024-07-26
+"Fuel, Diesel",428.56,L,2024-05-16
+Electricity,1651.86,kWh,2024-04-21
+Natural Gas,1383.74,m3,2024-06-29
+Transportation,1102.86,km,2024-06-11
+Waste,1295.77,kg,2024-01-26
+Water,1797.47,m3,2024-04-25
+Diesel,1051.23,L,2024-02-22
+Business Travel,185.36,km,2024-07-25
+"Fuel, Diesel",1368.99,L,2024-03-16
+Electricity,301.75,kWh,2024-11-29
+Natural Gas,1037.64,m3,2024-07-30
+Transportation,1767.48,km,2024-10-03
+Waste,1811.08,kg,2024-07-30
+Water,1025.48,m3,2024-04-16
+Diesel,243.67,L,2024-04-21
+Business Travel,1344.79,km,2024-02-21
+"Fuel, Diesel",1245.94,L,2024-01-28
+Electricity,1623.46,kWh,2024-08-29
+Natural Gas,642.40,m3,2024-11-27
+Transportation,521.40,km,2024-05-24
+Waste,512.43,kg,2024-07-27
+Water,954.74,m3,2024-05-23
+Diesel,1595.72,L,2024-01-29
+Business Travel,482.58,km,2024-04-22
+"Fuel, Diesel",1543.31,L,2024-08-24
+Electricity,1617.74,kWh,2024-07-07
+Natural Gas,295.70,m3,2024-07-05
+Transportation,592.45,km,2024-09-06
+Waste,369.09,kg,2024-02-12
+Water,1610.43,m3,2024-06-30
+Diesel,331.05,L,2024-07-25
+Business Travel,116.59,km,2024-07-07
+"Fuel, Diesel",246.97,L,2024-05-09
+Electricity,1115.45,kWh,2024-05-04
+Natural Gas,378.44,m3,2024-10-07
+Transportation,1069.75,km,2024-07-12
+Waste,914.77,kg,2024-06-17
+Water,410.31,m3,2024-01-09
+Diesel,1019.02,L,2024-02-12
+Business Travel,188.49,km,2024-12-21
+"Fuel, Diesel",1969.76,L,2024-03-15
+Electricity,902.50,kWh,2024-03-15
+Natural Gas,1679.71,m3,2024-03-14
+Transportation,28.79,km,2024-10-07
+Waste,372.65,kg,2024-10-28
+Water,1289.70,m3,2024-04-08
+Diesel,1699.71,L,2024-02-20
+Business Travel,1188.79,km,2024-12-13
+"Fuel, Diesel",76.44,L,2024-08-04
+Electricity,844.89,kWh,2024-09-11
+Natural Gas,1521.81,m3,2024-04-22
+Transportation,1656.36,km,2024-06-10
+Waste,1780.36,kg,2024-03-24
+Water,1826.53,m3,2024-09-13
+Diesel,8.88,L,2024-11-30
+Business Travel,1281.83,km,2024-02-08
+"Fuel, Diesel",808.75,L,2024-02-10
+Electricity,1013.69,kWh,2024-03-27
+Natural Gas,1885.23,m3,2024-05-11
+Transportation,1375.58,km,2024-02-21
+Waste,1114.98,kg,2024-04-18
+Water,366.27,m3,2024-04-09
+Diesel,1303.02,L,2024-05-30
+Business Travel,1430.77,km,2024-10-13
+"Fuel, Diesel",1410.37,L,2024-05-14
+Electricity,810.07,kWh,2024-05-25
+Natural Gas,1533.68,m3,2024-03-19
+Transportation,970.92,km,2024-04-20
+Waste,1418.05,kg,2024-01-27
+Water,1147.00,m3,2024-09-29
+Diesel,784.30,L,2024-02-02
+Business Travel,522.61,km,2024-05-02
+"Fuel, Diesel",251.93,L,2024-10-17
+Electricity,90.24,kWh,2024-03-16
+Natural Gas,139.06,m3,2024-02-22
+Transportation,1713.15,km,2024-07-08
+Waste,920.55,kg,2024-10-30
+Water,1424.36,m3,2024-12-28
+Diesel,1625.60,L,2024-09-20
+Business Travel,493.17,km,2024-06-06
+"Fuel, Diesel",956.02,L,2024-06-19
+Electricity,290.52,kWh,2024-06-16
+Natural Gas,406.48,m3,2024-08-16
+Transportation,1484.38,km,2024-11-10
+Waste,1167.92,kg,2024-11-21
+Water,596.58,m3,2024-04-21
+Diesel,1095.52,L,2024-03-13
+Business Travel,1452.11,km,2024-05-14
+"Fuel, Diesel",522.20,L,2024-11-24
+Electricity,1552.29,kWh,2024-01-12
+Natural Gas,199.25,m3,2024-03-03
+Transportation,1903.05,km,2024-03-07
+Waste,1145.07,kg,2024-06-03
+Water,1329.45,m3,2024-09-24
+Diesel,683.33,L,2024-05-09
+Business Travel,807.88,km,2024-05-21
+"Fuel, Diesel",1451.94,L,2024-11-15
+Electricity,1847.03,kWh,2024-03-15
+Natural Gas,663.89,m3,2024-02-18
+Transportation,1448.93,km,2024-06-09
+Waste,1401.32,kg,2024-04-11
+Water,681.36,m3,2024-05-11
+Diesel,224.03,L,2024-10-06
+Business Travel,392.82,km,2024-12-26
+"Fuel, Diesel",1873.70,L,2024-04-03
+Electricity,101.28,kWh,2024-12-16
+Natural Gas,355.12,m3,2024-07-05
+Transportation,588.12,km,2024-12-31
+Waste,175.49,kg,2024-10-12
+Water,1228.27,m3,2024-08-23
+Diesel,23.31,L,2024-07-24
+Business Travel,1588.04,km,2024-03-23
+"Fuel, Diesel",1667.89,L,2024-10-14
+Electricity,1321.66,kWh,2024-04-19
+Natural Gas,1360.86,m3,2024-10-11
+Transportation,898.03,km,2024-12-12
+Waste,1520.83,kg,2024-07-19
+Water,188.72,m3,2024-09-18
+Diesel,982.57,L,2024-04-02
+Business Travel,448.51,km,2024-01-19
+"Fuel, Diesel",591.85,L,2024-11-29
+Electricity,1719.87,kWh,2024-07-24
+Natural Gas,1427.22,m3,2024-09-06
+Transportation,192.43,km,2024-05-31
+Waste,1430.04,kg,2024-04-22
+Water,548.81,m3,2024-09-09
+Diesel,723.92,L,2024-07-14
+Business Travel,828.01,km,2024-08-06
+"Fuel, Diesel",404.90,L,2024-08-04
+Electricity,1837.68,kWh,2024-09-24
+Natural Gas,83.55,m3,2024-01-23
+Transportation,1646.38,km,2024-11-13
+Waste,1960.28,kg,2024-09-13
+Water,187.24,m3,2024-12-31
+Diesel,1715.15,L,2024-02-03
+Business Travel,1504.18,km,2024-07-04
+"Fuel, Diesel",993.29,L,2024-02-10
+Electricity,1671.96,kWh,2024-09-29
+Natural Gas,767.36,m3,2024-08-28
+Transportation,921.29,km,2024-06-12
+Waste,1358.17,kg,2024-02-10
+Water,1000.28,m3,2024-09-03
+Diesel,1394.78,L,2024-06-04
+Business Travel,1303.45,km,2024-03-26
+"Fuel, Diesel",495.24,L,2024-11-22
+Electricity,1799.65,kWh,2024-10-25
+Natural Gas,949.40,m3,2024-12-06
+Transportation,1289.91,km,2024-04-05
+Waste,184.78,kg,2024-06-14
+Water,26.77,m3,2024-09-05
+Diesel,297.01,L,2024-08-27
+Business Travel,226.10,km,2024-05-13
+"Fuel, Diesel",1425.92,L,2024-04-21
+Electricity,502.74,kWh,2024-09-26
+Natural Gas,258.59,m3,2024-11-13
+Transportation,761.29,km,2024-09-13
+Waste,1440.61,kg,2024-01-03
+Water,573.16,m3,2024-03-20
+Diesel,176.75,L,2024-05-02
+Business Travel,571.23,km,2024-12-08
+"Fuel, Diesel",802.45,L,2024-06-27
+Electricity,893.34,kWh,2024-03-13
+Natural Gas,607.09,m3,2024-10-18
+Transportation,1205.83,km,2024-10-06
+Waste,690.64,kg,2024-03-19
+Water,1338.44,m3,2024-01-16
+Diesel,134.63,L,2024-04-09
+Business Travel,61.78,km,2024-09-23
+"Fuel, Diesel",268.89,L,2024-02-23
+Electricity,38.61,kWh,2024-02-06
+Natural Gas,315.23,m3,2024-03-11
+Transportation,1480.24,km,2024-05-09
+Waste,189.30,kg,2024-07-04
+Water,1539.19,m3,2024-10-09
+Diesel,741.96,L,2024-04-28
+Business Travel,969.50,km,2024-08-06
+"Fuel, Diesel",221.28,L,2024-05-18
+Electricity,85.81,kWh,2024-11-09
+Natural Gas,236.55,m3,2024-07-04
+Transportation,552.58,km,2024-08-07
+Waste,1005.47,kg,2024-02-07
+Water,34.58,m3,2024-03-16
+Diesel,165.77,L,2024-03-23
+Business Travel,1239.97,km,2024-10-08
+"Fuel, Diesel",1932.60,L,2024-06-26
+Electricity,1387.25,kWh,2024-09-20
+Natural Gas,1882.82,m3,2024-12-19
+Transportation,627.22,km,2024-02-29
+Waste,1147.47,kg,2024-10-30
+Water,451.34,m3,2024-08-16
+Diesel,293.78,L,2024-05-25
+Business Travel,1617.62,km,2024-03-04
+"Fuel, Diesel",1677.78,L,2024-10-10
+Electricity,1625.34,kWh,2024-02-01
+Natural Gas,1548.97,m3,2024-05-19
+Transportation,269.86,km,2024-07-22
+Waste,1688.09,kg,2024-12-09
+Water,308.80,m3,2024-02-13
+Diesel,859.41,L,2024-10-03
+Business Travel,770.69,km,2024-09-27
+"Fuel, Diesel",858.71,L,2024-05-20
+Electricity,937.56,kWh,2024-10-24
+Natural Gas,438.18,m3,2024-12-21
+Transportation,1532.55,km,2024-06-16
+Waste,889.58,kg,2024-11-25
+Water,143.85,m3,2024-11-19
+Diesel,1566.82,L,2024-07-09
+Business Travel,416.25,km,2024-09-17
+"Fuel, Diesel",129.22,L,2024-01-31
+Electricity,1041.47,kWh,2024-07-09
+Natural Gas,786.78,m3,2024-03-05
+Transportation,1078.63,km,2024-01-06
+Waste,328.61,kg,2024-03-29
+Water,635.96,m3,2024-07-20
+Diesel,215.81,L,2024-01-17
+Business Travel,445.19,km,2024-12-20
+"Fuel, Diesel",1520.10,L,2024-02-07
+Electricity,359.71,kWh,2024-12-02
+Natural Gas,1989.35,m3,2024-06-14
+Transportation,1307.79,km,2024-02-27
+Waste,1021.33,kg,2024-05-04
+Water,1732.18,m3,2024-06-26
+Diesel,826.95,L,2024-08-10
+Business Travel,47.26,km,2024-04-30
+"Fuel, Diesel",564.11,L,2024-12-03
+Electricity,1145.00,kWh,2024-02-12
+Natural Gas,723.66,m3,2024-02-10
+Transportation,1481.06,km,2024-12-03
+Waste,1548.35,kg,2024-03-29
+Water,1772.15,m3,2024-02-09
+Diesel,1766.46,L,2024-03-29
+Business Travel,835.99,km,2024-11-13
+"Fuel, Diesel",420.94,L,2024-02-08
+Electricity,605.13,kWh,2024-12-01
+Natural Gas,1075.66,m3,2024-02-07
+Transportation,845.78,km,2024-10-01
+Waste,179.70,kg,2024-06-24
+Water,613.08,m3,2024-03-13
+Diesel,1871.29,L,2024-07-12
+Business Travel,1973.79,km,2024-03-23
+"Fuel, Diesel",2.25,L,2024-02-06
+Electricity,27.97,kWh,2024-02-27
+Natural Gas,664.53,m3,2024-11-07
+Transportation,1760.63,km,2024-10-22
+Waste,999.90,kg,2024-11-14
+Water,754.74,m3,2024-03-20
+Diesel,574.09,L,2024-06-08
+Business Travel,1296.85,km,2024-12-03
+"Fuel, Diesel",96.63,L,2024-01-22
+Electricity,1906.47,kWh,2024-01-01
+Natural Gas,767.65,m3,2024-01-24
+Transportation,820.59,km,2024-04-20
+Waste,32.90,kg,2024-05-06
+Water,464.51,m3,2024-08-12
+Diesel,28.21,L,2024-02-08
+Business Travel,440.22,km,2024-09-04
+"Fuel, Diesel",1494.64,L,2024-08-22
+Electricity,1063.66,kWh,2024-04-04
+Natural Gas,445.58,m3,2024-07-11
+Transportation,1982.01,km,2024-10-13
+Waste,1367.11,kg,2024-10-02
+Water,902.32,m3,2024-02-21
+Diesel,1232.71,L,2024-09-06
+Business Travel,1962.77,km,2024-09-13
+"Fuel, Diesel",1113.80,L,2024-11-02
+Electricity,1777.65,kWh,2024-09-13
+Natural Gas,667.13,m3,2024-12-09
+Transportation,1687.53,km,2024-06-19
+Waste,1280.39,kg,2024-09-03
+Water,1245.70,m3,2024-02-27
+Diesel,157.34,L,2024-02-11
+Business Travel,472.19,km,2024-01-12
+"Fuel, Diesel",123.57,L,2024-10-07
+Electricity,906.62,kWh,2024-05-13
+Natural Gas,434.25,m3,2024-09-16
+Transportation,1991.15,km,2024-07-14
+Waste,365.05,kg,2024-03-25
+Water,1814.75,m3,2024-12-17
+Diesel,1867.56,L,2024-12-22
+Business Travel,1750.01,km,2024-11-03
+"Fuel, Diesel",70.37,L,2024-07-05
+Electricity,1013.84,kWh,2024-11-14
+Natural Gas,907.15,m3,2024-10-11
+Transportation,1683.19,km,2024-06-17
+Waste,1652.87,kg,2024-11-26
+Water,1197.15,m3,2024-01-30
+Diesel,649.53,L,2024-04-11
+Business Travel,1876.59,km,2024-09-24
+"Fuel, Diesel",1002.57,L,2024-11-26
+Electricity,1492.64,kWh,2024-09-28
+Natural Gas,1529.22,m3,2024-06-04
+Transportation,1415.27,km,2024-04-27
+Waste,740.07,kg,2024-05-04
+Water,1373.14,m3,2024-08-06
+Diesel,135.13,L,2024-04-10
+Business Travel,356.09,km,2024-01-25
+"Fuel, Diesel",1595.49,L,2024-05-11
+Electricity,1691.45,kWh,2024-09-12
+Natural Gas,152.03,m3,2024-02-01
+Transportation,825.37,km,2024-02-04
+Waste,1912.33,kg,2024-03-04
+Water,840.56,m3,2024-06-16
+Diesel,1426.92,L,2024-04-12
+Business Travel,1241.54,km,2024-04-11
+"Fuel, Diesel",1276.40,L,2024-09-04
+Electricity,38.76,kWh,2024-12-28
+Natural Gas,1160.41,m3,2024-02-28
+Transportation,1662.79,km,2024-12-28
+Waste,269.76,kg,2024-10-29
+Water,1739.82,m3,2024-10-14
+Diesel,1223.17,L,2024-06-26
+Business Travel,259.76,km,2024-03-05
+"Fuel, Diesel",349.55,L,2024-11-10
+Electricity,1168.15,kWh,2024-09-10
+Natural Gas,1597.33,m3,2024-10-29
+Transportation,913.16,km,2024-09-30
+Waste,1851.96,kg,2024-04-29
+Water,978.92,m3,2024-03-13
+Diesel,1942.86,L,2024-10-04
+Business Travel,1936.43,km,2024-04-07
+"Fuel, Diesel",121.10,L,2024-12-02
+Electricity,1043.27,kWh,2024-01-13
+Natural Gas,1289.00,m3,2024-11-07
+Transportation,1923.43,km,2024-12-17
+Waste,1762.95,kg,2024-02-16
+Water,1358.42,m3,2024-02-08
+Diesel,1850.67,L,2024-06-20
+Business Travel,721.04,km,2024-01-19
+"Fuel, Diesel",1024.20,L,2024-09-12
+Electricity,82.86,kWh,2024-09-12
+Natural Gas,969.84,m3,2024-05-28
+Transportation,1526.88,km,2024-05-19
+Waste,296.23,kg,2024-11-29
+Water,696.47,m3,2024-01-14
+Diesel,1181.98,L,2024-04-19
+Business Travel,111.90,km,2024-05-11
+"Fuel, Diesel",743.94,L,2024-09-01
+Electricity,285.72,kWh,2024-02-18
+Natural Gas,407.44,m3,2024-11-18
+Transportation,1168.12,km,2024-03-25
+Waste,1059.73,kg,2024-05-25
+Water,953.78,m3,2024-12-13
+Diesel,267.87,L,2024-01-16
+Business Travel,1781.18,km,2024-08-23
+"Fuel, Diesel",342.35,L,2024-10-04
+Electricity,355.73,kWh,2024-11-17
+Natural Gas,527.62,m3,2024-09-10
+Transportation,28.09,km,2024-07-12
+Waste,1100.85,kg,2024-03-04
+Water,1358.67,m3,2024-07-15
+Diesel,1660.14,L,2024-06-09
+Business Travel,699.84,km,2024-04-20
+"Fuel, Diesel",383.44,L,2024-02-28
+Electricity,826.88,kWh,2024-11-12
+Natural Gas,1539.40,m3,2024-02-04
+Transportation,149.06,km,2024-05-18
+Waste,1031.44,kg,2024-06-26
+Water,1532.01,m3,2024-07-19
+Diesel,256.28,L,2024-12-21
+Business Travel,262.69,km,2024-12-27
+"Fuel, Diesel",1058.15,L,2024-02-18
+Electricity,1188.20,kWh,2024-09-25
+Natural Gas,1059.99,m3,2024-01-01
+Transportation,1559.63,km,2024-04-22
+Waste,1152.79,kg,2024-01-25
+Water,612.26,m3,2024-02-02
+Diesel,1424.47,L,2024-09-04
+Business Travel,1413.37,km,2024-12-02
+"Fuel, Diesel",309.38,L,2024-11-01
+Electricity,1008.81,kWh,2024-02-22
+Natural Gas,239.81,m3,2024-10-14
+Transportation,1399.71,km,2024-07-23
+Waste,1580.66,kg,2024-12-12
+Water,380.46,m3,2024-12-14
+Diesel,1128.62,L,2024-12-22
+Business Travel,1769.34,km,2024-03-12
+"Fuel, Diesel",1956.99,L,2024-02-11
+Electricity,1062.92,kWh,2024-02-02
+Natural Gas,1887.49,m3,2024-02-08
+Transportation,1045.56,km,2024-05-31
+Waste,370.26,kg,2024-04-02
+Water,385.21,m3,2024-11-30
+Diesel,53.33,L,2024-06-16
+Business Travel,746.88,km,2024-02-10
+"Fuel, Diesel",1822.79,L,2024-05-02
+Electricity,454.80,kWh,2024-03-16
+Natural Gas,594.85,m3,2024-09-14
+Transportation,1234.75,km,2024-07-03
+Waste,1641.24,kg,2024-01-14
+Water,1067.73,m3,2024-01-19
+Diesel,1728.91,L,2024-09-22
+Business Travel,686.13,km,2024-06-16
+"Fuel, Diesel",1855.53,L,2024-03-11
+Electricity,1743.81,kWh,2024-02-04
+Natural Gas,861.93,m3,2024-03-24
+Transportation,1191.20,km,2024-02-13
+Waste,1702.72,kg,2024-01-31
+Water,886.76,m3,2024-01-22
+Diesel,656.35,L,2024-03-07
+Business Travel,1976.01,km,2024-11-08
+"Fuel, Diesel",255.94,L,2024-07-06
+Electricity,69.38,kWh,2024-08-14
+Natural Gas,1221.97,m3,2024-01-17
+Transportation,1750.14,km,2024-07-10
+Waste,1178.26,kg,2024-09-19
+Water,1443.67,m3,2024-07-21
+Diesel,432.38,L,2024-11-07
+Business Travel,179.32,km,2024-01-16
+"Fuel, Diesel",1601.67,L,2024-01-27
+Electricity,276.03,kWh,2024-03-25
+Natural Gas,366.38,m3,2024-01-18
+Transportation,483.13,km,2024-04-09
+Waste,1130.89,kg,2024-08-16
+Water,607.38,m3,2024-05-25
+Diesel,1874.39,L,2024-03-14
+Business Travel,1157.65,km,2024-03-17
+"Fuel, Diesel",972.35,L,2024-06-01
+Electricity,38.35,kWh,2024-04-11
+Natural Gas,1269.82,m3,2024-06-20
+Transportation,823.07,km,2024-07-05
+Waste,1188.07,kg,2024-08-26
+Water,1639.40,m3,2024-12-31
+Diesel,1145.52,L,2024-12-07
+Business Travel,196.42,km,2024-04-18
+"Fuel, Diesel",74.55,L,2024-08-28
+Electricity,986.01,kWh,2024-04-24
+Natural Gas,1315.14,m3,2024-09-11
+Transportation,1189.18,km,2024-04-20
+Waste,1666.72,kg,2024-08-21
+Water,318.81,m3,2024-08-20
+Diesel,1879.57,L,2024-10-27
+Business Travel,1129.91,km,2024-04-23
+"Fuel, Diesel",1366.80,L,2024-04-18
+Electricity,1828.75,kWh,2024-05-29
+Natural Gas,418.36,m3,2024-01-30
+Transportation,111.99,km,2024-12-05
+Waste,1698.24,kg,2024-03-17
+Water,67.26,m3,2024-10-03
+Diesel,1306.08,L,2024-07-03
+Business Travel,1466.20,km,2024-08-23
+"Fuel, Diesel",184.58,L,2024-01-17
+Electricity,1481.40,kWh,2024-06-21
+Natural Gas,1153.75,m3,2024-10-02
+Transportation,1358.40,km,2024-03-19
+Waste,1353.44,kg,2024-08-06
+Water,1074.01,m3,2024-04-20
+Diesel,375.27,L,2024-04-21
+Business Travel,1512.20,km,2024-05-16
+"Fuel, Diesel",865.32,L,2024-08-13
+Electricity,188.87,kWh,2024-07-23
+Natural Gas,878.76,m3,2024-06-09
+Transportation,1056.60,km,2024-10-29
+Waste,1767.61,kg,2024-06-15
+Water,1420.86,m3,2024-01-08
+Diesel,1883.06,L,2024-01-17
+Business Travel,1498.66,km,2024-08-02
+"Fuel, Diesel",873.41,L,2024-07-20
+Electricity,651.13,kWh,2024-03-05
+Natural Gas,1859.04,m3,2024-04-04
+Transportation,821.13,km,2024-08-05
+Waste,1265.50,kg,2024-09-02
+Water,207.22,m3,2024-10-05
+Diesel,596.09,L,2024-11-11
+Business Travel,705.14,km,2024-09-07
+"Fuel, Diesel",925.19,L,2024-01-11
+Electricity,1148.24,kWh,2024-08-10
+Natural Gas,1393.46,m3,2024-07-22
+Transportation,877.85,km,2024-10-28
+Waste,1486.28,kg,2024-03-02
+Water,675.05,m3,2024-10-24
+Diesel,1376.69,L,2024-01-01
+Business Travel,585.06,km,2024-09-14
+"Fuel, Diesel",1113.94,L,2024-09-06
+Electricity,665.35,kWh,2024-03-21
+Natural Gas,1939.06,m3,2024-09-13
+Transportation,1188.94,km,2024-08-09
+Waste,1508.61,kg,2024-09-25
+Water,1333.91,m3,2024-03-13
+Diesel,1307.91,L,2024-08-28
+Business Travel,1890.63,km,2024-08-13
+"Fuel, Diesel",1034.92,L,2024-05-26
+Electricity,17.67,kWh,2024-10-07
+Natural Gas,1236.12,m3,2024-11-25
+Transportation,577.92,km,2024-02-16
+Waste,1975.58,kg,2024-10-26
+Water,1085.93,m3,2024-12-29
+Diesel,1818.48,L,2024-10-06
+Business Travel,1797.91,km,2024-08-28
+"Fuel, Diesel",1910.32,L,2024-02-25
+Electricity,975.50,kWh,2024-09-21
+Natural Gas,433.11,m3,2024-01-08
+Transportation,1854.64,km,2024-12-27
+Waste,1219.75,kg,2024-05-12
+Water,350.82,m3,2024-08-19
+Diesel,807.85,L,2024-10-24
+Business Travel,1031.79,km,2024-08-14
+"Fuel, Diesel",714.29,L,2024-10-18
+Electricity,1389.19,kWh,2024-07-27
+Natural Gas,211.69,m3,2024-05-23
+Transportation,940.28,km,2024-07-06
+Waste,1388.11,kg,2024-08-04
+Water,190.87,m3,2024-03-26
+Diesel,771.17,L,2024-09-04
+Business Travel,990.97,km,2024-03-07
+"Fuel, Diesel",297.95,L,2024-11-19
+Electricity,314.22,kWh,2024-02-19
+Natural Gas,911.75,m3,2024-08-14
+Transportation,1992.32,km,2024-01-23
+Waste,567.12,kg,2024-11-03
+Water,1435.93,m3,2024-11-26
+Diesel,924.28,L,2024-05-26
+Business Travel,873.01,km,2024-03-19
+"Fuel, Diesel",1514.34,L,2024-06-26
+Electricity,1136.10,kWh,2024-11-18
+Natural Gas,656.35,m3,2024-05-27
+Transportation,529.61,km,2024-05-04
+Waste,907.69,kg,2024-05-12
+Water,1808.45,m3,2024-01-18
+Diesel,1328.74,L,2024-01-14
+Business Travel,799.26,km,2024-02-04
+"Fuel, Diesel",1343.48,L,2024-12-29
+Electricity,695.44,kWh,2024-03-27
+Natural Gas,1476.79,m3,2024-05-05
+Transportation,557.29,km,2024-09-21
+Waste,750.18,kg,2024-02-24
+Water,1048.45,m3,2024-09-08
+Diesel,1016.81,L,2024-06-10
+Business Travel,939.92,km,2024-01-05
+"Fuel, Diesel",1017.32,L,2024-12-10
+Electricity,412.93,kWh,2024-11-22
+Natural Gas,1437.53,m3,2024-10-05
+Transportation,1691.86,km,2024-07-19
+Waste,749.41,kg,2024-09-22
+Water,38.54,m3,2024-10-08
+Diesel,116.45,L,2024-02-05
+Business Travel,639.02,km,2024-04-15
+"Fuel, Diesel",144.80,L,2024-10-22
+Electricity,1414.33,kWh,2024-02-17
+Natural Gas,761.28,m3,2024-06-30
+Transportation,286.13,km,2024-06-12
+Waste,1999.65,kg,2024-12-23
+Water,1928.88,m3,2024-06-25
+Diesel,1976.32,L,2024-12-01
+Business Travel,1539.41,km,2024-09-08
+"Fuel, Diesel",836.78,L,2024-11-02
+Electricity,1655.47,kWh,2024-02-15
+Natural Gas,1953.91,m3,2024-09-27
+Transportation,554.24,km,2024-08-24
+Waste,159.62,kg,2024-12-17
+Water,1262.23,m3,2024-07-25
+Diesel,1290.79,L,2024-01-24
+Business Travel,707.78,km,2024-09-24
+"Fuel, Diesel",1831.08,L,2024-11-07
+Electricity,1047.29,kWh,2024-04-02
+Natural Gas,1929.53,m3,2024-10-31
+Transportation,1696.66,km,2024-04-14
+Waste,1577.49,kg,2024-09-18
+Water,1098.93,m3,2024-08-14
+Diesel,224.93,L,2024-10-04
+Business Travel,1759.62,km,2024-01-03
+"Fuel, Diesel",617.48,L,2024-01-20
+Electricity,580.77,kWh,2024-06-03
+Natural Gas,135.43,m3,2024-01-28
+Transportation,1025.18,km,2024-09-23
+Waste,1415.90,kg,2024-01-25
+Water,141.89,m3,2024-06-04
+Diesel,539.51,L,2024-02-04
+Business Travel,1984.28,km,2024-06-23
+"Fuel, Diesel",1562.71,L,2024-11-08
+Electricity,1452.00,kWh,2024-05-14
+Natural Gas,677.10,m3,2024-07-23
+Transportation,1087.94,km,2024-11-14
+Waste,1776.92,kg,2024-06-15
+Water,1861.60,m3,2024-04-02
+Diesel,1716.00,L,2024-11-06
+Business Travel,1469.93,km,2024-10-21
+"Fuel, Diesel",35.45,L,2024-09-03
+Electricity,187.12,kWh,2024-12-19
+Natural Gas,443.25,m3,2024-12-15
+Transportation,794.39,km,2024-06-19
+Waste,1827.09,kg,2024-09-25
+Water,1621.12,m3,2024-03-04
+Diesel,1081.59,L,2024-04-18
+Business Travel,228.55,km,2024-08-26
+"Fuel, Diesel",531.34,L,2024-10-02
+Electricity,1767.37,kWh,2024-07-24
+Natural Gas,1230.79,m3,2024-05-04
+Transportation,540.31,km,2024-05-31
+Waste,1922.39,kg,2024-12-29
+Water,1801.10,m3,2024-05-15
+Diesel,1934.15,L,2024-01-09
+Business Travel,1320.97,km,2024-12-31
+"Fuel, Diesel",797.97,L,2024-12-23
+Electricity,754.06,kWh,2024-04-04
+Natural Gas,1869.83,m3,2024-01-04
+Transportation,1332.82,km,2024-02-08
+Waste,1733.27,kg,2024-05-13
+Water,924.76,m3,2024-06-16
+Diesel,1667.28,L,2024-09-26
+Business Travel,1981.83,km,2024-06-17
+"Fuel, Diesel",1959.87,L,2024-09-05
+Electricity,413.57,kWh,2024-04-03
+Natural Gas,348.67,m3,2024-04-15
+Transportation,1915.34,km,2024-09-14
+Waste,369.62,kg,2024-10-31
+Water,782.91,m3,2024-10-14
+Diesel,1895.26,L,2024-01-29
+Business Travel,744.63,km,2024-08-02
+"Fuel, Diesel",643.55,L,2024-06-15
+Electricity,1842.38,kWh,2024-02-19
+Natural Gas,1938.83,m3,2024-05-04
+Transportation,1892.65,km,2024-06-23
+Waste,505.79,kg,2024-01-21
+Water,1558.92,m3,2024-10-03
+Diesel,578.08,L,2024-06-07
+Business Travel,566.65,km,2024-03-09
+"Fuel, Diesel",1102.46,L,2024-12-23
+Electricity,1092.01,kWh,2024-03-12
+Natural Gas,1320.03,m3,2024-12-23
+Transportation,855.84,km,2024-02-07
+Waste,505.58,kg,2024-03-03
+Water,953.77,m3,2024-02-19
+Diesel,146.43,L,2024-10-02
+Business Travel,1954.04,km,2024-08-21
+"Fuel, Diesel",1341.99,L,2024-10-19
+Electricity,294.11,kWh,2024-10-02
+Natural Gas,705.19,m3,2024-06-25
+Transportation,1507.34,km,2024-12-26
+Waste,547.23,kg,2024-08-12
+Water,1310.97,m3,2024-05-15
+Diesel,1626.72,L,2024-05-10
+Business Travel,86.75,km,2024-03-11
+"Fuel, Diesel",1244.49,L,2024-03-08
+Electricity,785.37,kWh,2024-06-15
+Natural Gas,1965.43,m3,2024-06-02
+Transportation,785.89,km,2024-07-22
+Waste,748.47,kg,2024-12-02
+Water,741.64,m3,2024-11-22
+Diesel,766.05,L,2024-09-30
+Business Travel,1943.59,km,2024-04-21
+"Fuel, Diesel",694.29,L,2024-11-26
+Electricity,232.56,kWh,2024-08-07
+Natural Gas,755.09,m3,2024-06-09
+Transportation,991.58,km,2024-08-10
+Waste,1291.44,kg,2024-07-18
+Water,249.49,m3,2024-06-09
+Diesel,157.22,L,2024-06-05
+Business Travel,1427.16,km,2024-12-02
+"Fuel, Diesel",1702.63,L,2024-01-19
+Electricity,1757.55,kWh,2024-06-10
+Natural Gas,636.68,m3,2024-02-05
+Transportation,910.81,km,2024-08-03
+Waste,547.76,kg,2024-09-07
+Water,855.77,m3,2024-05-09
+Diesel,1363.73,L,2024-09-16
+Business Travel,488.91,km,2024-10-25
+"Fuel, Diesel",532.74,L,2024-11-11
+Electricity,1062.26,kWh,2024-07-01
+Natural Gas,1205.96,m3,2024-08-29
+Transportation,941.33,km,2024-11-30
+Waste,1203.49,kg,2024-01-24
+Water,724.34,m3,2024-12-02
+Diesel,1044.79,L,2024-07-11
+Business Travel,254.12,km,2024-11-20
+"Fuel, Diesel",1824.78,L,2024-07-10
+Electricity,1553.72,kWh,2024-11-18
+Natural Gas,216.85,m3,2024-12-06
+Transportation,217.18,km,2024-04-18
+Waste,384.16,kg,2024-10-10
+Water,286.63,m3,2024-08-24
+Diesel,1080.33,L,2024-03-29
+Business Travel,146.89,km,2024-06-23
+"Fuel, Diesel",720.86,L,2024-12-24
+Electricity,1469.01,kWh,2024-08-03
+Natural Gas,1706.49,m3,2024-01-18
+Transportation,1733.77,km,2024-01-14
+Waste,1779.73,kg,2024-01-29
+Water,1366.63,m3,2024-08-08
+Diesel,695.96,L,2024-06-23
+Business Travel,1015.15,km,2024-09-07
+"Fuel, Diesel",990.08,L,2024-10-03
+Electricity,1000.30,kWh,2024-11-01
+Natural Gas,120.22,m3,2024-04-22
+Transportation,1472.82,km,2024-05-11
+Waste,1769.63,kg,2024-03-18
+Water,305.94,m3,2024-09-20
+Diesel,587.99,L,2024-11-26
+Business Travel,255.66,km,2024-09-04
+"Fuel, Diesel",1153.44,L,2024-10-04
+Electricity,1419.83,kWh,2024-05-06
+Natural Gas,436.60,m3,2024-12-18
+Transportation,1527.36,km,2024-09-12
+Waste,1547.74,kg,2024-03-17
+Water,1088.71,m3,2024-02-09
+Diesel,1048.44,L,2024-01-25
+Business Travel,939.01,km,2024-12-29
+"Fuel, Diesel",608.93,L,2024-02-06
+Electricity,204.95,kWh,2024-09-09
+Natural Gas,292.37,m3,2024-01-21
+Transportation,1226.79,km,2024-01-13
+Waste,1247.39,kg,2024-09-17
+Water,466.69,m3,2024-05-12
+Diesel,90.06,L,2024-03-14
+Business Travel,934.61,km,2024-11-16
+"Fuel, Diesel",1756.48,L,2024-11-26
+Electricity,163.04,kWh,2024-07-28
+Natural Gas,107.48,m3,2024-03-18
+Transportation,261.80,km,2024-03-10
+Waste,66.37,kg,2024-10-10
+Water,1084.19,m3,2024-11-17
+Diesel,1571.25,L,2024-01-12
+Business Travel,35.71,km,2024-07-25
+"Fuel, Diesel",122.98,L,2024-02-12
+Electricity,556.59,kWh,2024-02-29
+Natural Gas,1210.09,m3,2024-06-18
+Transportation,1809.42,km,2024-02-26
+Waste,391.90,kg,2024-09-10
+Water,603.10,m3,2024-03-05
+Diesel,1321.16,L,2024-08-07
+Business Travel,1084.37,km,2024-08-14
+"Fuel, Diesel",487.27,L,2024-04-29
+Electricity,228.16,kWh,2024-05-25
+Natural Gas,1961.56,m3,2024-01-22
+Transportation,1658.02,km,2024-05-21
+Waste,1925.69,kg,2024-10-19
+Water,827.91,m3,2024-03-11
+Diesel,1264.63,L,2024-01-23
+Business Travel,1096.51,km,2024-03-24
+"Fuel, Diesel",1005.14,L,2024-07-26
+Electricity,725.39,kWh,2024-04-18
+Natural Gas,1881.44,m3,2024-04-10
+Transportation,1332.29,km,2024-02-19
+Waste,1808.88,kg,2024-04-13
+Water,830.66,m3,2024-08-09
+Diesel,1547.18,L,2024-07-06
+Business Travel,386.83,km,2024-07-10
+"Fuel, Diesel",1334.34,L,2024-02-20
+Electricity,1425.99,kWh,2024-04-11
+Natural Gas,1772.51,m3,2024-03-22
+Transportation,1218.24,km,2024-09-28
+Waste,747.06,kg,2024-01-03
+Water,75.98,m3,2024-02-24
+Diesel,660.06,L,2024-10-17
+Business Travel,1693.91,km,2024-11-22
+"Fuel, Diesel",759.56,L,2024-05-31
+Electricity,662.76,kWh,2024-06-18
+Natural Gas,1845.74,m3,2024-09-04
+Transportation,1688.21,km,2024-12-18
+Waste,1135.28,kg,2024-04-23
+Water,1546.09,m3,2024-11-30
+Diesel,1565.21,L,2024-04-22
+Business Travel,1305.12,km,2024-04-14
+"Fuel, Diesel",317.46,L,2024-08-28
+Electricity,848.57,kWh,2024-12-31
+Natural Gas,1845.29,m3,2024-11-14
+Transportation,225.89,km,2024-04-13
+Waste,1183.05,kg,2024-10-30
+Water,865.76,m3,2024-09-04
+Diesel,1820.29,L,2024-10-30
+Business Travel,181.68,km,2024-07-17
+"Fuel, Diesel",921.63,L,2024-10-30
+Electricity,1601.37,kWh,2024-05-11
+Natural Gas,1173.53,m3,2024-04-26
+Transportation,551.26,km,2024-03-18
+Waste,1039.32,kg,2024-04-21
+Water,1427.36,m3,2024-03-12
+Diesel,1703.65,L,2024-04-23
+Business Travel,1083.63,km,2024-09-08
+"Fuel, Diesel",1487.65,L,2024-05-26
+Electricity,869.18,kWh,2024-09-03
+Natural Gas,1016.05,m3,2024-08-16
+Transportation,1745.67,km,2024-08-14
+Waste,917.50,kg,2024-05-25
+Water,1515.84,m3,2024-07-15
+Diesel,339.33,L,2024-09-17
+Business Travel,1694.83,km,2024-03-31
+"Fuel, Diesel",1058.01,L,2024-03-05
+Electricity,55.13,kWh,2024-01-07
+Natural Gas,466.63,m3,2024-04-18
+Transportation,1376.76,km,2024-01-11
+Waste,1220.46,kg,2024-07-02
+Water,1433.72,m3,2024-05-17
+Diesel,1822.09,L,2024-10-17
+Business Travel,1747.98,km,2024-07-30
+"Fuel, Diesel",927.19,L,2024-02-04
+Electricity,1142.38,kWh,2024-09-30
+Natural Gas,652.24,m3,2024-07-24
+Transportation,623.53,km,2024-12-09
+Waste,665.51,kg,2024-07-19
+Water,626.09,m3,2024-04-25
+Diesel,1342.40,L,2024-12-12
+Business Travel,149.61,km,2024-02-24
+"Fuel, Diesel",766.59,L,2024-01-14
+Electricity,1819.21,kWh,2024-10-17
+Natural Gas,858.08,m3,2024-03-02
+Transportation,1401.28,km,2024-02-19
+Waste,409.41,kg,2024-11-01
+Water,805.63,m3,2024-03-14
+Diesel,1311.42,L,2024-12-27
+Business Travel,105.07,km,2024-11-21
+"Fuel, Diesel",749.60,L,2024-08-28
+Electricity,603.95,kWh,2024-12-27
+Natural Gas,652.54,m3,2024-03-17
+Transportation,1486.67,km,2024-01-01
+Waste,173.40,kg,2024-10-26
+Water,1077.60,m3,2024-06-05
+Diesel,1486.01,L,2024-12-26
+Business Travel,243.55,km,2024-06-20
+"Fuel, Diesel",1676.54,L,2024-03-07
+Electricity,1970.03,kWh,2024-05-14
+Natural Gas,12.20,m3,2024-12-07
+Transportation,1642.65,km,2024-11-01
+Waste,368.14,kg,2024-12-12
+Water,1064.83,m3,2024-04-02
+Diesel,1093.74,L,2024-01-26
+Business Travel,1743.04,km,2024-08-19
+"Fuel, Diesel",1099.67,L,2024-03-22
+Electricity,1470.93,kWh,2024-06-29
+Natural Gas,1446.87,m3,2024-07-21
+Transportation,743.53,km,2024-02-25
+Waste,218.77,kg,2024-06-14
+Water,32.73,m3,2024-02-12
+Diesel,957.90,L,2024-03-28
+Business Travel,1455.39,km,2024-07-03
+"Fuel, Diesel",1448.23,L,2024-08-05
+Electricity,865.24,kWh,2024-10-03
+Natural Gas,124.55,m3,2024-01-21
+Transportation,899.93,km,2024-01-05
+Waste,1889.87,kg,2024-03-06
+Water,14.29,m3,2024-12-09
+Diesel,1622.44,L,2024-03-06
+Business Travel,1031.25,km,2024-11-25
+"Fuel, Diesel",153.41,L,2024-02-14
+Electricity,1241.62,kWh,2024-09-09
+Natural Gas,1996.43,m3,2024-01-10
+Transportation,583.82,km,2024-04-24
+Waste,610.46,kg,2024-05-23
+Water,935.08,m3,2024-06-13
+Diesel,1477.06,L,2024-01-25
+Business Travel,45.14,km,2024-08-20
+"Fuel, Diesel",1773.34,L,2024-06-16
+Electricity,143.78,kWh,2024-04-18
+Natural Gas,1921.93,m3,2024-06-11
+Transportation,1753.46,km,2024-02-15
+Waste,799.04,kg,2024-07-31
+Water,1738.24,m3,2024-06-28
+Diesel,882.13,L,2024-05-25
+Business Travel,1120.36,km,2024-11-08
+"Fuel, Diesel",118.11,L,2024-11-21
+Electricity,695.55,kWh,2024-05-02
+Natural Gas,1793.64,m3,2024-07-07
+Transportation,978.47,km,2024-12-24
+Waste,188.55,kg,2024-04-14
+Water,1509.50,m3,2024-04-30
+Diesel,293.74,L,2024-10-13
+Business Travel,1054.07,km,2024-04-26
+"Fuel, Diesel",374.76,L,2024-02-27
+Electricity,725.80,kWh,2024-08-29
+Natural Gas,662.39,m3,2024-06-18
+Transportation,564.79,km,2024-03-17
+Waste,1951.38,kg,2024-11-25
+Water,602.17,m3,2024-12-22
+Diesel,388.67,L,2024-10-09
+Business Travel,1942.24,km,2024-09-27
+"Fuel, Diesel",1232.28,L,2024-04-06
+Electricity,1893.51,kWh,2024-07-05
+Natural Gas,862.18,m3,2024-05-12
+Transportation,1679.69,km,2024-03-25
+Waste,824.38,kg,2024-06-27
+Water,1762.11,m3,2024-06-25
+Diesel,189.43,L,2024-08-27
+Business Travel,304.69,km,2024-01-31
+"Fuel, Diesel",1006.63,L,2024-04-13
+Electricity,812.72,kWh,2024-11-03
+Natural Gas,135.24,m3,2024-12-07
+Transportation,1476.76,km,2024-11-19
+Waste,1233.85,kg,2024-08-04
+Water,1252.79,m3,2024-04-12
+Diesel,1189.20,L,2024-04-16
+Business Travel,210.04,km,2024-11-18
+"Fuel, Diesel",1765.70,L,2024-03-07
+Electricity,177.56,kWh,2024-08-15
+Natural Gas,1756.99,m3,2024-05-13
+Transportation,220.92,km,2024-09-21
+Waste,1420.54,kg,2024-01-19
+Water,1980.25,m3,2024-06-19
+Diesel,1476.88,L,2024-11-26
+Business Travel,400.75,km,2024-07-18
+"Fuel, Diesel",1454.36,L,2024-08-17
+Electricity,1887.21,kWh,2024-02-29
+Natural Gas,661.05,m3,2024-02-15
+Transportation,413.43,km,2024-05-05
+Waste,1564.66,kg,2024-10-23
+Water,618.09,m3,2024-02-16
+Diesel,1862.07,L,2024-11-26
+Business Travel,1418.12,km,2024-09-05
+"Fuel, Diesel",19.41,L,2024-10-17
+Electricity,170.97,kWh,2024-05-31
+Natural Gas,1564.25,m3,2024-10-08
+Transportation,1916.87,km,2024-09-07
+Waste,1910.87,kg,2024-09-24
+Water,732.52,m3,2024-08-28
+Diesel,0.07,L,2024-09-13
+Business Travel,727.27,km,2024-05-23
+"Fuel, Diesel",1534.60,L,2024-03-08
+Electricity,713.18,kWh,2024-04-13
+Natural Gas,1091.61,m3,2024-10-04
+Transportation,1080.14,km,2024-05-09
+Waste,893.28,kg,2024-05-30
+Water,1907.30,m3,2024-01-23
+Diesel,516.90,L,2024-07-05
+Business Travel,1842.14,km,2024-08-11
+"Fuel, Diesel",325.66,L,2024-06-11
+Electricity,1778.29,kWh,2024-12-14
+Natural Gas,1901.38,m3,2024-04-10
+Transportation,1863.47,km,2024-12-06
+Waste,1260.46,kg,2024-12-28
+Water,868.78,m3,2024-04-10
+Diesel,1134.26,L,2024-03-04
+Business Travel,1450.50,km,2024-05-23
+"Fuel, Diesel",1095.25,L,2024-02-27
+Electricity,1335.80,kWh,2024-03-07
+Natural Gas,809.99,m3,2024-01-07
+Transportation,963.44,km,2024-04-10
+Waste,200.41,kg,2024-12-18
+Water,610.89,m3,2024-06-18
+Diesel,794.57,L,2024-12-18
+Business Travel,538.97,km,2024-03-27
+"Fuel, Diesel",1047.99,L,2024-09-06
+Electricity,185.31,kWh,2024-08-19
+Natural Gas,917.07,m3,2024-01-13
+Transportation,937.93,km,2024-11-06
+Waste,1465.63,kg,2024-12-29
+Water,1520.13,m3,2024-05-08
+Diesel,1785.95,L,2024-05-27
+Business Travel,1517.96,km,2024-05-24
+"Fuel, Diesel",15.46,L,2024-12-11
+Electricity,1081.48,kWh,2024-03-01
+Natural Gas,1730.48,m3,2024-07-11
+Transportation,1331.16,km,2024-01-10
+Waste,1498.03,kg,2024-09-22
+Water,500.60,m3,2024-07-13
+Diesel,1867.20,L,2024-01-26
+Business Travel,1346.74,km,2024-03-10
+"Fuel, Diesel",581.18,L,2024-04-05
+Electricity,1859.07,kWh,2024-03-04
+Natural Gas,1291.26,m3,2024-08-28
+Transportation,1798.69,km,2024-05-28
+Waste,1553.99,kg,2024-08-09
+Water,98.94,m3,2024-10-05
+Diesel,392.86,L,2024-06-03
+Business Travel,658.40,km,2024-04-28
+"Fuel, Diesel",205.63,L,2024-02-25
+Electricity,557.89,kWh,2024-11-16
+Natural Gas,298.65,m3,2024-05-16
+Transportation,1232.38,km,2024-02-13
+Waste,1829.34,kg,2024-09-02
+Water,1629.39,m3,2024-04-19
+Diesel,438.15,L,2024-08-03
+Business Travel,884.86,km,2024-03-09
+"Fuel, Diesel",1351.25,L,2024-02-21
+Electricity,547.86,kWh,2024-08-19
+Natural Gas,235.12,m3,2024-03-16
+Transportation,885.45,km,2024-02-24
+Waste,1584.36,kg,2024-05-24
+Water,298.79,m3,2024-03-13
+Diesel,924.00,L,2024-03-19
+Business Travel,1381.84,km,2024-03-06
+"Fuel, Diesel",1607.42,L,2024-08-02
+Electricity,1653.95,kWh,2024-04-09
+Natural Gas,1491.31,m3,2024-02-03
+Transportation,1497.42,km,2024-08-20
+Waste,1268.80,kg,2024-06-20
+Water,331.51,m3,2024-08-17
+Diesel,742.04,L,2024-03-26
+Business Travel,553.93,km,2024-01-06
+"Fuel, Diesel",1815.47,L,2024-06-24
+Electricity,1281.22,kWh,2024-05-21
+Natural Gas,1491.08,m3,2024-03-09
+Transportation,419.16,km,2024-03-14
+Waste,646.84,kg,2024-08-21
+Water,94.54,m3,2024-03-08
+Diesel,879.61,L,2024-09-20
+Business Travel,979.53,km,2024-01-16
+"Fuel, Diesel",193.71,L,2024-04-05
+Electricity,1539.82,kWh,2024-08-26
+Natural Gas,816.50,m3,2024-09-03
+Transportation,737.85,km,2024-03-29
+Waste,922.13,kg,2024-06-30
+Water,1222.43,m3,2024-03-15
+Diesel,544.74,L,2024-09-01
+Business Travel,535.87,km,2024-07-19
+"Fuel, Diesel",462.37,L,2024-08-22
+Electricity,369.95,kWh,2024-02-22
+Natural Gas,1332.83,m3,2024-07-29
+Transportation,402.01,km,2024-04-06
+Waste,862.77,kg,2024-04-23
+Water,1742.30,m3,2024-01-28
+Diesel,1291.18,L,2024-10-31
+Business Travel,1523.99,km,2024-01-27
+"Fuel, Diesel",1968.66,L,2024-05-23
+Electricity,666.91,kWh,2024-08-21
+Natural Gas,313.54,m3,2024-07-25
+Transportation,1346.49,km,2024-03-05
+Waste,926.30,kg,2024-10-29
+Water,1198.87,m3,2024-07-18
+Diesel,1143.38,L,2024-07-06
+Business Travel,1793.79,km,2024-09-23
+"Fuel, Diesel",1811.73,L,2024-03-09
+Electricity,1406.08,kWh,2024-12-09
+Natural Gas,565.30,m3,2024-10-13
+Transportation,617.45,km,2024-08-13
+Waste,1384.73,kg,2024-02-02
+Water,1779.42,m3,2024-01-18
+Diesel,721.47,L,2024-05-24
+Business Travel,1868.97,km,2024-07-04
+"Fuel, Diesel",967.68,L,2024-05-23
+Electricity,767.91,kWh,2024-03-05
+Natural Gas,552.99,m3,2024-08-27
+Transportation,1497.41,km,2024-04-03
+Waste,449.51,kg,2024-03-29
+Water,1438.82,m3,2024-12-30
+Diesel,1366.31,L,2024-05-03
+Business Travel,72.08,km,2024-08-03
+"Fuel, Diesel",414.57,L,2024-11-22
+Electricity,1262.91,kWh,2024-02-19
+Natural Gas,524.67,m3,2024-09-08
+Transportation,630.18,km,2024-02-13
+Waste,396.55,kg,2024-05-10
+Water,1024.51,m3,2024-02-10
+Diesel,1264.46,L,2024-03-16
+Business Travel,1649.48,km,2024-08-30
+"Fuel, Diesel",1257.41,L,2024-11-20
+Electricity,856.71,kWh,2024-07-19
+Natural Gas,636.64,m3,2024-04-18
+Transportation,1145.94,km,2024-11-18
+Waste,1691.23,kg,2024-03-25
+Water,1401.51,m3,2024-09-22
+Diesel,1573.17,L,2024-09-02
+Business Travel,1896.38,km,2024-03-24
+"Fuel, Diesel",853.16,L,2024-09-22
+Electricity,94.98,kWh,2024-06-05
+Natural Gas,1078.37,m3,2024-08-11
+Transportation,1786.15,km,2024-03-15
+Waste,1113.34,kg,2024-03-15
+Water,577.41,m3,2024-02-07
+Diesel,545.39,L,2024-01-08
+Business Travel,1281.79,km,2024-12-05
+"Fuel, Diesel",935.75,L,2024-09-12
+Electricity,1228.49,kWh,2024-05-11
+Natural Gas,197.56,m3,2024-04-16
+Transportation,28.64,km,2024-01-10
+Waste,1882.16,kg,2024-12-22
+Water,827.40,m3,2024-09-27
+Diesel,1654.81,L,2024-12-26
+Business Travel,573.57,km,2024-10-31
+"Fuel, Diesel",1741.04,L,2024-11-12
+Electricity,1338.07,kWh,2024-10-31
+Natural Gas,625.09,m3,2024-05-02
+Transportation,1212.55,km,2024-11-21
+Waste,1781.42,kg,2024-05-31
+Water,1819.24,m3,2024-09-08
+Diesel,1720.77,L,2024-07-16
+Business Travel,1963.40,km,2024-10-11
+"Fuel, Diesel",131.85,L,2024-11-08
+Electricity,1459.66,kWh,2024-07-17
+Natural Gas,1400.05,m3,2024-11-23
+Transportation,1663.35,km,2024-03-30
+Waste,1284.29,kg,2024-05-14
+Water,1738.24,m3,2024-11-12
+Diesel,1033.36,L,2024-09-19
+Business Travel,191.79,km,2024-08-29
+"Fuel, Diesel",1722.97,L,2024-09-07
+Electricity,1709.23,kWh,2024-09-13
+Natural Gas,94.75,m3,2024-02-03
+Transportation,1817.84,km,2024-10-07
+Waste,1678.39,kg,2024-06-24
+Water,412.34,m3,2024-05-11
+Diesel,1478.33,L,2024-06-04
+Business Travel,1673.07,km,2024-10-05
+"Fuel, Diesel",1006.12,L,2024-07-31
+Electricity,407.88,kWh,2024-05-11
+Natural Gas,939.67,m3,2024-10-26
+Transportation,1349.13,km,2024-09-01
+Waste,1190.80,kg,2024-01-01
+Water,437.00,m3,2024-10-03
+Diesel,662.18,L,2024-04-01
+Business Travel,1620.41,km,2024-01-19
+"Fuel, Diesel",1474.99,L,2024-10-09
+Electricity,1206.76,kWh,2024-09-16
+Natural Gas,948.53,m3,2024-07-25
+Transportation,291.70,km,2024-01-03
+Waste,1113.07,kg,2024-08-06
+Water,300.31,m3,2024-06-08
+Diesel,37.08,L,2024-04-13
+Business Travel,1170.81,km,2024-07-03
+"Fuel, Diesel",1750.21,L,2024-04-25
+Electricity,212.09,kWh,2024-05-27
+Natural Gas,43.23,m3,2024-03-21
+Transportation,166.31,km,2024-01-02
+Waste,1926.18,kg,2024-03-03
+Water,1507.91,m3,2024-11-24
+Diesel,1025.90,L,2024-12-02
+Business Travel,510.09,km,2024-06-01
+"Fuel, Diesel",1704.36,L,2024-11-28
+Electricity,1110.18,kWh,2024-11-11
+Natural Gas,1178.88,m3,2024-11-22
+Transportation,1105.08,km,2024-05-10
+Waste,1425.57,kg,2024-08-31
+Water,1708.02,m3,2024-01-25
+Diesel,1147.24,L,2024-09-05
+Business Travel,1997.89,km,2024-09-18
+"Fuel, Diesel",587.00,L,2024-09-10
+Electricity,292.43,kWh,2024-08-04
+Natural Gas,468.78,m3,2024-09-19
+Transportation,976.45,km,2024-07-18
+Waste,846.13,kg,2024-11-17
+Water,1816.44,m3,2024-08-10
+Diesel,140.39,L,2024-01-07
+Business Travel,1292.70,km,2024-04-04
+"Fuel, Diesel",1149.62,L,2024-01-30
+Electricity,1980.30,kWh,2024-06-28
+Natural Gas,1309.46,m3,2024-09-01
+Transportation,510.19,km,2024-02-22
+Waste,987.21,kg,2024-04-13
+Water,1141.56,m3,2024-03-26
+Diesel,90.33,L,2024-02-18
+Business Travel,476.81,km,2024-03-04
+"Fuel, Diesel",1770.66,L,2024-07-21
+Electricity,1350.33,kWh,2024-03-03
+Natural Gas,505.64,m3,2024-05-17
+Transportation,422.39,km,2024-02-25
+Waste,337.62,kg,2024-10-29
+Water,509.33,m3,2024-01-09
+Diesel,1552.76,L,2024-10-15
+Business Travel,1181.37,km,2024-02-23
+"Fuel, Diesel",580.53,L,2024-06-25
+Electricity,1659.15,kWh,2024-04-03
+Natural Gas,395.22,m3,2024-12-08
+Transportation,540.47,km,2024-04-10
+Waste,1200.59,kg,2024-10-03
+Water,1388.29,m3,2024-09-26
+Diesel,1679.08,L,2024-02-11
+Business Travel,1711.33,km,2024-09-30
+"Fuel, Diesel",1586.59,L,2024-12-09
+Electricity,1368.45,kWh,2024-09-18
+Natural Gas,974.34,m3,2024-09-19
+Transportation,928.18,km,2024-04-08
+Waste,1818.85,kg,2024-06-02
+Water,1014.56,m3,2024-02-12
+Diesel,341.38,L,2024-06-05
+Business Travel,170.49,km,2024-09-25
+"Fuel, Diesel",798.13,L,2024-07-04
+Electricity,1270.02,kWh,2024-02-24
+Natural Gas,22.33,m3,2024-03-10
+Transportation,1010.61,km,2024-03-25
+Waste,499.55,kg,2024-02-03
+Water,1516.82,m3,2024-03-17
+Diesel,257.48,L,2024-01-16
+Business Travel,1586.46,km,2024-05-15
+"Fuel, Diesel",351.43,L,2024-02-05
+Electricity,1610.71,kWh,2024-02-15
+Natural Gas,1226.71,m3,2024-09-19
+Transportation,699.16,km,2024-12-02
+Waste,1739.29,kg,2024-10-08
+Water,1041.35,m3,2024-09-06
+Diesel,1115.88,L,2024-02-01
+Business Travel,1035.70,km,2024-09-29
+"Fuel, Diesel",634.69,L,2024-10-02
+Electricity,1217.46,kWh,2024-06-25
+Natural Gas,308.22,m3,2024-05-21
+Transportation,1516.57,km,2024-01-27
+Waste,349.16,kg,2024-12-31
+Water,876.99,m3,2024-02-13
+Diesel,1700.79,L,2024-04-19
+Business Travel,768.47,km,2024-01-25
+"Fuel, Diesel",413.09,L,2024-06-22
+Electricity,622.27,kWh,2024-08-21
+Natural Gas,1145.80,m3,2024-10-21
+Transportation,1721.90,km,2024-09-15
+Waste,1579.66,kg,2024-09-07
+Water,580.17,m3,2024-05-06
+Diesel,17.12,L,2024-11-12
+Business Travel,1333.88,km,2024-12-28
+"Fuel, Diesel",953.74,L,2024-01-07
+Electricity,1187.25,kWh,2024-11-27
+Natural Gas,1901.58,m3,2024-12-04
+Transportation,1435.54,km,2024-06-10
+Waste,1245.77,kg,2024-11-23
+Water,1099.91,m3,2024-09-30
+Diesel,1415.49,L,2024-03-18
+Business Travel,704.85,km,2024-12-05
+"Fuel, Diesel",150.71,L,2024-09-21
+Electricity,229.56,kWh,2024-10-22
+Natural Gas,1145.92,m3,2024-11-08
+Transportation,1764.22,km,2024-10-21
+Waste,1851.92,kg,2024-09-06
+Water,1902.77,m3,2024-07-25
+Diesel,717.21,L,2024-10-28
+Business Travel,1403.16,km,2024-05-09
+"Fuel, Diesel",650.04,L,2024-04-22
+Electricity,146.44,kWh,2024-05-22
+Natural Gas,1982.34,m3,2024-08-31
+Transportation,1925.97,km,2024-07-20
+Waste,716.97,kg,2024-11-22
+Water,97.93,m3,2024-03-20
+Diesel,339.32,L,2024-01-23
+Business Travel,1624.38,km,2024-02-17
+"Fuel, Diesel",1974.70,L,2024-09-12
+Electricity,1540.23,kWh,2024-07-11
+Natural Gas,172.62,m3,2024-03-16
+Transportation,375.18,km,2024-12-21
+Waste,99.27,kg,2024-12-24
+Water,1562.12,m3,2024-08-13
+Diesel,419.54,L,2024-12-21
+Business Travel,362.93,km,2024-10-20
+"Fuel, Diesel",649.63,L,2024-10-29
+Electricity,343.32,kWh,2024-03-27
+Natural Gas,261.68,m3,2024-12-01
+Transportation,1927.56,km,2024-03-14
+Waste,1321.59,kg,2024-10-24
+Water,64.65,m3,2024-06-22
+Diesel,941.29,L,2024-02-02
+Business Travel,537.06,km,2024-12-05
+"Fuel, Diesel",326.71,L,2024-06-16
+Electricity,943.20,kWh,2024-01-02
+Natural Gas,1702.70,m3,2024-08-22
+Transportation,885.13,km,2024-07-17
+Waste,896.19,kg,2024-07-01
+Water,392.44,m3,2024-08-13
+Diesel,1858.72,L,2024-04-07
+Business Travel,113.83,km,2024-05-16
+"Fuel, Diesel",1909.78,L,2024-12-27
+Electricity,1307.43,kWh,2024-01-28
+Natural Gas,982.03,m3,2024-06-10
+Transportation,161.25,km,2024-10-06
+Waste,649.73,kg,2024-03-07
+Water,1474.94,m3,2024-04-16
+Diesel,1221.64,L,2024-06-24
+Business Travel,1234.14,km,2024-08-24
+"Fuel, Diesel",1679.64,L,2024-04-06
+Electricity,108.64,kWh,2024-10-15
+Natural Gas,1744.24,m3,2024-05-27
+Transportation,405.61,km,2024-06-05
+Waste,1848.38,kg,2024-11-12
+Water,1509.22,m3,2024-06-30
+Diesel,1300.61,L,2024-08-18
+Business Travel,1337.73,km,2024-03-10
+"Fuel, Diesel",1419.02,L,2024-05-26
+Electricity,1849.55,kWh,2024-11-12
+Natural Gas,917.08,m3,2024-06-16
+Transportation,1129.24,km,2024-03-11
+Waste,1322.72,kg,2024-03-22
+Water,1084.89,m3,2024-04-09
+Diesel,711.86,L,2024-05-17
+Business Travel,288.15,km,2024-09-13
+"Fuel, Diesel",537.63,L,2024-08-01
+Electricity,1987.96,kWh,2024-09-30
+Natural Gas,836.52,m3,2024-03-08
+Transportation,1829.47,km,2024-02-14
+Waste,1592.81,kg,2024-05-28
+Water,309.18,m3,2024-01-10
+Diesel,542.34,L,2024-12-05
+Business Travel,1497.78,km,2024-06-12
+"Fuel, Diesel",197.12,L,2024-11-19
+Electricity,61.74,kWh,2024-11-21
+Natural Gas,1371.74,m3,2024-08-19
+Transportation,1114.97,km,2024-01-05
+Waste,993.14,kg,2024-11-12
+Water,1931.86,m3,2024-11-04
+Diesel,474.70,L,2024-11-15
+Business Travel,1052.84,km,2024-07-29
+"Fuel, Diesel",1436.09,L,2024-01-29
+Electricity,813.84,kWh,2024-02-01
+Natural Gas,50.12,m3,2024-02-17
+Transportation,1830.76,km,2024-09-10
+Waste,1797.69,kg,2024-02-25
+Water,470.30,m3,2024-10-19
+Diesel,912.28,L,2024-12-25
+Business Travel,838.36,km,2024-06-03
+"Fuel, Diesel",1295.10,L,2024-06-15
+Electricity,1317.28,kWh,2024-10-07
+Natural Gas,182.22,m3,2024-02-03
+Transportation,183.16,km,2024-05-02
+Waste,344.85,kg,2024-09-28
+Water,1334.44,m3,2024-04-07
+Diesel,1104.14,L,2024-01-08
+Business Travel,1663.22,km,2024-11-01
+"Fuel, Diesel",941.67,L,2024-08-16
+Electricity,100.18,kWh,2024-04-29
+Natural Gas,986.83,m3,2024-11-03
+Transportation,864.82,km,2024-10-13
+Waste,1162.48,kg,2024-11-02
+Water,1951.81,m3,2024-03-28
+Diesel,1270.04,L,2024-07-26
+Business Travel,385.10,km,2024-06-20
+"Fuel, Diesel",1795.25,L,2024-05-03
+Electricity,270.72,kWh,2024-06-07
+Natural Gas,1715.93,m3,2024-05-30
+Transportation,179.73,km,2024-11-06
+Waste,1092.91,kg,2024-03-10
+Water,892.51,m3,2024-08-18
+Diesel,725.44,L,2024-10-27
+Business Travel,1035.54,km,2024-02-14
+"Fuel, Diesel",1652.27,L,2024-04-17
+Electricity,642.16,kWh,2024-04-30
+Natural Gas,1779.71,m3,2024-05-14
+Transportation,1168.21,km,2024-08-16
+Waste,1417.90,kg,2024-11-25
+Water,994.20,m3,2024-08-05
+Diesel,6.50,L,2024-05-31
+Business Travel,1944.89,km,2024-01-08
+"Fuel, Diesel",811.09,L,2024-12-15
+Electricity,857.84,kWh,2024-02-28
+Natural Gas,871.56,m3,2024-08-13
+Transportation,731.90,km,2024-10-23
+Waste,1983.68,kg,2024-03-30
+Water,487.14,m3,2024-11-04
+Diesel,995.09,L,2024-03-24
+Business Travel,867.33,km,2024-02-27
+"Fuel, Diesel",197.04,L,2024-05-12
+Electricity,516.18,kWh,2024-04-11
+Natural Gas,1093.08,m3,2024-03-20
+Transportation,758.76,km,2024-01-07
+Waste,1325.92,kg,2024-06-24
+Water,119.18,m3,2024-12-12
+Diesel,1043.77,L,2024-03-14
+Business Travel,105.87,km,2024-08-02
+"Fuel, Diesel",1487.39,L,2024-12-09
+Electricity,295.68,kWh,2024-07-19
+Natural Gas,1079.05,m3,2024-03-11
+Transportation,1248.10,km,2024-01-26
+Waste,794.74,kg,2024-08-26
+Water,280.71,m3,2024-08-26
+Diesel,1100.82,L,2024-02-23
+Business Travel,1637.34,km,2024-09-29
+"Fuel, Diesel",1236.37,L,2024-04-24
+Electricity,1079.92,kWh,2024-09-06
+Natural Gas,122.47,m3,2024-05-06
+Transportation,1435.54,km,2024-05-05
+Waste,679.73,kg,2024-06-02
+Water,129.73,m3,2024-03-14
+Diesel,1835.22,L,2024-07-25
+Business Travel,237.41,km,2024-10-03
+"Fuel, Diesel",1000.18,L,2024-02-13
+Electricity,1082.54,kWh,2024-07-10
+Natural Gas,299.56,m3,2024-01-27
+Transportation,918.03,km,2024-01-17
+Waste,334.93,kg,2024-11-08
+Water,716.81,m3,2024-08-18
+Diesel,1761.65,L,2024-06-11
+Business Travel,605.57,km,2024-10-03
+"Fuel, Diesel",1461.93,L,2024-10-28
+Electricity,972.28,kWh,2024-05-20
+Natural Gas,594.72,m3,2024-03-02
+Transportation,778.87,km,2024-07-23
+Waste,303.81,kg,2024-04-06
+Water,110.10,m3,2024-02-03
+Diesel,1365.48,L,2024-02-02
+Business Travel,490.15,km,2024-03-12
+"Fuel, Diesel",556.73,L,2024-07-13
+Electricity,997.96,kWh,2024-05-04
+Natural Gas,1025.54,m3,2024-08-24
+Transportation,712.65,km,2024-09-25
+Waste,444.33,kg,2024-12-31
+Water,520.30,m3,2024-03-03
+Diesel,1227.80,L,2024-12-05
+Business Travel,1813.29,km,2024-02-25
+"Fuel, Diesel",1596.61,L,2024-10-15
+Electricity,113.45,kWh,2024-07-21
+Natural Gas,767.86,m3,2024-07-19
+Transportation,150.32,km,2024-03-17
+Waste,53.87,kg,2024-04-07
+Water,1425.74,m3,2024-03-07
+Diesel,150.41,L,2024-04-26
+Business Travel,1795.98,km,2024-08-25
+"Fuel, Diesel",1395.57,L,2024-05-30
+Electricity,1102.72,kWh,2024-07-30
+Natural Gas,280.67,m3,2024-10-02
+Transportation,1384.15,km,2024-09-18
+Waste,1994.28,kg,2024-12-10
+Water,697.29,m3,2024-07-03
+Diesel,1280.78,L,2024-05-14
+Business Travel,83.01,km,2024-12-18
+"Fuel, Diesel",394.56,L,2024-04-15
+Electricity,1704.83,kWh,2024-09-07
+Natural Gas,1431.20,m3,2024-10-20
+Transportation,692.72,km,2024-05-27
+Waste,816.87,kg,2024-05-18
+Water,1723.40,m3,2024-11-12
+Diesel,237.12,L,2024-09-29
+Business Travel,1868.03,km,2024-12-09
+"Fuel, Diesel",786.48,L,2024-03-14
+Electricity,1738.88,kWh,2024-02-26
+Natural Gas,1619.88,m3,2024-09-09
+Transportation,1465.97,km,2024-02-21
+Waste,887.38,kg,2024-03-25
+Water,535.11,m3,2024-09-07
+Diesel,1233.33,L,2024-06-27
+Business Travel,1018.49,km,2024-04-20
+"Fuel, Diesel",641.18,L,2024-08-16
+Electricity,229.08,kWh,2024-08-09
+Natural Gas,1905.31,m3,2024-09-14
+Transportation,1330.14,km,2024-11-02
+Waste,511.02,kg,2024-04-02
+Water,931.05,m3,2024-05-11
+Diesel,1204.00,L,2024-10-25
+Business Travel,1200.69,km,2024-12-20
+"Fuel, Diesel",30.48,L,2024-07-18
+Electricity,529.71,kWh,2024-04-19
+Natural Gas,1129.34,m3,2024-03-16
+Transportation,1272.81,km,2024-09-29
+Waste,57.46,kg,2024-02-15
+Water,1602.39,m3,2024-08-06
+Diesel,1929.44,L,2024-12-15
+Business Travel,1004.74,km,2024-05-11
+"Fuel, Diesel",1153.12,L,2024-04-14
+Electricity,1450.13,kWh,2024-06-18
+Natural Gas,41.99,m3,2024-06-22
+Transportation,767.90,km,2024-10-13
+Waste,85.79,kg,2024-04-02
+Water,1257.91,m3,2024-09-17
+Diesel,160.66,L,2024-12-07
+Business Travel,1069.59,km,2024-09-18
+"Fuel, Diesel",459.84,L,2024-04-16
+Electricity,379.77,kWh,2024-08-03
+Natural Gas,1426.50,m3,2024-07-01
+Transportation,900.63,km,2024-11-03
+Waste,1469.60,kg,2024-08-03
+Water,1748.96,m3,2024-12-14
+Diesel,1744.36,L,2024-05-26
+Business Travel,1208.01,km,2024-05-27
+"Fuel, Diesel",778.29,L,2024-12-21
+Electricity,413.14,kWh,2024-09-30
+Natural Gas,224.29,m3,2024-10-17
+Transportation,1492.57,km,2024-02-04
+Waste,1521.90,kg,2024-06-09
+Water,1194.47,m3,2024-10-19
+Diesel,1747.96,L,2024-06-11
+Business Travel,1531.62,km,2024-03-27
+"Fuel, Diesel",1438.09,L,2024-06-28
+Electricity,1474.84,kWh,2024-11-29
+Natural Gas,1660.02,m3,2024-03-21
+Transportation,226.61,km,2024-04-25
+Waste,120.15,kg,2024-04-13
+Water,1105.95,m3,2024-04-15
+Diesel,584.58,L,2024-05-26
+Business Travel,1575.83,km,2024-10-12
+"Fuel, Diesel",395.83,L,2024-08-03
+Electricity,1444.53,kWh,2024-04-05
+Natural Gas,1366.53,m3,2024-10-16
+Transportation,1771.98,km,2024-03-11
+Waste,1831.29,kg,2024-07-29
+Water,1512.46,m3,2024-04-27
+Diesel,138.03,L,2024-08-30
+Business Travel,1424.90,km,2024-09-01
+"Fuel, Diesel",360.01,L,2024-05-24
+Electricity,1281.96,kWh,2024-06-29
+Natural Gas,1509.86,m3,2024-06-26
+Transportation,909.21,km,2024-08-21
+Waste,36.69,kg,2024-07-29
+Water,85.69,m3,2024-12-23
+Diesel,1887.84,L,2024-06-29
+Business Travel,836.94,km,2024-11-30
+"Fuel, Diesel",916.14,L,2024-03-28
+Electricity,151.96,kWh,2024-02-21
+Natural Gas,914.25,m3,2024-01-20
+Transportation,1655.19,km,2024-02-03
+Waste,1057.19,kg,2024-02-18
+Water,1264.86,m3,2024-10-25
+Diesel,1034.23,L,2024-11-04
+Business Travel,368.84,km,2024-03-23
+"Fuel, Diesel",651.63,L,2024-06-17
+Electricity,549.42,kWh,2024-11-19
+Natural Gas,1187.17,m3,2024-11-05
+Transportation,388.12,km,2024-11-07
+Waste,278.07,kg,2024-07-13
+Water,1381.79,m3,2024-03-17
+Diesel,623.14,L,2024-02-27
+Business Travel,501.35,km,2024-04-22
+"Fuel, Diesel",1280.87,L,2024-03-25
+Electricity,1424.34,kWh,2024-11-09
+Natural Gas,844.27,m3,2024-08-11
+Transportation,972.54,km,2024-05-15
+Waste,274.06,kg,2024-04-12
+Water,1785.88,m3,2024-08-21
+Diesel,1671.19,L,2024-03-13
+Business Travel,764.05,km,2024-03-12
+"Fuel, Diesel",1770.21,L,2024-05-07
+Electricity,1306.78,kWh,2024-12-19
+Natural Gas,1434.41,m3,2024-04-26
+Transportation,1884.29,km,2024-07-31
+Waste,934.36,kg,2024-12-07
+Water,1969.11,m3,2024-01-05
+Diesel,1290.73,L,2024-11-03
+Business Travel,860.34,km,2024-07-17
+"Fuel, Diesel",462.93,L,2024-01-28
+Electricity,1431.86,kWh,2024-03-14
+Natural Gas,1664.65,m3,2024-12-17
+Transportation,1335.58,km,2024-03-12
+Waste,1587.61,kg,2024-11-23
+Water,691.02,m3,2024-12-24
+Diesel,814.78,L,2024-11-23
+Business Travel,1792.43,km,2024-12-13
+"Fuel, Diesel",1204.28,L,2024-12-03
+Electricity,864.80,kWh,2024-12-11
+Natural Gas,1525.25,m3,2024-05-15
+Transportation,399.92,km,2024-01-11
+Waste,1126.91,kg,2024-04-01
+Water,1103.75,m3,2024-03-28
+Diesel,1922.09,L,2024-12-05
+Business Travel,986.40,km,2024-04-10
+"Fuel, Diesel",1466.46,L,2024-06-27
+Electricity,1625.91,kWh,2024-04-16
+Natural Gas,414.68,m3,2024-01-15
+Transportation,137.15,km,2024-04-21
+Waste,134.80,kg,2024-07-21
+Water,1877.00,m3,2024-11-08
+Diesel,762.11,L,2024-01-20
+Business Travel,1417.11,km,2024-12-09
+"Fuel, Diesel",473.62,L,2024-03-31
+Electricity,1815.55,kWh,2024-05-10
+Natural Gas,1264.61,m3,2024-12-02
+Transportation,718.45,km,2024-12-22
+Waste,1008.30,kg,2024-08-30
+Water,323.06,m3,2024-07-26
+Diesel,79.98,L,2024-10-07
+Business Travel,733.29,km,2024-03-30
+"Fuel, Diesel",1326.86,L,2024-05-20
+Electricity,739.17,kWh,2024-08-01
+Natural Gas,664.93,m3,2024-03-31
+Transportation,551.32,km,2024-01-07
+Waste,83.86,kg,2024-07-14
+Water,1521.80,m3,2024-02-09
+Diesel,1341.55,L,2024-09-28
+Business Travel,382.48,km,2024-09-08
+"Fuel, Diesel",1129.25,L,2024-08-04
+Electricity,32.30,kWh,2024-01-24
+Natural Gas,988.69,m3,2024-05-05
+Transportation,1404.59,km,2024-10-10
+Waste,1762.38,kg,2024-01-20
+Water,1445.65,m3,2024-07-04
+Diesel,858.38,L,2024-08-27
+Business Travel,736.03,km,2024-04-06
+"Fuel, Diesel",1110.79,L,2024-11-21
+Electricity,785.55,kWh,2024-11-07
+Natural Gas,517.19,m3,2024-06-06
+Transportation,1533.41,km,2024-03-26
+Waste,634.23,kg,2024-10-29
+Water,84.64,m3,2024-05-30
+Diesel,1912.72,L,2024-12-27
+Business Travel,214.16,km,2024-10-18
+"Fuel, Diesel",753.46,L,2024-06-06
+Electricity,669.61,kWh,2024-04-06
+Natural Gas,1564.92,m3,2024-06-17
+Transportation,804.27,km,2024-05-14
+Waste,1604.22,kg,2024-01-03
+Water,571.37,m3,2024-05-24
+Diesel,882.54,L,2024-11-06
+Business Travel,410.88,km,2024-03-24
+"Fuel, Diesel",1916.15,L,2024-04-27
+Electricity,1060.22,kWh,2024-03-15
+Natural Gas,604.54,m3,2024-11-23
+Transportation,1819.98,km,2024-06-04
+Waste,16.63,kg,2024-02-10
+Water,306.01,m3,2024-04-08
+Diesel,1366.49,L,2024-10-09
+Business Travel,1219.05,km,2024-12-14
+"Fuel, Diesel",959.75,L,2024-06-07
+Electricity,163.25,kWh,2024-06-20
+Natural Gas,391.96,m3,2024-07-21
+Transportation,1044.70,km,2024-04-07
+Waste,1780.18,kg,2024-10-25
+Water,81.32,m3,2024-05-24
+Diesel,308.95,L,2024-07-18
+Business Travel,1955.34,km,2024-02-10
+"Fuel, Diesel",872.08,L,2024-03-18
+Electricity,139.60,kWh,2024-01-26
+Natural Gas,91.28,m3,2024-05-24
+Transportation,1928.87,km,2024-08-25
+Waste,1493.03,kg,2024-10-13
+Water,1207.63,m3,2024-01-02
+Diesel,124.99,L,2024-01-07
+Business Travel,485.28,km,2024-11-30
+"Fuel, Diesel",1392.92,L,2024-06-26
+Electricity,230.27,kWh,2024-07-14
+Natural Gas,1399.77,m3,2024-05-09
+Transportation,34.32,km,2024-07-24
+Waste,567.83,kg,2024-06-20
+Water,637.86,m3,2024-07-01
+Diesel,825.37,L,2024-11-28
+Business Travel,348.18,km,2024-12-15
+"Fuel, Diesel",1138.99,L,2024-04-15
+Electricity,1881.35,kWh,2024-03-20
+Natural Gas,672.95,m3,2024-02-20
+Transportation,159.15,km,2024-07-13
+Waste,1356.65,kg,2024-12-07
+Water,92.49,m3,2024-10-11
+Diesel,141.57,L,2024-08-14
+Business Travel,1882.23,km,2024-07-08
+"Fuel, Diesel",1728.98,L,2024-08-31
+Electricity,1868.97,kWh,2024-08-19
+Natural Gas,1049.52,m3,2024-01-18
+Transportation,1462.83,km,2024-12-06
+Waste,1276.02,kg,2024-08-29
+Water,1184.59,m3,2024-07-13
+Diesel,1650.77,L,2024-01-18
+Business Travel,1349.41,km,2024-11-22
+"Fuel, Diesel",1908.52,L,2024-06-26
+Electricity,1424.38,kWh,2024-09-26
+Natural Gas,576.38,m3,2024-10-14
+Transportation,591.13,km,2024-04-15
+Waste,931.93,kg,2024-05-12
+Water,544.80,m3,2024-07-27
+Diesel,900.86,L,2024-05-28
+Business Travel,60.54,km,2024-09-07
+"Fuel, Diesel",1675.21,L,2024-04-04
+Electricity,1358.88,kWh,2024-04-07
+Natural Gas,333.63,m3,2024-04-09
+Transportation,801.18,km,2024-08-12
+Waste,244.82,kg,2024-10-16
+Water,946.36,m3,2024-02-19
+Diesel,1535.41,L,2024-01-10
+Business Travel,1500.28,km,2024-02-17
+"Fuel, Diesel",403.58,L,2024-12-09
+Electricity,1188.86,kWh,2024-01-16
+Natural Gas,559.61,m3,2024-06-15
+Transportation,1086.40,km,2024-09-13
+Waste,574.59,kg,2024-07-25
+Water,430.06,m3,2024-03-14
+Diesel,1418.73,L,2024-03-04
+Business Travel,452.09,km,2024-05-28
+"Fuel, Diesel",970.14,L,2024-10-01
+Electricity,260.80,kWh,2024-04-10
+Natural Gas,775.80,m3,2024-02-13
+Transportation,1301.56,km,2024-06-10
+Waste,845.59,kg,2024-12-17
+Water,1429.28,m3,2024-10-17
+Diesel,760.79,L,2024-11-11
+Business Travel,123.30,km,2024-12-13
+"Fuel, Diesel",1878.32,L,2024-12-27
+Electricity,876.22,kWh,2024-11-19
+Natural Gas,1911.95,m3,2024-09-17
+Transportation,1287.76,km,2024-02-21
+Waste,1671.61,kg,2024-09-29
+Water,1894.98,m3,2024-04-22
+Diesel,242.29,L,2024-08-30
+Business Travel,1270.03,km,2024-10-03
+"Fuel, Diesel",1383.54,L,2024-11-01
+Electricity,1416.76,kWh,2024-10-24
+Natural Gas,430.96,m3,2024-02-19
+Transportation,1997.43,km,2024-10-27
+Waste,1480.91,kg,2024-12-21
+Water,420.70,m3,2024-10-23
+Diesel,1139.63,L,2024-07-10
+Business Travel,1322.24,km,2024-09-17
+"Fuel, Diesel",1618.14,L,2024-03-05
+Electricity,1469.11,kWh,2024-05-02
+Natural Gas,453.96,m3,2024-07-29
+Transportation,619.30,km,2024-07-19
+Waste,641.18,kg,2024-10-23
+Water,1367.55,m3,2024-05-11
+Diesel,1449.92,L,2024-07-28
+Business Travel,1508.72,km,2024-11-20
+"Fuel, Diesel",716.43,L,2024-05-28
+Electricity,950.05,kWh,2024-05-16
+Natural Gas,1885.28,m3,2024-04-24
+Transportation,1703.47,km,2024-09-24
+Waste,1584.61,kg,2024-05-02
+Water,1989.23,m3,2024-04-25
+Diesel,15.95,L,2024-12-08
+Business Travel,1982.10,km,2024-11-10
+"Fuel, Diesel",939.68,L,2024-04-01
+Electricity,1231.45,kWh,2024-10-19
+Natural Gas,537.44,m3,2024-07-11
+Transportation,286.34,km,2024-06-12
+Waste,932.78,kg,2024-05-14
+Water,1557.00,m3,2024-08-27
+Diesel,651.23,L,2024-07-20
+Business Travel,943.81,km,2024-01-09
+"Fuel, Diesel",801.10,L,2024-07-24
+Electricity,265.23,kWh,2024-10-08
+Natural Gas,256.19,m3,2024-02-09
+Transportation,1015.65,km,2024-09-26
+Waste,1621.78,kg,2024-04-05
+Water,484.71,m3,2024-04-10
+Diesel,264.98,L,2024-12-23
+Business Travel,1769.14,km,2024-11-28
+"Fuel, Diesel",1190.85,L,2024-02-26
+Electricity,1708.40,kWh,2024-01-04
+Natural Gas,1045.46,m3,2024-06-26
+Transportation,1275.45,km,2024-12-08
+Waste,1027.12,kg,2024-09-23
+Water,1453.80,m3,2024-04-26
+Diesel,987.10,L,2024-03-15
+Business Travel,132.19,km,2024-06-23
+"Fuel, Diesel",1501.06,L,2024-08-07
+Electricity,48.07,kWh,2024-02-24
+Natural Gas,1192.39,m3,2024-06-03
+Transportation,311.14,km,2024-12-22
+Waste,1088.77,kg,2024-08-29
+Water,538.26,m3,2024-06-22
+Diesel,293.22,L,2024-06-22
+Business Travel,1130.88,km,2024-06-15
+"Fuel, Diesel",1750.80,L,2024-01-17
+Electricity,1726.39,kWh,2024-01-08
+Natural Gas,1392.32,m3,2024-11-02
+Transportation,354.45,km,2024-09-10
+Waste,436.15,kg,2024-11-29
+Water,329.68,m3,2024-04-21
+Diesel,1129.64,L,2024-02-01
+Business Travel,411.98,km,2024-08-19
+"Fuel, Diesel",711.10,L,2024-01-10
+Electricity,265.62,kWh,2024-12-26
+Natural Gas,873.79,m3,2024-08-12
+Transportation,1748.41,km,2024-02-28
+Waste,513.15,kg,2024-02-24
+Water,1062.22,m3,2024-07-15
+Diesel,38.41,L,2024-03-17
+Business Travel,1296.08,km,2024-03-05
+"Fuel, Diesel",29.93,L,2024-04-10
+Electricity,1393.08,kWh,2024-03-23
+Natural Gas,1523.57,m3,2024-05-31
+Transportation,72.41,km,2024-12-23
+Waste,1703.10,kg,2024-08-20
+Water,1737.62,m3,2024-05-24
+Diesel,1282.23,L,2024-09-15
+Business Travel,1902.58,km,2024-12-14
+"Fuel, Diesel",357.24,L,2024-07-18
+Electricity,166.18,kWh,2024-01-29
+Natural Gas,11.59,m3,2024-06-29
+Transportation,1267.15,km,2024-08-05
+Waste,1453.77,kg,2024-01-20
+Water,1250.20,m3,2024-11-26
+Diesel,969.54,L,2024-12-03
+Business Travel,274.73,km,2024-10-28
+"Fuel, Diesel",1469.89,L,2024-05-27
+Electricity,97.39,kWh,2024-05-01
+Natural Gas,1916.02,m3,2024-07-03
+Transportation,759.66,km,2024-08-15
+Waste,402.42,kg,2024-04-26
+Water,1511.85,m3,2024-03-13
+Diesel,1179.47,L,2024-07-11
+Business Travel,1504.61,km,2024-12-23
+"Fuel, Diesel",396.74,L,2024-01-25
+Electricity,279.27,kWh,2024-07-22
+Natural Gas,1848.21,m3,2024-04-27
+Transportation,588.30,km,2024-02-23
+Waste,500.72,kg,2024-05-22
+Water,577.05,m3,2024-11-06
+Diesel,86.86,L,2024-04-19
+Business Travel,858.11,km,2024-03-24
+"Fuel, Diesel",1543.58,L,2024-03-11
+Electricity,509.47,kWh,2024-05-23
+Natural Gas,1577.73,m3,2024-11-04
+Transportation,527.76,km,2024-01-15
+Waste,1139.83,kg,2024-01-31
+Water,1767.85,m3,2024-02-27
+Diesel,87.25,L,2024-12-18
+Business Travel,899.96,km,2024-04-30
+"Fuel, Diesel",818.15,L,2024-09-15
+Electricity,415.70,kWh,2024-11-18
+Natural Gas,157.34,m3,2024-10-24
+Transportation,1214.06,km,2024-04-09
+Waste,1275.33,kg,2024-11-20
+Water,798.88,m3,2024-06-23
+Diesel,1921.87,L,2024-12-26
+Business Travel,618.72,km,2024-04-18
+"Fuel, Diesel",1755.15,L,2024-08-09
+Electricity,580.75,kWh,2024-10-09
+Natural Gas,48.01,m3,2024-08-17
+Transportation,1269.55,km,2024-03-22
+Waste,1552.29,kg,2024-10-06
+Water,902.34,m3,2024-07-14
+Diesel,802.67,L,2024-05-21
+Business Travel,551.77,km,2024-09-15
+"Fuel, Diesel",1641.23,L,2024-10-11
+Electricity,1667.50,kWh,2024-11-01
+Natural Gas,1243.91,m3,2024-02-22
+Transportation,427.89,km,2024-12-30
+Waste,430.19,kg,2024-12-23
+Water,1953.03,m3,2024-09-20
+Diesel,537.30,L,2024-07-28
+Business Travel,1910.33,km,2024-01-07
+"Fuel, Diesel",1640.00,L,2024-10-23
+Electricity,1543.89,kWh,2024-03-04
+Natural Gas,1397.41,m3,2024-07-03
+Transportation,659.09,km,2024-09-26
+Waste,308.01,kg,2024-11-21
+Water,1593.31,m3,2024-06-03
+Diesel,1654.12,L,2024-02-13
+Business Travel,1704.42,km,2024-11-18
+"Fuel, Diesel",917.01,L,2024-10-20
+Electricity,407.96,kWh,2024-07-14
+Natural Gas,1944.09,m3,2024-12-07
+Transportation,1294.47,km,2024-12-06
+Waste,1649.15,kg,2024-10-15
+Water,358.12,m3,2024-05-01
+Diesel,1527.16,L,2024-08-10
+Business Travel,1867.93,km,2024-06-15
+"Fuel, Diesel",764.78,L,2024-03-06
+Electricity,1912.82,kWh,2024-08-16
+Natural Gas,227.74,m3,2024-07-27
+Transportation,151.70,km,2024-09-24
+Waste,1106.46,kg,2024-09-09
+Water,799.99,m3,2024-09-30
+Diesel,501.20,L,2024-06-07
+Business Travel,383.55,km,2024-09-17
+"Fuel, Diesel",727.77,L,2024-07-02
+Electricity,291.64,kWh,2024-06-02
+Natural Gas,1625.33,m3,2024-04-04
+Transportation,659.76,km,2024-04-05
+Waste,1647.27,kg,2024-02-27
+Water,614.00,m3,2024-11-25
+Diesel,16.69,L,2024-08-07
+Business Travel,407.80,km,2024-10-02
+"Fuel, Diesel",727.40,L,2024-04-13
+Electricity,1482.68,kWh,2024-06-24
+Natural Gas,1672.05,m3,2024-05-17
+Transportation,983.96,km,2024-12-07
+Waste,678.35,kg,2024-02-08
+Water,1762.84,m3,2024-04-04
+Diesel,734.79,L,2024-07-22
+Business Travel,1396.04,km,2024-02-16
+"Fuel, Diesel",1187.03,L,2024-10-19
+Electricity,254.30,kWh,2024-04-05
+Natural Gas,186.29,m3,2024-08-23
+Transportation,1150.95,km,2024-10-02
+Waste,170.91,kg,2024-08-16
+Water,1601.76,m3,2024-11-04
+Diesel,662.37,L,2024-12-30
+Business Travel,227.44,km,2024-02-18
+"Fuel, Diesel",1156.99,L,2024-11-25
+Electricity,1329.91,kWh,2024-06-04
+Natural Gas,1394.65,m3,2024-12-07
+Transportation,173.70,km,2024-08-22
+Waste,785.64,kg,2024-10-11
+Water,3.60,m3,2024-07-14
+Diesel,1277.00,L,2024-09-03
+Business Travel,330.02,km,2024-02-20
+"Fuel, Diesel",439.56,L,2024-10-28
+Electricity,513.01,kWh,2024-02-27
+Natural Gas,56.92,m3,2024-01-29
+Transportation,1176.49,km,2024-09-29
+Waste,1997.66,kg,2024-06-05
+Water,483.77,m3,2024-05-25
+Diesel,1651.96,L,2024-03-17
+Business Travel,805.61,km,2024-11-23
+"Fuel, Diesel",1713.97,L,2024-01-04
+Electricity,1812.17,kWh,2024-06-21
+Natural Gas,1591.10,m3,2024-09-11
+Transportation,519.97,km,2024-09-27
+Waste,221.55,kg,2024-01-18
+Water,1325.26,m3,2024-12-25
+Diesel,581.21,L,2024-11-30
+Business Travel,1554.88,km,2024-11-02
+"Fuel, Diesel",661.39,L,2024-11-28
+Electricity,566.04,kWh,2024-07-14
+Natural Gas,198.40,m3,2024-12-28
+Transportation,926.08,km,2024-02-27
+Waste,936.34,kg,2024-07-08
+Water,703.63,m3,2024-08-22
+Diesel,704.44,L,2024-08-06
+Business Travel,402.33,km,2024-05-31
+"Fuel, Diesel",89.98,L,2024-10-19
+Electricity,568.37,kWh,2024-12-17
+Natural Gas,988.21,m3,2024-07-29
+Transportation,603.11,km,2024-09-08
+Waste,810.53,kg,2024-12-17
+Water,1812.03,m3,2024-11-02
+Diesel,632.04,L,2024-05-15
+Business Travel,221.26,km,2024-05-21
+"Fuel, Diesel",59.81,L,2024-08-03
+Electricity,1192.95,kWh,2024-02-23
+Natural Gas,103.15,m3,2024-04-10
+Transportation,370.66,km,2024-06-29
+Waste,1827.06,kg,2024-07-16
+Water,1986.18,m3,2024-06-19
+Diesel,1070.07,L,2024-06-22
+Business Travel,58.84,km,2024-02-24
+"Fuel, Diesel",7.92,L,2024-08-25
+Electricity,518.67,kWh,2024-07-24
+Natural Gas,844.03,m3,2024-12-09
+Transportation,784.68,km,2024-07-10
+Waste,1408.31,kg,2024-04-08
+Water,1829.39,m3,2024-02-29
+Diesel,945.34,L,2024-01-30
+Business Travel,261.04,km,2024-01-12
+"Fuel, Diesel",873.32,L,2024-08-08
+Electricity,454.51,kWh,2024-01-28
+Natural Gas,1794.86,m3,2024-04-07
+Transportation,1262.43,km,2024-10-29
+Waste,541.14,kg,2024-11-04
+Water,337.54,m3,2024-08-09
+Diesel,1530.34,L,2024-02-10
+Business Travel,1597.67,km,2024-08-18
+"Fuel, Diesel",1221.95,L,2024-02-25
+Electricity,1864.51,kWh,2024-04-08
+Natural Gas,947.87,m3,2024-08-08
+Transportation,1207.51,km,2024-11-11
+Waste,1901.84,kg,2024-06-05
+Water,24.08,m3,2024-11-05
+Diesel,568.26,L,2024-01-15
+Business Travel,387.35,km,2024-02-05
+"Fuel, Diesel",1371.71,L,2024-11-21
+Electricity,1692.78,kWh,2024-09-26
+Natural Gas,1828.46,m3,2024-10-06
+Transportation,1134.84,km,2024-10-24
+Waste,1981.17,kg,2024-06-26
+Water,45.06,m3,2024-08-11
+Diesel,397.99,L,2024-09-21
+Business Travel,1622.56,km,2024-06-21
+"Fuel, Diesel",1517.46,L,2024-02-06
+Electricity,88.53,kWh,2024-05-29
+Natural Gas,1620.28,m3,2024-11-03
+Transportation,1795.67,km,2024-11-25
+Waste,1209.33,kg,2024-08-02
+Water,1324.08,m3,2024-08-12
+Diesel,79.14,L,2024-03-12
+Business Travel,94.58,km,2024-12-26
+"Fuel, Diesel",1856.00,L,2024-08-04
+Electricity,1531.04,kWh,2024-11-11
+Natural Gas,1290.14,m3,2024-01-06
+Transportation,1302.59,km,2024-09-08
+Waste,80.99,kg,2024-03-21
+Water,1677.34,m3,2024-11-13
+Diesel,1517.01,L,2024-06-27
+Business Travel,1518.54,km,2024-05-13
+"Fuel, Diesel",711.10,L,2024-06-28
+Electricity,1954.66,kWh,2024-08-19
+Natural Gas,1713.07,m3,2024-05-16
+Transportation,254.49,km,2024-05-28
+Waste,1280.26,kg,2024-08-10
+Water,938.60,m3,2024-01-03
+Diesel,1587.61,L,2024-06-11
+Business Travel,1658.37,km,2024-03-02
+"Fuel, Diesel",658.47,L,2024-01-23
+Electricity,1873.83,kWh,2024-07-11
+Natural Gas,1797.31,m3,2024-09-20
+Transportation,861.62,km,2024-04-03
+Waste,1805.70,kg,2024-07-06
+Water,84.23,m3,2024-08-02
+Diesel,262.65,L,2024-07-12
+Business Travel,1451.85,km,2024-01-28
+"Fuel, Diesel",650.78,L,2024-07-08
+Electricity,1508.06,kWh,2024-12-04
+Natural Gas,609.30,m3,2024-05-19
+Transportation,70.53,km,2024-09-24
+Waste,1095.33,kg,2024-01-20
+Water,358.14,m3,2024-05-27
+Diesel,734.55,L,2024-08-22
+Business Travel,135.59,km,2024-03-18
+"Fuel, Diesel",142.65,L,2024-11-04
+Electricity,1906.95,kWh,2024-02-13
+Natural Gas,1498.68,m3,2024-01-12
+Transportation,689.13,km,2024-11-30
+Waste,1151.62,kg,2024-07-10
+Water,396.84,m3,2024-10-22
+Diesel,1541.41,L,2024-12-05
+Business Travel,370.02,km,2024-06-14
+"Fuel, Diesel",1215.64,L,2024-08-03
+Electricity,75.15,kWh,2024-08-04
+Natural Gas,223.28,m3,2024-06-29
+Transportation,511.62,km,2024-10-21
+Waste,666.50,kg,2024-03-10
+Water,1354.41,m3,2024-01-04
+Diesel,692.06,L,2024-08-05
+Business Travel,1364.39,km,2024-09-29
+"Fuel, Diesel",703.30,L,2024-09-12
+Electricity,97.43,kWh,2024-05-12
+Natural Gas,1074.16,m3,2024-07-22
+Transportation,1443.56,km,2024-08-16
+Waste,1146.35,kg,2024-02-13
+Water,27.52,m3,2024-05-25
+Diesel,1791.02,L,2024-09-19
+Business Travel,1.80,km,2024-06-01
+"Fuel, Diesel",316.09,L,2024-04-22
+Electricity,263.60,kWh,2024-04-09
+Natural Gas,1000.56,m3,2024-10-16
+Transportation,626.83,km,2024-02-17
+Waste,1036.99,kg,2024-12-25
+Water,1980.40,m3,2024-11-08
+Diesel,163.52,L,2024-01-22
+Business Travel,1964.15,km,2024-06-26
+"Fuel, Diesel",766.46,L,2024-07-29
+Electricity,193.57,kWh,2024-04-24
+Natural Gas,1734.93,m3,2024-05-10
+Transportation,1564.63,km,2024-12-07
+Waste,1848.72,kg,2024-11-14
+Water,669.87,m3,2024-01-20
+Diesel,980.49,L,2024-11-18
+Business Travel,857.19,km,2024-12-22
+"Fuel, Diesel",1893.78,L,2024-06-24
+Electricity,1962.32,kWh,2024-12-06
+Natural Gas,1917.94,m3,2024-10-25
+Transportation,1246.48,km,2024-10-18
+Waste,281.27,kg,2024-02-08
+Water,570.34,m3,2024-10-18
+Diesel,1383.55,L,2024-10-02
+Business Travel,1335.50,km,2024-03-22
+"Fuel, Diesel",789.39,L,2024-08-21
+Electricity,1224.91,kWh,2024-05-07
+Natural Gas,1223.44,m3,2024-12-12
+Transportation,1273.26,km,2024-12-19
+Waste,348.83,kg,2024-01-20
+Water,298.76,m3,2024-04-19
+Diesel,610.05,L,2024-05-12
+Business Travel,227.47,km,2024-03-15
+"Fuel, Diesel",1921.60,L,2024-02-13
+Electricity,341.48,kWh,2024-11-11
+Natural Gas,483.49,m3,2024-07-21
+Transportation,982.15,km,2024-06-19
+Waste,1505.04,kg,2024-12-07
+Water,1739.69,m3,2024-07-11
+Diesel,118.02,L,2024-05-03
+Business Travel,1660.33,km,2024-10-29
+"Fuel, Diesel",1260.64,L,2024-04-01
+Electricity,1502.24,kWh,2024-03-04
+Natural Gas,1813.36,m3,2024-04-15
+Transportation,571.66,km,2024-06-03
+Waste,768.00,kg,2024-08-21
+Water,1170.27,m3,2024-06-27
+Diesel,1711.20,L,2024-01-19
+Business Travel,185.13,km,2024-04-06
+"Fuel, Diesel",403.71,L,2024-06-09
+Electricity,1852.48,kWh,2024-09-08
+Natural Gas,736.52,m3,2024-06-13
+Transportation,226.65,km,2024-05-17
+Waste,845.26,kg,2024-07-17
+Water,385.21,m3,2024-07-24
+Diesel,1664.04,L,2024-06-07
+Business Travel,1901.77,km,2024-03-31
+"Fuel, Diesel",699.96,L,2024-12-23
+Electricity,617.59,kWh,2024-10-29
+Natural Gas,309.63,m3,2024-10-21
+Transportation,1243.28,km,2024-08-02
+Waste,258.83,kg,2024-04-23
+Water,1821.78,m3,2024-10-18
+Diesel,846.68,L,2024-10-16
+Business Travel,1583.94,km,2024-05-23
+"Fuel, Diesel",1375.50,L,2024-11-09
+Electricity,228.01,kWh,2024-05-09
+Natural Gas,1247.57,m3,2024-05-26
+Transportation,1154.06,km,2024-05-07
+Waste,1470.15,kg,2024-09-18
+Water,1684.85,m3,2024-03-29
+Diesel,849.99,L,2024-08-11
+Business Travel,1804.20,km,2024-07-04
+"Fuel, Diesel",1658.39,L,2024-08-02
+Electricity,1444.27,kWh,2024-09-02
+Natural Gas,48.42,m3,2024-05-15
+Transportation,852.82,km,2024-04-23
+Waste,1005.15,kg,2024-06-12
+Water,1071.87,m3,2024-03-28
+Diesel,110.50,L,2024-05-19
+Business Travel,58.91,km,2024-11-26
+"Fuel, Diesel",903.63,L,2024-12-30
+Electricity,481.98,kWh,2024-02-22
+Natural Gas,1118.45,m3,2024-10-02
+Transportation,1719.71,km,2024-10-11
+Waste,1579.18,kg,2024-12-07
+Water,1097.85,m3,2024-09-29
+Diesel,35.48,L,2024-05-25
+Business Travel,1893.27,km,2024-09-17
+"Fuel, Diesel",718.20,L,2024-01-20
+Electricity,136.81,kWh,2024-05-26
+Natural Gas,897.16,m3,2024-04-21
+Transportation,746.21,km,2024-01-13
+Waste,222.06,kg,2024-02-20
+Water,20.40,m3,2024-08-24
+Diesel,1127.88,L,2024-07-30
+Business Travel,26.30,km,2024-03-11
+"Fuel, Diesel",1086.00,L,2024-09-04
+Electricity,909.54,kWh,2024-08-29
+Natural Gas,1982.23,m3,2024-04-23
+Transportation,1660.15,km,2024-08-23
+Waste,403.05,kg,2024-05-20
+Water,364.69,m3,2024-01-25
+Diesel,1111.38,L,2024-04-09
+Business Travel,1475.86,km,2024-01-17
+"Fuel, Diesel",492.92,L,2024-07-19
+Electricity,131.00,kWh,2024-01-12
+Natural Gas,1254.54,m3,2024-05-23
+Transportation,50.67,km,2024-10-08
+Waste,155.89,kg,2024-03-02
+Water,48.48,m3,2024-09-07
+Diesel,1055.34,L,2024-01-30
+Business Travel,683.62,km,2024-09-23
+"Fuel, Diesel",51.76,L,2024-12-05
+Electricity,1087.12,kWh,2024-11-02
+Natural Gas,3.20,m3,2024-04-30
+Transportation,493.22,km,2024-06-29
+Waste,203.74,kg,2024-12-17
+Water,1507.10,m3,2024-01-15
+Diesel,1499.82,L,2024-08-29
+Business Travel,640.10,km,2024-10-06
+"Fuel, Diesel",1627.32,L,2024-06-15
+Electricity,143.89,kWh,2024-12-01
+Natural Gas,50.50,m3,2024-11-11
+Transportation,1674.63,km,2024-02-11
+Waste,84.23,kg,2024-01-12
+Water,818.46,m3,2024-11-06
+Diesel,580.60,L,2024-07-19
+Business Travel,9.63,km,2024-01-23
+"Fuel, Diesel",1961.31,L,2024-12-23
+Electricity,1872.39,kWh,2024-12-10
+Natural Gas,1876.93,m3,2024-07-08
+Transportation,1518.00,km,2024-06-18
+Waste,274.44,kg,2024-04-03
+Water,828.05,m3,2024-04-26
+Diesel,154.16,L,2024-12-14
+Business Travel,255.37,km,2024-03-18
+"Fuel, Diesel",797.42,L,2024-05-09
+Electricity,173.76,kWh,2024-09-23
+Natural Gas,746.20,m3,2024-05-27
+Transportation,307.79,km,2024-03-25
+Waste,315.91,kg,2024-12-04
+Water,273.94,m3,2024-06-16
+Diesel,1922.67,L,2024-08-04
+Business Travel,764.33,km,2024-10-26
+"Fuel, Diesel",1006.29,L,2024-04-05
+Electricity,1404.25,kWh,2024-07-23
+Natural Gas,830.22,m3,2024-01-14
+Transportation,1814.79,km,2024-04-05
+Waste,939.63,kg,2024-07-25
+Water,911.77,m3,2024-05-22
+Diesel,1559.02,L,2024-06-25
+Business Travel,1972.32,km,2024-10-19
+"Fuel, Diesel",710.51,L,2024-01-10
+Electricity,1500.16,kWh,2024-06-22
+Natural Gas,1334.09,m3,2024-02-24
+Transportation,421.10,km,2024-11-16
+Waste,191.03,kg,2024-09-28
+Water,639.78,m3,2024-08-30
+Diesel,831.79,L,2024-10-10
+Business Travel,488.99,km,2024-09-15
+"Fuel, Diesel",1409.62,L,2024-06-01
+Electricity,1102.88,kWh,2024-08-10
+Natural Gas,621.13,m3,2024-07-02
+Transportation,245.17,km,2024-03-05
+Waste,1555.01,kg,2024-11-20
+Water,623.75,m3,2024-07-25
+Diesel,1730.26,L,2024-07-18
+Business Travel,222.82,km,2024-01-10
+"Fuel, Diesel",105.11,L,2024-06-18
+Electricity,683.87,kWh,2024-06-26
+Natural Gas,337.85,m3,2024-09-10
+Transportation,266.76,km,2024-05-15
+Waste,80.92,kg,2024-02-02
+Water,422.07,m3,2024-06-09
+Diesel,589.45,L,2024-08-13
+Business Travel,1506.12,km,2024-07-05
+"Fuel, Diesel",1425.43,L,2024-04-12
+Electricity,1669.69,kWh,2024-05-03
+Natural Gas,1538.96,m3,2024-12-24
+Transportation,1451.97,km,2024-01-27
+Waste,507.55,kg,2024-12-04
+Water,1110.71,m3,2024-12-26
+Diesel,215.02,L,2024-05-18
+Business Travel,220.01,km,2024-06-18
+"Fuel, Diesel",1750.99,L,2024-11-09
+Electricity,1566.94,kWh,2024-06-03
+Natural Gas,812.40,m3,2024-01-30
+Transportation,1878.21,km,2024-08-15
+Waste,1388.17,kg,2024-04-06
+Water,408.19,m3,2024-08-04
+Diesel,8.39,L,2024-08-02
+Business Travel,919.47,km,2024-02-01
+"Fuel, Diesel",1339.14,L,2024-11-23
+Electricity,1087.34,kWh,2024-04-27
+Natural Gas,404.27,m3,2024-12-29
+Transportation,1859.25,km,2024-05-24
+Waste,1215.47,kg,2024-02-01
+Water,1800.62,m3,2024-08-15
+Diesel,91.66,L,2024-03-08
+Business Travel,1958.28,km,2024-10-06
+"Fuel, Diesel",449.18,L,2024-08-07
+Electricity,1272.67,kWh,2024-04-10
+Natural Gas,343.92,m3,2024-10-23
+Transportation,1070.16,km,2024-02-11
+Waste,546.62,kg,2024-04-12
+Water,1666.71,m3,2024-10-02
+Diesel,1432.62,L,2024-02-09
+Business Travel,614.06,km,2024-05-19
+"Fuel, Diesel",1467.38,L,2024-07-04
+Electricity,619.77,kWh,2024-06-19
+Natural Gas,568.88,m3,2024-07-08
+Transportation,1672.35,km,2024-02-29
+Waste,128.23,kg,2024-06-23
+Water,402.73,m3,2024-04-09
+Diesel,1969.79,L,2024-02-09
+Business Travel,213.26,km,2024-08-26
+"Fuel, Diesel",1031.96,L,2024-04-15
+Electricity,205.58,kWh,2024-05-10
+Natural Gas,1049.86,m3,2024-10-30
+Transportation,1438.55,km,2024-11-26
+Waste,1021.36,kg,2024-11-05
+Water,1547.51,m3,2024-05-22
+Diesel,737.38,L,2024-07-22
+Business Travel,1256.15,km,2024-05-30
+"Fuel, Diesel",158.07,L,2024-07-26
+Electricity,812.12,kWh,2024-12-30
+Natural Gas,1915.82,m3,2024-12-23
+Transportation,877.82,km,2024-12-24
+Waste,726.53,kg,2024-11-29
+Water,907.50,m3,2024-07-23
+Diesel,1990.29,L,2024-04-04
+Business Travel,541.83,km,2024-12-09
+"Fuel, Diesel",362.84,L,2024-09-22
+Electricity,51.47,kWh,2024-04-26
+Natural Gas,1578.89,m3,2024-07-17
+Transportation,360.57,km,2024-08-20
+Waste,1308.71,kg,2024-05-16
+Water,1681.69,m3,2024-10-14
+Diesel,1329.15,L,2024-04-06
+Business Travel,293.24,km,2024-04-08
+"Fuel, Diesel",1790.35,L,2024-09-21
+Electricity,1490.81,kWh,2024-06-22
+Natural Gas,859.42,m3,2024-04-03
+Transportation,1243.50,km,2024-01-09
+Waste,1522.34,kg,2024-11-27
+Water,1586.66,m3,2024-12-09
+Diesel,1825.28,L,2024-09-08
+Business Travel,1282.13,km,2024-07-05
+"Fuel, Diesel",1336.61,L,2024-11-29
+Electricity,1777.38,kWh,2024-02-17
+Natural Gas,1110.95,m3,2024-10-23
+Transportation,994.68,km,2024-07-10
+Waste,936.29,kg,2024-12-25
+Water,1981.59,m3,2024-01-23
+Diesel,145.69,L,2024-07-06
+Business Travel,1954.10,km,2024-02-19
+"Fuel, Diesel",774.62,L,2024-11-01
+Electricity,1763.52,kWh,2024-10-15
+Natural Gas,345.22,m3,2024-09-07
+Transportation,318.46,km,2024-01-19
+Waste,58.88,kg,2024-09-05
+Water,993.20,m3,2024-09-10
+Diesel,678.12,L,2024-05-28
+Business Travel,1553.55,km,2024-04-29
+"Fuel, Diesel",879.29,L,2024-01-21
+Electricity,1631.61,kWh,2024-02-04
+Natural Gas,1357.20,m3,2024-12-10
+Transportation,280.56,km,2024-05-14
+Waste,462.91,kg,2024-06-28
+Water,640.82,m3,2024-02-29
+Diesel,1655.99,L,2024-07-14
+Business Travel,1248.73,km,2024-04-04
+"Fuel, Diesel",1552.53,L,2024-12-16
+Electricity,19.15,kWh,2024-02-25
+Natural Gas,1850.04,m3,2024-01-18
+Transportation,1433.02,km,2024-05-24
+Waste,910.61,kg,2024-02-24
+Water,1961.34,m3,2024-12-06
+Diesel,1283.43,L,2024-05-17
+Business Travel,1256.72,km,2024-06-06
+"Fuel, Diesel",1948.16,L,2024-07-25
+Electricity,1143.69,kWh,2024-11-02
+Natural Gas,560.10,m3,2024-09-11
+Transportation,939.18,km,2024-07-14
+Waste,1478.67,kg,2024-06-03
+Water,134.24,m3,2024-11-12
+Diesel,1860.29,L,2024-07-11
+Business Travel,1968.41,km,2024-12-20
+"Fuel, Diesel",596.98,L,2024-05-09
+Electricity,1927.88,kWh,2024-02-10
+Natural Gas,1381.93,m3,2024-08-04
+Transportation,1698.74,km,2024-12-20
+Waste,1683.23,kg,2024-12-10
+Water,1606.56,m3,2024-08-03
+Diesel,1907.09,L,2024-07-07
+Business Travel,1073.52,km,2024-12-11
+"Fuel, Diesel",1531.74,L,2024-01-21
+Electricity,1124.42,kWh,2024-04-28
+Natural Gas,1493.31,m3,2024-04-17
+Transportation,1472.72,km,2024-12-25
+Waste,604.90,kg,2024-01-01
+Water,1217.94,m3,2024-10-08
+Diesel,290.08,L,2024-08-15
+Business Travel,685.62,km,2024-09-04
+"Fuel, Diesel",412.13,L,2024-06-26
+Electricity,441.11,kWh,2024-07-15
+Natural Gas,1480.20,m3,2024-01-03
+Transportation,8.46,km,2024-04-06
+Waste,1013.72,kg,2024-05-21
+Water,1325.59,m3,2024-06-08
+Diesel,346.21,L,2024-09-09
+Business Travel,467.09,km,2024-01-23
+"Fuel, Diesel",649.80,L,2024-05-05
+Electricity,1665.83,kWh,2024-10-31
+Natural Gas,1461.77,m3,2024-05-27
+Transportation,164.63,km,2024-03-27
+Waste,1494.20,kg,2024-02-29
+Water,929.29,m3,2024-04-20
+Diesel,8.12,L,2024-12-03
+Business Travel,754.14,km,2024-11-14
+"Fuel, Diesel",1533.37,L,2024-01-09
+Electricity,1791.53,kWh,2024-08-17
+Natural Gas,1215.40,m3,2024-06-08
+Transportation,1036.24,km,2024-05-08
+Waste,570.29,kg,2024-07-06
+Water,796.40,m3,2024-01-25
+Diesel,1929.16,L,2024-09-20
+Business Travel,1681.81,km,2024-01-24
+"Fuel, Diesel",353.38,L,2024-06-11
+Electricity,141.22,kWh,2024-12-24
+Natural Gas,301.67,m3,2024-02-23
+Transportation,1079.62,km,2024-05-29
+Waste,830.40,kg,2024-07-13
+Water,586.88,m3,2024-09-23
+Diesel,1608.38,L,2024-06-22
+Business Travel,308.98,km,2024-02-10
+"Fuel, Diesel",527.35,L,2024-11-02
+Electricity,1493.03,kWh,2024-11-29
+Natural Gas,189.34,m3,2024-06-25
+Transportation,1237.42,km,2024-11-15
+Waste,1052.39,kg,2024-01-20
+Water,1978.24,m3,2024-11-25
+Diesel,1515.56,L,2024-05-21
+Business Travel,1743.33,km,2024-04-19
+"Fuel, Diesel",1724.74,L,2024-08-01
+Electricity,1205.13,kWh,2024-09-15
+Natural Gas,380.42,m3,2024-02-07
+Transportation,63.62,km,2024-03-07
+Waste,328.59,kg,2024-06-13
+Water,1790.57,m3,2024-02-17
+Diesel,1216.13,L,2024-04-12
+Business Travel,266.39,km,2024-01-17
+"Fuel, Diesel",1991.98,L,2024-01-01
+Electricity,340.79,kWh,2024-03-30
+Natural Gas,535.08,m3,2024-03-12
+Transportation,848.55,km,2024-01-21
+Waste,190.75,kg,2024-06-13
+Water,1111.56,m3,2024-03-11
+Diesel,1496.28,L,2024-05-31
+Business Travel,458.51,km,2024-03-16
+"Fuel, Diesel",1877.42,L,2024-03-08
+Electricity,793.35,kWh,2024-04-14
+Natural Gas,596.72,m3,2024-04-18
+Transportation,743.84,km,2024-10-27
+Waste,735.10,kg,2024-12-14
+Water,421.46,m3,2024-06-03
+Diesel,487.85,L,2024-04-17
+Business Travel,323.88,km,2024-05-24
+"Fuel, Diesel",556.40,L,2024-10-17
+Electricity,411.22,kWh,2024-10-24
+Natural Gas,916.93,m3,2024-01-31
+Transportation,1887.46,km,2024-09-15
+Waste,747.32,kg,2024-11-02
+Water,718.11,m3,2024-01-07
+Diesel,1793.44,L,2024-06-26
+Business Travel,415.50,km,2024-04-16
+"Fuel, Diesel",1956.19,L,2024-11-17
+Electricity,122.91,kWh,2024-04-25
+Natural Gas,380.50,m3,2024-03-17
+Transportation,528.72,km,2024-03-03
+Waste,1827.53,kg,2024-10-12
+Water,641.91,m3,2024-05-08
+Diesel,611.29,L,2024-06-03
+Business Travel,960.22,km,2024-12-15
+"Fuel, Diesel",881.01,L,2024-09-09
+Electricity,1062.00,kWh,2024-02-16
+Natural Gas,530.43,m3,2024-02-07
+Transportation,153.23,km,2024-03-15
+Waste,515.32,kg,2024-01-23
+Water,1600.86,m3,2024-04-14
+Diesel,1860.40,L,2024-03-25
+Business Travel,983.69,km,2024-02-21
+"Fuel, Diesel",1137.06,L,2024-06-29
+Electricity,1692.12,kWh,2024-09-20
+Natural Gas,1692.94,m3,2024-10-13
+Transportation,607.95,km,2024-08-25
+Waste,414.71,kg,2024-05-19
+Water,895.52,m3,2024-06-26
+Diesel,305.44,L,2024-07-12
+Business Travel,1435.41,km,2024-08-09
+"Fuel, Diesel",1657.48,L,2024-05-18
+Electricity,932.03,kWh,2024-01-10
+Natural Gas,1102.41,m3,2024-09-01
+Transportation,1226.17,km,2024-07-05
+Waste,319.21,kg,2024-09-02
+Water,844.04,m3,2024-09-23
+Diesel,681.80,L,2024-03-30
+Business Travel,313.70,km,2024-06-04
+"Fuel, Diesel",627.33,L,2024-01-25
+Electricity,1280.51,kWh,2024-10-02
+Natural Gas,1026.46,m3,2024-05-25
+Transportation,1952.50,km,2024-04-04
+Waste,336.74,kg,2024-11-26
+Water,1907.14,m3,2024-03-22
+Diesel,1820.55,L,2024-06-04
+Business Travel,1790.72,km,2024-04-21
+"Fuel, Diesel",1608.68,L,2024-09-28
+Electricity,1941.48,kWh,2024-09-07
+Natural Gas,890.90,m3,2024-08-22
+Transportation,467.87,km,2024-02-27
+Waste,14.70,kg,2024-11-29
+Water,1813.12,m3,2024-11-29
+Diesel,773.49,L,2024-01-23
+Business Travel,1337.43,km,2024-11-21
+"Fuel, Diesel",1665.52,L,2024-11-02
+Electricity,1948.88,kWh,2024-12-31
+Natural Gas,1404.76,m3,2024-11-25
+Transportation,1314.54,km,2024-07-27
+Waste,464.94,kg,2024-03-12
+Water,682.88,m3,2024-10-16
+Diesel,938.10,L,2024-11-18
+Business Travel,848.65,km,2024-01-31
+"Fuel, Diesel",1488.78,L,2024-11-14
+Electricity,1291.76,kWh,2024-08-04
+Natural Gas,685.23,m3,2024-05-04
+Transportation,1021.13,km,2024-04-07
+Waste,488.76,kg,2024-09-27
+Water,154.85,m3,2024-03-22
+Diesel,182.59,L,2024-03-05
+Business Travel,1768.00,km,2024-05-09
+"Fuel, Diesel",1521.39,L,2024-03-30
+Electricity,39.26,kWh,2024-05-15
+Natural Gas,382.75,m3,2024-08-01
+Transportation,1227.54,km,2024-09-28
+Waste,701.91,kg,2024-10-24
+Water,510.08,m3,2024-03-31
+Diesel,970.85,L,2024-08-12
+Business Travel,212.96,km,2024-01-20
+"Fuel, Diesel",83.18,L,2024-01-22
+Electricity,1465.56,kWh,2024-07-30
+Natural Gas,1805.95,m3,2024-07-15
+Transportation,1810.04,km,2024-07-12
+Waste,1659.60,kg,2024-10-21
+Water,1797.19,m3,2024-11-20
+Diesel,487.48,L,2024-01-15
+Business Travel,99.81,km,2024-09-21
+"Fuel, Diesel",1495.98,L,2024-12-06
+Electricity,1174.94,kWh,2024-02-07
+Natural Gas,46.64,m3,2024-03-12
+Transportation,6.19,km,2024-07-04
+Waste,1981.48,kg,2024-01-06
+Water,957.36,m3,2024-06-21
+Diesel,762.78,L,2024-04-19
+Business Travel,268.66,km,2024-05-28
+"Fuel, Diesel",208.53,L,2024-10-20
+Electricity,226.77,kWh,2024-10-17
+Natural Gas,104.86,m3,2024-06-16
+Transportation,1539.91,km,2024-03-21
+Waste,476.68,kg,2024-06-22
+Water,949.37,m3,2024-12-12
+Diesel,797.77,L,2024-01-17
+Business Travel,1608.48,km,2024-12-21
+"Fuel, Diesel",921.56,L,2024-09-30
+Electricity,260.47,kWh,2024-10-06
+Natural Gas,1013.84,m3,2024-12-08
+Transportation,1746.43,km,2024-03-05
+Waste,268.75,kg,2024-10-05
+Water,1874.57,m3,2024-03-07
+Diesel,689.15,L,2024-07-24
+Business Travel,182.02,km,2024-05-29
+"Fuel, Diesel",712.72,L,2024-10-18
+Electricity,620.56,kWh,2024-09-20
+Natural Gas,1965.02,m3,2024-10-11
+Transportation,697.32,km,2024-03-08
+Waste,920.72,kg,2024-10-21
+Water,101.88,m3,2024-04-12
+Diesel,1754.34,L,2024-07-21
+Business Travel,350.90,km,2024-02-28
+"Fuel, Diesel",1161.65,L,2024-09-28
+Electricity,1481.64,kWh,2024-04-01
+Natural Gas,433.03,m3,2024-06-17
+Transportation,325.47,km,2024-08-22
+Waste,560.05,kg,2024-09-17
+Water,1392.81,m3,2024-11-28
+Diesel,656.45,L,2024-12-25
+Business Travel,1900.54,km,2024-05-30
+"Fuel, Diesel",474.91,L,2024-12-12
+Electricity,973.36,kWh,2024-03-01
+Natural Gas,300.73,m3,2024-08-17
+Transportation,1550.09,km,2024-11-09
+Waste,3.67,kg,2024-07-25
+Water,26.43,m3,2024-08-04
+Diesel,1529.29,L,2024-11-12
+Business Travel,1165.21,km,2024-06-03
+"Fuel, Diesel",1611.04,L,2024-03-02
+Electricity,305.48,kWh,2024-10-14
+Natural Gas,1984.16,m3,2024-11-16
+Transportation,1401.74,km,2024-05-13
+Waste,882.96,kg,2024-03-28
+Water,1924.43,m3,2024-01-11
+Diesel,102.41,L,2024-02-04
+Business Travel,152.99,km,2024-10-31
+"Fuel, Diesel",405.50,L,2024-05-10
+Electricity,892.83,kWh,2024-04-08
+Natural Gas,557.57,m3,2024-08-03
+Transportation,147.30,km,2024-03-28
+Waste,1768.75,kg,2024-03-21
+Water,1776.02,m3,2024-05-30
+Diesel,1826.01,L,2024-03-29
+Business Travel,1670.79,km,2024-12-21
+"Fuel, Diesel",1695.74,L,2024-06-25
+Electricity,1480.30,kWh,2024-12-02
+Natural Gas,1878.40,m3,2024-09-28
+Transportation,414.96,km,2024-05-24
+Waste,296.33,kg,2024-05-30
+Water,163.03,m3,2024-09-24
+Diesel,1996.04,L,2024-05-20
+Business Travel,449.36,km,2024-03-05
+"Fuel, Diesel",1446.14,L,2024-05-03
+Electricity,1267.87,kWh,2024-06-30
+Natural Gas,712.32,m3,2024-09-14
+Transportation,319.26,km,2024-12-01
+Waste,1290.43,kg,2024-12-11
+Water,684.86,m3,2024-02-06
+Diesel,1879.11,L,2024-11-24
+Business Travel,268.27,km,2024-02-06
+"Fuel, Diesel",873.04,L,2024-05-06
+Electricity,1035.62,kWh,2024-07-13
+Natural Gas,858.18,m3,2024-01-26
+Transportation,586.05,km,2024-05-10
+Waste,890.25,kg,2024-12-31
+Water,1083.48,m3,2024-01-17
+Diesel,837.57,L,2024-04-15
+Business Travel,1080.93,km,2024-01-10
+"Fuel, Diesel",569.72,L,2024-05-24
+Electricity,268.67,kWh,2024-08-21
+Natural Gas,1273.05,m3,2024-06-16
+Transportation,1677.54,km,2024-01-20
+Waste,674.42,kg,2024-08-10
+Water,368.44,m3,2024-11-04
+Diesel,454.46,L,2024-12-30
+Business Travel,139.55,km,2024-03-06
+"Fuel, Diesel",631.45,L,2024-08-15
+Electricity,282.25,kWh,2024-10-30
+Natural Gas,197.18,m3,2024-04-30
+Transportation,917.23,km,2024-06-12
+Waste,1786.04,kg,2024-06-24
+Water,1941.88,m3,2024-10-26
+Diesel,658.51,L,2024-03-14
+Business Travel,1120.19,km,2024-01-14
+"Fuel, Diesel",780.41,L,2024-03-31
+Electricity,1346.64,kWh,2024-10-26
+Natural Gas,1279.06,m3,2024-10-18
+Transportation,1614.98,km,2024-05-22
+Waste,1057.67,kg,2024-10-17
+Water,723.49,m3,2024-08-29
+Diesel,1849.17,L,2024-08-27
+Business Travel,1247.75,km,2024-08-27
+"Fuel, Diesel",490.76,L,2024-05-17
+Electricity,1812.22,kWh,2024-05-07
+Natural Gas,1700.34,m3,2024-06-09
+Transportation,191.94,km,2024-06-14
+Waste,1136.31,kg,2024-01-13
+Water,275.57,m3,2024-09-25
+Diesel,1021.60,L,2024-06-20
+Business Travel,420.92,km,2024-12-13
+"Fuel, Diesel",1113.59,L,2024-10-24
+Electricity,1234.43,kWh,2024-06-27
+Natural Gas,300.91,m3,2024-02-11
+Transportation,1305.63,km,2024-03-30
+Waste,608.41,kg,2024-10-12
+Water,1927.98,m3,2024-05-24
+Diesel,1891.63,L,2024-12-12
+Business Travel,337.26,km,2024-01-19
+"Fuel, Diesel",1.98,L,2024-11-16
+Electricity,1498.82,kWh,2024-12-15
+Natural Gas,1703.84,m3,2024-10-08
+Transportation,974.88,km,2024-09-22
+Waste,124.88,kg,2024-07-17
+Water,1903.16,m3,2024-04-20
+Diesel,1020.82,L,2024-05-21
+Business Travel,1618.12,km,2024-07-30
+"Fuel, Diesel",635.93,L,2024-03-17
+Electricity,1945.98,kWh,2024-06-04
+Natural Gas,440.41,m3,2024-04-04
+Transportation,1704.83,km,2024-07-07
+Waste,526.09,kg,2024-07-21
+Water,441.14,m3,2024-09-20
+Diesel,1941.44,L,2024-11-24
+Business Travel,933.71,km,2024-12-23
+"Fuel, Diesel",747.40,L,2024-08-05
+Electricity,496.59,kWh,2024-11-03
+Natural Gas,1075.11,m3,2024-02-23
+Transportation,1611.99,km,2024-03-16
+Waste,966.85,kg,2024-08-04
+Water,924.51,m3,2024-11-08
+Diesel,1281.43,L,2024-03-17
+Business Travel,128.05,km,2024-10-25
+"Fuel, Diesel",445.31,L,2024-10-05
+Electricity,776.43,kWh,2024-09-24
+Natural Gas,330.62,m3,2024-07-14
+Transportation,1549.15,km,2024-09-04
+Waste,1041.43,kg,2024-10-18
+Water,1003.45,m3,2024-02-19
+Diesel,889.47,L,2024-06-27
+Business Travel,1344.00,km,2024-02-10
+"Fuel, Diesel",340.54,L,2024-03-16
+Electricity,1241.34,kWh,2024-07-10
+Natural Gas,1212.83,m3,2024-11-08
+Transportation,230.46,km,2024-05-28
+Waste,908.55,kg,2024-06-21
+Water,1720.72,m3,2024-07-23
+Diesel,1959.92,L,2024-02-21
+Business Travel,148.22,km,2024-08-19
+"Fuel, Diesel",1670.90,L,2024-12-31
+Electricity,302.22,kWh,2024-11-05
+Natural Gas,1135.83,m3,2024-09-12
+Transportation,1356.40,km,2024-10-13
+Waste,1416.39,kg,2024-11-26
+Water,636.64,m3,2024-12-21
+Diesel,1157.85,L,2024-08-23
+Business Travel,656.25,km,2024-03-19
+"Fuel, Diesel",426.17,L,2024-08-05
+Electricity,1450.08,kWh,2024-11-07
+Natural Gas,46.93,m3,2024-08-14
+Transportation,738.76,km,2024-06-01
+Waste,227.57,kg,2024-03-03
+Water,954.13,m3,2024-05-28
+Diesel,744.04,L,2024-05-03
+Business Travel,657.40,km,2024-01-29
+"Fuel, Diesel",1473.08,L,2024-08-25
+Electricity,381.00,kWh,2024-07-12
+Natural Gas,551.61,m3,2024-12-15
+Transportation,1425.67,km,2024-06-18
+Waste,1944.19,kg,2024-12-19
+Water,643.69,m3,2024-05-19
+Diesel,699.95,L,2024-04-02
+Business Travel,739.84,km,2024-02-16
+"Fuel, Diesel",680.32,L,2024-11-01
+Electricity,121.13,kWh,2024-01-02
+Natural Gas,38.59,m3,2024-08-18
+Transportation,826.58,km,2024-11-30
+Waste,232.76,kg,2024-05-22
+Water,1568.37,m3,2024-03-21
+Diesel,852.77,L,2024-11-29
+Business Travel,1415.58,km,2024-04-12
+"Fuel, Diesel",1043.52,L,2024-08-24
+Electricity,151.70,kWh,2024-11-13
+Natural Gas,804.77,m3,2024-12-21
+Transportation,1837.27,km,2024-12-05
+Waste,1949.28,kg,2024-10-12
+Water,608.82,m3,2024-05-09
+Diesel,1000.38,L,2024-02-25
+Business Travel,245.42,km,2024-10-06
+"Fuel, Diesel",810.27,L,2024-03-19
+Electricity,1534.01,kWh,2024-06-25
+Natural Gas,180.25,m3,2024-07-10
+Transportation,1964.85,km,2024-02-21
+Waste,1264.19,kg,2024-07-09
+Water,788.27,m3,2024-08-24
+Diesel,1036.36,L,2024-12-05
+Business Travel,964.03,km,2024-06-11
+"Fuel, Diesel",1605.11,L,2024-02-15
+Electricity,34.47,kWh,2024-04-15
+Natural Gas,653.36,m3,2024-11-09
+Transportation,452.77,km,2024-12-20
+Waste,1787.38,kg,2024-11-05
+Water,397.52,m3,2024-09-12
+Diesel,1075.01,L,2024-02-17
+Business Travel,604.87,km,2024-02-14
+"Fuel, Diesel",554.54,L,2024-03-22
+Electricity,1249.53,kWh,2024-02-14
+Natural Gas,1995.59,m3,2024-05-22
+Transportation,1405.79,km,2024-12-05
+Waste,693.20,kg,2024-08-31
+Water,119.95,m3,2024-03-01
+Diesel,1576.31,L,2024-05-26
+Business Travel,625.26,km,2024-11-08
+"Fuel, Diesel",412.00,L,2024-06-05
+Electricity,1730.73,kWh,2024-07-13
+Natural Gas,1386.68,m3,2024-03-08
+Transportation,915.00,km,2024-12-12
+Waste,845.45,kg,2024-05-14
+Water,156.51,m3,2024-01-23
+Diesel,1470.96,L,2024-12-08
+Business Travel,31.33,km,2024-04-08
+"Fuel, Diesel",1682.90,L,2024-07-19
+Electricity,109.71,kWh,2024-01-30
+Natural Gas,1539.54,m3,2024-10-10
+Transportation,182.83,km,2024-09-04
+Waste,922.39,kg,2024-08-19
+Water,1350.75,m3,2024-01-30
+Diesel,285.36,L,2024-04-20
+Business Travel,503.03,km,2024-11-15
+"Fuel, Diesel",749.59,L,2024-02-04
+Electricity,223.16,kWh,2024-09-03
+Natural Gas,825.30,m3,2024-12-21
+Transportation,648.03,km,2024-10-22
+Waste,1541.71,kg,2024-04-01
+Water,313.77,m3,2024-11-27
+Diesel,266.60,L,2024-04-05
+Business Travel,1519.17,km,2024-05-12
+"Fuel, Diesel",1996.39,L,2024-02-01
+Electricity,237.86,kWh,2024-11-07
+Natural Gas,1398.28,m3,2024-09-04
+Transportation,1110.68,km,2024-05-16
+Waste,1385.59,kg,2024-12-04
+Water,549.28,m3,2024-07-11
+Diesel,507.50,L,2024-07-23
+Business Travel,1482.35,km,2024-12-10
+"Fuel, Diesel",1934.54,L,2024-11-15
+Electricity,1775.66,kWh,2024-02-13
+Natural Gas,1321.01,m3,2024-09-10
+Transportation,857.18,km,2024-01-27
+Waste,1325.62,kg,2024-02-06
+Water,1578.54,m3,2024-07-14
+Diesel,1071.55,L,2024-10-04
+Business Travel,844.03,km,2024-08-17
+"Fuel, Diesel",1327.27,L,2024-12-08
+Electricity,1038.51,kWh,2024-03-31
+Natural Gas,689.24,m3,2024-07-18
+Transportation,785.28,km,2024-07-30
+Waste,547.88,kg,2024-10-03
+Water,65.39,m3,2024-06-17
+Diesel,1117.98,L,2024-01-16
+Business Travel,1229.48,km,2024-07-29
+"Fuel, Diesel",1314.74,L,2024-09-16
+Electricity,1933.40,kWh,2024-08-05
+Natural Gas,1756.89,m3,2024-04-12
+Transportation,529.03,km,2024-11-04
+Waste,677.89,kg,2024-03-26
+Water,941.28,m3,2024-01-26
+Diesel,1026.68,L,2024-01-11
+Business Travel,562.80,km,2024-05-16
+"Fuel, Diesel",1539.07,L,2024-05-24
+Electricity,1197.45,kWh,2024-05-31
+Natural Gas,1061.10,m3,2024-04-14
+Transportation,1583.83,km,2024-06-05
+Waste,1905.62,kg,2024-01-15
+Water,530.19,m3,2024-09-05
+Diesel,523.29,L,2024-08-01
+Business Travel,191.93,km,2024-05-15
+"Fuel, Diesel",269.34,L,2024-10-04
+Electricity,1522.80,kWh,2024-03-01
+Natural Gas,1547.22,m3,2024-02-09
+Transportation,431.39,km,2024-10-18
+Waste,1110.48,kg,2024-08-30
+Water,1673.73,m3,2024-06-20
+Diesel,804.11,L,2024-08-18
+Business Travel,13.61,km,2024-12-25
+"Fuel, Diesel",526.58,L,2024-12-19
+Electricity,681.72,kWh,2024-10-30
+Natural Gas,693.80,m3,2024-04-02
+Transportation,1664.77,km,2024-08-23
+Waste,1986.37,kg,2024-05-22
+Water,856.03,m3,2024-10-18
+Diesel,661.18,L,2024-12-19
+Business Travel,1598.45,km,2024-01-02
+"Fuel, Diesel",208.75,L,2024-05-17
+Electricity,651.53,kWh,2024-03-19
+Natural Gas,637.58,m3,2024-01-05
+Transportation,1113.34,km,2024-03-11
+Waste,1166.62,kg,2024-02-09
+Water,1328.86,m3,2024-07-05
+Diesel,607.21,L,2024-01-27
+Business Travel,1315.86,km,2024-12-03
+"Fuel, Diesel",215.80,L,2024-05-11
+Electricity,739.63,kWh,2024-04-15
+Natural Gas,298.52,m3,2024-04-05
+Transportation,967.81,km,2024-07-08
+Waste,348.99,kg,2024-02-17
+Water,236.52,m3,2024-04-04
+Diesel,1000.64,L,2024-12-05
+Business Travel,1459.07,km,2024-03-24
+"Fuel, Diesel",574.61,L,2024-02-12
+Electricity,708.49,kWh,2024-06-17
+Natural Gas,1504.77,m3,2024-04-12
+Transportation,905.20,km,2024-11-10
+Waste,420.75,kg,2024-12-28
+Water,1740.91,m3,2024-10-21
+Diesel,170.59,L,2024-10-25
+Business Travel,1370.16,km,2024-09-24
+"Fuel, Diesel",564.03,L,2024-06-25
+Electricity,1900.69,kWh,2024-12-03
+Natural Gas,1117.69,m3,2024-07-26
+Transportation,1213.89,km,2024-12-05
+Waste,1583.56,kg,2024-04-12
+Water,146.50,m3,2024-05-03
+Diesel,541.91,L,2024-02-26
+Business Travel,565.03,km,2024-11-15
+"Fuel, Diesel",839.83,L,2024-09-29
+Electricity,363.86,kWh,2024-12-11
+Natural Gas,1156.84,m3,2024-08-26
+Transportation,1918.55,km,2024-03-19
+Waste,1478.59,kg,2024-06-08
+Water,1025.35,m3,2024-10-16
+Diesel,760.13,L,2024-04-12
+Business Travel,1858.41,km,2024-01-12
+"Fuel, Diesel",1559.78,L,2024-06-13
+Electricity,1975.72,kWh,2024-03-11
+Natural Gas,924.98,m3,2024-11-23
+Transportation,1905.20,km,2024-04-27
+Waste,1311.42,kg,2024-07-26
+Water,342.08,m3,2024-02-21
+Diesel,1816.49,L,2024-04-15
+Business Travel,488.85,km,2024-11-05
+"Fuel, Diesel",508.55,L,2024-03-22
+Electricity,1569.06,kWh,2024-01-15
+Natural Gas,1133.09,m3,2024-04-26
+Transportation,46.20,km,2024-04-01
+Waste,1977.11,kg,2024-04-08
+Water,1578.91,m3,2024-09-25
+Diesel,1172.94,L,2024-10-30
+Business Travel,1243.74,km,2024-07-08
+"Fuel, Diesel",1222.82,L,2024-07-29
+Electricity,56.74,kWh,2024-11-17
+Natural Gas,25.34,m3,2024-05-29
+Transportation,325.21,km,2024-09-24
+Waste,185.15,kg,2024-06-03
+Water,860.62,m3,2024-08-05
+Diesel,887.13,L,2024-12-05
+Business Travel,1584.29,km,2024-02-19
+"Fuel, Diesel",1116.18,L,2024-09-20
+Electricity,1556.74,kWh,2024-06-11
+Natural Gas,1504.10,m3,2024-12-05
+Transportation,962.23,km,2024-07-13
+Waste,584.52,kg,2024-01-09
+Water,79.57,m3,2024-09-24
+Diesel,1737.40,L,2024-10-16
+Business Travel,770.53,km,2024-12-20
+"Fuel, Diesel",1604.19,L,2024-05-18
+Electricity,517.06,kWh,2024-02-07
+Natural Gas,1254.94,m3,2024-09-25
+Transportation,1538.59,km,2024-10-06
+Waste,1888.60,kg,2024-12-23
+Water,20.71,m3,2024-06-16
+Diesel,1347.81,L,2024-08-14
+Business Travel,986.35,km,2024-10-21
+"Fuel, Diesel",229.37,L,2024-08-09
+Electricity,840.82,kWh,2024-03-08
+Natural Gas,871.66,m3,2024-07-31
+Transportation,121.96,km,2024-03-16
+Waste,1000.28,kg,2024-12-06
+Water,1486.56,m3,2024-09-13
+Diesel,313.12,L,2024-06-07
+Business Travel,464.43,km,2024-03-28
+"Fuel, Diesel",786.17,L,2024-08-01
+Electricity,1011.20,kWh,2024-04-19
+Natural Gas,1981.22,m3,2024-12-11
+Transportation,391.31,km,2024-08-09
+Waste,1136.85,kg,2024-01-25
+Water,422.22,m3,2024-04-25
+Diesel,323.78,L,2024-11-12
+Business Travel,611.30,km,2024-12-31
+"Fuel, Diesel",1446.01,L,2024-06-15
+Electricity,1216.47,kWh,2024-08-15
+Natural Gas,368.83,m3,2024-10-28
+Transportation,761.96,km,2024-12-31
+Waste,1955.10,kg,2024-12-06
+Water,1040.36,m3,2024-05-25
+Diesel,290.97,L,2024-12-27
+Business Travel,1132.31,km,2024-04-04
+"Fuel, Diesel",882.26,L,2024-02-12
+Electricity,474.97,kWh,2024-03-28
+Natural Gas,102.86,m3,2024-07-26
+Transportation,1510.55,km,2024-01-08
+Waste,1676.24,kg,2024-03-24
+Water,946.24,m3,2024-08-03
+Diesel,471.54,L,2024-02-13
+Business Travel,1156.65,km,2024-12-10
+"Fuel, Diesel",395.26,L,2024-01-16
+Electricity,1760.11,kWh,2024-06-09
+Natural Gas,1659.91,m3,2024-09-01
+Transportation,1900.05,km,2024-03-20
+Waste,1210.95,kg,2024-08-29
+Water,262.69,m3,2024-05-25
+Diesel,593.07,L,2024-08-21
+Business Travel,362.32,km,2024-01-15
+"Fuel, Diesel",37.26,L,2024-02-06
+Electricity,1125.40,kWh,2024-01-10
+Natural Gas,49.78,m3,2024-08-04
+Transportation,1304.77,km,2024-05-09
+Waste,284.36,kg,2024-09-15
+Water,755.13,m3,2024-07-06
+Diesel,1978.83,L,2024-10-16
+Business Travel,101.15,km,2024-12-05
+"Fuel, Diesel",737.51,L,2024-05-08
+Electricity,829.40,kWh,2024-08-24
+Natural Gas,940.47,m3,2024-07-28
+Transportation,335.32,km,2024-09-26
+Waste,1561.04,kg,2024-06-19
+Water,956.54,m3,2024-02-09
+Diesel,1672.80,L,2024-07-07
+Business Travel,523.83,km,2024-09-01
+"Fuel, Diesel",427.19,L,2024-11-15
+Electricity,460.78,kWh,2024-01-31
+Natural Gas,783.18,m3,2024-06-11
+Transportation,1963.66,km,2024-07-10
+Waste,770.04,kg,2024-06-12
+Water,1292.49,m3,2024-02-29
+Diesel,564.64,L,2024-03-28
+Business Travel,1704.83,km,2024-05-02
+"Fuel, Diesel",164.43,L,2024-07-25
+Electricity,63.26,kWh,2024-08-01
+Natural Gas,937.31,m3,2024-06-11
+Transportation,648.07,km,2024-01-09
+Waste,829.84,kg,2024-05-23
+Water,1206.13,m3,2024-10-06
+Diesel,1514.76,L,2024-09-15
+Business Travel,767.47,km,2024-04-25
+"Fuel, Diesel",259.31,L,2024-12-19
+Electricity,1260.66,kWh,2024-02-29
+Natural Gas,1795.47,m3,2024-01-08
+Transportation,1458.16,km,2024-01-10
+Waste,1973.37,kg,2024-02-03
+Water,283.17,m3,2024-06-08
+Diesel,1479.22,L,2024-10-12
+Business Travel,1008.92,km,2024-08-15
+"Fuel, Diesel",398.90,L,2024-01-25
+Electricity,381.86,kWh,2024-12-02
+Natural Gas,908.48,m3,2024-08-26
+Transportation,1199.88,km,2024-02-09
+Waste,1873.05,kg,2024-03-10
+Water,1376.93,m3,2024-06-06
+Diesel,1634.83,L,2024-04-03
+Business Travel,1025.15,km,2024-03-21
+"Fuel, Diesel",1772.17,L,2024-02-12
+Electricity,1585.82,kWh,2024-05-08
+Natural Gas,1110.35,m3,2024-08-28
+Transportation,1540.49,km,2024-12-10
+Waste,1765.70,kg,2024-12-31
+Water,1733.29,m3,2024-01-22
+Diesel,1504.07,L,2024-09-05
+Business Travel,1835.96,km,2024-04-27
+"Fuel, Diesel",1195.08,L,2024-06-12
+Electricity,1986.60,kWh,2024-08-27
+Natural Gas,643.30,m3,2024-01-05
+Transportation,133.58,km,2024-08-11
+Waste,577.64,kg,2024-04-24
+Water,115.69,m3,2024-12-30
+Diesel,1080.13,L,2024-02-26
+Business Travel,9.98,km,2024-09-16
+"Fuel, Diesel",1235.52,L,2024-04-08
+Electricity,778.31,kWh,2024-01-21
+Natural Gas,1282.75,m3,2024-02-25
+Transportation,1744.07,km,2024-12-04
+Waste,1049.61,kg,2024-03-21
+Water,1930.18,m3,2024-08-03
+Diesel,951.91,L,2024-02-27
+Business Travel,789.68,km,2024-01-17
+"Fuel, Diesel",338.36,L,2024-07-01
+Electricity,360.16,kWh,2024-02-10
+Natural Gas,462.32,m3,2024-10-17
+Transportation,1373.23,km,2024-09-22
+Waste,1861.82,kg,2024-11-30
+Water,350.38,m3,2024-03-07
+Diesel,429.02,L,2024-05-07
+Business Travel,1216.36,km,2024-03-08
+"Fuel, Diesel",950.41,L,2024-07-25
+Electricity,1461.42,kWh,2024-01-07
+Natural Gas,1398.84,m3,2024-10-01
+Transportation,1383.62,km,2024-03-17
+Waste,1758.93,kg,2024-07-05
+Water,1442.47,m3,2024-05-30
+Diesel,1666.76,L,2024-05-21
+Business Travel,1255.12,km,2024-06-26
+"Fuel, Diesel",1645.41,L,2024-03-21
+Electricity,266.45,kWh,2024-12-10
+Natural Gas,1217.35,m3,2024-09-22
+Transportation,624.16,km,2024-03-23
+Waste,1675.05,kg,2024-11-08
+Water,1290.22,m3,2024-07-14
+Diesel,1791.14,L,2024-09-27
+Business Travel,919.91,km,2024-02-14
+"Fuel, Diesel",1249.09,L,2024-05-09
+Electricity,1539.69,kWh,2024-04-21
+Natural Gas,1076.06,m3,2024-02-25
+Transportation,1555.08,km,2024-08-08
+Waste,858.75,kg,2024-05-02
+Water,1119.99,m3,2024-09-24
+Diesel,1023.85,L,2024-06-30
+Business Travel,1398.52,km,2024-05-27
+"Fuel, Diesel",964.12,L,2024-10-22
+Electricity,1750.64,kWh,2024-02-16
+Natural Gas,291.43,m3,2024-12-25
+Transportation,1372.94,km,2024-06-16
+Waste,998.05,kg,2024-09-11
+Water,425.70,m3,2024-06-05
+Diesel,807.33,L,2024-03-07
+Business Travel,177.53,km,2024-01-30
+"Fuel, Diesel",495.11,L,2024-03-07
+Electricity,198.90,kWh,2024-04-23
+Natural Gas,463.09,m3,2024-07-07
+Transportation,1135.64,km,2024-07-01
+Waste,345.42,kg,2024-11-08
+Water,93.85,m3,2024-08-05
+Diesel,1929.69,L,2024-07-25
+Business Travel,167.39,km,2024-08-27
+"Fuel, Diesel",173.64,L,2024-08-29
+Electricity,139.14,kWh,2024-12-23
+Natural Gas,1598.89,m3,2024-03-12
+Transportation,887.39,km,2024-05-08
+Waste,1842.79,kg,2024-09-14
+Water,1528.54,m3,2024-01-26
+Diesel,649.73,L,2024-06-24
+Business Travel,827.35,km,2024-09-11
+"Fuel, Diesel",1083.23,L,2024-10-22
+Electricity,1906.11,kWh,2024-10-04
+Natural Gas,239.87,m3,2024-06-11
+Transportation,783.75,km,2024-11-10
+Waste,1246.52,kg,2024-12-08
+Water,1776.41,m3,2024-11-13
+Diesel,822.00,L,2024-08-17
+Business Travel,1290.50,km,2024-02-27
+"Fuel, Diesel",1184.36,L,2024-05-22
+Electricity,39.63,kWh,2024-02-16
+Natural Gas,1585.28,m3,2024-06-13
+Transportation,216.59,km,2024-05-30
+Waste,1252.47,kg,2024-11-05
+Water,651.72,m3,2024-06-27
+Diesel,21.71,L,2024-05-23
+Business Travel,1488.75,km,2024-09-05
+"Fuel, Diesel",1439.48,L,2024-03-08
+Electricity,409.60,kWh,2024-09-13
+Natural Gas,1617.57,m3,2024-12-30
+Transportation,939.12,km,2024-03-27
+Waste,1620.89,kg,2024-02-24
+Water,1861.27,m3,2024-03-29
+Diesel,1669.79,L,2024-08-30
+Business Travel,1277.86,km,2024-11-30
+"Fuel, Diesel",1937.95,L,2024-10-19
+Electricity,1341.01,kWh,2024-07-19
+Natural Gas,1227.39,m3,2024-04-11
+Transportation,190.86,km,2024-09-23
+Waste,1301.55,kg,2024-10-17
+Water,129.47,m3,2024-07-18
+Diesel,1157.87,L,2024-08-19
+Business Travel,1562.37,km,2024-10-29
+"Fuel, Diesel",21.13,L,2024-06-22
+Electricity,738.91,kWh,2024-07-07
+Natural Gas,338.62,m3,2024-09-09
+Transportation,1822.68,km,2024-10-01
+Waste,558.62,kg,2024-10-08
+Water,323.29,m3,2024-03-31
+Diesel,1973.30,L,2024-08-14
+Business Travel,1420.71,km,2024-01-04
+"Fuel, Diesel",407.30,L,2024-11-26
+Electricity,1213.45,kWh,2024-07-12
+Natural Gas,33.30,m3,2024-09-02
+Transportation,1421.76,km,2024-12-16
+Waste,1095.75,kg,2024-12-03
+Water,577.27,m3,2024-12-06
+Diesel,1824.10,L,2024-11-14
+Business Travel,1230.10,km,2024-01-01
+"Fuel, Diesel",1316.71,L,2024-01-14
+Electricity,1204.84,kWh,2024-11-29
+Natural Gas,676.71,m3,2024-06-28
+Transportation,1436.63,km,2024-02-07
+Waste,181.04,kg,2024-10-08
+Water,1418.56,m3,2024-03-26
+Diesel,764.03,L,2024-05-19
+Business Travel,1791.58,km,2024-08-07
+"Fuel, Diesel",596.56,L,2024-11-29
+Electricity,108.37,kWh,2024-09-10
+Natural Gas,42.30,m3,2024-01-28
+Transportation,302.13,km,2024-05-06
+Waste,772.03,kg,2024-04-23
+Water,891.85,m3,2024-02-27
+Diesel,1317.51,L,2024-09-19
+Business Travel,1455.06,km,2024-02-27
+"Fuel, Diesel",1846.00,L,2024-06-10
+Electricity,1399.42,kWh,2024-12-03
+Natural Gas,1436.76,m3,2024-10-25
+Transportation,1564.43,km,2024-07-28
+Waste,1640.74,kg,2024-10-31
+Water,1684.44,m3,2024-05-19
+Diesel,604.71,L,2024-10-20
+Business Travel,1244.23,km,2024-12-02
+"Fuel, Diesel",541.14,L,2024-03-31
+Electricity,1758.43,kWh,2024-12-27
+Natural Gas,1824.96,m3,2024-05-20
+Transportation,1006.03,km,2024-09-16
+Waste,1498.61,kg,2024-09-26
+Water,251.19,m3,2024-07-27
+Diesel,466.47,L,2024-09-30
+Business Travel,1981.64,km,2024-04-26
+"Fuel, Diesel",160.02,L,2024-06-16
+Electricity,195.94,kWh,2024-12-01
+Natural Gas,1954.97,m3,2024-07-16
+Transportation,1770.76,km,2024-01-08
+Waste,1121.56,kg,2024-05-03
+Water,1939.54,m3,2024-09-12
+Diesel,1589.35,L,2024-09-02
+Business Travel,1413.66,km,2024-04-16
+"Fuel, Diesel",307.67,L,2024-07-12
+Electricity,1177.56,kWh,2024-09-11
+Natural Gas,483.08,m3,2024-12-12
+Transportation,1488.79,km,2024-06-11
+Waste,1474.95,kg,2024-09-07
+Water,114.51,m3,2024-05-05
+Diesel,1630.60,L,2024-06-28
+Business Travel,1335.48,km,2024-08-03
+"Fuel, Diesel",841.05,L,2024-01-20
+Electricity,1748.96,kWh,2024-07-31
+Natural Gas,98.76,m3,2024-12-27
+Transportation,1401.59,km,2024-11-18
+Waste,1838.59,kg,2024-05-16
+Water,1283.70,m3,2024-01-08
+Diesel,1343.19,L,2024-09-30
+Business Travel,716.13,km,2024-02-06
+"Fuel, Diesel",1994.07,L,2024-07-30
+Electricity,660.91,kWh,2024-06-01
+Natural Gas,1649.71,m3,2024-07-26
+Transportation,1486.97,km,2024-07-11
+Waste,1931.76,kg,2024-05-06
+Water,222.29,m3,2024-06-23
+Diesel,700.77,L,2024-06-02
+Business Travel,823.46,km,2024-02-25
+"Fuel, Diesel",502.61,L,2024-05-29
+Electricity,1494.25,kWh,2024-12-09
+Natural Gas,266.81,m3,2024-12-09
+Transportation,1584.09,km,2024-03-03
+Waste,38.17,kg,2024-09-22
+Water,1098.03,m3,2024-01-05
+Diesel,1022.71,L,2024-09-24
+Business Travel,349.16,km,2024-10-27
+"Fuel, Diesel",1729.48,L,2024-06-05
+Electricity,1784.90,kWh,2024-02-03
+Natural Gas,1489.17,m3,2024-07-01
+Transportation,518.41,km,2024-07-06
+Waste,1131.00,kg,2024-08-10
+Water,596.26,m3,2024-10-18
+Diesel,1099.09,L,2024-12-19
+Business Travel,533.72,km,2024-04-06
+"Fuel, Diesel",1789.47,L,2024-11-25
+Electricity,148.86,kWh,2024-05-03
+Natural Gas,1389.06,m3,2024-08-16
+Transportation,1226.73,km,2024-06-23
+Waste,997.88,kg,2024-11-20
+Water,1044.89,m3,2024-03-03
+Diesel,1315.68,L,2024-04-13
+Business Travel,291.49,km,2024-01-02
+"Fuel, Diesel",1674.31,L,2024-04-19
+Electricity,1407.20,kWh,2024-12-24
+Natural Gas,697.00,m3,2024-06-14
+Transportation,1882.17,km,2024-07-12
+Waste,365.89,kg,2024-01-23
+Water,1539.41,m3,2024-12-19
+Diesel,1778.94,L,2024-07-08
+Business Travel,1335.64,km,2024-04-07
+"Fuel, Diesel",1377.67,L,2024-02-10
+Electricity,1711.08,kWh,2024-06-15
+Natural Gas,926.69,m3,2024-09-23
+Transportation,1019.19,km,2024-12-22
+Waste,1026.56,kg,2024-01-20
+Water,1067.88,m3,2024-10-24
+Diesel,441.07,L,2024-01-05
+Business Travel,1303.16,km,2024-04-11
+"Fuel, Diesel",20.20,L,2024-08-20
+Electricity,1666.72,kWh,2024-09-01
+Natural Gas,500.02,m3,2024-08-03
+Transportation,658.57,km,2024-04-15
+Waste,1960.88,kg,2024-01-03
+Water,1635.95,m3,2024-06-18
+Diesel,1224.94,L,2024-05-30
+Business Travel,879.86,km,2024-07-30
+"Fuel, Diesel",1974.48,L,2024-10-27
+Electricity,1460.45,kWh,2024-04-17
+Natural Gas,872.12,m3,2024-05-23
+Transportation,1432.43,km,2024-05-30
+Waste,1464.30,kg,2024-02-14
+Water,1391.84,m3,2024-02-02
+Diesel,149.14,L,2024-06-25
+Business Travel,925.40,km,2024-05-05
+"Fuel, Diesel",990.05,L,2024-01-24
+Electricity,1983.64,kWh,2024-01-30
+Natural Gas,656.29,m3,2024-07-10
+Transportation,1709.20,km,2024-01-29
+Waste,1271.70,kg,2024-06-11
+Water,1751.37,m3,2024-08-08
+Diesel,1452.95,L,2024-12-07
+Business Travel,1598.25,km,2024-09-09
+"Fuel, Diesel",318.41,L,2024-01-09
+Electricity,1957.76,kWh,2024-03-08
+Natural Gas,1749.04,m3,2024-03-16
+Transportation,718.64,km,2024-02-11
+Waste,682.44,kg,2024-09-10
+Water,522.90,m3,2024-12-22
+Diesel,1721.37,L,2024-03-19
+Business Travel,1480.73,km,2024-12-27
+"Fuel, Diesel",838.02,L,2024-06-06
+Electricity,1059.36,kWh,2024-06-18
+Natural Gas,1455.10,m3,2024-04-27
+Transportation,1676.86,km,2024-10-06
+Waste,685.31,kg,2024-01-27
+Water,1032.39,m3,2024-07-13
+Diesel,10.10,L,2024-05-01
+Business Travel,703.97,km,2024-03-04
+"Fuel, Diesel",1179.26,L,2024-11-28
+Electricity,1045.06,kWh,2024-10-17
+Natural Gas,612.39,m3,2024-03-19
+Transportation,911.27,km,2024-12-27
+Waste,83.56,kg,2024-01-28
+Water,1248.39,m3,2024-04-11
+Diesel,1970.52,L,2024-09-03
+Business Travel,72.92,km,2024-01-27
+"Fuel, Diesel",1849.50,L,2024-10-10
+Electricity,876.55,kWh,2024-05-22
+Natural Gas,1717.02,m3,2024-07-04
+Transportation,985.63,km,2024-10-15
+Waste,1619.91,kg,2024-04-19
+Water,907.00,m3,2024-03-18
+Diesel,1974.75,L,2024-10-20
+Business Travel,191.38,km,2024-09-08
+"Fuel, Diesel",1358.04,L,2024-11-13
+Electricity,1845.63,kWh,2024-02-08
+Natural Gas,1048.33,m3,2024-12-01
+Transportation,1825.02,km,2024-07-07
+Waste,101.51,kg,2024-04-09
+Water,636.92,m3,2024-08-18
+Diesel,1240.58,L,2024-04-14
+Business Travel,586.97,km,2024-07-15
+"Fuel, Diesel",341.15,L,2024-05-05
+Electricity,699.13,kWh,2024-10-05
+Natural Gas,793.85,m3,2024-01-21
+Transportation,1840.84,km,2024-03-04
+Waste,524.97,kg,2024-03-27
+Water,1084.42,m3,2024-06-11
+Diesel,1956.52,L,2024-06-30
+Business Travel,836.13,km,2024-12-14
+"Fuel, Diesel",1687.03,L,2024-07-02
+Electricity,764.01,kWh,2024-06-09
+Natural Gas,1174.31,m3,2024-04-04
+Transportation,1055.83,km,2024-10-03
+Waste,201.36,kg,2024-12-29
+Water,38.35,m3,2024-06-29
+Diesel,1406.78,L,2024-06-05
+Business Travel,1689.14,km,2024-05-26
+"Fuel, Diesel",660.86,L,2024-08-02
+Electricity,1072.27,kWh,2024-10-23
+Natural Gas,568.66,m3,2024-05-22
+Transportation,229.06,km,2024-07-10
+Waste,881.21,kg,2024-09-10
+Water,1555.14,m3,2024-11-08
+Diesel,96.28,L,2024-07-07
+Business Travel,195.10,km,2024-10-12
+"Fuel, Diesel",1029.76,L,2024-08-10
+Electricity,1486.00,kWh,2024-06-09
+Natural Gas,1639.01,m3,2024-08-25
+Transportation,1980.91,km,2024-05-08
+Waste,879.47,kg,2024-08-27
+Water,1083.78,m3,2024-02-27
+Diesel,1875.63,L,2024-06-06
+Business Travel,826.94,km,2024-10-04
+"Fuel, Diesel",1187.79,L,2024-02-25
+Electricity,1822.38,kWh,2024-02-05
+Natural Gas,1455.73,m3,2024-05-24
+Transportation,1918.10,km,2024-01-05
+Waste,1200.58,kg,2024-03-08
+Water,590.87,m3,2024-11-23
+Diesel,66.15,L,2024-11-30
+Business Travel,606.42,km,2024-01-21
+"Fuel, Diesel",280.99,L,2024-03-10
+Electricity,978.64,kWh,2024-01-29
+Natural Gas,1622.36,m3,2024-12-11
+Transportation,1758.69,km,2024-07-08
+Waste,1663.41,kg,2024-05-16
+Water,1685.56,m3,2024-09-27
+Diesel,1584.87,L,2024-07-29
+Business Travel,229.13,km,2024-10-14
+"Fuel, Diesel",332.34,L,2024-11-24
+Electricity,57.12,kWh,2024-07-04
+Natural Gas,400.64,m3,2024-05-26
+Transportation,457.05,km,2024-05-26
+Waste,1026.30,kg,2024-12-05
+Water,744.60,m3,2024-11-06
+Diesel,1069.51,L,2024-09-14
+Business Travel,1189.49,km,2024-09-28
+"Fuel, Diesel",366.77,L,2024-06-16
+Electricity,1490.22,kWh,2024-08-28
+Natural Gas,835.54,m3,2024-06-14
+Transportation,1328.88,km,2024-01-19
+Waste,1112.03,kg,2024-12-20
+Water,37.30,m3,2024-03-08
+Diesel,1003.49,L,2024-02-05
+Business Travel,905.73,km,2024-09-25
+"Fuel, Diesel",536.16,L,2024-11-19
+Electricity,165.41,kWh,2024-04-04
+Natural Gas,880.19,m3,2024-03-12
+Transportation,1176.22,km,2024-01-07
+Waste,932.84,kg,2024-11-06
+Water,850.55,m3,2024-10-28
+Diesel,1840.96,L,2024-11-06
+Business Travel,1844.92,km,2024-11-18
+"Fuel, Diesel",244.35,L,2024-10-26
+Electricity,550.27,kWh,2024-10-22
+Natural Gas,1520.98,m3,2024-12-09
+Transportation,1412.42,km,2024-04-28
+Waste,815.41,kg,2024-12-18
+Water,613.84,m3,2024-04-08
+Diesel,131.74,L,2024-03-08
+Business Travel,647.98,km,2024-12-08
+"Fuel, Diesel",272.14,L,2024-05-14
+Electricity,1817.43,kWh,2024-11-22
+Natural Gas,902.44,m3,2024-01-08
+Transportation,1187.18,km,2024-10-12
+Waste,525.90,kg,2024-07-26
+Water,24.22,m3,2024-10-06
+Diesel,646.38,L,2024-04-05
+Business Travel,1254.62,km,2024-08-04
+"Fuel, Diesel",902.27,L,2024-11-20
+Electricity,969.60,kWh,2024-06-27
+Natural Gas,452.36,m3,2024-08-14
+Transportation,511.52,km,2024-04-16
+Waste,1394.89,kg,2024-08-01
+Water,171.30,m3,2024-08-06
+Diesel,501.11,L,2024-12-25
+Business Travel,28.40,km,2024-10-19
+"Fuel, Diesel",44.44,L,2024-10-25
+Electricity,1964.58,kWh,2024-04-12
+Natural Gas,1006.69,m3,2024-07-25
+Transportation,1382.77,km,2024-03-05
+Waste,442.45,kg,2024-05-31
+Water,1662.31,m3,2024-06-05
+Diesel,1282.88,L,2024-10-24
+Business Travel,881.71,km,2024-01-27
+"Fuel, Diesel",1360.30,L,2024-06-23
+Electricity,840.23,kWh,2024-12-24
+Natural Gas,934.61,m3,2024-02-28
+Transportation,909.61,km,2024-06-24
+Waste,503.06,kg,2024-10-04
+Water,1747.03,m3,2024-08-05
+Diesel,1174.35,L,2024-08-02
+Business Travel,400.76,km,2024-10-23
+"Fuel, Diesel",388.45,L,2024-11-23
+Electricity,839.52,kWh,2024-08-16
+Natural Gas,263.50,m3,2024-12-24
+Transportation,437.04,km,2024-04-11
+Waste,350.70,kg,2024-06-03
+Water,1442.82,m3,2024-05-31
+Diesel,1078.85,L,2024-04-28
+Business Travel,970.58,km,2024-08-07
+"Fuel, Diesel",669.46,L,2024-08-10
+Electricity,1535.47,kWh,2024-11-25
+Natural Gas,803.92,m3,2024-09-09
+Transportation,671.39,km,2024-12-31
+Waste,823.76,kg,2024-02-14
+Water,659.63,m3,2024-07-09
+Diesel,745.44,L,2024-01-16
+Business Travel,1900.05,km,2024-07-14
+"Fuel, Diesel",1870.84,L,2024-06-24
+Electricity,1956.19,kWh,2024-06-13
+Natural Gas,274.67,m3,2024-11-11
+Transportation,805.33,km,2024-09-24
+Waste,950.11,kg,2024-04-26
+Water,1324.97,m3,2024-02-23
+Diesel,893.88,L,2024-07-27
+Business Travel,546.86,km,2024-07-11
+"Fuel, Diesel",1912.05,L,2024-07-03
+Electricity,1709.85,kWh,2024-03-10
+Natural Gas,427.73,m3,2024-10-12
+Transportation,1642.82,km,2024-07-14
+Waste,72.07,kg,2024-01-04
+Water,508.95,m3,2024-06-18
+Diesel,1339.64,L,2024-05-09
+Business Travel,1442.54,km,2024-08-13
+"Fuel, Diesel",1089.50,L,2024-08-21
+Electricity,109.73,kWh,2024-08-13
+Natural Gas,1173.27,m3,2024-04-06
+Transportation,724.20,km,2024-10-04
+Waste,1971.40,kg,2024-07-19
+Water,1549.24,m3,2024-11-15
+Diesel,1118.87,L,2024-04-11
+Business Travel,1417.44,km,2024-04-14
+"Fuel, Diesel",201.56,L,2024-08-03
+Electricity,1299.17,kWh,2024-02-14
+Natural Gas,704.70,m3,2024-06-18
+Transportation,1451.09,km,2024-05-08
+Waste,994.33,kg,2024-06-16
+Water,1176.09,m3,2024-05-02
+Diesel,613.44,L,2024-06-22
+Business Travel,725.75,km,2024-10-10
+"Fuel, Diesel",673.57,L,2024-08-25
+Electricity,1376.58,kWh,2024-04-21
+Natural Gas,1623.60,m3,2024-09-09
+Transportation,211.47,km,2024-03-02
+Waste,176.53,kg,2024-03-30
+Water,637.35,m3,2024-09-02
+Diesel,1675.91,L,2024-02-18
+Business Travel,170.46,km,2024-05-21
+"Fuel, Diesel",682.79,L,2024-06-29
+Electricity,1520.46,kWh,2024-04-15
+Natural Gas,1064.77,m3,2024-03-20
+Transportation,1504.65,km,2024-04-16
+Waste,1368.14,kg,2024-03-17
+Water,823.42,m3,2024-11-18
+Diesel,1754.57,L,2024-04-24
+Business Travel,228.42,km,2024-10-23
+"Fuel, Diesel",1283.47,L,2024-12-30
+Electricity,1114.39,kWh,2024-01-11
+Natural Gas,821.21,m3,2024-02-06
+Transportation,1066.23,km,2024-05-03
+Waste,1358.72,kg,2024-04-03
+Water,1392.29,m3,2024-06-14
+Diesel,18.39,L,2024-10-06
+Business Travel,175.29,km,2024-06-02
+"Fuel, Diesel",531.76,L,2024-01-17
+Electricity,872.02,kWh,2024-08-15
+Natural Gas,1469.12,m3,2024-12-24
+Transportation,993.19,km,2024-10-10
+Waste,2.32,kg,2024-09-16
+Water,1894.54,m3,2024-09-02
+Diesel,1482.05,L,2024-09-23
+Business Travel,1210.57,km,2024-08-07
+"Fuel, Diesel",1610.83,L,2024-05-10
+Electricity,1962.08,kWh,2024-08-17
+Natural Gas,492.91,m3,2024-11-27
+Transportation,868.79,km,2024-03-24
+Waste,342.42,kg,2024-02-16
+Water,898.29,m3,2024-12-12
+Diesel,1130.92,L,2024-10-05
+Business Travel,1582.57,km,2024-01-19
+"Fuel, Diesel",955.75,L,2024-04-13
+Electricity,1133.38,kWh,2024-05-16
+Natural Gas,410.19,m3,2024-02-20
+Transportation,887.66,km,2024-10-19
+Waste,736.96,kg,2024-02-09
+Water,1114.29,m3,2024-02-08
+Diesel,46.10,L,2024-07-15
+Business Travel,1713.46,km,2024-02-07
+"Fuel, Diesel",378.57,L,2024-08-15
+Electricity,1839.82,kWh,2024-04-09
+Natural Gas,896.77,m3,2024-12-21
+Transportation,980.72,km,2024-05-17
+Waste,983.34,kg,2024-02-09
+Water,520.82,m3,2024-09-20
+Diesel,1529.38,L,2024-08-31
+Business Travel,1324.19,km,2024-01-10
+"Fuel, Diesel",1193.27,L,2024-06-10
+Electricity,1365.34,kWh,2024-02-16
+Natural Gas,911.65,m3,2024-07-15
+Transportation,1940.26,km,2024-12-11
+Waste,443.41,kg,2024-04-02
+Water,1488.78,m3,2024-05-30
+Diesel,1228.23,L,2024-07-03
+Business Travel,559.59,km,2024-05-07
+"Fuel, Diesel",340.82,L,2024-11-17
+Electricity,1949.01,kWh,2024-06-16
+Natural Gas,822.07,m3,2024-08-13
+Transportation,544.85,km,2024-11-25
+Waste,168.46,kg,2024-02-24
+Water,1906.61,m3,2024-02-29
+Diesel,1260.87,L,2024-12-21
+Business Travel,1113.29,km,2024-03-01
+"Fuel, Diesel",514.11,L,2024-12-18
+Electricity,1909.95,kWh,2024-10-17
+Natural Gas,528.45,m3,2024-06-19
+Transportation,684.43,km,2024-05-12
+Waste,1024.25,kg,2024-09-12
+Water,305.36,m3,2024-08-22
+Diesel,341.18,L,2024-05-09
+Business Travel,1352.74,km,2024-06-13
+"Fuel, Diesel",283.00,L,2024-06-03
+Electricity,772.34,kWh,2024-01-03
+Natural Gas,1589.40,m3,2024-08-11
+Transportation,485.25,km,2024-06-28
+Waste,1815.99,kg,2024-11-28
+Water,983.64,m3,2024-06-30
+Diesel,1903.77,L,2024-02-15
+Business Travel,1444.24,km,2024-05-15
+"Fuel, Diesel",219.29,L,2024-06-29
+Electricity,390.48,kWh,2024-08-11
+Natural Gas,1346.75,m3,2024-09-03
+Transportation,1434.88,km,2024-10-15
+Waste,1413.32,kg,2024-09-15
+Water,1132.65,m3,2024-09-06
+Diesel,228.94,L,2024-10-03
+Business Travel,477.90,km,2024-08-06
+"Fuel, Diesel",1021.75,L,2024-09-29
+Electricity,73.71,kWh,2024-01-29
+Natural Gas,1050.54,m3,2024-03-06
+Transportation,1507.24,km,2024-06-03
+Waste,875.38,kg,2024-09-30
+Water,1961.15,m3,2024-10-06
+Diesel,567.70,L,2024-07-10
+Business Travel,1592.68,km,2024-08-15
+"Fuel, Diesel",1641.09,L,2024-11-17
+Electricity,1711.48,kWh,2024-02-24
+Natural Gas,1983.99,m3,2024-05-13
+Transportation,287.55,km,2024-07-14
+Waste,1575.71,kg,2024-03-26
+Water,1820.48,m3,2024-03-29
+Diesel,1266.76,L,2024-05-02
+Business Travel,1101.34,km,2024-01-22
+"Fuel, Diesel",1404.97,L,2024-07-19
+Electricity,898.30,kWh,2024-02-24
+Natural Gas,1588.55,m3,2024-12-31
+Transportation,97.39,km,2024-07-18
+Waste,1327.35,kg,2024-09-21
+Water,1329.59,m3,2024-11-05
+Diesel,1893.53,L,2024-07-11
+Business Travel,1615.50,km,2024-12-22
+"Fuel, Diesel",143.02,L,2024-03-02
+Electricity,58.75,kWh,2024-04-18
+Natural Gas,1588.86,m3,2024-03-10
+Transportation,1119.64,km,2024-06-26
+Waste,507.76,kg,2024-12-11
+Water,499.98,m3,2024-11-11
+Diesel,1361.13,L,2024-09-04
+Business Travel,1170.57,km,2024-03-08
+"Fuel, Diesel",311.81,L,2024-09-24
+Electricity,1572.51,kWh,2024-01-10
+Natural Gas,117.75,m3,2024-03-14
+Transportation,523.52,km,2024-04-15
+Waste,183.86,kg,2024-08-09
+Water,1860.72,m3,2024-06-11
+Diesel,53.37,L,2024-06-07
+Business Travel,350.83,km,2024-07-26
+"Fuel, Diesel",1119.87,L,2024-08-13
+Electricity,899.32,kWh,2024-04-14
+Natural Gas,1841.28,m3,2024-04-03
+Transportation,1589.59,km,2024-02-10
+Waste,237.04,kg,2024-03-16
+Water,1583.48,m3,2024-11-29
+Diesel,1949.79,L,2024-04-23
+Business Travel,1414.35,km,2024-05-23
+"Fuel, Diesel",652.68,L,2024-05-27
+Electricity,1704.01,kWh,2024-11-08
+Natural Gas,83.69,m3,2024-05-13
+Transportation,834.71,km,2024-08-27
+Waste,1488.13,kg,2024-11-09
+Water,607.50,m3,2024-02-01
+Diesel,750.61,L,2024-07-04
+Business Travel,1418.05,km,2024-08-11
+"Fuel, Diesel",1997.67,L,2024-09-06
+Electricity,981.48,kWh,2024-08-29
+Natural Gas,952.44,m3,2024-02-15
+Transportation,1137.10,km,2024-06-16
+Waste,1822.41,kg,2024-02-02
+Water,1764.59,m3,2024-08-02
+Diesel,1.74,L,2024-09-21
+Business Travel,1342.68,km,2024-03-09
+"Fuel, Diesel",1369.22,L,2024-11-13
+Electricity,181.72,kWh,2024-02-03
+Natural Gas,1463.17,m3,2024-07-14
+Transportation,861.29,km,2024-03-25
+Waste,314.62,kg,2024-08-28
+Water,904.16,m3,2024-02-21
+Diesel,1219.84,L,2024-12-17
+Business Travel,1217.80,km,2024-05-26
+"Fuel, Diesel",233.68,L,2024-01-08
+Electricity,334.78,kWh,2024-04-20
+Natural Gas,1664.76,m3,2024-10-23
+Transportation,983.13,km,2024-02-24
+Waste,1353.95,kg,2024-05-13
+Water,18.17,m3,2024-11-28
+Diesel,17.23,L,2024-05-08
+Business Travel,1246.83,km,2024-02-26
+"Fuel, Diesel",1434.33,L,2024-08-22
+Electricity,1175.80,kWh,2024-07-14
+Natural Gas,764.26,m3,2024-03-12
+Transportation,214.81,km,2024-03-07
+Waste,769.04,kg,2024-11-15
+Water,366.18,m3,2024-10-15
+Diesel,226.95,L,2024-12-16
+Business Travel,931.98,km,2024-04-19
+"Fuel, Diesel",1316.43,L,2024-06-30
+Electricity,270.00,kWh,2024-06-02
+Natural Gas,1251.93,m3,2024-10-10
+Transportation,129.86,km,2024-05-21
+Waste,1952.99,kg,2024-07-05
+Water,1600.32,m3,2024-09-24
+Diesel,27.74,L,2024-08-04
+Business Travel,199.30,km,2024-12-12
+"Fuel, Diesel",1852.17,L,2024-06-07
+Electricity,137.68,kWh,2024-04-21
+Natural Gas,1026.25,m3,2024-04-15
+Transportation,288.11,km,2024-03-30
+Waste,1988.35,kg,2024-02-01
+Water,890.29,m3,2024-01-18
+Diesel,69.05,L,2024-08-14
+Business Travel,523.70,km,2024-10-05
+"Fuel, Diesel",765.70,L,2024-03-06
+Electricity,1379.20,kWh,2024-07-19
+Natural Gas,1518.89,m3,2024-12-10
+Transportation,1360.74,km,2024-12-13
+Waste,1772.13,kg,2024-09-15
+Water,48.39,m3,2024-09-25
+Diesel,1596.03,L,2024-10-14
+Business Travel,53.87,km,2024-04-20
+"Fuel, Diesel",1658.13,L,2024-03-01
+Electricity,1800.01,kWh,2024-11-07
+Natural Gas,1819.71,m3,2024-03-19
+Transportation,255.26,km,2024-09-27
+Waste,140.77,kg,2024-07-30
+Water,654.47,m3,2024-10-07
+Diesel,574.52,L,2024-01-06
+Business Travel,737.35,km,2024-04-23
+"Fuel, Diesel",132.52,L,2024-05-02
+Electricity,1535.65,kWh,2024-07-21
+Natural Gas,801.80,m3,2024-09-07
+Transportation,1240.48,km,2024-03-12
+Waste,1995.20,kg,2024-10-31
+Water,1180.99,m3,2024-06-04
+Diesel,1816.08,L,2024-03-26
+Business Travel,1445.52,km,2024-01-14
+"Fuel, Diesel",1918.87,L,2024-12-15
+Electricity,176.71,kWh,2024-12-15
+Natural Gas,1246.44,m3,2024-10-27
+Transportation,1071.57,km,2024-07-25
+Waste,425.76,kg,2024-05-01
+Water,117.95,m3,2024-08-11
+Diesel,1102.97,L,2024-03-04
+Business Travel,1098.58,km,2024-07-20
+"Fuel, Diesel",999.15,L,2024-06-07
+Electricity,1893.90,kWh,2024-08-16
+Natural Gas,1968.12,m3,2024-10-28
+Transportation,115.02,km,2024-01-24
+Waste,837.29,kg,2024-06-23
+Water,1097.96,m3,2024-02-22
+Diesel,1313.14,L,2024-03-09
+Business Travel,1790.54,km,2024-01-17
+"Fuel, Diesel",1732.28,L,2024-02-16
+Electricity,562.96,kWh,2024-09-19
+Natural Gas,1939.51,m3,2024-05-30
+Transportation,1473.63,km,2024-03-12
+Waste,1074.04,kg,2024-01-12
+Water,21.20,m3,2024-02-01
+Diesel,545.27,L,2024-01-25
+Business Travel,1914.26,km,2024-02-29
+"Fuel, Diesel",979.13,L,2024-02-26
+Electricity,889.74,kWh,2024-04-13
+Natural Gas,416.50,m3,2024-08-23
+Transportation,111.55,km,2024-01-24
+Waste,1544.74,kg,2024-12-05
+Water,180.43,m3,2024-01-20
+Diesel,243.71,L,2024-11-06
+Business Travel,1286.42,km,2024-04-19
+"Fuel, Diesel",227.52,L,2024-03-18
+Electricity,1535.15,kWh,2024-07-30
+Natural Gas,1063.20,m3,2024-09-26
+Transportation,1979.25,km,2024-09-07
+Waste,1347.56,kg,2024-01-27
+Water,1385.96,m3,2024-07-09
+Diesel,1323.54,L,2024-08-19
+Business Travel,272.53,km,2024-11-29
+"Fuel, Diesel",1717.23,L,2024-05-17
+Electricity,240.21,kWh,2024-05-17
+Natural Gas,76.90,m3,2024-11-15
+Transportation,1138.52,km,2024-04-16
+Waste,395.13,kg,2024-03-05
+Water,1090.72,m3,2024-02-22
+Diesel,295.52,L,2024-05-19
+Business Travel,911.92,km,2024-11-04
+"Fuel, Diesel",564.99,L,2024-12-07
+Electricity,950.97,kWh,2024-04-17
+Natural Gas,313.09,m3,2024-01-05
+Transportation,887.50,km,2024-08-30
+Waste,1539.54,kg,2024-07-19
+Water,1515.20,m3,2024-01-26
+Diesel,1391.14,L,2024-10-01
+Business Travel,42.77,km,2024-08-18
+"Fuel, Diesel",889.47,L,2024-03-06
+Electricity,943.60,kWh,2024-01-31
+Natural Gas,1410.48,m3,2024-09-13
+Transportation,885.64,km,2024-06-01
+Waste,697.31,kg,2024-12-01
+Water,772.46,m3,2024-03-28
+Diesel,687.58,L,2024-11-21
+Business Travel,427.06,km,2024-10-23
+"Fuel, Diesel",1936.33,L,2024-03-25
+Electricity,1949.33,kWh,2024-12-16
+Natural Gas,1915.98,m3,2024-11-22
+Transportation,278.71,km,2024-05-04
+Waste,974.44,kg,2024-03-31
+Water,1993.15,m3,2024-09-19
+Diesel,232.71,L,2024-04-05
+Business Travel,1875.62,km,2024-03-28
+"Fuel, Diesel",203.14,L,2024-11-05
+Electricity,1279.46,kWh,2024-11-27
+Natural Gas,1409.69,m3,2024-10-05
+Transportation,823.84,km,2024-09-08
+Waste,791.36,kg,2024-07-19
+Water,450.50,m3,2024-12-27
+Diesel,170.12,L,2024-06-10
+Business Travel,373.10,km,2024-05-27
+"Fuel, Diesel",1564.44,L,2024-03-27
+Electricity,950.39,kWh,2024-12-28
+Natural Gas,629.92,m3,2024-07-01
+Transportation,14.45,km,2024-07-03
+Waste,7.98,kg,2024-09-05
+Water,685.29,m3,2024-04-12
+Diesel,864.10,L,2024-12-14
+Business Travel,1202.96,km,2024-09-24
+"Fuel, Diesel",1396.75,L,2024-11-14
+Electricity,808.57,kWh,2024-09-04
+Natural Gas,1598.19,m3,2024-02-23
+Transportation,205.33,km,2024-12-06
+Waste,48.63,kg,2024-03-03
+Water,1630.93,m3,2024-11-13
+Diesel,1024.64,L,2024-01-20
+Business Travel,72.53,km,2024-11-27
+"Fuel, Diesel",703.49,L,2024-04-16
+Electricity,1655.56,kWh,2024-02-19
+Natural Gas,1744.22,m3,2024-05-24
+Transportation,1737.55,km,2024-07-10
+Waste,27.11,kg,2024-01-15
+Water,1738.35,m3,2024-05-24
+Diesel,1832.44,L,2024-07-27
+Business Travel,237.94,km,2024-03-06
+"Fuel, Diesel",240.08,L,2024-12-08
+Electricity,372.98,kWh,2024-07-22
+Natural Gas,30.93,m3,2024-05-27
+Transportation,63.55,km,2024-07-21
+Waste,871.68,kg,2024-08-04
+Water,101.11,m3,2024-03-07
+Diesel,1063.89,L,2024-09-11
+Business Travel,1629.14,km,2024-09-05
+"Fuel, Diesel",638.86,L,2024-12-09
+Electricity,1047.52,kWh,2024-06-20
+Natural Gas,1079.45,m3,2024-08-09
+Transportation,872.07,km,2024-05-03
+Waste,1450.05,kg,2024-03-28
+Water,1580.31,m3,2024-07-15
+Diesel,1216.10,L,2024-10-24
+Business Travel,1974.92,km,2024-09-25
+"Fuel, Diesel",534.15,L,2024-12-10
+Electricity,95.97,kWh,2024-01-14
+Natural Gas,1294.09,m3,2024-07-11
+Transportation,1213.19,km,2024-07-14
+Waste,694.38,kg,2024-04-25
+Water,1929.64,m3,2024-01-25
+Diesel,1631.86,L,2024-04-17
+Business Travel,1927.92,km,2024-03-02
+"Fuel, Diesel",687.21,L,2024-12-03
+Electricity,1390.19,kWh,2024-05-23
+Natural Gas,987.40,m3,2024-08-07
+Transportation,623.33,km,2024-06-20
+Waste,1726.27,kg,2024-11-19
+Water,920.39,m3,2024-12-31
+Diesel,624.69,L,2024-04-29
+Business Travel,189.56,km,2024-08-17
+"Fuel, Diesel",111.25,L,2024-12-26
+Electricity,1382.10,kWh,2024-12-07
+Natural Gas,505.10,m3,2024-12-21
+Transportation,250.22,km,2024-06-09
+Waste,1981.80,kg,2024-07-21
+Water,1466.39,m3,2024-06-24
+Diesel,1603.79,L,2024-09-20
+Business Travel,635.13,km,2024-11-20
+"Fuel, Diesel",196.44,L,2024-03-11
+Electricity,228.72,kWh,2024-08-21
+Natural Gas,351.13,m3,2024-04-23
+Transportation,1977.92,km,2024-01-08
+Waste,1336.48,kg,2024-04-15
+Water,749.07,m3,2024-11-27
+Diesel,1199.08,L,2024-09-18
+Business Travel,1438.73,km,2024-02-29
+"Fuel, Diesel",834.90,L,2024-05-13
+Electricity,917.14,kWh,2024-05-22
+Natural Gas,1312.63,m3,2024-08-20
+Transportation,1551.82,km,2024-05-27
+Waste,230.28,kg,2024-03-21
+Water,1342.44,m3,2024-03-19
+Diesel,1386.18,L,2024-10-21
+Business Travel,198.28,km,2024-06-06
+"Fuel, Diesel",545.70,L,2024-11-25
+Electricity,389.53,kWh,2024-04-07
+Natural Gas,584.95,m3,2024-02-11
+Transportation,1703.65,km,2024-09-02
+Waste,1792.63,kg,2024-06-19
+Water,338.09,m3,2024-03-19
+Diesel,1611.40,L,2024-07-15
+Business Travel,1060.56,km,2024-09-23
+"Fuel, Diesel",599.87,L,2024-08-01
+Electricity,668.14,kWh,2024-11-17
+Natural Gas,1896.62,m3,2024-11-18
+Transportation,1276.44,km,2024-02-23
+Waste,1967.41,kg,2024-12-07
+Water,470.16,m3,2024-11-21
+Diesel,916.76,L,2024-05-02
+Business Travel,1846.14,km,2024-06-23
+"Fuel, Diesel",1145.38,L,2024-05-27
+Electricity,1980.29,kWh,2024-08-30
+Natural Gas,1634.41,m3,2024-11-06
+Transportation,349.59,km,2024-09-04
+Waste,1637.94,kg,2024-02-19
+Water,1240.41,m3,2024-09-15
+Diesel,65.01,L,2024-04-20
+Business Travel,1174.45,km,2024-10-15
+"Fuel, Diesel",1332.18,L,2024-05-08
+Electricity,1883.39,kWh,2024-03-15
+Natural Gas,968.26,m3,2024-07-07
+Transportation,1363.78,km,2024-12-18
+Waste,752.02,kg,2024-01-03
+Water,43.15,m3,2024-12-11
+Diesel,1664.55,L,2024-01-16
+Business Travel,1588.71,km,2024-10-11
+"Fuel, Diesel",1437.15,L,2024-04-03
+Electricity,389.91,kWh,2024-07-18
+Natural Gas,1976.33,m3,2024-10-17
+Transportation,246.06,km,2024-11-13
+Waste,446.89,kg,2024-09-19
+Water,1290.28,m3,2024-12-28
+Diesel,294.53,L,2024-06-21
+Business Travel,681.02,km,2024-11-17
+"Fuel, Diesel",989.12,L,2024-07-29
+Electricity,1092.43,kWh,2024-06-30
+Natural Gas,1769.97,m3,2024-10-21
+Transportation,1534.79,km,2024-09-22
+Waste,1174.22,kg,2024-06-21
+Water,1536.26,m3,2024-08-29
+Diesel,629.77,L,2024-08-14
+Business Travel,217.26,km,2024-02-28
+"Fuel, Diesel",893.89,L,2024-03-22
+Electricity,288.57,kWh,2024-12-15
+Natural Gas,618.75,m3,2024-09-12
+Transportation,1504.65,km,2024-08-29
+Waste,825.16,kg,2024-05-03
+Water,603.16,m3,2024-07-04
+Diesel,1565.83,L,2024-06-17
+Business Travel,1262.16,km,2024-08-17
+"Fuel, Diesel",1559.21,L,2024-05-14
+Electricity,106.05,kWh,2024-03-17
+Natural Gas,75.43,m3,2024-06-18
+Transportation,1291.66,km,2024-11-21
+Waste,855.32,kg,2024-01-19
+Water,705.60,m3,2024-02-19
+Diesel,343.93,L,2024-09-15
+Business Travel,1304.29,km,2024-07-16
+"Fuel, Diesel",1019.77,L,2024-04-06
+Electricity,1627.67,kWh,2024-04-05
+Natural Gas,1100.99,m3,2024-09-30
+Transportation,18.16,km,2024-01-18
+Waste,409.74,kg,2024-10-28
+Water,1575.79,m3,2024-07-08
+Diesel,676.03,L,2024-08-20
+Business Travel,1381.01,km,2024-09-22
+"Fuel, Diesel",1062.22,L,2024-01-18
+Electricity,16.30,kWh,2024-02-18
+Natural Gas,189.59,m3,2024-08-29
+Transportation,1917.84,km,2024-06-26
+Waste,447.93,kg,2024-03-03
+Water,1588.52,m3,2024-04-20
+Diesel,869.77,L,2024-11-24
+Business Travel,1203.56,km,2024-11-24
+"Fuel, Diesel",1350.18,L,2024-07-21
+Electricity,1639.89,kWh,2024-03-03
+Natural Gas,1493.60,m3,2024-08-04
+Transportation,1460.68,km,2024-08-05
+Waste,1868.83,kg,2024-09-15
+Water,886.15,m3,2024-02-14
+Diesel,1953.50,L,2024-04-28
+Business Travel,281.96,km,2024-12-14
+"Fuel, Diesel",1549.19,L,2024-02-18
+Electricity,1196.46,kWh,2024-05-17
+Natural Gas,948.61,m3,2024-01-08
+Transportation,478.02,km,2024-02-11
+Waste,1635.87,kg,2024-12-20
+Water,503.62,m3,2024-11-30
+Diesel,1801.27,L,2024-09-29
+Business Travel,1050.08,km,2024-04-19
+"Fuel, Diesel",1451.77,L,2024-06-16
+Electricity,839.13,kWh,2024-09-14
+Natural Gas,398.39,m3,2024-04-30
+Transportation,1287.52,km,2024-06-13
+Waste,901.90,kg,2024-03-21
+Water,1493.45,m3,2024-03-27
+Diesel,1257.85,L,2024-10-18
+Business Travel,1990.62,km,2024-02-29
+"Fuel, Diesel",1102.38,L,2024-05-05
+Electricity,1301.08,kWh,2024-05-20
+Natural Gas,1719.93,m3,2024-08-13
+Transportation,1818.17,km,2024-12-20
+Waste,1134.24,kg,2024-04-11
+Water,50.75,m3,2024-07-25
+Diesel,263.70,L,2024-09-29
+Business Travel,760.11,km,2024-11-22
+"Fuel, Diesel",922.44,L,2024-07-20
+Electricity,1020.57,kWh,2024-03-22
+Natural Gas,948.42,m3,2024-07-05
+Transportation,735.26,km,2024-05-03
+Waste,239.66,kg,2024-04-20
+Water,638.19,m3,2024-08-14
+Diesel,1979.97,L,2024-04-14
+Business Travel,1313.90,km,2024-04-14
+"Fuel, Diesel",1835.31,L,2024-08-10
+Electricity,1265.95,kWh,2024-12-05
+Natural Gas,402.24,m3,2024-12-24
+Transportation,565.46,km,2024-10-23
+Waste,689.38,kg,2024-08-20
+Water,1111.03,m3,2024-08-31
+Diesel,913.53,L,2024-05-10
+Business Travel,1031.17,km,2024-11-23
+"Fuel, Diesel",1391.34,L,2024-08-11
+Electricity,1260.62,kWh,2024-05-29
+Natural Gas,807.98,m3,2024-02-22
+Transportation,821.72,km,2024-07-24
+Waste,1644.07,kg,2024-08-04
+Water,1842.09,m3,2024-11-04
+Diesel,1041.96,L,2024-12-19
+Business Travel,1839.93,km,2024-05-02
+"Fuel, Diesel",1892.78,L,2024-01-20
+Electricity,1308.10,kWh,2024-02-07
+Natural Gas,1425.45,m3,2024-02-03
+Transportation,1128.35,km,2024-12-25
+Waste,1078.87,kg,2024-04-14
+Water,846.80,m3,2024-06-16
+Diesel,1938.52,L,2024-12-27
+Business Travel,1342.01,km,2024-08-09
+"Fuel, Diesel",518.87,L,2024-08-14
+Electricity,1916.95,kWh,2024-04-10
+Natural Gas,172.65,m3,2024-09-08
+Transportation,345.97,km,2024-01-02
+Waste,1908.35,kg,2024-06-07
+Water,908.13,m3,2024-04-25
+Diesel,897.19,L,2024-12-23
+Business Travel,1938.08,km,2024-05-24
+"Fuel, Diesel",1450.79,L,2024-01-05
+Electricity,925.83,kWh,2024-05-03
+Natural Gas,1750.77,m3,2024-05-21
+Transportation,1696.54,km,2024-05-28
+Waste,111.55,kg,2024-03-04
+Water,701.66,m3,2024-01-06
+Diesel,1057.66,L,2024-12-30
+Business Travel,1952.64,km,2024-05-27
+"Fuel, Diesel",1996.69,L,2024-10-03
+Electricity,628.47,kWh,2024-02-29
+Natural Gas,1769.22,m3,2024-01-19
+Transportation,1888.34,km,2024-02-15
+Waste,856.95,kg,2024-11-15
+Water,1920.53,m3,2024-04-10
+Diesel,1530.29,L,2024-05-28
+Business Travel,759.00,km,2024-08-21
+"Fuel, Diesel",716.64,L,2024-01-07
+Electricity,898.68,kWh,2024-05-21
+Natural Gas,870.61,m3,2024-10-03
+Transportation,240.98,km,2024-07-30
+Waste,627.50,kg,2024-12-12
+Water,400.48,m3,2024-03-27
+Diesel,1521.19,L,2024-09-12
+Business Travel,1904.32,km,2024-09-28
+"Fuel, Diesel",1547.69,L,2024-05-29
+Electricity,315.35,kWh,2024-09-26
+Natural Gas,855.75,m3,2024-08-08
+Transportation,1810.39,km,2024-12-18
+Waste,1345.60,kg,2024-08-29
+Water,1244.79,m3,2024-10-12
+Diesel,457.13,L,2024-04-16
+Business Travel,234.57,km,2024-04-20
+"Fuel, Diesel",1928.83,L,2024-10-22
+Electricity,1287.45,kWh,2024-05-01
+Natural Gas,808.66,m3,2024-07-15
+Transportation,513.85,km,2024-07-29
+Waste,498.08,kg,2024-12-15
+Water,1949.35,m3,2024-11-05
+Diesel,110.60,L,2024-05-11
+Business Travel,1019.56,km,2024-02-28
+"Fuel, Diesel",926.02,L,2024-03-02
+Electricity,1179.01,kWh,2024-12-31
+Natural Gas,1221.55,m3,2024-02-27
+Transportation,254.95,km,2024-02-17
+Waste,1261.25,kg,2024-03-31
+Water,1527.61,m3,2024-09-22
+Diesel,724.81,L,2024-08-18
+Business Travel,1077.92,km,2024-09-19
+"Fuel, Diesel",1357.15,L,2024-04-29
+Electricity,1434.16,kWh,2024-08-01
+Natural Gas,119.85,m3,2024-07-11
+Transportation,48.62,km,2024-01-21
+Waste,625.85,kg,2024-04-03
+Water,1635.62,m3,2024-05-26
+Diesel,1138.65,L,2024-03-15
+Business Travel,1902.12,km,2024-04-06
+"Fuel, Diesel",1917.09,L,2024-10-28
+Electricity,702.10,kWh,2024-04-08
+Natural Gas,1187.17,m3,2024-12-27
+Transportation,1146.09,km,2024-10-28
+Waste,1522.11,kg,2024-10-16
+Water,1696.99,m3,2024-10-31
+Diesel,911.72,L,2024-05-13
+Business Travel,783.44,km,2024-04-12
+"Fuel, Diesel",1302.63,L,2024-09-18
+Electricity,1962.12,kWh,2024-11-18
+Natural Gas,1890.36,m3,2024-12-21
+Transportation,159.97,km,2024-04-01
+Waste,944.67,kg,2024-08-08
+Water,27.91,m3,2024-04-14
+Diesel,449.32,L,2024-05-26
+Business Travel,1937.01,km,2024-09-30
+"Fuel, Diesel",337.54,L,2024-05-17
+Electricity,1648.55,kWh,2024-03-15
+Natural Gas,1604.43,m3,2024-10-26
+Transportation,189.14,km,2024-10-24
+Waste,77.66,kg,2024-02-25
+Water,962.15,m3,2024-08-22
+Diesel,1127.47,L,2024-05-26
+Business Travel,1626.77,km,2024-06-20
+"Fuel, Diesel",97.53,L,2024-04-27
+Electricity,775.86,kWh,2024-04-16
+Natural Gas,1737.62,m3,2024-07-29
+Transportation,1943.85,km,2024-12-20
+Waste,419.62,kg,2024-06-16
+Water,1976.06,m3,2024-09-16
+Diesel,1417.87,L,2024-01-29
+Business Travel,1290.49,km,2024-05-17
+"Fuel, Diesel",35.27,L,2024-01-08
+Electricity,63.53,kWh,2024-10-13
+Natural Gas,1856.38,m3,2024-10-28
+Transportation,870.66,km,2024-06-14
+Waste,1908.59,kg,2024-11-21
+Water,813.57,m3,2024-07-14
+Diesel,1012.93,L,2024-08-02
+Business Travel,664.79,km,2024-11-04
+"Fuel, Diesel",105.39,L,2024-09-12
+Electricity,1061.17,kWh,2024-03-18
+Natural Gas,1810.32,m3,2024-06-27
+Transportation,277.46,km,2024-08-08
+Waste,1047.04,kg,2024-12-26
+Water,611.18,m3,2024-09-18
+Diesel,950.77,L,2024-04-25
+Business Travel,910.08,km,2024-12-31
+"Fuel, Diesel",889.44,L,2024-02-27
+Electricity,1273.44,kWh,2024-04-25
+Natural Gas,1857.31,m3,2024-08-21
+Transportation,458.48,km,2024-08-31
+Waste,1026.89,kg,2024-04-07
+Water,1022.98,m3,2024-09-17
+Diesel,1740.22,L,2024-09-23
+Business Travel,1735.63,km,2024-01-15
+"Fuel, Diesel",1720.97,L,2024-08-05
+Electricity,1285.10,kWh,2024-05-12
+Natural Gas,788.39,m3,2024-04-26
+Transportation,1819.25,km,2024-02-12
+Waste,1854.51,kg,2024-01-19
+Water,1345.62,m3,2024-03-01
+Diesel,1485.79,L,2024-02-24
+Business Travel,524.52,km,2024-07-16
+"Fuel, Diesel",810.45,L,2024-05-25
+Electricity,1885.96,kWh,2024-06-10
+Natural Gas,52.81,m3,2024-05-05
+Transportation,1.67,km,2024-12-18
+Waste,475.75,kg,2024-04-04
+Water,1643.35,m3,2024-03-16
+Diesel,12.71,L,2024-08-03
+Business Travel,1458.67,km,2024-10-08
+"Fuel, Diesel",1370.31,L,2024-12-21
+Electricity,1195.94,kWh,2024-10-17
+Natural Gas,1883.01,m3,2024-02-15
+Transportation,1008.92,km,2024-01-23
+Waste,900.88,kg,2024-03-24
+Water,1872.99,m3,2024-10-06
+Diesel,991.90,L,2024-07-23
+Business Travel,643.83,km,2024-12-31
+"Fuel, Diesel",1739.94,L,2024-07-18
+Electricity,1790.01,kWh,2024-02-14
+Natural Gas,1419.65,m3,2024-06-23
+Transportation,330.55,km,2024-06-05
+Waste,329.64,kg,2024-07-13
+Water,1008.92,m3,2024-11-17
+Diesel,65.01,L,2024-11-17
+Business Travel,1234.56,km,2024-10-27
+"Fuel, Diesel",1510.68,L,2024-12-26
+Electricity,1823.22,kWh,2024-11-21
+Natural Gas,836.60,m3,2024-06-04
+Transportation,67.41,km,2024-07-21
+Waste,1276.23,kg,2024-10-14
+Water,168.13,m3,2024-01-10
+Diesel,969.36,L,2024-06-27
+Business Travel,559.27,km,2024-06-16
+"Fuel, Diesel",1650.82,L,2024-08-11
+Electricity,155.73,kWh,2024-08-26
+Natural Gas,1465.92,m3,2024-01-10
+Transportation,56.69,km,2024-09-20
+Waste,1694.28,kg,2024-06-17
+Water,1735.16,m3,2024-06-01
+Diesel,1663.00,L,2024-04-06
+Business Travel,1245.18,km,2024-01-27
+"Fuel, Diesel",630.60,L,2024-01-01
+Electricity,1477.75,kWh,2024-05-10
+Natural Gas,1922.86,m3,2024-03-07
+Transportation,996.91,km,2024-04-20
+Waste,1101.89,kg,2024-09-13
+Water,487.16,m3,2024-04-23
+Diesel,449.67,L,2024-10-30
+Business Travel,343.35,km,2024-01-29
+"Fuel, Diesel",547.23,L,2024-10-23
+Electricity,1434.56,kWh,2024-08-27
+Natural Gas,230.90,m3,2024-06-09
+Transportation,1572.92,km,2024-02-01
+Waste,706.62,kg,2024-02-16
+Water,718.81,m3,2024-05-02
+Diesel,103.80,L,2024-05-12
+Business Travel,453.66,km,2024-06-18
+"Fuel, Diesel",1249.86,L,2024-08-01
+Electricity,1751.55,kWh,2024-03-23
+Natural Gas,1946.71,m3,2024-10-25
+Transportation,1580.89,km,2024-07-31
+Waste,1530.47,kg,2024-08-27
+Water,1367.42,m3,2024-10-17
+Diesel,1995.55,L,2024-06-04
+Business Travel,849.83,km,2024-02-04
+"Fuel, Diesel",464.58,L,2024-07-25
+Electricity,1359.16,kWh,2024-01-29
+Natural Gas,285.17,m3,2024-08-09
+Transportation,1053.31,km,2024-05-03
+Waste,534.88,kg,2024-04-22
+Water,1137.84,m3,2024-12-24
+Diesel,215.77,L,2024-10-01
+Business Travel,604.39,km,2024-01-10
+"Fuel, Diesel",1919.47,L,2024-07-03
+Electricity,1517.93,kWh,2024-11-13
+Natural Gas,244.34,m3,2024-03-13
+Transportation,1384.02,km,2024-04-02
+Waste,745.79,kg,2024-01-11
+Water,1627.52,m3,2024-06-27
+Diesel,1701.02,L,2024-01-28
+Business Travel,1713.72,km,2024-10-27
+"Fuel, Diesel",1469.52,L,2024-06-27
+Electricity,943.45,kWh,2024-03-15
+Natural Gas,730.51,m3,2024-11-18
+Transportation,453.18,km,2024-11-17
+Waste,1378.53,kg,2024-06-28
+Water,451.47,m3,2024-07-10
+Diesel,358.54,L,2024-12-11
+Business Travel,223.00,km,2024-11-10
+"Fuel, Diesel",1221.71,L,2024-09-25
+Electricity,931.41,kWh,2024-12-20
+Natural Gas,683.17,m3,2024-08-28
+Transportation,1752.27,km,2024-10-01
+Waste,1962.94,kg,2024-11-28
+Water,367.31,m3,2024-03-23
+Diesel,1191.30,L,2024-07-12
+Business Travel,1351.27,km,2024-08-26
+"Fuel, Diesel",1659.95,L,2024-05-29
+Electricity,482.59,kWh,2024-08-19
+Natural Gas,1200.00,m3,2024-01-24
+Transportation,1509.11,km,2024-09-06
+Waste,468.27,kg,2024-11-09
+Water,400.20,m3,2024-12-19
+Diesel,422.97,L,2024-06-06
+Business Travel,616.38,km,2024-02-25
+"Fuel, Diesel",1770.11,L,2024-06-12
+Electricity,1427.80,kWh,2024-07-21
+Natural Gas,1661.90,m3,2024-12-21
+Transportation,1812.83,km,2024-02-02
+Waste,1428.26,kg,2024-01-30
+Water,967.90,m3,2024-09-03
+Diesel,1622.90,L,2024-06-30
+Business Travel,960.00,km,2024-01-23
+"Fuel, Diesel",1165.01,L,2024-05-08
+Electricity,1552.99,kWh,2024-04-20
+Natural Gas,1857.94,m3,2024-05-29
+Transportation,1738.91,km,2024-04-19
+Waste,66.07,kg,2024-04-20
+Water,1005.74,m3,2024-02-20
+Diesel,1831.18,L,2024-08-20
+Business Travel,1872.66,km,2024-02-27
+"Fuel, Diesel",209.44,L,2024-01-08
+Electricity,1724.14,kWh,2024-12-19
+Natural Gas,110.44,m3,2024-05-15
+Transportation,474.14,km,2024-11-11
+Waste,419.34,kg,2024-01-15
+Water,1091.64,m3,2024-04-28
+Diesel,1683.57,L,2024-08-19
+Business Travel,518.68,km,2024-08-05
+"Fuel, Diesel",145.12,L,2024-07-19
+Electricity,1012.33,kWh,2024-06-22
+Natural Gas,1399.88,m3,2024-08-17
+Transportation,441.66,km,2024-11-12
+Waste,1465.15,kg,2024-06-02
+Water,571.08,m3,2024-09-10
+Diesel,1536.54,L,2024-12-12
+Business Travel,861.22,km,2024-03-20
+"Fuel, Diesel",1215.73,L,2024-01-16
+Electricity,1818.71,kWh,2024-11-20
+Natural Gas,1489.98,m3,2024-07-17
+Transportation,425.91,km,2024-03-28
+Waste,1245.02,kg,2024-12-25
+Water,682.13,m3,2024-07-01
+Diesel,1592.29,L,2024-07-18
+Business Travel,787.29,km,2024-11-17
+"Fuel, Diesel",791.91,L,2024-06-07
+Electricity,999.51,kWh,2024-09-26
+Natural Gas,1052.64,m3,2024-11-18
+Transportation,697.68,km,2024-01-31
+Waste,989.95,kg,2024-07-02
+Water,1680.44,m3,2024-02-13
+Diesel,23.68,L,2024-09-13
+Business Travel,1232.71,km,2024-09-30
+"Fuel, Diesel",1496.25,L,2024-04-16
+Electricity,991.05,kWh,2024-04-26
+Natural Gas,1792.96,m3,2024-08-16
+Transportation,139.07,km,2024-12-20
+Waste,1245.38,kg,2024-10-20
+Water,1964.23,m3,2024-05-06
+Diesel,1099.30,L,2024-10-21
+Business Travel,1307.12,km,2024-08-16
+"Fuel, Diesel",1328.29,L,2024-08-21
+Electricity,934.71,kWh,2024-01-05
+Natural Gas,574.26,m3,2024-10-13
+Transportation,1368.54,km,2024-04-01
+Waste,1996.20,kg,2024-07-21
+Water,1199.30,m3,2024-09-22
+Diesel,1308.45,L,2024-03-09
+Business Travel,1419.00,km,2024-03-30
+"Fuel, Diesel",1789.53,L,2024-10-04
+Electricity,1801.96,kWh,2024-08-05
+Natural Gas,1543.05,m3,2024-03-17
+Transportation,1865.84,km,2024-05-18
+Waste,791.77,kg,2024-02-06
+Water,1444.03,m3,2024-11-04
+Diesel,1486.12,L,2024-12-03
+Business Travel,400.66,km,2024-08-11
+"Fuel, Diesel",8.41,L,2024-01-03
+Electricity,1519.34,kWh,2024-07-18
+Natural Gas,254.05,m3,2024-05-27
+Transportation,1097.07,km,2024-03-22
+Waste,870.87,kg,2024-04-09
+Water,274.39,m3,2024-08-28
+Diesel,937.99,L,2024-08-25
+Business Travel,633.24,km,2024-04-12
+"Fuel, Diesel",865.34,L,2024-08-19
+Electricity,93.48,kWh,2024-05-16
+Natural Gas,1795.19,m3,2024-05-03
+Transportation,1639.65,km,2024-05-16
+Waste,1286.76,kg,2024-03-08
+Water,1908.90,m3,2024-10-18
+Diesel,1565.46,L,2024-05-16
+Business Travel,1171.68,km,2024-09-13
+"Fuel, Diesel",1117.67,L,2024-07-31
+Electricity,736.07,kWh,2024-11-29
+Natural Gas,912.58,m3,2024-04-05
+Transportation,307.33,km,2024-06-14
+Waste,1032.16,kg,2024-01-25
+Water,333.69,m3,2024-11-18
+Diesel,1990.65,L,2024-04-14
+Business Travel,869.80,km,2024-07-03
+"Fuel, Diesel",1524.72,L,2024-04-23
+Electricity,988.90,kWh,2024-08-24
+Natural Gas,135.55,m3,2024-07-05
+Transportation,1275.20,km,2024-06-08
+Waste,1164.21,kg,2024-01-23
+Water,427.44,m3,2024-11-02
+Diesel,1681.34,L,2024-07-30
+Business Travel,1505.19,km,2024-11-01
+"Fuel, Diesel",972.73,L,2024-08-09

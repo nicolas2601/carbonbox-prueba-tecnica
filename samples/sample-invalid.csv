@@ -1,0 +1,26 @@
+category,amount,unit,date
+Electricity,1379.57,kWh,2024-05-14
+Electricity,-10.50,kWh,2024-01-15
+Natural Gas,1722.35,m3,2024-05-30
+Natural Gas,0,m3,2024-01-16
+Transportation,1143.24,km,2024-01-02
+Transportation,abc,km,2024-01-17
+Waste,1035.11,kg,2024-08-25
+Waste,,kg,2024-01-18
+Water,273.08,m3,2024-04-14
+   ,120.25,m3,2024-01-19
+Diesel,1086.64,L,2024-10-08
+Diesel,25.75,   ,2024-01-20
+Business Travel,1253.91,km,2024-10-04
+Business Travel,250.50,km,2024-02-30
+"Fuel, Diesel",587.10,L,2024-01-03
+Electricity,150.50,kWh,15/01/2024
+Electricity,219.12,kWh,2024-01-06
+Water,85.25,m3,
+Natural Gas,633.07,m3,2024-11-20
+Waste,45.80,kg
+Transportation,323.39,km,2024-05-08
+Waste,65.64,kg,2024-06-28
+Water,1625.11,m3,2024-03-20
+Diesel,978.80,L,2024-04-02
+Business Travel,384.89,km,2024-05-16
