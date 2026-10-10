@@ -29,6 +29,28 @@ function narrow(result: Either<string, number>): number {
 }
 void narrow;
 
+describe("transformations", () => {
+  it.each([2, 5])("Map on a right: %s", value => {
+    expect(Either.right<string, number>(value).map(n => n * 2).value).toBe(value * 2);
+  });
+  it("Map on a left", () => {
+    const left = Either.left<string, number>("boom");
+    const transform = vi.fn();
+    expect(left.map(transform)).toBe(left);
+    expect(left.flatMap(transform)).toBe(left);
+    expect(transform).not.toHaveBeenCalled();
+  });
+  it("FlatMap stops at the first failure", () => {
+    const failure = Either.left<string, number>("boom");
+    const third = vi.fn();
+    const result = Either.right<string, number>(2)
+      .flatMap(n => Either.right<string, number>(n + 1))
+      .flatMap(() => failure).flatMap(third);
+    expect(result).toBe(failure);
+    expect(third).not.toHaveBeenCalled();
+  });
+});
+
 describe("fold", () => {
   it("Fold on a right", () => {
     const onLeft = vi.fn();
