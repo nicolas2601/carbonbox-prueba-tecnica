@@ -62,6 +62,28 @@ it("Progress outside processing is rejected", () => {
   expect(upload.recordProgress({ processedRows: 1, failedRows: 0 }, now).value).toBeInstanceOf(InvalidStatusTransitionError);
   expect(snapshot(upload)).toEqual(before);
 });
+
+it.each([{ totalRows: 10, processedRows: 8, failedRows: 2 }, { totalRows: 3, processedRows: 3, failedRows: 0 }])("Completing with consistent numbers: %j", counters => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  expect(upload.complete(counters, now).isRight()).toBe(true);
+  expect(upload.status).toBe("COMPLETED");
+  expect(snapshot(upload)).toMatchObject({ ...counters, updatedAt: now });
+});
+it("A pending upload cannot complete", () => {
+  const upload = pending();
+  const before = snapshot(upload);
+  expect(upload.complete({ totalRows: 1, processedRows: 1, failedRows: 0 }, now).value).toBeInstanceOf(InvalidStatusTransitionError);
+  expect(snapshot(upload)).toEqual(before);
+});
+it.each([{ totalRows: 10, processedRows: 8, failedRows: 3 }, { totalRows: -1, processedRows: -1, failedRows: 0 },
+  { totalRows: 1.5, processedRows: 1.5, failedRows: 0 }, { totalRows: Infinity, processedRows: Infinity, failedRows: 0 }])("Completing with invalid numbers: %j", counters => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  const before = snapshot(upload);
+  expect(upload.complete(counters, now).value).toBeInstanceOf(InvalidProgressError);
+  expect(snapshot(upload)).toEqual(before);
+});
 it.each([{ processedRows: -1, failedRows: 0 }, { processedRows: 0, failedRows: 1.5 },
   { processedRows: NaN, failedRows: 0 }, { processedRows: 0, failedRows: Infinity }])("Invalid counters rejected: %j", progress => {
   const upload = pending();
