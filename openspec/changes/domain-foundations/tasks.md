@@ -14,7 +14,7 @@
 ## 3. Activity data
 
 - [x] 3.1 `ActivityData`: valid row and trimming
-- [ ] 3.2 `ActivityData`: rejected fields (category, unit, amount, date)
+- [x] 3.2 `ActivityData`: rejected fields (category, unit, amount, date)
 
 ## 4. Upload status and aggregate
 
