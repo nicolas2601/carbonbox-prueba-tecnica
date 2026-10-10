@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Either, type Left, type Right } from "./Either";
 
 describe("Either", () => {
@@ -28,3 +28,16 @@ function narrow(result: Either<string, number>): number {
   return value;
 }
 void narrow;
+
+describe("fold", () => {
+  it("Fold on a right", () => {
+    const onLeft = vi.fn();
+    expect(Either.right<string, number>(2).fold(onLeft, value => value * 2)).toBe(4);
+    expect(onLeft).not.toHaveBeenCalled();
+  });
+  it("Fold on a left", () => {
+    const onRight = vi.fn();
+    expect(Either.left<string, number>("boom").fold(value => `[${value}]`, onRight)).toBe("[boom]");
+    expect(onRight).not.toHaveBeenCalled();
+  });
+});
