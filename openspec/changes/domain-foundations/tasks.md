@@ -7,7 +7,7 @@
 
 ## 2. File name
 
-- [ ] 2.1 `FileName`: accepted names, trimming and case insensitive extension
+- [x] 2.1 `FileName`: accepted names, trimming and case insensitive extension
 - [ ] 2.2 `FileName`: rejected names (empty, extension, path, length)
 - [ ] 2.3 `FileName`: equality by value
 
