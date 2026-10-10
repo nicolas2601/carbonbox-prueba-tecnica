@@ -26,6 +26,6 @@
 
 ## 6. Verification
 
-- [ ] 6.1 Fixture test: `samples/sample-invalid.csv` gives 15 valid and 10 rejected at the lines in `EXPECTED.md`
+- [x] 6.1 Fixture test: `samples/sample-invalid.csv` gives 15 valid and 10 rejected at the lines in `EXPECTED.md`
 - [ ] 6.2 `bun run typecheck` and `bun run test` pass, coverage not below the baseline
 - [ ] 6.3 No `any`, files under 300 lines, functions under 40 lines
