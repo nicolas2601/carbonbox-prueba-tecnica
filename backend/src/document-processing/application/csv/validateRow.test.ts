@@ -29,3 +29,28 @@ it.each([
   expect(result.isLeft()).toBe(true);
   expect(result.value).toMatchObject({ line: 7, field });
 });
+
+it.each(["-10.50", "0", "abc", "", "0x10", "1e3", "1,5"])("Rejected amounts: %s", amount => {
+  const result = validateRow(["Electricity", amount, "kWh", "2024-01-15"], columns, 3);
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toMatchObject({ line: 3, field: "amount" });
+});
+it.each(["2024-02-30", "2023-02-29", "15/01/2024", "2024-13-01", ""])("Rejected dates: %s", date => {
+  expect(validateRow(["Water", "10", "m3", date], columns, 15).value).toMatchObject({ line: 15, field: "date" });
+});
+it("Accepted leap day", () => {
+  expect(validateRow(["Water", "10", "m3", "2024-02-29"], columns, 2).isRight()).toBe(true);
+});
+it("Error content", () => {
+  const result = validateRow(["Electricity", "-10.50", "kWh", "2024-04-11"], columns, 3);
+  if (result.isRight()) throw new Error("Expected amount rejection");
+  expect(result.value).toMatchObject({ line: 3, field: "amount" });
+  expect(result.value.reason).toContain("greater than zero");
+});
+it.each([
+  { fields: [" ", "-1", " ", "bad"], field: "category" },
+  { fields: ["Water", "-1", " ", "bad"], field: "amount" },
+  { fields: ["Water", "1", " ", "bad"], field: "unit" },
+])("Only the first failing field is reported: $field", ({ fields, field }) => {
+  expect(validateRow(fields, columns, 99).value).toMatchObject({ line: 99, field });
+});
