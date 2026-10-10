@@ -18,7 +18,7 @@
 
 ## 4. Upload status and aggregate
 
-- [ ] 4.1 `UploadStatus`: closed set
+- [x] 4.1 `UploadStatus`: closed set
 - [ ] 4.2 `Upload.create` and `Upload.reconstitute`
 - [ ] 4.3 `Upload`: `startProcessing`, including the retry case
 - [ ] 4.4 `Upload`: `recordProgress` with its guards
