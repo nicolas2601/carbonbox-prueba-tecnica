@@ -17,3 +17,6 @@ backend/src/generated/
 
 # Tooling output
 .playwright-mcp/
+
+# OpenSpec tooling for Claude Code, not a deliverable
+.claude/
