@@ -4,6 +4,7 @@ import { InvalidFileNameError } from "../errors/InvalidFileNameError";
 export class FileName {
   private static readonly MAX_LENGTH = 255;
   private constructor(readonly value: string) {}
+  equals(other: FileName): boolean { return this.value === other.value; }
   static create(raw: string): Either<InvalidFileNameError, FileName> {
     const value = raw.trim();
     if (!value || value.length > FileName.MAX_LENGTH || !/\.csv$/i.test(value) || /[/\\\0]/.test(raw)) {

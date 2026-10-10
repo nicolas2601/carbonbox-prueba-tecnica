@@ -17,3 +17,12 @@ it.each(["   ", "report.xlsx", "../secrets.csv", "a\\b.csv", "bad\0.csv", "x".re
 it("Accepts the 255-character boundary", () => {
   expect(FileName.create("x".repeat(251) + ".csv").isRight()).toBe(true);
 });
+
+it("Equal values are equal", () => {
+  const a = FileName.create("a.csv");
+  const same = FileName.create("a.csv");
+  const other = FileName.create("b.csv");
+  if (a.isLeft() || same.isLeft() || other.isLeft()) throw new Error("Invalid fixture");
+  expect(a.value.equals(same.value)).toBe(true);
+  expect(a.value.equals(other.value)).toBe(false);
+});
