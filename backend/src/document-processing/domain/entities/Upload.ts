@@ -2,6 +2,7 @@ import type { FileName } from "../value-objects/FileName";
 import type { UploadStatusValue } from "../value-objects/UploadStatus";
 import { Either } from "../../../shared/domain/Either";
 import { InvalidStatusTransitionError } from "../errors/InvalidStatusTransitionError";
+import { InvalidProgressError } from "../errors/InvalidProgressError";
 
 export interface UploadProps {
   id: string;
@@ -30,6 +31,15 @@ export class Upload {
     Object.assign(this.props, { status: "PROCESSING", totalRows: 0, processedRows: 0,
       failedRows: 0, errorMessage: null, updatedAt: now });
     return Either.right(undefined);
+  }
+  recordProgress(progress: { processedRows: number; failedRows: number }, now: Date): Either<InvalidStatusTransitionError | InvalidProgressError, void> {
+    if (this.status !== "PROCESSING") return Either.left(new InvalidStatusTransitionError(this.status, "PROCESSING"));
+    if (!this.validCounters(Object.values(progress))) return Either.left(new InvalidProgressError("Counters must be non-negative integers"));
+    Object.assign(this.props, progress, { updatedAt: now });
+    return Either.right(undefined);
+  }
+  private validCounters(values: number[]): boolean {
+    return values.every(value => Number.isSafeInteger(value) && value >= 0);
   }
   get id(): string { return this.props.id; }
   get fileName(): FileName { return this.props.fileName; }

@@ -1,6 +1,8 @@
 import { expect, it } from "vitest";
 import { Upload, type UploadProps } from "./Upload";
 import { FileName } from "../value-objects/FileName";
+import { InvalidStatusTransitionError } from "../errors/InvalidStatusTransitionError";
+import { InvalidProgressError } from "../errors/InvalidProgressError";
 
 const createdAt = new Date("2024-01-15T00:00:00Z");
 const now = new Date("2024-01-16T00:00:00Z");
@@ -44,4 +46,27 @@ it("Starting again after a retry", () => {
   expect(upload.failedRows).toBe(0);
   expect(upload.totalRows).toBe(0);
   expect(upload.errorMessage).toBeNull();
+});
+
+it.each([{ processedRows: 500, failedRows: 3 }, { processedRows: 12, failedRows: 0 }])("Recording progress: %j", progress => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  expect(upload.recordProgress(progress, now).isRight()).toBe(true);
+  expect(upload.processedRows).toBe(progress.processedRows);
+  expect(upload.failedRows).toBe(progress.failedRows);
+  expect(upload.updatedAt).toEqual(now);
+});
+it("Progress outside processing is rejected", () => {
+  const upload = pending();
+  const before = snapshot(upload);
+  expect(upload.recordProgress({ processedRows: 1, failedRows: 0 }, now).value).toBeInstanceOf(InvalidStatusTransitionError);
+  expect(snapshot(upload)).toEqual(before);
+});
+it.each([{ processedRows: -1, failedRows: 0 }, { processedRows: 0, failedRows: 1.5 },
+  { processedRows: NaN, failedRows: 0 }, { processedRows: 0, failedRows: Infinity }])("Invalid counters rejected: %j", progress => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  const before = snapshot(upload);
+  expect(upload.recordProgress(progress, now).value).toBeInstanceOf(InvalidProgressError);
+  expect(snapshot(upload)).toEqual(before);
 });
