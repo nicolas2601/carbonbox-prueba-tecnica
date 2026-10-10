@@ -10,7 +10,7 @@
 
 ## 3. Strict value parsers
 
-- [ ] 3.1 `parseAmount`: accepted decimals, rejected forms
+- [x] 3.1 `parseAmount`: accepted decimals, rejected forms
 - [ ] 3.2 `parseCalendarDate`: valid dates and leap years
 - [ ] 3.3 `parseCalendarDate`: rejected forms
 
