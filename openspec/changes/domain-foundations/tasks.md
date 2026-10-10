@@ -1,6 +1,6 @@
 ## 1. Shared kernel
 
-- [ ] 1.1 Either: `left` and `right` with `isLeft`, `isRight` and `value`
+- [x] 1.1 Either: `left` and `right` with `isLeft`, `isRight` and `value`
 - [ ] 1.2 Either: `fold`
 - [ ] 1.3 Either: `map` and `flatMap`
 - [ ] 1.4 `DomainError` base and the five specific errors with unique codes
