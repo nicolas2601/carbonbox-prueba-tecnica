@@ -28,6 +28,6 @@
 
 ## 5. Verification
 
-- [ ] 5.1 `bun run typecheck` passes
-- [ ] 5.2 `bun run test` passes and coverage is not below the baseline
-- [ ] 5.3 No `any`, files under 300 lines, functions under 40 lines
+- [x] 5.1 `bun run typecheck` passes
+- [x] 5.2 `bun run test` passes and coverage is not below the baseline
+- [x] 5.3 No `any`, files under 300 lines, functions under 40 lines
