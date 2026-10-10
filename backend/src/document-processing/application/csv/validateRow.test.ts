@@ -18,3 +18,14 @@ it("Columns are read by position from the header mapping", () => {
   expect(result.isRight()).toBe(true);
   expect(result.value).toEqual({ category: "Diesel", amount: 50.5, unit: "L", date: new Date("2024-01-15T00:00:00Z") });
 });
+
+it.each([
+  { fields: ["   ", "10", "kWh", "2024-01-15"], field: "category" },
+  { fields: ["Electricity", "10", "   ", "2024-01-15"], field: "unit" },
+  { fields: ["Electricity", "10", "kWh"], field: "date" },
+  { fields: [], field: "category" },
+])("Blank or missing field is rejected: $field", ({ fields, field }) => {
+  const result = validateRow(fields, columns, 7);
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toMatchObject({ line: 7, field });
+});
