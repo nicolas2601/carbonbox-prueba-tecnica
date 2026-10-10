@@ -3,7 +3,7 @@
 - [x] 1.1 Either: `left` and `right` with `isLeft`, `isRight` and `value`
 - [x] 1.2 Either: `fold`
 - [x] 1.3 Either: `map` and `flatMap`
-- [ ] 1.4 `DomainError` base and the five specific errors with unique codes
+- [x] 1.4 `DomainError` base and the five specific errors with unique codes
 
 ## 2. File name
 
