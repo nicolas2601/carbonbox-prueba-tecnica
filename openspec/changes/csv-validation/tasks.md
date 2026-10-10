@@ -1,6 +1,6 @@
 ## 1. Errors and types
 
-- [ ] 1.1 `InvalidCsvHeaderError` with a unique code; `RowError`, `ActivityRow`, `CsvColumns` types
+- [x] 1.1 `InvalidCsvHeaderError` with a unique code; `RowError`, `ActivityRow`, `CsvColumns` types
 
 ## 2. Header
 
