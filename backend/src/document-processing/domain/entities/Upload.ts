@@ -1,5 +1,7 @@
 import type { FileName } from "../value-objects/FileName";
 import type { UploadStatusValue } from "../value-objects/UploadStatus";
+import { Either } from "../../../shared/domain/Either";
+import { InvalidStatusTransitionError } from "../errors/InvalidStatusTransitionError";
 
 export interface UploadProps {
   id: string;
@@ -24,6 +26,11 @@ export class Upload {
       failedRows: null, errorMessage: null, createdAt: now, updatedAt: now });
   }
   static reconstitute(props: UploadProps): Upload { return new Upload({ ...props }); }
+  startProcessing(now: Date): Either<InvalidStatusTransitionError, void> {
+    Object.assign(this.props, { status: "PROCESSING", totalRows: 0, processedRows: 0,
+      failedRows: 0, errorMessage: null, updatedAt: now });
+    return Either.right(undefined);
+  }
   get id(): string { return this.props.id; }
   get fileName(): FileName { return this.props.fileName; }
   get fileUrl(): string { return this.props.fileUrl; }

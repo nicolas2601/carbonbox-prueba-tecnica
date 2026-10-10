@@ -28,3 +28,20 @@ it.each(["COMPLETED", "FAILED"] as const)("Rebuilding a stored upload: %s", stat
     errorMessage: "2 rejected", updatedAt: now };
   expect(snapshot(Upload.reconstitute(props))).toEqual(props);
 });
+
+it("Starting a pending upload", () => {
+  const upload = pending();
+  expect(upload.startProcessing(now).isRight()).toBe(true);
+  expect(upload.status).toBe("PROCESSING");
+  expect(upload.updatedAt).toEqual(now);
+});
+it("Starting again after a retry", () => {
+  const upload = Upload.reconstitute({ ...snapshot(pending()), status: "PROCESSING",
+    processedRows: 8, failedRows: 2, totalRows: 10, errorMessage: "old attempt" });
+  expect(upload.startProcessing(now).isRight()).toBe(true);
+  expect(upload.status).toBe("PROCESSING");
+  expect(upload.processedRows).toBe(0);
+  expect(upload.failedRows).toBe(0);
+  expect(upload.totalRows).toBe(0);
+  expect(upload.errorMessage).toBeNull();
+});

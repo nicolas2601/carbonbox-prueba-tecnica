@@ -20,7 +20,7 @@
 
 - [x] 4.1 `UploadStatus`: closed set
 - [x] 4.2 `Upload.create` and `Upload.reconstitute`
-- [ ] 4.3 `Upload`: `startProcessing`, including the retry case
+- [x] 4.3 `Upload`: `startProcessing`, including the retry case
 - [ ] 4.4 `Upload`: `recordProgress` with its guards
 - [ ] 4.5 `Upload`: `complete` with the counter invariant
 - [ ] 4.6 `Upload`: `fail`
