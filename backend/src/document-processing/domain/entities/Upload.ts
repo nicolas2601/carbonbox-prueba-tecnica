@@ -50,6 +50,10 @@ export class Upload {
     return Either.right(undefined);
   }
   get id(): string { return this.props.id; }
+  fail(reason: string, now: Date): Either<InvalidStatusTransitionError, void> {
+    Object.assign(this.props, { status: "FAILED", errorMessage: reason, updatedAt: now });
+    return Either.right(undefined);
+  }
   get fileName(): FileName { return this.props.fileName; }
   get fileUrl(): string { return this.props.fileUrl; }
   get userId(): string { return this.props.userId; }

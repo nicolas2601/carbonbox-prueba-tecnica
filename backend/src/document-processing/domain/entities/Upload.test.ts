@@ -48,6 +48,14 @@ it("Starting again after a retry", () => {
   expect(upload.errorMessage).toBeNull();
 });
 
+it.each(["PENDING", "PROCESSING"] as const)("Failing an upload from %s", status => {
+  const upload = Upload.reconstitute({ ...snapshot(pending()), status });
+  expect(upload.fail("The header is missing", now).isRight()).toBe(true);
+  expect(upload.status).toBe("FAILED");
+  expect(upload.errorMessage).toBe("The header is missing");
+  expect(upload.updatedAt).toEqual(now);
+});
+
 it.each([{ processedRows: 500, failedRows: 3 }, { processedRows: 12, failedRows: 0 }])("Recording progress: %j", progress => {
   const upload = pending();
   upload.startProcessing(createdAt);

@@ -23,7 +23,7 @@
 - [x] 4.3 `Upload`: `startProcessing`, including the retry case
 - [x] 4.4 `Upload`: `recordProgress` with its guards
 - [x] 4.5 `Upload`: `complete` with the counter invariant
-- [ ] 4.6 `Upload`: `fail`
+- [x] 4.6 `Upload`: `fail`
 - [ ] 4.7 `Upload`: terminal states stay unchanged
 
 ## 5. Verification
