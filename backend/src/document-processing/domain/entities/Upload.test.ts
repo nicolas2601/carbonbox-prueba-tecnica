@@ -48,6 +48,19 @@ it("Starting again after a retry", () => {
   expect(upload.errorMessage).toBeNull();
 });
 
+it.each(["COMPLETED", "FAILED"] as const)("A terminal upload cannot change: %s", status => {
+  const upload = Upload.reconstitute({ ...snapshot(pending()), status,
+    totalRows: 10, processedRows: 8, failedRows: 2, errorMessage: "original" });
+  const before = snapshot(upload);
+  for (const act of [() => upload.startProcessing(now),
+    () => upload.complete({ totalRows: 10, processedRows: 8, failedRows: 2 }, now),
+    () => upload.fail("new reason", now),
+    () => upload.recordProgress({ processedRows: 9, failedRows: 1 }, now)]) {
+    expect(act().value).toBeInstanceOf(InvalidStatusTransitionError);
+    expect(snapshot(upload)).toEqual(before);
+  }
+});
+
 it.each(["PENDING", "PROCESSING"] as const)("Failing an upload from %s", status => {
   const upload = Upload.reconstitute({ ...snapshot(pending()), status });
   expect(upload.fail("The header is missing", now).isRight()).toBe(true);

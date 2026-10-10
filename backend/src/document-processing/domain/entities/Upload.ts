@@ -28,6 +28,7 @@ export class Upload {
   }
   static reconstitute(props: UploadProps): Upload { return new Upload({ ...props }); }
   startProcessing(now: Date): Either<InvalidStatusTransitionError, void> {
+    if (this.terminal()) return Either.left(new InvalidStatusTransitionError(this.status, "PROCESSING"));
     Object.assign(this.props, { status: "PROCESSING", totalRows: 0, processedRows: 0,
       failedRows: 0, errorMessage: null, updatedAt: now });
     return Either.right(undefined);
@@ -51,6 +52,7 @@ export class Upload {
   }
   get id(): string { return this.props.id; }
   fail(reason: string, now: Date): Either<InvalidStatusTransitionError, void> {
+    if (this.terminal()) return Either.left(new InvalidStatusTransitionError(this.status, "FAILED"));
     Object.assign(this.props, { status: "FAILED", errorMessage: reason, updatedAt: now });
     return Either.right(undefined);
   }
@@ -64,4 +66,5 @@ export class Upload {
   get errorMessage(): string | null { return this.props.errorMessage; }
   get createdAt(): Date { return this.props.createdAt; }
   get updatedAt(): Date { return this.props.updatedAt; }
+  private terminal(): boolean { return this.status === "COMPLETED" || this.status === "FAILED"; }
 }
