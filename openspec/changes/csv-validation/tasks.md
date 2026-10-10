@@ -22,7 +22,7 @@
 
 ## 5. Summary
 
-- [ ] 5.1 `summarizeRowErrors`: none, few, capped
+- [x] 5.1 `summarizeRowErrors`: none, few, capped
 
 ## 6. Verification
 
