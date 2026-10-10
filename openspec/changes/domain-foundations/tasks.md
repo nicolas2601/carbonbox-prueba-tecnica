@@ -8,7 +8,7 @@
 ## 2. File name
 
 - [x] 2.1 `FileName`: accepted names, trimming and case insensitive extension
-- [ ] 2.2 `FileName`: rejected names (empty, extension, path, length)
+- [x] 2.2 `FileName`: rejected names (empty, extension, path, length)
 - [ ] 2.3 `FileName`: equality by value
 
 ## 3. Activity data
