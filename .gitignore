@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.next/
+coverage/
+*.log
+.DS_Store
+
+# Secrets stay local; only the .example files are versioned
+.env
+.env.*
+!.env.example
+
+# Uploaded files and generated Prisma client are rebuilt locally
+backend/storage/*
+!backend/storage/.gitkeep
+backend/src/generated/
+
+# Tooling output
+.playwright-mcp/

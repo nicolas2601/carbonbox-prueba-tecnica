@@ -1,0 +1,4 @@
+bun.lock linguist-generated=true
+package-lock.json linguist-generated=true
+* text=auto eol=lf
+*.csv text eol=lf
