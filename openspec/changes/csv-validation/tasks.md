@@ -16,7 +16,7 @@
 
 ## 4. Row
 
-- [ ] 4.1 `validateRow`: valid record, trimming, quoted comma, mapped positions
+- [x] 4.1 `validateRow`: valid record, trimming, quoted comma, mapped positions
 - [ ] 4.2 `validateRow`: blank category or unit, missing columns
 - [ ] 4.3 `validateRow`: amount and date errors, first failing field, line and reason
 
