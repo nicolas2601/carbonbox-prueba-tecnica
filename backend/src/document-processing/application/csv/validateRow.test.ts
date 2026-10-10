@@ -23,6 +23,8 @@ it.each([
   { fields: ["   ", "10", "kWh", "2024-01-15"], field: "category" },
   { fields: ["Electricity", "10", "   ", "2024-01-15"], field: "unit" },
   { fields: ["Electricity", "10", "kWh"], field: "date" },
+  { fields: ["Electricity"], field: "amount" },
+  { fields: ["Electricity", "10"], field: "unit" },
   { fields: [], field: "category" },
 ])("Blank or missing field is rejected: $field", ({ fields, field }) => {
   const result = validateRow(fields, columns, 7);
