@@ -14,4 +14,7 @@ export class ReadUploadController {
   async list(request: FastifyRequest<{ Querystring: PaginationRequest }>, reply: FastifyReply): Promise<FastifyReply> {
     return sendResult(await this.services.listUploads.execute(request.query), request, reply);
   }
+  async results(request: FastifyRequest<{ Params: { id: string }; Querystring: PaginationRequest }>, reply: FastifyReply): Promise<FastifyReply> {
+    return sendResult(await this.services.getUploadResults.execute({ ...request.query, uploadId: request.params.id }), request, reply);
+  }
 }

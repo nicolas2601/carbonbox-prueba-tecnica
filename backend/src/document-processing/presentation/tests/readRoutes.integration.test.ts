@@ -16,6 +16,24 @@ it("Stats is static, not an upload id", async () => {
   } finally { await api.close(); }
 });
 
+it("Results return one upload page with numeric amounts and calendar dates", async () => {
+  await seedJob(client);
+  await client.upload.update({ where: { id: "u1" }, data: { status: "COMPLETED", totalRows: 60, processedRows: 60, failedRows: 0 } });
+  await client.activityData.createMany({ data: Array.from({ length: 60 }, (_, index) => ({ id: `r${String(index).padStart(2, "0")}`,
+    uploadId: "u1", category: "Water", amount: index + 1, unit: "m3", date: new Date("2024-04-11T00:00:00Z") })) });
+  const api = await apiHarness();
+  try {
+    const response = await api.server.inject("/api/v1/uploads/u1/results?limit=25");
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toMatchObject({ total: 60, page: 1, limit: 25 });
+    expect(response.json().data).toHaveLength(25);
+    expect(response.json().data[0]).toEqual({ category: "Water", amount: 1, unit: "m3", date: "2024-04-11" });
+    const missing = await api.server.inject("/api/v1/uploads/missing/results");
+    expect(missing.json().error.code).toBe("UPLOAD_NOT_FOUND");
+    expect(missing.statusCode).toBe(404);
+  } finally { await api.close(); }
+});
+
 it("List pages return typed numeric pagination", async () => {
   for (let index = 0; index < 15; index++) await seedJob(client, `u${index}`);
   const api = await apiHarness();
