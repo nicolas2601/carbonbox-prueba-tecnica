@@ -1,11 +1,14 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw/http";
-import { expect, it } from "vitest";
+import { expect, it, vi } from "vitest";
 import { queryHarness } from "@/tests/queryHarness";
 import { API_URL, server } from "@/tests/server";
 import { page, upload } from "@/tests/fixtures";
 import { UploadsList } from "./UploadsList";
+
+const { push } = vi.hoisted(() => ({ push: vi.fn() }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 
 it("Shows five scoped headers, all statuses, grouped counters and detail actions", async () => {
   const items = [upload("pending", "PENDING"), upload("processing", "PROCESSING"), upload("completed"), upload("failed", "FAILED")];
@@ -42,4 +45,24 @@ it("Recovers a failed list request with retry", async () => {
   await userEvent.setup().click(screen.getByRole("button", { name: "Try again" }));
   await screen.findByRole("table", { name: "All uploads" });
   expect(calls).toBe(2);
+});
+it("Moves the page into the URL and retains rows during the next request", async () => {
+  let release: () => void = () => {};
+  const gate = new Promise<void>(resolve => { release = resolve; });
+  server.use(http.get(`${API_URL}/uploads`, async ({ request }) => {
+    const current = Number(new URL(request.url).searchParams.get("page"));
+    if (current === 2) await gate;
+    return HttpResponse.json(page([upload(`page-${current}`)], 11, current));
+  }));
+  const view = render(<UploadsList page={1} />, { wrapper: queryHarness().wrapper });
+  await screen.findByRole("link", { name: "page-1.csv" });
+  await userEvent.setup().click(screen.getByRole("button", { name: "Next" }));
+  expect(push).toHaveBeenLastCalledWith("/uploads?page=2", { scroll: false });
+  view.rerender(<UploadsList page={2} />);
+  expect(screen.getByRole("link", { name: "page-1.csv" })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Next" })).toBeDisabled();
+  expect(screen.queryByRole("status", { name: "Loading uploads" })).not.toBeInTheDocument();
+  release();
+  await screen.findByRole("link", { name: "page-2.csv" });
+  expect(screen.getByText("Page 2 of 2")).toBeInTheDocument();
 });
