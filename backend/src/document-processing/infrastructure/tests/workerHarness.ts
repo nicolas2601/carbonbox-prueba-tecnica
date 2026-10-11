@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { loadSettings } from "../../../config";
 import { createDocumentProcessingModule } from "../dependency-injection/DocumentProcessingModule";
-import { MemoryLogger } from "../../application/create-upload/tests/MemoryLogger";
+import { JsonConsoleLogger } from "../logging/JsonConsoleLogger";
 import { testDatabaseUrl } from "./testDatabaseUrl";
 import { NOW } from "./queueFixtures";
 
@@ -12,8 +12,10 @@ export async function workerHarness(batchSize = 500) {
   const time = { value: NOW };
   const settings = { ...loadSettings(), databaseUrl: testDatabaseUrl(process.env.DATABASE_URL), storageDir,
     workerBatchSize: batchSize, workerPollIntervalMs: 100 };
-  const logger = new MemoryLogger();
+  const logs: string[] = [];
+  const clock = { now: () => time.value };
+  const logger = new JsonConsoleLogger(clock, line => { logs.push(line); });
   const module = createDocumentProcessingModule(settings, { clock: { now: () => time.value }, logger });
-  return { ...module, time, settings, logger,
+  return { ...module, time, settings, logger, logs,
     close: async () => { await module.close(); await rm(storageDir, { recursive: true, force: true }); } };
 }
