@@ -4,7 +4,7 @@
 
 ## 2. Upload reader
 
-- [ ] 2.1 `PrismaUploadReader.findById`
+- [x] 2.1 `PrismaUploadReader.findById`
 
 ## 3. Job queue
 
