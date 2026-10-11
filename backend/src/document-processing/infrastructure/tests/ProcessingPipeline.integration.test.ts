@@ -33,6 +33,27 @@ it.each([
     }
   } finally { await harness.close(); }
 });
+
+it("Large sample stores 5000 rows with monotonic committed batch progress", async () => {
+  const progress: number[] = [];
+  const harness = await workerHarness(500, real => ({
+    begin: (claim, now) => real.begin(claim, now),
+    finish: (claim, upload) => real.finish(claim, upload),
+    saveBatch: async (claim, rows, counters, now) => {
+      const result = await real.saveBatch(claim, rows, counters, now);
+      if (result.isRight()) progress.push((await client.upload.findUniqueOrThrow({ where: { id: claim.uploadId } })).processedRows ?? 0);
+      return result;
+    },
+  }));
+  try {
+    const file = new URL("../../../../../samples/sample-large.csv", import.meta.url);
+    const id = await uploadCsv(harness, "large.csv", createReadStream(file));
+    await harness.worker.runOnce();
+    expect(await client.upload.findUnique({ where: { id } })).toMatchObject({ status: "COMPLETED", totalRows: 5000, processedRows: 5000, failedRows: 0 });
+    expect(await client.activityData.count({ where: { uploadId: id } })).toBe(5000);
+    expect(progress).toEqual(Array.from({ length: 10 }, (_, index) => (index + 1) * 500));
+  } finally { await harness.close(); }
+});
 it("Wrong header fails the upload but acknowledges the job without retry", async () => {
   const harness = await workerHarness();
   try {

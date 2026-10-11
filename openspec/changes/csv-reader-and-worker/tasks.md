@@ -27,7 +27,7 @@
 ## 5. End to end
 
 - [x] 5.1 `sample-data.csv`, `sample-invalid.csv`, wrong header
-- [ ] 5.2 `sample-large.csv` with monotonic progress
+- [x] 5.2 `sample-large.csv` with monotonic progress
 - [ ] 5.3 Worker dies mid file and a later worker recovers; two workers, two uploads
 
 ## 6. Verification

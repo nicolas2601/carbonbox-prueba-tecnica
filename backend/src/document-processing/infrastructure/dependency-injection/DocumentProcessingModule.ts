@@ -18,7 +18,7 @@ import { JsonConsoleLogger } from "../logging/JsonConsoleLogger";
 import { SystemClock } from "../runtime/SystemClock";
 import { AbortableWait } from "../runtime/AbortableWait";
 
-interface RuntimeOverrides { clock?: IClock; logger?: ILogger; processing?: IProcessingRepository; }
+interface RuntimeOverrides { clock?: IClock; logger?: ILogger; processing?: (real: IProcessingRepository) => IProcessingRepository; }
 export interface DocumentProcessingModule {
   createUpload: CreateUploadCommandHandler;
   processFile: ProcessFileCommandHandler;
@@ -40,7 +40,8 @@ export function createDocumentProcessingModule(settings: IConvictProps, runtime:
   const storage = new FsFileStorage(settings.storageDir, ids);
   const uploads = new PrismaUploadReader(client);
   const queue = new PgJobQueue(client, ids, settings.workerRetryBaseMs);
-  const processing = runtime.processing ?? new PrismaProcessingRepository(client, settings.workerVisibilityTimeoutMs);
+  const realProcessing = new PrismaProcessingRepository(client, settings.workerVisibilityTimeoutMs);
+  const processing = runtime.processing?.(realProcessing) ?? realProcessing;
   const reader = new CsvParseRecordReader();
   const createUpload = new CreateUploadCommandHandler(storage, new PrismaUploadRepository(client, settings.workerMaxAttempts), ids, clock, logger);
   const processFile = new ProcessFileCommandHandler(uploads, storage, reader, processing, ids, clock, settings.workerBatchSize);
