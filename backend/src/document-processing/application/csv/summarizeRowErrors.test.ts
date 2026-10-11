@@ -17,3 +17,14 @@ it("Many errors are capped", () => {
 it.each([0, -1, 1.5, NaN, Infinity])("Invalid or zero limit lists none: %s", limit => {
   expect(summarizeRowErrors(errors, limit)).toBe("12 rows rejected. 12 more omitted");
 });
+
+it("Only the first details were kept", () => {
+  const result = summarizeRowErrors(errors.slice(0, 10), 10, 5000);
+  expect(result).toContain("5000 rows rejected");
+  expect(result?.match(/line \d+:/g)).toHaveLength(10);
+  expect(result).toContain("4990 more omitted");
+});
+it("A real total can exist without retained details", () => {
+  expect(summarizeRowErrors([], 10, 5)).toBe("5 rows rejected. 5 more omitted");
+  expect(summarizeRowErrors([], 10, 0)).toBeNull();
+});
