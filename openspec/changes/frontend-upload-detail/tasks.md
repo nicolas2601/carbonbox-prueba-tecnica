@@ -8,7 +8,7 @@
 - [x] 1.2 Dropzone component: select, drop, remove, several files, keyboard
 - [x] 1.3 Upload action: progress, controls disabled, finishing label, redirect and invalidation
 - [x] 1.4 Cancel with abort
-- [ ] 1.5 Server and network errors, request id
+- [x] 1.5 Server and network errors, request id
 
 ## 2. Detail page
 

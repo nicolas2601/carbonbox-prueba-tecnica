@@ -79,3 +79,17 @@ it("Prevents cancel once bytes are sent and aborts on navigation away", async ()
   view.unmount();
   expect(signal?.aborted).toBe(true);
 });
+it.each([400, 413, 500, 0])("Keeps the file and recovers upload failure %s", async status => {
+  const error = new ApiError(status ? "FAILED" : "NETWORK_ERROR", status === 413 ? "File exceeds server limit" : "Cannot finish upload", status, status === 500 ? "req-upload" : undefined);
+  const uploader = vi.fn().mockRejectedValueOnce(error).mockResolvedValueOnce(created);
+  render(<UploadForm uploader={uploader} />, { wrapper: queryHarness().wrapper });
+  const user = userEvent.setup();
+  await user.upload(screen.getByLabelText("Choose a CSV file"), new File(["data"], "data.csv"));
+  await user.click(screen.getByRole("button", { name: "Upload file" }));
+  expect(await screen.findByRole("alert")).toHaveTextContent(error.message);
+  expect(screen.getByText("data.csv")).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Upload file" })).toBeEnabled();
+  if (status === 500) expect(screen.getByText("Request req-upload")).toBeInTheDocument();
+  await user.click(screen.getByRole("button", { name: "Try again" }));
+  await waitFor(() => expect(uploader).toHaveBeenCalledTimes(2));
+});
