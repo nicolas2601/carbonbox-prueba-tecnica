@@ -16,6 +16,7 @@ what was verified, and what had to be corrected.
 - [CSV reader and worker](ai-log/csv-reader-and-worker.md)
 - [Upload queries](ai-log/upload-queries.md)
 - [HTTP API](ai-log/http-api.md)
+- [Frontend foundation](ai-log/frontend-foundation.md)
 
 Each entry is a dated, point-in-time record. Later modules may close limitations described
 in earlier entries. Review and assemble the relevant facts for the final `USO-DE-IA.md`

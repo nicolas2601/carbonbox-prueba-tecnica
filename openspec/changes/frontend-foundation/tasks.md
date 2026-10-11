@@ -28,4 +28,4 @@
 ## 5. Verification
 
 - [x] 5.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test`, `bun run build` pass
-- [ ] 5.2 Manual check with the real API in a browser: dashboard and list, mobile and desktop widths, reduced motion
+- [x] 5.2 Manual check with the real API in a browser: dashboard and list, mobile and desktop widths, reduced motion

@@ -20,7 +20,7 @@ Defined once as CSS variables in `src/app/globals.css` and exposed to Tailwind t
 |---|---|---|
 | `--paper` | `#F6F3EC` | page background |
 | `--surface` | `#FCFBF8` | cards, table, inputs |
-| `--ink` | `#14201A` | body text (contrast on paper 15.5:1) |
+| `--ink` | `#14201A` | body text (contrast on paper 15.14:1) |
 | `--ink-muted` | `#55645B` | secondary text (contrast 5.6:1) |
 | `--line` | `#DAD5C7` | borders, rules |
 | `--accent` | `#1F5B3A` | primary action, focus ring |

@@ -15,11 +15,17 @@ it.each(colors)("Defines semantic token --%s once", token => {
 it("Loads the specified self-hosted fonts with swap", () => {
   for (const name of ["Fraunces", "Instrument_Sans", "JetBrains_Mono"]) expect(layout).toContain(`${name}(`);
   expect(layout.match(/display: "swap"/g)).toHaveLength(3);
+  expect(layout).toContain('axes: ["opsz"]');
 });
 it("Defines the visible keyboard focus ring", () => {
   expect(css).toContain(":focus-visible");
   expect(css).toContain("outline: 2px solid var(--accent)");
   expect(css).toContain("outline-offset: 2px");
+});
+it("Keeps pointer press deliberate and release snappy without animating keyboard actions", () => {
+  expect(css).toContain("--release: 100ms");
+  expect(css).toContain("transition-duration: var(--feedback), var(--feedback)");
+  expect(css).toContain(":root:has(:focus-visible) .enter { animation: none");
 });
 function sourceFiles(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {

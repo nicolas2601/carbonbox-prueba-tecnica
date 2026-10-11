@@ -13,11 +13,11 @@ export function UploadsTable({ uploads, caption, detailed = false }: { uploads: 
       <caption className="sr-only">{caption}</caption>
       <thead><tr>{headings.map(label => <th key={label} scope="col">{label}</th>)}</tr></thead>
       <tbody>{uploads.map((item, index) => <tr key={item.id} className="data-row enter" style={{ "--order": index } as CSSProperties}>
-        <td><Link className="file-link font-mono" href={`/uploads/${encodeURIComponent(item.id)}`} title={item.fileName}>{item.fileName}</Link></td>
+        <td><Link className="file-link font-mono" href={`/uploads/${encodeURIComponent(item.id)}`} title={item.fileName} prefetch={false}>{item.fileName}</Link></td>
         <td><StatusBadge status={item.status} /></td>
         <td><time dateTime={item.createdAt}>{dates.format(new Date(item.createdAt))}</time></td>
         {detailed && <td className="font-mono tabular-nums">{item.processedRows === null ? "—" : numberFormatter.format(item.processedRows)}</td>}
-        {detailed && <td><Link className="table-action" href={`/uploads/${encodeURIComponent(item.id)}`} aria-label={`View ${item.fileName}`}>View details</Link></td>}
+        {detailed && <td><Link className="table-action" href={`/uploads/${encodeURIComponent(item.id)}`} aria-label={`View ${item.fileName}`} prefetch={false}>View details</Link></td>}
       </tr>)}</tbody>
     </table>
   </div>;

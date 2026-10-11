@@ -7,7 +7,7 @@ export function PageHeader({ title, description }: { title: string; description:
       <h1 className="page-title font-display">{title}</h1>
       <p className="mt-3 text-sm text-ink-muted">{description}</p>
     </div>
-    <Link className="button shrink-0" data-tone="primary" href="/uploads/new">
+    <Link className="button shrink-0" data-tone="primary" href="/uploads/new" prefetch={false}>
       <span aria-hidden="true" className="text-xl">+</span>Upload a file
     </Link>
   </header>;
