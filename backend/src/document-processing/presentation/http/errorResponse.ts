@@ -6,7 +6,7 @@ const ERROR_STATUS: Readonly<Record<string, number>> = {
   UPLOAD_NOT_FOUND: 404, ROUTE_NOT_FOUND: 404, FILE_TOO_LARGE: 413, SERVICE_UNAVAILABLE: 503,
 };
 
-export function statusForCode(code: string): number { return ERROR_STATUS[code] ?? 500; }
+export function statusForCode(code: string): number { return Object.hasOwn(ERROR_STATUS, code) ? ERROR_STATUS[code]! : 500; }
 export function errorResponse(code: string, message: string, requestId: string): ErrorResponse {
   const status = statusForCode(code);
   if (status === 503) return { status, body: { error: { code, message: "Database unavailable", requestId } } };
