@@ -21,6 +21,7 @@ model Upload {
   updatedAt     DateTime @updatedAt
 
   activityData ActivityData[]
+  job          Job?
 
   @@index([status])
   @@index([createdAt])
@@ -40,4 +41,29 @@ model ActivityData {
 
   @@index([uploadId])
   @@map("activity_data")
+}
+
+enum JobStatus {
+  QUEUED
+  DONE
+  DEAD
+}
+
+model Job {
+  id           String    @id @default(uuid())
+  uploadId     String    @unique
+  status       JobStatus @default(QUEUED)
+  attempts     Int       @default(0)
+  maxAttempts  Int
+  availableAt  DateTime  @default(now())
+  lockedUntil  DateTime?
+  claimToken   String?
+  lastError    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  upload Upload @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+
+  @@index([status, availableAt])
+  @@map("jobs")
 }

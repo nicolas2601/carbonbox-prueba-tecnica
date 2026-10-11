@@ -13,4 +13,5 @@ export interface IConvictProps {
   corsOrigin: string;
   workerPollIntervalMs: number;
   workerBatchSize: number;
+  workerMaxAttempts: number;
 }

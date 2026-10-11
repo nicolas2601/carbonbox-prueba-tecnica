@@ -63,11 +63,19 @@ const schema = convict<IConvictProps>({
     default: 500,
     env: "WORKER_BATCH_SIZE",
   },
+  workerMaxAttempts: {
+    doc: "Maximum processing attempts before a job is dead",
+    format: "nat",
+    default: 3,
+    env: "WORKER_MAX_ATTEMPTS",
+  },
 });
 
 export function loadSettings(): IConvictProps {
   schema.validate({ allowed: "strict" });
-  return schema.getProperties();
+  const settings = schema.getProperties();
+  if (settings.workerMaxAttempts < 1) throw new Error("WORKER_MAX_ATTEMPTS must be positive");
+  return settings;
 }
 
 export type { IConvictProps };
