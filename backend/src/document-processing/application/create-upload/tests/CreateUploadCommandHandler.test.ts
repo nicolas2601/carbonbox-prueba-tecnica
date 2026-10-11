@@ -1,6 +1,7 @@
 import { expect, it, vi } from "vitest";
 import { CreateUploadCommandHandler } from "../CreateUploadCommandHandler";
 import { MemoryStorage, MemoryUploadRepository, FixedClock, FixedIdGenerator } from "./fakes";
+import { InvalidFileNameError } from "../../../domain/errors/InvalidFileNameError";
 
 const now = new Date("2024-01-15T00:00:00Z");
 async function* stream(): AsyncIterable<Uint8Array> { yield new Uint8Array([1, 2, 3]); }
@@ -29,4 +30,15 @@ it("The file name is trimmed and the stream key is kept", async () => {
   expect(result.value).toMatchObject({ fileName: "report.csv" });
   expect(repository.uploads[0]?.fileUrl).toBe("k1.csv");
   expect(repository.jobs).toEqual([{ uploadId: "u1" }]);
+});
+
+it.each(["report.txt", "../secret.csv"])("A non CSV or unsafe name: %s", async name => {
+  const { storage, repository, handler } = setup();
+  const save = vi.spyOn(storage, "save");
+  const persist = vi.spyOn(repository, "saveWithJob");
+  const result = await handler.execute(command(name));
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toBeInstanceOf(InvalidFileNameError);
+  expect(save).not.toHaveBeenCalled();
+  expect(persist).not.toHaveBeenCalled();
 });

@@ -13,7 +13,7 @@ export class CreateUploadCommandHandler {
 
   async execute(command: CreateUploadCommand): Promise<Either<Error, CreateUploadResult>> {
     const name = FileName.create(command.fileName);
-    if (name.isLeft()) throw name.value;
+    if (name.isLeft()) return Either.left(name.value);
     const stored = await this.storage.save(command.stream);
     if (stored.isLeft()) throw stored.value;
     const upload = Upload.create({ id: this.ids.next(), fileName: name.value, fileUrl: stored.value,
