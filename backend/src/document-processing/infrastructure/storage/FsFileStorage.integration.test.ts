@@ -69,3 +69,14 @@ it("The stream errors midway", async () => {
   expect(result.value).toMatchObject({ code: "STORAGE_FAILURE" });
   expect(await readdir(storageDir)).toEqual([]);
 });
+
+it("Deleting an existing file", async () => {
+  const result = await storage.save(bytes());
+  if (result.isLeft()) throw result.value;
+  expect((await storage.delete(result.value)).isRight()).toBe(true);
+  expect(await readdir(storageDir)).toEqual([]);
+  expect((await storage.delete(result.value)).isRight()).toBe(true);
+});
+it("Deleting a missing key", async () => {
+  expect((await storage.delete("missing.csv")).isRight()).toBe(true);
+});

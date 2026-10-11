@@ -24,7 +24,8 @@ export class FsFileStorage implements IFileStorage {
       return Either.left(new StorageFailureError(error instanceof Error ? error.message : "Unable to store file"));
     }
   }
-  async delete(_key: string): Promise<Either<StorageFailureError, void>> {
+  async delete(key: string): Promise<Either<StorageFailureError, void>> {
+    await rm(join(this.directory, key), { force: true });
     return Either.right(undefined);
   }
 }
