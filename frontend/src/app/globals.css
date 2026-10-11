@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #F6F3EC;
+  --surface: #FCFBF8;
+  --ink: #14201A;
+  --ink-muted: #55645B;
+  --line: #DAD5C7;
+  --accent: #1F5B3A;
+  --accent-ink: #FFFFFF;
+  --pending: #8A5A00;
+  --pending-bg: #FBEFD0;
+  --processing: #1B4FBF;
+  --processing-bg: #E1EAFB;
+  --completed: #14633A;
+  --completed-bg: #DBF1E2;
+  --failed: #A82116;
+  --failed-bg: #FBE2DF;
+  --space-unit: 4px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --feedback: 160ms;
+  --entrance: 280ms;
+  --stagger: 40ms;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-pending: var(--pending);
+  --color-pending-bg: var(--pending-bg);
+  --color-processing: var(--processing);
+  --color-processing-bg: var(--processing-bg);
+  --color-completed: var(--completed);
+  --color-completed-bg: var(--completed-bg);
+  --color-failed: var(--failed);
+  --color-failed-bg: var(--failed-bg);
+  --font-sans: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-fraunces);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
+
+h1, h2 { text-wrap: balance; }
+p { text-wrap: pretty; max-width: 70ch; }
+.font-display { font-optical-sizing: auto; line-height: 1.15; }
+.font-mono, .tabular-nums { font-variant-numeric: tabular-nums; }

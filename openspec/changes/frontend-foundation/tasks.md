@@ -1,7 +1,7 @@
 ## 1. Foundation
 
 - [x] 1.1 Test setup: Vitest, Testing Library, MSW, jsdom; `test` script
-- [ ] 1.2 `DESIGN.md` in place; tokens and fonts in the global stylesheet and layout; stray color and transition checks as tests
+- [x] 1.2 `DESIGN.md` in place; tokens and fonts in the global stylesheet and layout; stray color and transition checks as tests
 - [ ] 1.3 Shell: layout, navigation, skip link, focus ring
 
 ## 2. API client
