@@ -2,6 +2,8 @@ import { createReadStream } from "node:fs";
 import { afterAll, beforeEach, expect, it } from "vitest";
 import { integrationClient, truncateTables } from "./database";
 import { workerHarness } from "./workerHarness";
+import { createDocumentProcessingModule } from "../dependency-injection/DocumentProcessingModule";
+import { JsonConsoleLogger } from "../logging/JsonConsoleLogger";
 
 type Harness = Awaited<ReturnType<typeof workerHarness>>;
 const client = integrationClient();
@@ -32,6 +34,52 @@ it.each([
       for (const line of [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]) expect(upload.errorMessage).toContain(`line ${line}:`);
     }
   } finally { await harness.close(); }
+});
+
+it("A later worker recovers a paused old worker without duplicate rows", async () => {
+  let paused!: () => void;
+  let release!: () => void;
+  let first = true;
+  const stopped = new Promise<void>(resolve => { paused = resolve; });
+  const resume = new Promise<void>(resolve => { release = resolve; });
+  const harness = await workerHarness(10, real => ({
+    begin: (claim, now) => real.begin(claim, now), finish: (claim, upload) => real.finish(claim, upload),
+    saveBatch: async (claim, rows, progress, now) => {
+      const result = await real.saveBatch(claim, rows, progress, now);
+      if (first && result.isRight()) { first = false; paused(); await resume; }
+      return result;
+    },
+  }));
+  const id = await uploadCsv(harness, "recover.csv", createReadStream(new URL("../../../../../sample-data.csv", import.meta.url)));
+  const oldWorker = harness.worker.runOnce();
+  const later = new Date(harness.time.value.getTime() + harness.settings.workerVisibilityTimeoutMs + 1);
+  const next = createDocumentProcessingModule(harness.settings, { clock: { now: () => later },
+    logger: new JsonConsoleLogger({ now: () => later }, line => { harness.logs.push(line); }) });
+  try {
+    await Promise.race([stopped, oldWorker.then(() => { throw new Error("Worker finished before pause"); })]);
+    expect((await client.upload.findUniqueOrThrow({ where: { id } })).processedRows).toBe(10);
+    await next.worker.runOnce();
+    release();
+    await oldWorker;
+    expect(await client.activityData.count({ where: { uploadId: id } })).toBe(60);
+    expect(await client.upload.findUnique({ where: { id } })).toMatchObject({ status: "COMPLETED", processedRows: 60 });
+    expect(await client.job.findUnique({ where: { uploadId: id } })).toMatchObject({ status: "DONE", attempts: 2 });
+    expect(harness.logs.some(line => line.includes('"message":"Job claim is stale"'))).toBe(true);
+  } finally { release(); await oldWorker; await next.close(); await harness.close(); }
+});
+it("Two real workers process two uploads once each", async () => {
+  const harness = await workerHarness();
+  const next = createDocumentProcessingModule(harness.settings, { clock: { now: () => harness.time.value }, logger: harness.logger });
+  try {
+    const file = new URL("../../../../../sample-data.csv", import.meta.url);
+    const ids = await Promise.all([uploadCsv(harness, "one.csv", createReadStream(file)), uploadCsv(harness, "two.csv", createReadStream(file))]);
+    expect(await Promise.all([harness.worker.runOnce(), next.worker.runOnce()])).toEqual([true, true]);
+    for (const id of ids) {
+      expect(await client.upload.findUnique({ where: { id } })).toMatchObject({ status: "COMPLETED", processedRows: 60 });
+      expect(await client.activityData.count({ where: { uploadId: id } })).toBe(60);
+      expect(await client.job.findUnique({ where: { uploadId: id } })).toMatchObject({ status: "DONE", attempts: 1 });
+    }
+  } finally { await next.close(); await harness.close(); }
 });
 
 it("Large sample stores 5000 rows with monotonic committed batch progress", async () => {
