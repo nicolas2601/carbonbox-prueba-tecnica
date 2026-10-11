@@ -37,6 +37,17 @@ it("Duplicate upload id", async () => {
   expect(await client.job.count()).toBe(1);
 });
 
+it("Unknown errors are not hidden", async () => {
+  const error = Object.assign(new Error("Unexpected client failure"), { code: "P2002" });
+  vi.spyOn(client, "$transaction").mockRejectedValueOnce(error);
+  await expect(repository.saveWithJob(upload(), { uploadId: "u1" })).rejects.toBe(error);
+});
+it("A real foreign-key error bubbles and also rolls back", async () => {
+  await expect(repository.saveWithJob(upload(), { uploadId: "missing" })).rejects.toMatchObject({ code: "P2003" });
+  expect(await client.upload.count()).toBe(0);
+  expect(await client.job.count()).toBe(0);
+});
+
 it("The job insert fails after the new upload insert and rolls back", async () => {
   await repository.saveWithJob(upload("existing"), { uploadId: "existing" });
   const result = await repository.saveWithJob(upload("rollback"), { uploadId: "existing" });
