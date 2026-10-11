@@ -69,12 +69,28 @@ const schema = convict<IConvictProps>({
     default: 3,
     env: "WORKER_MAX_ATTEMPTS",
   },
+  workerVisibilityTimeoutMs: {
+    doc: "Lease duration extended by each saved batch",
+    format: Number,
+    default: 30000,
+    env: "WORKER_VISIBILITY_TIMEOUT_MS",
+  },
+  workerRetryBaseMs: {
+    doc: "Base delay for exponential job retry backoff",
+    format: Number,
+    default: 1000,
+    env: "WORKER_RETRY_BASE_MS",
+  },
 });
 
 export function loadSettings(): IConvictProps {
   schema.validate({ allowed: "strict" });
   const settings = schema.getProperties();
-  if (settings.workerMaxAttempts < 1) throw new Error("WORKER_MAX_ATTEMPTS must be positive");
+  const positiveIntegers = { WORKER_MAX_ATTEMPTS: settings.workerMaxAttempts,
+    WORKER_VISIBILITY_TIMEOUT_MS: settings.workerVisibilityTimeoutMs, WORKER_RETRY_BASE_MS: settings.workerRetryBaseMs };
+  for (const [name, value] of Object.entries(positiveIntegers)) {
+    if (!Number.isSafeInteger(value) || value < 1) throw new Error(`${name} must be a positive integer`);
+  }
   return settings;
 }
 

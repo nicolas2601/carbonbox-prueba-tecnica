@@ -14,4 +14,6 @@ export interface IConvictProps {
   workerPollIntervalMs: number;
   workerBatchSize: number;
   workerMaxAttempts: number;
+  workerVisibilityTimeoutMs: number;
+  workerRetryBaseMs: number;
 }

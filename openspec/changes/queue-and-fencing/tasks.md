@@ -1,6 +1,6 @@
 ## 1. Configuration
 
-- [ ] 1.1 `WORKER_VISIBILITY_TIMEOUT_MS` and `WORKER_RETRY_BASE_MS` in Convict and `.env.example`
+- [x] 1.1 `WORKER_VISIBILITY_TIMEOUT_MS` and `WORKER_RETRY_BASE_MS` in Convict and `.env.example`
 
 ## 2. Upload reader
 
