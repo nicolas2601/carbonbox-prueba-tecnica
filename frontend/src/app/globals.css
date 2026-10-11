@@ -77,3 +77,13 @@ p { text-wrap: pretty; max-width: 70ch; }
 @media (prefers-reduced-motion: reduce) {
   .status-dot { animation: none; }
 }
+
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); font-size: 14px; font-weight: 500; cursor: pointer; transition: transform var(--feedback) var(--ease-out), opacity var(--feedback) var(--ease-out); }
+.button[data-tone="primary"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.button:disabled { opacity: 0.45; cursor: not-allowed; }
+.button:not(:disabled):active:not(:focus-visible) { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .button:not(:disabled):hover { opacity: 0.85; } }
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+  .button:not(:disabled):active { transform: none; }
+}

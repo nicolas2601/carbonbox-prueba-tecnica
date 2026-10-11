@@ -14,7 +14,7 @@
 ## 3. Shared components
 
 - [x] 3.1 `StatusBadge`
-- [ ] 3.2 `Pagination`
+- [x] 3.2 `Pagination`
 - [ ] 3.3 Skeleton, empty and error states
 - [ ] 3.4 `StatCard`
 
