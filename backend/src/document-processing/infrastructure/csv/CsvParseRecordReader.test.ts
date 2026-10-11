@@ -34,3 +34,22 @@ it("An empty physical line inside quotes is not skipped", async () => {
   const records = await collect('category,amount,unit,date\n"Business\n\nTravel",10,km,2024-01-15\nWater,20,m3,2024-01-16');
   expect(records.map(record => record.line)).toEqual([1, 2, 5]);
 });
+
+it("CRLF and byte order mark", async () => {
+  const records = await collect("﻿category,amount,unit,date\r\nWater,10,m3,2024-01-15\r\n");
+  expect(records[0]).toEqual({ line: 1, fields: ["category", "amount", "unit", "date"] });
+  expect(records[1]?.line).toBe(2);
+});
+it.each(["\n", "\r\n"])("Empty lines retain physical record starts: %j", async newline => {
+  const records = await collect(`${newline}${newline}category,amount,unit,date${newline}${newline}Water,10,m3,2024-01-15${newline}${newline}${newline}Waste,20,kg,2024-01-16`);
+  expect(records.map(record => record.line)).toEqual([3, 5, 8]);
+});
+it("Short rows reach validation", async () => {
+  const records = await collect("category,amount,unit,date\nWater,10,m3\n");
+  expect(records[1]).toEqual({ line: 2, fields: ["Water", "10", "m3"] });
+});
+it("Closing quote on a separate physical line and no final newline", async () => {
+  const records = await collect('category,amount,unit,date\r\n"Business\r\nTravel\r\n",10,km,2024-01-15\r\nWater,20,m3,2024-01-16');
+  expect(records.map(record => record.line)).toEqual([1, 2, 5]);
+  expect(records[1]?.fields[0]).toBe("Business\r\nTravel\r\n");
+});

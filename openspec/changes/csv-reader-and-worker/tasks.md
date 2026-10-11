@@ -13,7 +13,7 @@
 
 - [x] 3.1 Add `csv-parse`; records with physical lines for a plain file
 - [x] 3.2 Quoted comma, escaped quote, quoted line break with correct following line
-- [ ] 3.3 Byte order mark, CRLF, empty lines, short rows
+- [x] 3.3 Byte order mark, CRLF, empty lines, short rows
 - [ ] 3.4 `MalformedCsvError` for unclosed quote and oversized record
 - [ ] 3.5 `sample-invalid.csv` rejected lines match `EXPECTED.md`
 
