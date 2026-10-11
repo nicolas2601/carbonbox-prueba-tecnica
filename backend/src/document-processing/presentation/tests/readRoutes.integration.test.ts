@@ -15,6 +15,25 @@ it("Stats is static, not an upload id", async () => {
     expect(response.json()).toEqual({ total: 1, completed: 0, inProgress: 1, failed: 0 });
   } finally { await api.close(); }
 });
+
+it("List pages return typed numeric pagination", async () => {
+  for (let index = 0; index < 15; index++) await seedJob(client, `u${index}`);
+  const api = await apiHarness();
+  try {
+    const response = await api.server.inject("/api/v1/uploads?page=2&limit=10");
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toMatchObject({ total: 15, page: 2, limit: 10 });
+    expect(response.json().data).toHaveLength(5);
+  } finally { await api.close(); }
+});
+it.each(["limit=101", "page=0", "limit=abc", "limit=1.5"])("Invalid list values return a client error: %s", async query => {
+  const api = await apiHarness();
+  try {
+    const response = await api.server.inject(`/api/v1/uploads?${query}`);
+    expect(response.statusCode).toBe(400);
+    expect(response.json().error.code).toMatch(/INVALID_PAGINATION|VALIDATION_ERROR/);
+  } finally { await api.close(); }
+});
 it("Existing and unknown uploads", async () => {
   await seedJob(client);
   const api = await apiHarness();
