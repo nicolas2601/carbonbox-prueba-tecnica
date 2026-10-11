@@ -139,3 +139,9 @@ p { text-wrap: pretty; max-width: 70ch; }
   .uploads-table [data-column="processed"], .uploads-table [data-column="actions"] { display: none; }
   .uploads-table .file-link { max-width: 100%; }
 }
+
+.dropzone { display: block; padding: 40px 24px; border: 1px dashed var(--ink-muted); border-radius: 16px; background: var(--surface); text-align: center; cursor: pointer; }
+.dropzone:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dropzone[data-dragging="true"] { border-color: var(--accent); background: var(--paper); }
+.dropzone[data-disabled="true"] { cursor: not-allowed; opacity: 0.65; }
+.selected-file { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
