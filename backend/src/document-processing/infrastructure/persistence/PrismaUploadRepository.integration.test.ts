@@ -36,3 +36,13 @@ it("Duplicate upload id", async () => {
   expect(await client.upload.count()).toBe(1);
   expect(await client.job.count()).toBe(1);
 });
+
+it("The job insert fails after the new upload insert and rolls back", async () => {
+  await repository.saveWithJob(upload("existing"), { uploadId: "existing" });
+  const result = await repository.saveWithJob(upload("rollback"), { uploadId: "existing" });
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toMatchObject({ code: "UPLOAD_PERSISTENCE_FAILURE" });
+  expect(await client.upload.findUnique({ where: { id: "rollback" } })).toBeNull();
+  expect(await client.upload.count()).toBe(1);
+  expect(await client.job.count()).toBe(1);
+});

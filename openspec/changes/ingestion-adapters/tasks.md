@@ -15,7 +15,7 @@
 - [x] 3.1 `Job` model and migration `add_jobs`, applied to a real database
 - [x] 3.2 `saveWithJob`: stores upload and queued job in one transaction
 - [x] 3.3 `saveWithJob`: duplicate id returns a left and stores nothing
-- [ ] 3.4 `saveWithJob`: rollback when the job insert fails
+- [x] 3.4 `saveWithJob`: rollback when the job insert fails
 - [ ] 3.5 `saveWithJob`: unknown errors are rethrown
 
 ## 4. Verification
