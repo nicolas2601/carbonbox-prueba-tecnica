@@ -6,6 +6,7 @@ import { integrationClient, truncateTables } from "../tests/database";
 import { NOW, VISIBILITY_MS, activity, seedJob } from "../tests/queueFixtures";
 import type { JobClaim } from "../../application/ports/JobClaim";
 import { PrismaUploadReader } from "./PrismaUploadReader";
+import { withClaim } from "./withClaim";
 
 const client = integrationClient();
 const queue = new PgJobQueue(client, { next: randomUUID }, 1000);
@@ -120,4 +121,80 @@ it("An Upload payload with another id cannot close the claimed job", async () =>
   expect((await repository.finish(claim, other)).isLeft()).toBe(true);
   expect(await client.upload.findMany({ orderBy: { id: "asc" } })).toEqual(before);
   expect((await client.job.findUniqueOrThrow({ where: { id: claim.jobId } })).status).toBe("QUEUED");
+});
+
+it.each(["begin", "saveBatch", "finish"] as const)("A stale worker is rejected by %s", async method => {
+  const first = await claimed();
+  await repository.begin(first, NOW);
+  const later = new Date(NOW.getTime() + VISIBILITY_MS + 1);
+  const second = await queue.claim(later, VISIBILITY_MS);
+  if (!second) throw new Error("Expected reclaim");
+  await repository.begin(second, later);
+  await repository.saveBatch(second, [activity("owned")], { processedRows: 1, failedRows: 0 }, later);
+  const before = await client.upload.findFirstOrThrow();
+  const upload = await new PrismaUploadReader(client).findById("u1");
+  if (!upload) throw new Error("Expected upload");
+  upload.fail("Stale failure", later);
+  const result = method === "begin" ? await repository.begin(first, later) : method === "finish"
+    ? await repository.finish(first, upload) : await repository.saveBatch(first, [activity("stale")], { processedRows: 2, failedRows: 0 }, later);
+  expect(result.isLeft()).toBe(true);
+  expect(await client.upload.findFirstOrThrow()).toEqual(before);
+  expect((await client.activityData.findMany()).map(row => row.id)).toEqual(["owned"]);
+  expect((await client.job.findFirstOrThrow()).claimToken).toBe(second.claimToken);
+});
+it("A slow but current worker may continue", async () => {
+  const claim = await claimed();
+  await repository.begin(claim, NOW);
+  const later = new Date(NOW.getTime() + VISIBILITY_MS + 1);
+  expect((await repository.saveBatch(claim, [activity("slow")], { processedRows: 1, failedRows: 0 }, later)).isRight()).toBe(true);
+});
+it("New owner completes exact rows after old-owner batch rejection", async () => {
+  const first = await claimed();
+  await repository.begin(first, NOW);
+  await repository.saveBatch(first, [activity("old")], { processedRows: 1, failedRows: 0 }, NOW);
+  const later = new Date(NOW.getTime() + VISIBILITY_MS + 1);
+  const second = await queue.claim(later, VISIBILITY_MS);
+  if (!second) throw new Error("Expected reclaim");
+  await repository.begin(second, later);
+  expect((await repository.saveBatch(first, [activity("stale")], { processedRows: 2, failedRows: 0 }, later)).isLeft()).toBe(true);
+  expect(await client.activityData.count()).toBe(0);
+  await repository.saveBatch(second, [1, 2, 3].map(value => activity(`new-${value}`)), { processedRows: 3, failedRows: 0 }, later);
+  const upload = await new PrismaUploadReader(client).findById("u1");
+  if (!upload) throw new Error("Expected upload");
+  upload.complete({ totalRows: 3, processedRows: 3, failedRows: 0 }, later);
+  await repository.finish(second, upload);
+  expect(await client.activityData.count()).toBe(3);
+  expect(await client.upload.findFirstOrThrow()).toMatchObject({ status: "COMPLETED", processedRows: 3 });
+});
+it.each(["begin", "saveBatch", "finish"] as const)("Mismatched claim upload is rejected by %s", async method => {
+  const current = await claimed();
+  await seedJob(client, "other");
+  const forged = { ...current, uploadId: "other" };
+  const other = await new PrismaUploadReader(client).findById("other");
+  if (!other) throw new Error("Expected upload");
+  other.fail("Forged failure", NOW);
+  const before = await client.upload.findMany({ orderBy: { id: "asc" } });
+  const result = method === "begin" ? await repository.begin(forged, NOW) : method === "finish"
+    ? await repository.finish(forged, other) : await repository.saveBatch(forged, [activity("wrong", "other")], { processedRows: 1, failedRows: 0 }, NOW);
+  expect(result.isLeft()).toBe(true);
+  expect(await client.upload.findMany({ orderBy: { id: "asc" } })).toEqual(before);
+  expect(await client.activityData.count()).toBe(0);
+});
+it("The fence row lock prevents reclaim during an interleaved write", async () => {
+  const claim = await claimed();
+  let ready!: () => void;
+  let release!: () => void;
+  const locked = new Promise<void>(resolve => { ready = resolve; });
+  const resume = new Promise<void>(resolve => { release = resolve; });
+  const writing = withClaim(client, claim, async tx => {
+    await tx.activityData.create({ data: { id: "locked", uploadId: "u1", category: "Water", amount: 10, unit: "m3", date: NOW, createdAt: NOW } });
+    ready();
+    await resume;
+  });
+  await locked;
+  try {
+    expect(await client.activityData.count()).toBe(0);
+    expect(await queue.claim(new Date(NOW.getTime() + VISIBILITY_MS + 1), VISIBILITY_MS)).toBeNull();
+  } finally { release(); await writing; }
+  expect(await client.activityData.count()).toBe(1);
 });
