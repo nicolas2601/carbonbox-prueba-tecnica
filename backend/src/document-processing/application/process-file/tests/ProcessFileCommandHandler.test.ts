@@ -5,6 +5,8 @@ import { MemoryStorage, FixedClock } from "../../create-upload/tests/fakes";
 import type { CsvRecord } from "../../ports/ICsvRecordReader";
 import { Either } from "../../../../shared/domain/Either";
 import { StaleClaimError } from "../StaleClaimError";
+import { Upload } from "../../../domain/entities/Upload";
+import { uploadProps } from "./fakes";
 
 const header = ["category", "amount", "unit", "date"];
 const valid = ["Electricity", "150.5", "kWh", "2024-01-15"];
@@ -26,6 +28,33 @@ it.each([5, 3])("A fully valid file of %s rows", async count => {
   expect(repository.uploads.get("u1")).toMatchObject({ status: "COMPLETED", totalRows: count,
     processedRows: count, failedRows: 0, errorMessage: null });
   expect(repository.done).toBe(true);
+});
+
+it.each(["COMPLETED", "FAILED"] as const)("Already terminal: %s", async status => {
+  const { repository, storage, handler } = setup();
+  const stored = Upload.reconstitute({ ...uploadProps(createUpload()), status, totalRows: 10,
+    processedRows: 8, failedRows: 2, errorMessage: "original" });
+  repository.uploads.set("u1", stored);
+  const open = vi.spyOn(storage, "open");
+  const begin = vi.spyOn(repository, "begin");
+  expect((await handler.execute({ claim })).isRight()).toBe(true);
+  expect(open).not.toHaveBeenCalled();
+  expect(begin).not.toHaveBeenCalled();
+  expect(repository.done).toBe(true);
+  expect(uploadProps(repository.uploads.get("u1")!)).toEqual(uploadProps(stored));
+});
+it("Retry of an interrupted attempt", async () => {
+  const { repository, handler } = setup();
+  await handler.execute({ claim });
+  repository.uploads.set("u1", Upload.reconstitute({ ...uploadProps(repository.uploads.get("u1")!),
+    status: "PROCESSING", errorMessage: "old attempt" }));
+  repository.done = false;
+  const begin = vi.spyOn(repository, "begin");
+  await handler.execute({ claim });
+  expect(begin).toHaveBeenCalledExactlyOnceWith(claim, now);
+  expect(repository.rows).toHaveLength(5);
+  expect(repository.batches.slice(-3)).toEqual([2, 4, 5].map(processedRows => ({ processedRows, failedRows: 0 })));
+  expect(repository.uploads.get("u1")).toMatchObject({ status: "COMPLETED", processedRows: 5, errorMessage: null });
 });
 
 it("Only invalid rows", async () => {

@@ -10,7 +10,7 @@
 - [x] 2.3 Invalid header ends `FAILED`
 - [x] 2.4 No valid row and header only end `FAILED`
 - [x] 2.5 Stale claim stops the work
-- [ ] 2.6 Redelivery: terminal upload skipped, processing upload restarted
+- [x] 2.6 Redelivery: terminal upload skipped, processing upload restarted
 - [ ] 2.7 Unexpected errors propagate
 
 ## 3. Verification

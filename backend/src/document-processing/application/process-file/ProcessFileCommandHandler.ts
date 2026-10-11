@@ -36,6 +36,7 @@ export class ProcessFileCommandHandler {
   async execute({ claim }: ProcessFileCommand): Promise<Either<StaleClaimError, void>> {
     const upload = await this.uploads.findById(claim.uploadId);
     if (!upload) return Either.left(new StaleClaimError("Claim upload no longer exists"));
+    if (upload.status === "COMPLETED" || upload.status === "FAILED") return this.repository.finish(claim, upload);
     const now = this.clock.now();
     const begun = await this.repository.begin(claim, now);
     if (begun.isLeft()) return begun;
