@@ -1,7 +1,7 @@
 ## 1. Errors and ports
 
 - [x] 1.1 `StorageFailureError` and `UploadPersistenceError` with unique codes
-- [ ] 1.2 Ports `IFileStorage`, `IUploadRepository`, `IIdGenerator`, `IClock` and `ProcessFileJob`, plus in-memory fakes under the test folder
+- [x] 1.2 Ports `IFileStorage`, `IUploadRepository`, `IIdGenerator`, `IClock` and `ProcessFileJob`, plus in-memory fakes under the test folder
 
 ## 2. CreateUpload handler
 
