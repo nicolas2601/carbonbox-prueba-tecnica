@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CarbonBox frontend
 
-## Getting Started
+The activity ledger uses Next.js 16.4, React, TanStack Query, Axios and Tailwind CSS 4.
+`DESIGN.md` is the visual source of truth: warm paper, semantic status colors,
+Fraunces display figures, Instrument Sans text and JetBrains Mono data.
 
-First, run the development server:
+## Run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+From this directory:
+
+```sh
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Configure `NEXT_PUBLIC_API_URL` using `.env.example`; the default is
+`http://localhost:3001/api/v1`. The backend API and worker must also be running.
+The API's `CORS_ORIGIN` must match the frontend origin. Public environment values
+are embedded at build time; changing the API URL requires rebuilding.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+bun run lint
+bunx tsc --noEmit
+bun run test
+bun run build
+bun run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`next/font/google` downloads fonts during the first build and self-hosts them
+thereafter. That first build requires network access. Next generates route types
+at build time, so a fresh checkout should build before relying on generated types.
 
-## Learn More
+## Structure and behavior
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app`: server layout and thin route composition. The uploads route resolves
+  asynchronous `searchParams` inside Suspense, as required by Cache Components.
+- `src/features/uploads`: client views and hooks. Data is deliberately fetched in
+  the browser because it polls and reacts to navigation; there is no server API
+  prefetch. The server does not share a browser QueryClient across requests.
+- `src/lib/api`: one typed Axios client, normalized `ApiError` and key factory.
+  Production explicitly prefers XHR before Fetch for upload progress support.
+- `src/components`: accessible shell, states, badges, cards, buttons and pagination.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Upload detail and active list queries poll every 3000 ms for PENDING/PROCESSING;
+terminal states stop polling. Dashboard totals poll every 5000 ms only while
+`inProgress > 0`. Pagination lives in the URL and keeps previous rows visible.
+Client errors are never retried; transient errors have bounded retries.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Verification and scope
 
-## Deploy on Vercel
+Vitest tests use Testing Library and MSW 3 to intercept actual Axios requests.
+DOM tests choose the Fetch adapter only in test setup; production retains XHR
+first. Multipart wire tests use native Node Web APIs because mixing jsdom File
+objects with native Fetch produced empty blobs and parsing errors. Tests verify
+multipart headers, filename and file bytes, not just a mocked call.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Current scope includes dashboard `/` and the paginated list `/uploads`. Creation
+and detail links intentionally target the next module's routes; those pages are
+not implemented yet. No authentication, dark mode, charts or i18n is included.
+Motion is limited to transform/opacity; reduced motion removes entrances, stagger
+and pulses. Processing pulses pause when offscreen. Verification also requires
+Playwright checks of layout, focus and real API behavior at mobile and desktop widths.
