@@ -120,5 +120,7 @@ p { text-wrap: pretty; max-width: 70ch; }
 .uploads-table { width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; font-size: 14px; }
 .uploads-table th { padding: 16px 24px; background: var(--paper); color: var(--ink-muted); font-size: 12px; font-weight: 500; text-transform: uppercase; }
 .uploads-table td { padding: 20px 24px; border-top: 1px solid var(--line); white-space: nowrap; }
-.file-link { display: block; max-width: 300px; overflow: hidden; text-overflow: ellipsis; color: var(--ink); }
+.file-link { display: block; min-height: 40px; padding-block: 8px; max-width: 300px; overflow: hidden; text-overflow: ellipsis; color: var(--ink); }
 @media (hover: hover) and (pointer: fine) { .file-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; } }
+.uploads-table[data-detailed="true"] { min-width: 760px; }
+.table-action { display: inline-flex; align-items: center; min-height: 40px; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
