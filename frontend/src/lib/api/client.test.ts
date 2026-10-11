@@ -30,3 +30,6 @@ it("Reads the configured API origin and preserves normalized errors", () => {
   expect(normalizeApiError(error)).toBe(error);
   expect(normalizeApiError(new Error("Private transport detail")).message).not.toContain("Private");
 });
+it("Explicitly prefers browser XHR before Fetch for upload progress", () => {
+  expect(createApiClient().defaults.adapter).toEqual(["xhr", "fetch"]);
+});
