@@ -1,6 +1,6 @@
 ## 1. Errors, models and port
 
-- [ ] 1.1 `UploadNotFoundError`, `InvalidPaginationError`, read models and `IUploadQueries`; shared pagination validation with defaults and range rules
+- [x] 1.1 `UploadNotFoundError`, `InvalidPaginationError`, read models and `IUploadQueries`; shared pagination validation with defaults and range rules
 
 ## 2. Handlers with fakes
 
