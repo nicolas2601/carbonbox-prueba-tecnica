@@ -6,7 +6,7 @@
 
 ## 2. API client
 
-- [ ] 2.1 Axios instance and `ApiError` normalization
+- [x] 2.1 Axios instance and `ApiError` normalization
 - [ ] 2.2 Typed functions and query key factory
 - [ ] 2.3 Query provider with no retry on 4xx
 - [ ] 2.4 Hooks for stats, list, detail and results with the polling rule
