@@ -15,9 +15,10 @@ updated at.
 
 ### Requirement: List uploads with validated pagination
 The system SHALL provide `ListUploads` taking `page` and `limit` and returning
-`Either<InvalidPaginationError, Page<UploadView>>` with the items, the total count, the page and the
+`Either<InvalidPaginationError, Page<UploadView>>` with `data`, the total count, the page and the
 limit. Defaults SHALL be page 1 and limit 10. Items SHALL be ordered by creation time descending, then id.
-A page below 1, a limit below 1 or above 100, or a non integer SHALL return a left.
+A page below 1, a limit below 1 or above 100, a non-safe integer, an explicit null value or an
+offset not representable as a safe integer SHALL return a left. Defaults apply only to omitted values.
 
 #### Scenario: Default page
 - **WHEN** 15 uploads exist and no pagination is given
@@ -30,6 +31,10 @@ A page below 1, a limit below 1 or above 100, or a non integer SHALL return a le
 #### Scenario: Out of range
 - **WHEN** limit is 0, 101 or 1.5, or page is 0
 - **THEN** each result is a left `InvalidPaginationError`
+
+#### Scenario: An unsafe pagination offset is rejected
+- **WHEN** a safe integer page and limit would produce an offset that is not a safe integer
+- **THEN** the query returns InvalidPaginationError without calling the read port
 
 #### Scenario: Empty
 - **WHEN** no uploads exist

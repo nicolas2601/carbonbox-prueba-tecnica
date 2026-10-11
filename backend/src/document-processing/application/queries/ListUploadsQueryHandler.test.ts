@@ -29,7 +29,14 @@ it("Empty list", async () => {
   expect((await new ListUploadsQueryHandler(new MemoryUploadQueries()).execute()).value)
     .toEqual({ data: [], total: 0, page: 1, limit: 10 });
 });
-it.each([{ page: 0 }, { limit: 0 }, { limit: 101 }, { limit: 1.5 },
+it("Equal timestamps keep a stable id tie breaker", async () => {
+  const queries = new MemoryUploadQueries();
+  queries.uploads.push(view("u2"), view("u1"));
+  const result = await new ListUploadsQueryHandler(queries).execute();
+  if (result.isLeft()) throw result.value;
+  expect(result.value.data.map(row => row.id)).toEqual(["u1", "u2"]);
+});
+it.each([{ page: 0 }, { limit: 0 }, { limit: 101 }, { limit: 1.5 }, { page: Number.MAX_SAFE_INTEGER, limit: 100 },
   { page: null as unknown as number }, { limit: null as unknown as number }])("Out of range before IO: %j", async input => {
   const queries = new MemoryUploadQueries();
   const list = vi.spyOn(queries, "list");
