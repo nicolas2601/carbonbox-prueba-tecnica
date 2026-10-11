@@ -80,3 +80,18 @@ it("Raw Date parameters preserve UTC milliseconds in a non-UTC session", async (
     expect((await client.job.findFirstOrThrow()).lockedUntil).toEqual(new Date(NOW.getTime() + VISIBILITY_MS));
   } finally { await bogota.$disconnect(); }
 });
+
+it("First failure, second failure doubles the delay, and retry is not claimable early", async () => {
+  const job = await seedJob(client);
+  const first = await queue.claim(NOW, VISIBILITY_MS);
+  if (!first) throw new Error("Expected first claim");
+  expect((await queue.fail(first, "Temporary failure", NOW, false)).value).toBe("RETRY");
+  expect(await client.job.findUnique({ where: { id: job.id } })).toMatchObject({ status: "QUEUED", attempts: 1,
+    lockedUntil: null, claimToken: null, availableAt: new Date(NOW.getTime() + 1000), lastError: "Temporary failure", updatedAt: NOW });
+  expect(await queue.claim(new Date(NOW.getTime() + 999), VISIBILITY_MS)).toBeNull();
+  const later = new Date(NOW.getTime() + 1000);
+  const second = await queue.claim(later, VISIBILITY_MS);
+  if (!second) throw new Error("Expected second claim");
+  expect((await queue.fail(second, "Second failure", later, false)).value).toBe("RETRY");
+  expect((await client.job.findUniqueOrThrow({ where: { id: job.id } })).availableAt).toEqual(new Date(later.getTime() + 2000));
+});
