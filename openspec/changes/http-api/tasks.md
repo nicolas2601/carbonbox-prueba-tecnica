@@ -22,7 +22,7 @@
 ## 4. Process and end to end
 
 - [x] 4.1 API composition root, entry point, graceful shutdown
-- [ ] 4.2 End to end through HTTP with the worker (valid, invalid rows, unknown id)
+- [x] 4.2 End to end through HTTP with the worker (valid, invalid rows, unknown id)
 - [ ] 4.3 Real smoke: start `bun run start` and `bun run worker`, upload with curl, read results, stop both
 
 ## 5. Verification
