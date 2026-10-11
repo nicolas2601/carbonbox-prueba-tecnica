@@ -58,3 +58,14 @@ it("Incomplete bytes live only under the temporary name", async () => {
   finally { release(); await saving; }
   expect(await readdir(storageDir)).toEqual(["file-1.csv"]);
 });
+
+it("The stream errors midway", async () => {
+  async function* broken(): AsyncIterable<Uint8Array> {
+    yield new Uint8Array([1]);
+    throw new Error("Stream failed");
+  }
+  const result = await storage.save(broken());
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toMatchObject({ code: "STORAGE_FAILURE" });
+  expect(await readdir(storageDir)).toEqual([]);
+});
