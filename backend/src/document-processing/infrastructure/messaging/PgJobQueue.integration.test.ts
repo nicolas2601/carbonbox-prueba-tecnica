@@ -21,3 +21,34 @@ it("Not yet available", async () => {
   await client.job.update({ where: { id: job.id }, data: { availableAt: new Date(NOW.getTime() + 1) } });
   expect(await queue.claim(NOW, VISIBILITY_MS)).toBeNull();
 });
+
+it("Two workers never take the same job", async () => {
+  await seedJob(client);
+  const claims = await Promise.all([queue.claim(NOW, VISIBILITY_MS), queue.claim(NOW, VISIBILITY_MS)]);
+  expect(claims.filter(Boolean)).toHaveLength(1);
+  expect(claims.filter(value => value === null)).toHaveLength(1);
+  expect((await client.job.findFirstOrThrow()).attempts).toBe(1);
+});
+it("Two jobs, two workers", async () => {
+  await seedJob(client, "u1");
+  await seedJob(client, "u2");
+  const claims = await Promise.all([queue.claim(NOW, VISIBILITY_MS), queue.claim(NOW, VISIBILITY_MS)]);
+  expect(claims.every(Boolean)).toBe(true);
+  expect(new Set(claims.map(value => value?.jobId)).size).toBe(2);
+});
+it("A row locked by another transaction is skipped", async () => {
+  const first = await seedJob(client, "u1");
+  const second = await seedJob(client, "u2");
+  let ready!: () => void;
+  let release!: () => void;
+  const locked = new Promise<void>(resolve => { ready = resolve; });
+  const resume = new Promise<void>(resolve => { release = resolve; });
+  const holding = client.$transaction(async tx => {
+    await tx.$queryRaw`SELECT id FROM jobs WHERE id = ${first.id} FOR UPDATE`;
+    ready();
+    await resume;
+  });
+  await locked;
+  try { expect((await queue.claim(NOW, VISIBILITY_MS))?.jobId).toBe(second.id); }
+  finally { release(); await holding; }
+});
