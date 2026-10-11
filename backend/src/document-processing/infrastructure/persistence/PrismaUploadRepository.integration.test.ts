@@ -48,6 +48,13 @@ it("A real foreign-key error bubbles and also rolls back", async () => {
   expect(await client.job.count()).toBe(0);
 });
 
+it("Truncation also verifies the connected database, not just the environment", async () => {
+  vi.spyOn(client, "$queryRaw").mockResolvedValueOnce([{ database: "document_processing" }]);
+  const truncate = vi.spyOn(client, "$executeRaw");
+  await expect(truncateTables(client)).rejects.toThrow("Refusing to truncate");
+  expect(truncate).not.toHaveBeenCalled();
+});
+
 it("The job insert fails after the new upload insert and rolls back", async () => {
   await repository.saveWithJob(upload("existing"), { uploadId: "existing" });
   const result = await repository.saveWithJob(upload("rollback"), { uploadId: "existing" });

@@ -10,13 +10,13 @@ export class PrismaUploadRepository implements IUploadRepository {
   async saveWithJob(upload: Upload, job: ProcessFileJob): Promise<Either<UploadPersistenceError, void>> {
     try {
       await this.client.$transaction(async tx => {
-      await tx.upload.create({ data: {
-        id: upload.id, fileName: upload.fileName.value, fileUrl: upload.fileUrl, userId: upload.userId,
-        status: upload.status, totalRows: upload.totalRows, processedRows: upload.processedRows,
-        failedRows: upload.failedRows, errorMessage: upload.errorMessage,
-        createdAt: upload.createdAt, updatedAt: upload.updatedAt,
-      } });
-      await tx.job.create({ data: { uploadId: job.uploadId, maxAttempts: this.maxAttempts, availableAt: upload.createdAt } });
+        await tx.upload.create({ data: {
+          id: upload.id, fileName: upload.fileName.value, fileUrl: upload.fileUrl, userId: upload.userId,
+          status: upload.status, totalRows: upload.totalRows, processedRows: upload.processedRows,
+          failedRows: upload.failedRows, errorMessage: upload.errorMessage,
+          createdAt: upload.createdAt, updatedAt: upload.updatedAt,
+        } });
+        await tx.job.create({ data: { uploadId: job.uploadId, maxAttempts: this.maxAttempts, availableAt: upload.createdAt } });
       });
       return Either.right(undefined);
     } catch (error) {

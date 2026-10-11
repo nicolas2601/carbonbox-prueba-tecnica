@@ -1,15 +1,6 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../../../generated/prisma/client";
-
-export function testDatabaseUrl(value: string | undefined): string {
-  if (!value) throw new Error("Set DATABASE_URL to the local carbonbox_test database");
-  const url = new URL(value);
-  if (url.pathname !== "/carbonbox_test" || !["localhost", "127.0.0.1", "[::1]"].includes(url.hostname)
-    || !["postgresql:", "postgres:"].includes(url.protocol)) {
-    throw new Error("Integration tests only operate on local carbonbox_test");
-  }
-  return value;
-}
+import { testDatabaseUrl } from "./testDatabaseUrl";
 
 export function integrationClient(): PrismaClient {
   const connectionString = testDatabaseUrl(process.env.DATABASE_URL);
@@ -18,5 +9,7 @@ export function integrationClient(): PrismaClient {
 
 export async function truncateTables(client: PrismaClient): Promise<void> {
   testDatabaseUrl(process.env.DATABASE_URL);
+  const database = await client.$queryRaw<{ database: string }[]>`SELECT current_database() AS database`;
+  if (database[0]?.database !== "carbonbox_test") throw new Error("Refusing to truncate a non-test database");
   await client.$executeRaw`TRUNCATE TABLE uploads CASCADE`;
 }

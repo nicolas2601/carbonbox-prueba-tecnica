@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { testDatabaseUrl } from "./database";
+import { testDatabaseUrl } from "./testDatabaseUrl";
 
 const testUrl = "postgresql://postgres:postgres@localhost:5432/carbonbox_test";
 it("Accepts only an explicit local test database", () => {
