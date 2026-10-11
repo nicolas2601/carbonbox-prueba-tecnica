@@ -17,7 +17,7 @@
 
 ## 4. Fenced processing
 
-- [ ] 4.1 `begin`: clears earlier rows and resets the upload
+- [x] 4.1 `begin`: clears earlier rows and resets the upload
 - [ ] 4.2 `saveBatch`: rows, counters and heartbeat, including an empty batch
 - [ ] 4.3 `finish`: upload and job closed together, rolled back together
 - [ ] 4.4 Stale token rejected by `begin`, `saveBatch` and `finish`; a slow current holder may continue
