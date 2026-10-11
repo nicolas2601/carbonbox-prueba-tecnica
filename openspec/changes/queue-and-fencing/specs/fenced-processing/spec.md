@@ -18,6 +18,10 @@ write nothing.
 - **WHEN** the job id and token are current but the claim uploadId differs from the locked job's uploadId
 - **THEN** begin, saveBatch, finish and fail return a left StaleClaimError and neither upload is changed
 
+#### Scenario: A payload names a different upload
+- **WHEN** saveBatch receives rows belonging to another upload or finish receives an Upload with another id
+- **THEN** the method returns a left StaleClaimError without changing rows, counters or job state
+
 ### Requirement: Beginning clears earlier work
 The system SHALL, in `begin`, delete the activity rows of the upload and set the upload to
 `PROCESSING` with zero counters and no error message.
