@@ -20,7 +20,7 @@
 ## 4. Worker
 
 - [x] 4.1 `Worker.runOnce`: idle, processed, stale claim
-- [ ] 4.2 Transient failure, exhausted attempts, permanent malformed file, queue failure while failing
+- [x] 4.2 Transient failure, exhausted attempts, permanent malformed file, queue failure while failing
 - [ ] 4.3 `Worker.run`: idle wait, early stop on abort, finish the current job
 - [ ] 4.4 Composition root and entry `FileProcessingWorker.ts`, clean exit on SIGTERM
 
