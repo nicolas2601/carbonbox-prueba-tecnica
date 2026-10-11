@@ -20,7 +20,7 @@
 
 ## 4. Pages
 
-- [ ] 4.1 Dashboard: totals, create link, refresh rule
+- [x] 4.1 Dashboard: totals, create link, refresh rule
 - [ ] 4.2 Dashboard: recent uploads and states
 - [ ] 4.3 List: table, badges, processed rows
 - [ ] 4.4 List: page in the URL, previous data, states, small screens
