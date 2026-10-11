@@ -3,6 +3,8 @@ import { ProcessFileCommandHandler } from "../ProcessFileCommandHandler";
 import { claim, now, createUpload, MemoryProcessingRepository, MemoryUploadReader, PreparedRecords, SequenceIds } from "./fakes";
 import { MemoryStorage, FixedClock } from "../../create-upload/tests/fakes";
 import type { CsvRecord } from "../../ports/ICsvRecordReader";
+import { Either } from "../../../../shared/domain/Either";
+import { StaleClaimError } from "../StaleClaimError";
 
 const header = ["category", "amount", "unit", "date"];
 const valid = ["Electricity", "150.5", "kWh", "2024-01-15"];
@@ -47,6 +49,49 @@ it("Progress is recorded per batch", async () => {
   const { repository, handler } = setup();
   await handler.execute({ claim });
   expect(repository.batches).toEqual([2, 4, 5].map(processedRows => ({ processedRows, failedRows: 0 })));
+});
+
+it.each([5, 3])("Another worker took over at the second batch: %s rows", async count => {
+  const { repository, handler } = setup(Array.from({ length: count }, () => valid));
+  const stale = new StaleClaimError("Another worker took over");
+  const original = repository.saveBatch.bind(repository);
+  const save = vi.spyOn(repository, "saveBatch").mockImplementationOnce(original).mockResolvedValueOnce(Either.left(stale));
+  const finish = vi.spyOn(repository, "finish");
+  const result = await handler.execute({ claim });
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toBe(stale);
+  expect(save).toHaveBeenCalledTimes(2);
+  expect(finish).not.toHaveBeenCalled();
+  expect(repository.rows).toHaveLength(2);
+});
+it("A stale claim at begin never opens the file", async () => {
+  const { repository, storage, handler } = setup();
+  const stale = new StaleClaimError("Expired before begin");
+  vi.spyOn(repository, "begin").mockResolvedValue(Either.left(stale));
+  const open = vi.spyOn(storage, "open");
+  const result = await handler.execute({ claim });
+  expect(result.value).toBe(stale);
+  expect(open).not.toHaveBeenCalled();
+  expect(repository.uploads.get("u1")?.status).toBe("PENDING");
+});
+it("A stale claim at finish is returned without retry", async () => {
+  const { repository, handler } = setup();
+  const stale = new StaleClaimError("Expired at finish");
+  const finish = vi.spyOn(repository, "finish").mockResolvedValue(Either.left(stale));
+  expect((await handler.execute({ claim })).value).toBe(stale);
+  expect(finish).toHaveBeenCalledTimes(1);
+  expect(repository.done).toBe(false);
+});
+it("An upload that disappeared invalidates the claim before any write", async () => {
+  const { repository, storage, handler } = setup();
+  repository.uploads.clear();
+  const begin = vi.spyOn(repository, "begin");
+  const open = vi.spyOn(storage, "open");
+  const result = await handler.execute({ claim });
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toBeInstanceOf(StaleClaimError);
+  expect(begin).not.toHaveBeenCalled();
+  expect(open).not.toHaveBeenCalled();
 });
 it.each([0, -1, 1.5, NaN])("Batch size must be a positive integer: %s", size => {
   expect(() => setup([], size)).toThrow("Batch size");

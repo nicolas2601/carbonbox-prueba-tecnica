@@ -51,6 +51,10 @@ reports that the claim is no longer current, and SHALL NOT retry that call.
 - **WHEN** the second batch write returns `StaleClaimError`
 - **THEN** the handler returns that left and no further write is attempted
 
+#### Scenario: The upload no longer exists
+- **WHEN** the upload reader returns null for the claim's uploadId
+- **THEN** the handler returns a left StaleClaimError without beginning processing or opening the file
+
 ### Requirement: Redelivered jobs are idempotent
 The system SHALL finish the job without reading the file when the upload is already `COMPLETED`
 or `FAILED`, and SHALL reprocess from zero when it is `PROCESSING`.
