@@ -2,6 +2,8 @@ import { expect, it, vi } from "vitest";
 import { CreateUploadCommandHandler } from "../CreateUploadCommandHandler";
 import { MemoryStorage, MemoryUploadRepository, FixedClock, FixedIdGenerator } from "./fakes";
 import { InvalidFileNameError } from "../../../domain/errors/InvalidFileNameError";
+import { Either } from "../../../../shared/domain/Either";
+import { StorageFailureError } from "../StorageFailureError";
 
 const now = new Date("2024-01-15T00:00:00Z");
 async function* stream(): AsyncIterable<Uint8Array> { yield new Uint8Array([1, 2, 3]); }
@@ -41,4 +43,17 @@ it.each(["report.txt", "../secret.csv"])("A non CSV or unsafe name: %s", async n
   expect(result.value).toBeInstanceOf(InvalidFileNameError);
   expect(save).not.toHaveBeenCalled();
   expect(persist).not.toHaveBeenCalled();
+});
+
+it("Storage fails", async () => {
+  const { storage, repository, handler } = setup();
+  const error = new StorageFailureError("Storage full");
+  vi.spyOn(storage, "save").mockResolvedValue(Either.left(error));
+  const persist = vi.spyOn(repository, "saveWithJob");
+  const result = await handler.execute(command());
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toBe(error);
+  expect(persist).not.toHaveBeenCalled();
+  expect(repository.uploads).toEqual([]);
+  expect(repository.jobs).toEqual([]);
 });

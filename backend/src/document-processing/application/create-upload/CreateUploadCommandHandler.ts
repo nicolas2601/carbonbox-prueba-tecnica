@@ -15,7 +15,7 @@ export class CreateUploadCommandHandler {
     const name = FileName.create(command.fileName);
     if (name.isLeft()) return Either.left(name.value);
     const stored = await this.storage.save(command.stream);
-    if (stored.isLeft()) throw stored.value;
+    if (stored.isLeft()) return Either.left(stored.value);
     const upload = Upload.create({ id: this.ids.next(), fileName: name.value, fileUrl: stored.value,
       userId: command.userId, now: this.clock.now() });
     await this.repository.saveWithJob(upload, { uploadId: upload.id });
