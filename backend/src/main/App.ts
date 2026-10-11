@@ -7,6 +7,7 @@ import { registerErrorHandlers } from "../document-processing/presentation/http/
 import { registerUploadRoutes } from "../document-processing/presentation/http/registerUploadRoutes";
 import { HEALTH_SCHEMA, registerApiSchemas } from "../document-processing/presentation/http/responseSchemas";
 import { registerDocs } from "../document-processing/presentation/http/registerDocs";
+import { HTTP_LOG_REDACTION } from "../document-processing/presentation/http/redactSecrets";
 
 const BYTES_PER_MB = 1024 * 1024;
 
@@ -39,7 +40,7 @@ export class App {
     return server;
   }
 
-  private loggerOptions(): { level: string } | false {
-    return this.settings.env === "test" ? false : { level: this.settings.logLevel };
+  private loggerOptions(): { level: string; redact: string[] } | false {
+    return this.settings.env === "test" ? false : { level: this.settings.logLevel, redact: HTTP_LOG_REDACTION };
   }
 }

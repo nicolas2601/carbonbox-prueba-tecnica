@@ -1,11 +1,22 @@
 import type { FastifyError, FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { DomainError } from "../../../shared/domain/DomainError";
 import { errorResponse } from "./errorResponse";
+import { redactSecrets } from "./redactSecrets";
+
+function redactedCause(cause: unknown): unknown {
+  if (typeof cause === "string") return redactSecrets(cause);
+  if (!(cause instanceof Error)) return { type: "NonError" };
+  return {
+    type: cause.name,
+    message: redactSecrets(cause.message),
+    stack: redactSecrets(cause.stack ?? ""),
+  };
+}
 
 export function sendError(request: FastifyRequest, reply: FastifyReply, cause: unknown,
   code = cause instanceof DomainError ? cause.code : "INTERNAL_ERROR", message = cause instanceof Error ? cause.message : "Internal server error"): FastifyReply {
   const response = errorResponse(code, message, request.id);
-  if (response.status >= 500) request.log.error({ err: cause, requestId: request.id }, "API request failed");
+  if (response.status >= 500) request.log.error({ err: redactedCause(cause), requestId: request.id }, "API request failed");
   return reply.code(response.status).send(response.body);
 }
 
