@@ -11,7 +11,7 @@
 
 ## 3. PostgreSQL adapter
 
-- [ ] 3.1 `findById` and `list` with order and tie breaker against the real database
+- [x] 3.1 `findById` and `list` with order and tie breaker against the real database
 - [ ] 3.2 `results`: only own rows, ordering, number and date formats, large set
 - [ ] 3.3 `stats` in one grouped query
 
