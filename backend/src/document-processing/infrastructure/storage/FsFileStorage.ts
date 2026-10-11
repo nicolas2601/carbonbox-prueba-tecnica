@@ -21,6 +21,9 @@ async function ensureAbsent(path: string): Promise<void> {
 }
 
 export class FsFileStorage implements IFileStorage {
+  open(_key: string): AsyncIterable<Uint8Array> {
+    throw new Error("File reading is not implemented yet (M4b2)");
+  }
   constructor(private readonly directory: string, private readonly ids: IIdGenerator) {}
   async save(stream: AsyncIterable<Uint8Array>): Promise<Either<StorageFailureError, string>> {
     const id = this.ids.next();
