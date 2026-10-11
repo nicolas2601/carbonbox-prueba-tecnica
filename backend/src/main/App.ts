@@ -6,6 +6,7 @@ import type { ApiServices } from "../document-processing/presentation/http/ApiSe
 import { registerErrorHandlers } from "../document-processing/presentation/http/errorHandlers";
 import { registerUploadRoutes } from "../document-processing/presentation/http/registerUploadRoutes";
 import { HEALTH_SCHEMA, registerApiSchemas } from "../document-processing/presentation/http/responseSchemas";
+import { registerDocs } from "../document-processing/presentation/http/registerDocs";
 
 const BYTES_PER_MB = 1024 * 1024;
 
@@ -13,9 +14,10 @@ export class App {
   constructor(private readonly settings: IConvictProps, private readonly services?: ApiServices) {}
 
   async build(): Promise<FastifyInstance> {
-    const server = Fastify({ logger: this.loggerOptions() });
+    const server = Fastify({ logger: this.loggerOptions(), routerOptions: { ignoreTrailingSlash: true } });
     registerErrorHandlers(server);
     registerApiSchemas(server);
+    await registerDocs(server);
 
     await server.register(cors, { origin: this.settings.corsOrigin });
     await server.register(multipart, {
@@ -25,7 +27,7 @@ export class App {
       limits: { fileSize: this.settings.maxUploadMb * BYTES_PER_MB + 1, files: 1 },
     });
 
-    server.get("/health", { schema: { response: { 200: HEALTH_SCHEMA } } }, async () => ({ status: "ok" }));
+    server.get("/health", { schema: { tags: ["Health"], response: { 200: HEALTH_SCHEMA } } }, async () => ({ status: "ok" }));
     if (this.services) registerUploadRoutes(server, this.services, this.settings.maxUploadMb * BYTES_PER_MB);
 
     return server;

@@ -17,7 +17,7 @@
 ## 3. Documentation
 
 - [x] 3.1 Route schemas for all endpoints and the error envelope
-- [ ] 3.2 OpenAPI document and page
+- [x] 3.2 OpenAPI document and page
 
 ## 4. Process and end to end
 

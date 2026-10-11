@@ -4,6 +4,7 @@ import type { CreateUploadCommandHandler } from "../../application/create-upload
 import type { CreateUploadResult } from "../../application/create-upload/CreateUploadCommand";
 import { MultipartUpload } from "./MultipartUpload";
 import { MissingFileError, RequestValidationError } from "./RequestValidationError";
+import { FILE_PART_NAME } from "./uploadRouteSchema";
 
 // The exercise deliberately assumes a single user and has no authentication.
 export const ANONYMOUS_USER_ID = "anonymous";
@@ -26,7 +27,7 @@ export class UploadEndpoint {
     let next = await parts.next();
     while (!next.done && next.value.type === "field") next = await parts.next();
     if (next.done) return Either.left(new MissingFileError());
-    if (next.value.type !== "file" || next.value.fieldname !== "file") {
+    if (next.value.type !== "file" || next.value.fieldname !== FILE_PART_NAME) {
       if (next.value.type === "file") next.value.file.destroy();
       await parts.return?.();
       return Either.left(new RequestValidationError("File part must be named file"));
