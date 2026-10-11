@@ -1,7 +1,17 @@
-import { expect, it } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
 import { StaleClaimError } from "../StaleClaimError";
 import { claim, createUpload, MemoryProcessingRepository, MemoryUploadReader, PreparedRecords } from "./fakes";
 import { MemoryStorage } from "../../create-upload/tests/fakes";
+import { Either } from "../../../../shared/domain/Either";
+import { FileName } from "../../../domain/value-objects/FileName";
+import { InvalidFileNameError } from "../../../domain/errors/InvalidFileNameError";
+
+afterEach(() => { vi.restoreAllMocks(); });
+it("An invalid fixture is rejected instead of creating an unsafe fake upload", () => {
+  const error = new InvalidFileNameError("Broken fixture");
+  vi.spyOn(FileName, "create").mockReturnValueOnce(Either.left(error));
+  expect(() => createUpload()).toThrow(error);
+});
 
 it("A stale claim has a stable code", () => {
   expect(new StaleClaimError("Claim expired")).toMatchObject({ code: "STALE_CLAIM", message: "Claim expired" });

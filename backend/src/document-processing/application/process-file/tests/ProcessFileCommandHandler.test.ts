@@ -75,6 +75,14 @@ it.each(["start", "complete"] as const)("Internal aggregate failure is not silen
   await expect(handler.execute({ claim })).rejects.toBe(error);
 });
 
+it("A file that disappeared while opening is not finalized as failed", async () => {
+  const { repository, storage, handler } = setup();
+  storage.files.clear();
+  await expect(handler.execute({ claim })).rejects.toThrow("Stored file is missing");
+  expect(repository.done).toBe(false);
+  expect(repository.uploads.get("u1")?.status).toBe("PROCESSING");
+});
+
 it.each(["COMPLETED", "FAILED"] as const)("Already terminal: %s", async status => {
   const { repository, storage, handler } = setup();
   const stored = Upload.reconstitute({ ...uploadProps(createUpload()), status, totalRows: 10,
