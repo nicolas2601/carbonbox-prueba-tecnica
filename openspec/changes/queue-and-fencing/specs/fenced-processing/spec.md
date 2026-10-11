@@ -14,6 +14,10 @@ write nothing.
 - **WHEN** the lease end has passed but nobody reclaimed the job and the holder calls `saveBatch`
 - **THEN** the result is a right
 
+#### Scenario: A claim names a different upload
+- **WHEN** the job id and token are current but the claim uploadId differs from the locked job's uploadId
+- **THEN** begin, saveBatch, finish and fail return a left StaleClaimError and neither upload is changed
+
 ### Requirement: Beginning clears earlier work
 The system SHALL, in `begin`, delete the activity rows of the upload and set the upload to
 `PROCESSING` with zero counters and no error message.

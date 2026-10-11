@@ -127,3 +127,33 @@ it("A failed DEAD update rolls back the upload failure", async () => {
     expect((await client.job.findFirstOrThrow()).claimToken).toBe(claim.claimToken);
   } finally { await client.$executeRaw`ALTER TABLE jobs DROP CONSTRAINT test_reject_dead`; }
 });
+
+it("Old token cannot fail a reclaimed job", async () => {
+  const job = await seedJob(client);
+  const first = await queue.claim(NOW, VISIBILITY_MS);
+  if (!first) throw new Error("Expected claim");
+  const later = new Date(NOW.getTime() + VISIBILITY_MS + 1);
+  await queue.claim(later, VISIBILITY_MS);
+  const before = await client.job.findUniqueOrThrow({ where: { id: job.id } });
+  const result = await queue.fail(first, "Stale failure", later, true);
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toMatchObject({ code: "STALE_CLAIM" });
+  expect(await client.job.findUniqueOrThrow({ where: { id: job.id } })).toEqual(before);
+  expect((await client.upload.findFirstOrThrow()).status).toBe("PENDING");
+});
+it("A claim for a different upload cannot fail either job", async () => {
+  await seedJob(client, "u1");
+  await seedJob(client, "u2");
+  const claim = await queue.claim(NOW, VISIBILITY_MS);
+  if (!claim) throw new Error("Expected claim");
+  const jobs = await client.job.findMany({ orderBy: { id: "asc" } });
+  const other = claim.uploadId === "u1" ? "u2" : "u1";
+  const result = await queue.fail({ ...claim, uploadId: other }, "Forged upload", NOW, true);
+  expect(result.isLeft()).toBe(true);
+  expect(await client.job.findMany({ orderBy: { id: "asc" } })).toEqual(jobs);
+});
+it("A missing job or cleared token is stale", async () => {
+  expect((await queue.fail({ jobId: "missing", uploadId: "u1", claimToken: "old" }, "Failure", NOW, false)).isLeft()).toBe(true);
+  const job = await seedJob(client);
+  expect((await queue.fail({ jobId: job.id, uploadId: "u1", claimToken: "old" }, "Failure", NOW, false)).isLeft()).toBe(true);
+});

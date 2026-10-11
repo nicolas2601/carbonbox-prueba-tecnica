@@ -13,7 +13,7 @@
 - [x] 3.3 `claim`: live lease hidden, expired lease reclaimed with a new token
 - [x] 3.4 `fail`: retry with doubling delay
 - [x] 3.5 `fail`: dead on exhausted attempts or permanent, upload failed in one transaction
-- [ ] 3.6 `fail`: stale token rejected
+- [x] 3.6 `fail`: stale token rejected
 
 ## 4. Fenced processing
 
