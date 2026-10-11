@@ -1,6 +1,6 @@
 ## 0. Polish found in the M6 review
 
-- [ ] 0.1 Uploads list on narrow screens: stacked rows (name, status badge, date) so the status is visible without horizontal scrolling at 360 px; the full table stays from 640 px
+- [x] 0.1 Uploads list on narrow screens: stacked rows (name, status badge, date) so the status is visible without horizontal scrolling at 360 px; the full table stays from 640 px
 
 ## 1. Upload page
 

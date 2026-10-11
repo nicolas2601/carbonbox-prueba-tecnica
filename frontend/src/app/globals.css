@@ -125,3 +125,17 @@ p { text-wrap: pretty; max-width: 70ch; }
 @media (hover: hover) and (pointer: fine) { .file-link:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; } }
 .uploads-table[data-detailed="true"] { min-width: 760px; }
 .table-action { display: inline-flex; align-items: center; min-height: 40px; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 639px) {
+  .uploads-table, .uploads-table[data-detailed="true"] { display: block; min-width: 0; }
+  .uploads-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .uploads-table tbody { display: block; }
+  .uploads-table .data-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; padding: 16px; border-top: 1px solid var(--line); }
+  .uploads-table .data-row:first-child { border-top: none; }
+  .uploads-table td { min-width: 0; padding: 0; border: none; }
+  .uploads-table [data-column="file"] { grid-column: 1 / -1; }
+  .uploads-table [data-column="status"] { grid-column: 1; }
+  .uploads-table [data-column="date"] { grid-column: 2; align-self: center; font-size: 12px; color: var(--ink-muted); }
+  .uploads-table [data-column="processed"], .uploads-table [data-column="actions"] { display: none; }
+  .uploads-table .file-link { max-width: 100%; }
+}
