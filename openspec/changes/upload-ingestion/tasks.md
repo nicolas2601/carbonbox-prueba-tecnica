@@ -15,4 +15,4 @@
 ## 3. Verification
 
 - [x] 3.1 `bun run typecheck` and `bun run test` pass, coverage not below the baseline
-- [ ] 3.2 No `any`, files under 300 lines, functions under 40 lines, ports import no framework
+- [x] 3.2 No `any`, files under 300 lines, functions under 40 lines, ports import no framework
