@@ -8,7 +8,7 @@
 
 ## 3. Job queue
 
-- [ ] 3.1 `claim`: one job, none, not yet available
+- [x] 3.1 `claim`: one job, none, not yet available
 - [ ] 3.2 `claim`: concurrent callers never share a job
 - [ ] 3.3 `claim`: live lease hidden, expired lease reclaimed with a new token
 - [ ] 3.4 `fail`: retry with doubling delay
