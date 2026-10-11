@@ -16,6 +16,11 @@ it("Loads the specified self-hosted fonts with swap", () => {
   for (const name of ["Fraunces", "Instrument_Sans", "JetBrains_Mono"]) expect(layout).toContain(`${name}(`);
   expect(layout.match(/display: "swap"/g)).toHaveLength(3);
 });
+it("Defines the visible keyboard focus ring", () => {
+  expect(css).toContain(":focus-visible");
+  expect(css).toContain("outline: 2px solid var(--accent)");
+  expect(css).toContain("outline-offset: 2px");
+});
 function sourceFiles(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
     const file = join(directory, entry.name);
