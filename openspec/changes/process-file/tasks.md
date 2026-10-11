@@ -1,7 +1,7 @@
 ## 1. Ports and domain
 
 - [x] 1.1 `JobClaim`, `StaleClaimError` and the ports with in-memory fakes
-- [ ] 1.2 `Upload.complete` with optional summary
+- [x] 1.2 `Upload.complete` with optional summary
 
 ## 2. ProcessFile handler
 

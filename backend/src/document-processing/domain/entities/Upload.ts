@@ -42,12 +42,12 @@ export class Upload {
   private validCounters(values: number[]): boolean {
     return values.every(value => Number.isSafeInteger(value) && value >= 0);
   }
-  complete(counters: { totalRows: number; processedRows: number; failedRows: number }, now: Date): Either<InvalidStatusTransitionError | InvalidProgressError, void> {
+  complete(counters: { totalRows: number; processedRows: number; failedRows: number }, now: Date, summary?: string): Either<InvalidStatusTransitionError | InvalidProgressError, void> {
     if (this.status !== "PROCESSING") return Either.left(new InvalidStatusTransitionError(this.status, "COMPLETED"));
     if (!this.validCounters(Object.values(counters)) || counters.processedRows + counters.failedRows !== counters.totalRows) {
       return Either.left(new InvalidProgressError("Processed and failed rows must equal total rows"));
     }
-    Object.assign(this.props, counters, { status: "COMPLETED", updatedAt: now });
+    Object.assign(this.props, counters, { status: "COMPLETED", updatedAt: now, errorMessage: summary ?? null });
     return Either.right(undefined);
   }
   get id(): string { return this.props.id; }

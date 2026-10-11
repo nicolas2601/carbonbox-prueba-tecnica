@@ -48,6 +48,13 @@ it("Starting again after a retry", () => {
   expect(upload.errorMessage).toBeNull();
 });
 
+it.each(["2 rows rejected", undefined])("Completing with an optional summary: %s", summary => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  expect(upload.complete({ totalRows: 5, processedRows: 3, failedRows: 2 }, now, summary).isRight()).toBe(true);
+  expect(upload.errorMessage).toBe(summary ?? null);
+});
+
 it.each(["COMPLETED", "FAILED"] as const)("A terminal upload cannot change: %s", status => {
   const upload = Upload.reconstitute({ ...snapshot(pending()), status,
     totalRows: 10, processedRows: 8, failedRows: 2, errorMessage: "original" });
