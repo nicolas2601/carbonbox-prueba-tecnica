@@ -145,3 +145,9 @@ p { text-wrap: pretty; max-width: 70ch; }
 .dropzone[data-dragging="true"] { border-color: var(--accent); background: var(--paper); }
 .dropzone[data-disabled="true"] { cursor: not-allowed; opacity: 0.65; }
 .selected-file { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+
+.back-link { display: inline-flex; align-items: center; min-height: 40px; color: var(--accent); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.upload-form { max-width: 720px; }
+.progress-track { position: relative; height: 8px; border-radius: 4px; overflow: hidden; background: var(--line); }
+.progress-fill { display: block; width: 100%; height: 100%; background: var(--accent); transform-origin: left; transition: transform var(--feedback) var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }

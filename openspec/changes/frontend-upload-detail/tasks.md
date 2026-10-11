@@ -6,7 +6,7 @@
 
 - [x] 1.1 File validation function (extension, empty, size) with tests
 - [x] 1.2 Dropzone component: select, drop, remove, several files, keyboard
-- [ ] 1.3 Upload action: progress, controls disabled, finishing label, redirect and invalidation
+- [x] 1.3 Upload action: progress, controls disabled, finishing label, redirect and invalidation
 - [ ] 1.4 Cancel with abort
 - [ ] 1.5 Server and network errors, request id
 

@@ -1,0 +1,23 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/Button";
+import { ProgressBar } from "@/components/ProgressBar";
+import { Dropzone } from "./Dropzone";
+import { useUploadAction, type Uploader } from "./useUploadAction";
+
+export function UploadForm({ uploader }: { uploader?: Uploader }) {
+  const [file, setFile] = useState<File | null>(null);
+  const { mutation, progress } = useUploadAction(uploader);
+  return <div className="space-y-10">
+    <header><Link href="/uploads" className="back-link">Back to uploads</Link>
+      <h1 className="page-title font-display mt-4">Upload an activity file</h1>
+      <p className="mt-3 text-sm text-ink-muted">Choose your CSV. We&apos;ll check every row and keep the valid data.</p></header>
+    <div className="upload-form space-y-6">
+      <Dropzone file={file} onChange={setFile} disabled={mutation.isPending} />
+      {mutation.isPending && <ProgressBar label={progress === 100 ? "Finishing" : "Uploading"} value={progress} />}
+      <Button tone="primary" disabled={!file || mutation.isPending} onClick={() => { if (file) mutation.mutate(file); }}>Upload file</Button>
+    </div>
+  </div>;
+}
