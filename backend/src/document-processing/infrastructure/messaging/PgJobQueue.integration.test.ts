@@ -95,3 +95,35 @@ it("First failure, second failure doubles the delay, and retry is not claimable 
   expect((await queue.fail(second, "Second failure", later, false)).value).toBe("RETRY");
   expect((await client.job.findUniqueOrThrow({ where: { id: job.id } })).availableAt).toEqual(new Date(later.getTime() + 2000));
 });
+
+it("Attempts exhausted", async () => {
+  await seedJob(client);
+  let time = NOW;
+  for (const attempt of [1, 2, 3]) {
+    const claim = await queue.claim(time, VISIBILITY_MS);
+    if (!claim) throw new Error("Expected claim");
+    expect((await queue.fail(claim, "Repeated failure", time, false)).value).toBe(attempt === 3 ? "DEAD" : "RETRY");
+    time = (await client.job.findFirstOrThrow()).availableAt;
+  }
+  expect(await client.job.findFirstOrThrow()).toMatchObject({ status: "DEAD", attempts: 3, claimToken: null, lockedUntil: null });
+  expect(await client.upload.findFirstOrThrow()).toMatchObject({ status: "FAILED", errorMessage: "Repeated failure" });
+  expect(await queue.claim(new Date(time.getTime() + VISIBILITY_MS), VISIBILITY_MS)).toBeNull();
+});
+it("Permanent failure", async () => {
+  await seedJob(client);
+  const claim = await queue.claim(NOW, VISIBILITY_MS);
+  if (!claim) throw new Error("Expected claim");
+  expect((await queue.fail(claim, "Permanent failure", NOW, true)).value).toBe("DEAD");
+  expect(await client.upload.findFirstOrThrow()).toMatchObject({ status: "FAILED", errorMessage: "Permanent failure", updatedAt: NOW });
+});
+it("A failed DEAD update rolls back the upload failure", async () => {
+  await seedJob(client);
+  const claim = await queue.claim(NOW, VISIBILITY_MS);
+  if (!claim) throw new Error("Expected claim");
+  await client.$executeRaw`ALTER TABLE jobs ADD CONSTRAINT test_reject_dead CHECK (status <> 'DEAD')`;
+  try {
+    await expect(queue.fail(claim, "Permanent failure", NOW, true)).rejects.toThrow();
+    expect((await client.upload.findFirstOrThrow()).status).toBe("PENDING");
+    expect((await client.job.findFirstOrThrow()).claimToken).toBe(claim.claimToken);
+  } finally { await client.$executeRaw`ALTER TABLE jobs DROP CONSTRAINT test_reject_dead`; }
+});
