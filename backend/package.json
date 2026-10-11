@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:coverage:all": "vitest run --coverage --coverage.reportsDirectory=coverage/unit && vitest run --config config/vitest.coverage.ts --coverage --coverage.reportsDirectory=coverage/all",
     "test:watch": "vitest",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",

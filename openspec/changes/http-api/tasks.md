@@ -27,5 +27,5 @@
 
 ## 5. Verification
 
-- [ ] 5.1 `bun run typecheck`, `bun run test` and `bun run test:integration` pass
+- [x] 5.1 `bun run typecheck`, `bun run test` and `bun run test:integration` pass
 - [ ] 5.2 No `any`, files under 300 lines, functions under 40 lines
