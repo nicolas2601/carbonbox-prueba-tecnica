@@ -20,6 +20,18 @@ it("A valid CSV creates one pending upload and job with Location", async () => {
     expect(await client.job.count()).toBe(1);
   } finally { await api.close(); }
 });
+
+it.each(["report.txt", "../x.csv", "a\\x.csv"])("Invalid original filename is rejected: %s", async filename => {
+  const api = await apiHarness();
+  try {
+    const response = await api.server.inject({ method: "POST", url: "/api/v1/uploads", ...multipart([{ name: "file", filename, data: csv }]) });
+    expect(response.statusCode).toBe(400);
+    expect(response.json().error.code).toBe("INVALID_FILE_NAME");
+    expect(await client.upload.count()).toBe(0);
+    expect(await client.job.count()).toBe(0);
+    expect(await readdir(api.runtime.settings.storageDir)).toEqual([]);
+  } finally { await api.close(); }
+});
 it.each(["missing", "json", "two", "wrong-field"])("Invalid multipart structure: %s", async type => {
   const api = await apiHarness();
   try {

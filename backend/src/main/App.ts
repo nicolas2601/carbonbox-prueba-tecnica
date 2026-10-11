@@ -17,6 +17,8 @@ export class App {
 
     await server.register(cors, { origin: this.settings.corsOrigin });
     await server.register(multipart, {
+      // Preserve the original metadata so FileName rejects paths instead of accepting a cleaned basename.
+      preservePath: true,
       limits: { fileSize: this.settings.maxUploadMb * BYTES_PER_MB, files: 1 },
     });
 
