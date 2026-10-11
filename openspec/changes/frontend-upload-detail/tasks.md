@@ -12,7 +12,7 @@
 
 ## 2. Detail page
 
-- [ ] 2.1 Header, back button, not found and error states
+- [x] 2.1 Header, back button, not found and error states
 - [ ] 2.2 Waiting and working panels with the row counter
 - [ ] 2.3 Polling transition, live announcement, crossfade and reduced motion
 - [ ] 2.4 Finished panel: counts and paginated results table

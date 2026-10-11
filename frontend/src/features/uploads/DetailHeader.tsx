@@ -1,0 +1,14 @@
+import type { Upload } from "@/lib/api/models";
+import { dateFormatter } from "@/lib/format";
+import { StatusBadge } from "@/components/StatusBadge";
+
+export function DetailHeader({ upload }: { upload: Upload }) {
+  return <header className="space-y-4">
+    <h1 className="page-title font-display break-all">{upload.fileName}</h1>
+    <div className="flex flex-wrap items-center gap-4 text-sm text-ink-muted">
+      <StatusBadge status={upload.status} />
+      <time dateTime={upload.createdAt}>{dateFormatter.format(new Date(upload.createdAt))}</time>
+    </div>
+    <p className="break-all font-mono text-xs text-ink-muted">{upload.id}</p>
+  </header>;
+}
