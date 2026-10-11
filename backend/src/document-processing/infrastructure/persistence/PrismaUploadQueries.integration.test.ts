@@ -41,3 +41,33 @@ it("Empty list and a page beyond the last are not coerced", async () => {
   await uploads(1);
   expect(await queries.list({ page: 10, limit: 10 })).toEqual({ data: [], total: 1, page: 10, limit: 10 });
 });
+
+it("Results use only own rows ordered by date then id with number and UTC date formats", async () => {
+  await uploads(2);
+  await client.activityData.createMany({ data: [
+    { id: "b", uploadId: "u000", category: "Later", amount: 1378.8, unit: "kWh", date: new Date("2024-04-11T00:00:00Z") },
+    { id: "c", uploadId: "u000", category: "Second tie", amount: 20, unit: "m3", date: new Date("2024-04-10T00:00:00Z") },
+    { id: "a", uploadId: "u000", category: "First tie", amount: 10, unit: "m3", date: new Date("2024-04-10T00:00:00Z") },
+    { id: "other", uploadId: "u001", category: "Other upload", amount: 100, unit: "kg", date: new Date("2024-01-01T00:00:00Z") },
+  ] });
+  const result = await queries.results("u000", { page: 1, limit: 10 });
+  expect(result.total).toBe(3);
+  expect(result.data.map(row => row.category)).toEqual(["First tie", "Second tie", "Later"]);
+  expect(result.data[2]).toEqual({ category: "Later", amount: 1378.8, unit: "kWh", date: "2024-04-11" });
+});
+it("Existing upload without rows returns an empty page", async () => {
+  await uploads(1);
+  expect(await queries.results("u000", { page: 1, limit: 10 })).toEqual({ data: [], total: 0, page: 1, limit: 10 });
+});
+it("Large result set returns page50 of5000 rows with a stable tie breaker", async () => {
+  await uploads(1);
+  await client.activityData.createMany({ data: Array.from({ length: 5000 }, (_, index) => ({
+    id: `r${String(index).padStart(4, "0")}`, uploadId: "u000", category: `r${String(index).padStart(4, "0")}`,
+    amount: index + 1, unit: "m3", date: new Date("2024-04-11T00:00:00Z"),
+  })).reverse() });
+  const result = await queries.results("u000", { page: 50, limit: 100 });
+  expect(result).toMatchObject({ total: 5000, page: 50, limit: 100 });
+  expect(result.data).toHaveLength(100);
+  expect(result.data[0]).toMatchObject({ category: "r4900", amount: 4901, date: "2024-04-11" });
+  expect(result.data[99]?.category).toBe("r4999");
+});
