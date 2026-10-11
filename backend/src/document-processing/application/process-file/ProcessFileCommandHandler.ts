@@ -51,7 +51,7 @@ export class ProcessFileCommandHandler {
     const counters = { totalRows: state.processedRows + state.failedRows,
       processedRows: state.processedRows, failedRows: state.failedRows };
     const finished = state.failure ? upload.fail(state.failure, this.clock.now(), state.failedRows > 0 ? counters : undefined) :
-      upload.complete(counters, this.clock.now(), summarizeRowErrors(state.errors, ERROR_SUMMARY_LIMIT) ?? undefined);
+      upload.complete(counters, this.clock.now(), summarizeRowErrors(state.errors, ERROR_SUMMARY_LIMIT, state.failedRows) ?? undefined);
     if (finished.isLeft()) throw finished.value;
     return this.repository.finish(claim, upload);
   }
@@ -77,7 +77,7 @@ export class ProcessFileCommandHandler {
     const validated = validateRow(record.fields, columns, record.line);
     if (validated.isLeft()) {
       state.failedRows++;
-      state.errors.push(validated.value);
+      if (state.errors.length < ERROR_SUMMARY_LIMIT) state.errors.push(validated.value);
       return;
     }
     const row = ActivityData.create({ ...validated.value, id: this.ids.next(), uploadId: state.upload.id });
@@ -89,7 +89,8 @@ export class ProcessFileCommandHandler {
     const progress = { processedRows: state.processedRows, failedRows: state.failedRows };
     const saved = await this.repository.saveBatch(claim, state.rows, progress, this.clock.now());
     if (saved.isLeft()) return saved;
-    state.upload.recordProgress(progress, this.clock.now());
+    // Counts are validated locally and this aggregate remains PROCESSING until finish.
+    void state.upload.recordProgress(progress, this.clock.now());
     state.rows = [];
     return Either.right(undefined);
   }

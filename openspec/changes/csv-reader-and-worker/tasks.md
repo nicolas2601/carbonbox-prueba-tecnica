@@ -7,7 +7,7 @@
 - [x] 2.1 `ILogger` and the JSON console adapter
 - [x] 2.2 `CreateUpload` logs a failed cleanup (left and throw)
 - [x] 2.3 `summarizeRowErrors` accepts the real total
-- [ ] 2.4 `ProcessFile` keeps only the first details and the real count
+- [x] 2.4 `ProcessFile` keeps only the first details and the real count
 
 ## 3. CSV reader
 

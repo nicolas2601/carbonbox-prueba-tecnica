@@ -11,6 +11,7 @@ import { ActivityData } from "../../../domain/entities/ActivityData";
 import { InvalidActivityDataError } from "../../../domain/errors/InvalidActivityDataError";
 import { InvalidProgressError } from "../../../domain/errors/InvalidProgressError";
 import { InvalidStatusTransitionError } from "../../../domain/errors/InvalidStatusTransitionError";
+import * as summaries from "../../csv/summarizeRowErrors";
 
 afterEach(() => { vi.restoreAllMocks(); });
 
@@ -205,6 +206,17 @@ it("Rejected-row detail is capped at ten", async () => {
   expect(summary).toContain("12 rows rejected");
   expect(summary?.match(/line \d+:/g)).toHaveLength(10);
   expect(summary).toContain("2 more omitted");
+});
+
+it("Many rejected rows retain only ten details and pass the true total", async () => {
+  const summarize = vi.spyOn(summaries, "summarizeRowErrors");
+  const bad = ["Water", "0", "m3", "2024-01-15"];
+  const { repository, handler } = setup([valid, ...Array.from({ length: 1000 }, () => bad)]);
+  await handler.execute({ claim });
+  expect(summarize.mock.lastCall?.[0]).toHaveLength(10);
+  expect(summarize.mock.lastCall?.[2]).toBe(1000);
+  expect(repository.uploads.get("u1")).toMatchObject({ failedRows: 1000, processedRows: 1 });
+  expect(repository.uploads.get("u1")?.errorMessage).toContain("990 more omitted");
 });
 
 it("Missing header column", async () => {
