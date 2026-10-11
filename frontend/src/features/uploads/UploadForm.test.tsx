@@ -5,6 +5,7 @@ import { uploadKeys } from "@/lib/api/uploadKeys";
 import type { CreatedUpload } from "@/lib/api/models";
 import { queryHarness } from "@/tests/queryHarness";
 import { UploadForm } from "./UploadForm";
+import { ApiError } from "@/lib/api/ApiError";
 
 const { push } = vi.hoisted(() => ({ push: vi.fn() }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
@@ -35,4 +36,46 @@ it("Uses uploader progress, disables file controls, finishes and invalidates bef
   expect(harness.client.getQueryState(uploadKeys.stats())?.isInvalidated).toBe(true);
   expect(uploader).toHaveBeenCalledOnce();
   harness.client.clear();
+});
+it("Aborts a transfer, keeps selection and ignores late progress or responses", async () => {
+  push.mockClear();
+  let signal: AbortSignal | undefined;
+  let progress: (percent: number) => void = () => {};
+  let resolve: (value: CreatedUpload) => void = () => {};
+  const pending = new Promise<CreatedUpload>(done => { resolve = done; });
+  const uploader = vi.fn((_file: File, update?: (percent: number) => void, abort?: AbortSignal) => {
+    signal = abort; progress = update!; return pending;
+  });
+  render(<UploadForm uploader={uploader} />, { wrapper: queryHarness().wrapper });
+  const user = userEvent.setup();
+  await user.upload(screen.getByLabelText("Choose a CSV file"), new File(["data"], "data.csv"));
+  await user.click(screen.getByRole("button", { name: "Upload file" }));
+  await screen.findByRole("progressbar");
+  act(() => progress(35));
+  await user.click(screen.getByRole("button", { name: "Cancel upload" }));
+  expect(signal?.aborted).toBe(true);
+  expect(screen.getByText("data.csv")).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Upload file" })).toBeEnabled();
+  act(() => progress(90)); resolve(created);
+  await act(async () => { await pending; });
+  expect(push).not.toHaveBeenCalled();
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+});
+it("Prevents cancel once bytes are sent and aborts on navigation away", async () => {
+  let signal: AbortSignal | undefined;
+  let progress: (percent: number) => void = () => {};
+  const uploader = (_file: File, update?: (percent: number) => void, abort?: AbortSignal) => {
+    signal = abort; progress = update!;
+    return new Promise<CreatedUpload>((_resolve, reject) => abort?.addEventListener("abort", () => reject(new ApiError("CANCELLED", "Canceled", 0))));
+  };
+  const view = render(<UploadForm uploader={uploader} />, { wrapper: queryHarness().wrapper });
+  const user = userEvent.setup();
+  await user.upload(screen.getByLabelText("Choose a CSV file"), new File(["data"], "data.csv"));
+  await user.click(screen.getByRole("button", { name: "Upload file" }));
+  await screen.findByRole("progressbar");
+  act(() => progress(100));
+  expect(screen.getByRole("button", { name: "Cancel upload" })).toBeDisabled();
+  view.unmount();
+  expect(signal?.aborted).toBe(true);
 });

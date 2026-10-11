@@ -13,6 +13,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 export function normalizeApiError(cause: unknown): ApiError {
   if (cause instanceof ApiError) return cause;
+  if (axios.isCancel(cause)) return new ApiError("CANCELLED", "Upload canceled", 0);
   if (!axios.isAxiosError<unknown>(cause)) return new ApiError("UNEXPECTED_ERROR", "Something went wrong. Please try again.", 0);
   if (!cause.response) return new ApiError("NETWORK_ERROR", "Cannot reach the server. Check your connection and try again.", 0);
   const { data, status } = cause.response;

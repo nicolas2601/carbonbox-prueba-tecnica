@@ -49,3 +49,8 @@ it("Builds stable, distinct keys under the shared invalidation root", () => {
   expect(new Set(keys.map(key => JSON.stringify(key))).size).toBe(keys.length);
   for (const key of keys) expect(key.slice(0, uploadKeys.all.length)).toEqual(uploadKeys.all);
 });
+it("Threads AbortSignal through Axios and preserves cancellation instead of a network failure", async () => {
+  const controller = new AbortController();
+  controller.abort();
+  await expect(createUpload(new File(["data"], "data.csv"), undefined, controller.signal)).rejects.toMatchObject({ code: "CANCELLED" });
+});
