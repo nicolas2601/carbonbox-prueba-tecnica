@@ -44,7 +44,7 @@ The system SHALL delete the stored file when `saveWithJob` fails and SHALL retur
 - **THEN** the result is a left `UploadPersistenceError` and the storage was asked to delete `k1.csv`
 
 #### Scenario: The cleanup also fails
-- **WHEN** `saveWithJob` fails and the delete also fails
+- **WHEN** `saveWithJob` returns a left and delete either returns a left or throws
 - **THEN** the result is still the left `UploadPersistenceError`
 
 ### Requirement: Application errors have stable codes

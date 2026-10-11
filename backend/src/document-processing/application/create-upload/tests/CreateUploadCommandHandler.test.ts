@@ -72,3 +72,18 @@ it("Saving fails", async () => {
   expect(repository.uploads).toEqual([]);
   expect(repository.jobs).toEqual([]);
 });
+
+it.each(["left", "throw"] as const)("The cleanup also fails: %s", async mode => {
+  const { storage, repository, handler } = setup();
+  const original = new UploadPersistenceError("Database failed");
+  const cleanup = new StorageFailureError("Delete failed");
+  vi.spyOn(repository, "saveWithJob").mockResolvedValue(Either.left(original));
+  const remove = vi.spyOn(storage, "delete");
+  if (mode === "left") remove.mockResolvedValue(Either.left(cleanup));
+  else remove.mockRejectedValue(cleanup);
+  const result = await handler.execute(command());
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toBe(original);
+  expect(remove).toHaveBeenCalledExactlyOnceWith("k1.csv");
+  expect(storage.files.size).toBe(1);
+});

@@ -10,7 +10,7 @@
 - [x] 2.3 Invalid file name: left, nothing stored or saved
 - [x] 2.4 Storage failure: left, nothing saved
 - [x] 2.5 Persistence failure: left and stored file deleted
-- [ ] 2.6 Cleanup failure does not hide the persistence error
+- [x] 2.6 Cleanup failure does not hide the persistence error
 
 ## 3. Verification
 

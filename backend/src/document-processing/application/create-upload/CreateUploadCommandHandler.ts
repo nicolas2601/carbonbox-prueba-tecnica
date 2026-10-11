@@ -20,7 +20,8 @@ export class CreateUploadCommandHandler {
       userId: command.userId, now: this.clock.now() });
     const saved = await this.repository.saveWithJob(upload, { uploadId: upload.id });
     if (saved.isLeft()) {
-      await this.storage.delete(stored.value);
+      try { await this.storage.delete(stored.value); }
+      catch { /* Cleanup must not hide the original persistence error. */ }
       return Either.left(saved.value);
     }
     return Either.right({ id: upload.id, status: "PENDING", fileName: upload.fileName.value, createdAt: upload.createdAt });
