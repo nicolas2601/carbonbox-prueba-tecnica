@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, expect, it } from "vitest";
-import { mkdtemp, readFile, rm, stat } from "node:fs/promises";
+import { mkdtemp, readFile, readdir, rm, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { FsFileStorage } from "./FsFileStorage";
@@ -33,4 +33,28 @@ it("Missing directory is created", async () => {
   await expect(stat(storageDir)).rejects.toMatchObject({ code: "ENOENT" });
   expect((await storage.save(bytes())).isRight()).toBe(true);
   expect((await stat(storageDir)).isDirectory()).toBe(true);
+});
+
+it("Keys are unique", async () => {
+  const first = await storage.save(bytes());
+  const second = await storage.save(bytes());
+  expect(first.value).not.toBe(second.value);
+  expect(await readdir(storageDir)).toEqual(["file-1.csv", "file-2.csv"]);
+});
+it("Incomplete bytes live only under the temporary name", async () => {
+  let entered!: () => void;
+  let release!: () => void;
+  const writing = new Promise<void>(resolve => { entered = resolve; });
+  const resume = new Promise<void>(resolve => { release = resolve; });
+  async function* delayed(): AsyncIterable<Uint8Array> {
+    yield new Uint8Array([1]);
+    entered();
+    await resume;
+    yield new Uint8Array([2]);
+  }
+  const saving = storage.save(delayed());
+  await writing;
+  try { expect(await readdir(storageDir)).toEqual(["file-1.csv.part"]); }
+  finally { release(); await saving; }
+  expect(await readdir(storageDir)).toEqual(["file-1.csv"]);
 });

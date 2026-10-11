@@ -5,7 +5,7 @@
 ## 2. File storage
 
 - [x] 2.1 `FsFileStorage.save`: writes the stream under a generated key and creates the directory
-- [ ] 2.2 `FsFileStorage.save`: unique keys, temporary name then rename
+- [x] 2.2 `FsFileStorage.save`: unique keys, temporary name then rename
 - [ ] 2.3 `FsFileStorage.save`: a failing stream leaves no file and returns a left
 - [ ] 2.4 `FsFileStorage.delete`: removes the file, idempotent
 - [ ] 2.5 `FsFileStorage.delete`: refuses traversal keys

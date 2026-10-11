@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, open, rename } from "node:fs/promises";
 import { join } from "node:path";
 import { Either } from "../../../shared/domain/Either";
 import type { IFileStorage } from "../../application/ports/IFileStorage";
@@ -10,7 +10,11 @@ export class FsFileStorage implements IFileStorage {
   async save(stream: AsyncIterable<Uint8Array>): Promise<Either<StorageFailureError, string>> {
     const key = `${this.ids.next()}.csv`;
     await mkdir(this.directory, { recursive: true });
-    await writeFile(join(this.directory, key), stream);
+    const temporary = join(this.directory, `${key}.part`);
+    const handle = await open(temporary, "wx");
+    await handle.writeFile(stream);
+    await handle.close();
+    await rename(temporary, join(this.directory, key));
     return Either.right(key);
   }
   async delete(_key: string): Promise<Either<StorageFailureError, void>> {
