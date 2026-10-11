@@ -1,6 +1,6 @@
 ## 1. Debt first
 
-- [ ] 1.1 `FsFileStorage.open` streams a saved file, rejects traversal keys, throws when the file is missing (replaces the stub)
+- [x] 1.1 `FsFileStorage.open` streams a saved file, rejects traversal keys, throws when the file is missing (replaces the stub)
 
 ## 2. Logging and bounded errors
 
