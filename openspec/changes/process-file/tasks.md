@@ -5,7 +5,7 @@
 
 ## 2. ProcessFile handler
 
-- [ ] 2.1 Valid file: batches, counters per batch and `COMPLETED`
+- [x] 2.1 Valid file: batches, counters per batch and `COMPLETED`
 - [ ] 2.2 Rejected rows counted, summary stored
 - [ ] 2.3 Invalid header ends `FAILED`
 - [ ] 2.4 No valid row and header only end `FAILED`
