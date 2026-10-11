@@ -9,7 +9,7 @@
 - [x] 2.2 File name trimmed and key kept as `fileUrl`
 - [x] 2.3 Invalid file name: left, nothing stored or saved
 - [x] 2.4 Storage failure: left, nothing saved
-- [ ] 2.5 Persistence failure: left and stored file deleted
+- [x] 2.5 Persistence failure: left and stored file deleted
 - [ ] 2.6 Cleanup failure does not hide the persistence error
 
 ## 3. Verification

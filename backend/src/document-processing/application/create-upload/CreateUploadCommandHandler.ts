@@ -18,7 +18,11 @@ export class CreateUploadCommandHandler {
     if (stored.isLeft()) return Either.left(stored.value);
     const upload = Upload.create({ id: this.ids.next(), fileName: name.value, fileUrl: stored.value,
       userId: command.userId, now: this.clock.now() });
-    await this.repository.saveWithJob(upload, { uploadId: upload.id });
+    const saved = await this.repository.saveWithJob(upload, { uploadId: upload.id });
+    if (saved.isLeft()) {
+      await this.storage.delete(stored.value);
+      return Either.left(saved.value);
+    }
     return Either.right({ id: upload.id, status: "PENDING", fileName: upload.fileName.value, createdAt: upload.createdAt });
   }
 }

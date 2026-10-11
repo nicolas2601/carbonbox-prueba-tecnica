@@ -4,6 +4,7 @@ import { MemoryStorage, MemoryUploadRepository, FixedClock, FixedIdGenerator } f
 import { InvalidFileNameError } from "../../../domain/errors/InvalidFileNameError";
 import { Either } from "../../../../shared/domain/Either";
 import { StorageFailureError } from "../StorageFailureError";
+import { UploadPersistenceError } from "../UploadPersistenceError";
 
 const now = new Date("2024-01-15T00:00:00Z");
 async function* stream(): AsyncIterable<Uint8Array> { yield new Uint8Array([1, 2, 3]); }
@@ -54,6 +55,20 @@ it("Storage fails", async () => {
   expect(result.isLeft()).toBe(true);
   expect(result.value).toBe(error);
   expect(persist).not.toHaveBeenCalled();
+  expect(repository.uploads).toEqual([]);
+  expect(repository.jobs).toEqual([]);
+});
+
+it("Saving fails", async () => {
+  const { storage, repository, handler } = setup();
+  const error = new UploadPersistenceError("Database failed");
+  vi.spyOn(repository, "saveWithJob").mockResolvedValue(Either.left(error));
+  const remove = vi.spyOn(storage, "delete");
+  const result = await handler.execute(command());
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toBe(error);
+  expect(remove).toHaveBeenCalledExactlyOnceWith("k1.csv");
+  expect(storage.files.size).toBe(0);
   expect(repository.uploads).toEqual([]);
   expect(repository.jobs).toEqual([]);
 });
