@@ -2,8 +2,8 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../../../generated/prisma/client";
 import { testDatabaseUrl } from "./testDatabaseUrl";
 
-export function integrationClient(): PrismaClient {
-  const connectionString = testDatabaseUrl(process.env.DATABASE_URL);
+export function integrationClient(value = process.env.DATABASE_URL): PrismaClient {
+  const connectionString = testDatabaseUrl(value);
   return new PrismaClient({ adapter: new PrismaPg({ connectionString }) });
 }
 
