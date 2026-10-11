@@ -27,3 +27,12 @@ it.each(["u1", "u2"])("Saving a pending upload: %s", async id => {
   expect(jobs[0]).toMatchObject({ uploadId: id, status: "QUEUED", attempts: 0, maxAttempts: 7,
     availableAt: now, lockedUntil: null, claimToken: null, lastError: null });
 });
+
+it("Duplicate upload id", async () => {
+  await repository.saveWithJob(upload(), { uploadId: "u1" });
+  const result = await repository.saveWithJob(upload(), { uploadId: "u1" });
+  expect(result.isLeft()).toBe(true);
+  expect(result.value).toMatchObject({ code: "UPLOAD_PERSISTENCE_FAILURE" });
+  expect(await client.upload.count()).toBe(1);
+  expect(await client.job.count()).toBe(1);
+});
