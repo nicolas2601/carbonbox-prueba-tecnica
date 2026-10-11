@@ -5,14 +5,16 @@ import { InvalidFileNameError } from "../../../domain/errors/InvalidFileNameErro
 import { Either } from "../../../../shared/domain/Either";
 import { StorageFailureError } from "../StorageFailureError";
 import { UploadPersistenceError } from "../UploadPersistenceError";
+import { MemoryLogger } from "./MemoryLogger";
 
 const now = new Date("2024-01-15T00:00:00Z");
 async function* stream(): AsyncIterable<Uint8Array> { yield new Uint8Array([1, 2, 3]); }
 function setup(id = "u1") {
   const storage = new MemoryStorage();
   const repository = new MemoryUploadRepository();
-  const handler = new CreateUploadCommandHandler(storage, repository, new FixedIdGenerator(id), new FixedClock(now));
-  return { storage, repository, handler };
+  const logger = new MemoryLogger();
+  const handler = new CreateUploadCommandHandler(storage, repository, new FixedIdGenerator(id), new FixedClock(now), logger);
+  return { storage, repository, handler, logger };
 }
 function command(fileName = "report.csv") { return { fileName, stream: stream(), userId: "user" }; }
 
@@ -74,7 +76,7 @@ it("Saving fails", async () => {
 });
 
 it.each(["left", "throw"] as const)("The cleanup also fails: %s", async mode => {
-  const { storage, repository, handler } = setup();
+  const { storage, repository, handler, logger } = setup();
   const original = new UploadPersistenceError("Database failed");
   const cleanup = new StorageFailureError("Delete failed");
   vi.spyOn(repository, "saveWithJob").mockResolvedValue(Either.left(original));
@@ -86,6 +88,7 @@ it.each(["left", "throw"] as const)("The cleanup also fails: %s", async mode => 
   expect(result.value).toBe(original);
   expect(remove).toHaveBeenCalledExactlyOnceWith("k1.csv");
   expect(storage.files.size).toBe(1);
+  expect(logger.events).toEqual([{ level: "warn", message: "Stored file cleanup failed", context: { uploadId: "u1", key: "k1.csv" } }]);
 });
 
 it.each(["storage", "repository"] as const)("Unexpected failures bubble from %s", async source => {

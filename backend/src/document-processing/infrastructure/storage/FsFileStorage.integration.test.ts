@@ -108,3 +108,27 @@ it("A deletion IO failure is returned as Left", async () => {
   await mkdir(join(storageDir, "blocked.csv"), { recursive: true });
   expect((await storage.delete("blocked.csv")).isLeft()).toBe(true);
 });
+
+it("Reading a saved file streams its original bytes", async () => {
+  const saved = await storage.save(bytes());
+  if (saved.isLeft()) throw saved.value;
+  const chunks: Uint8Array[] = [];
+  for await (const chunk of storage.open(saved.value)) chunks.push(chunk);
+  expect(Buffer.concat(chunks).toString("utf8")).toBe("category,amount,unit,date\nWater,10,m3,2024-01-15\n");
+});
+it("Large file yields more than one chunk", async () => {
+  async function* large(): AsyncIterable<Uint8Array> { yield new Uint8Array(3 * 1024 * 1024).fill(65); }
+  const saved = await storage.save(large());
+  if (saved.isLeft()) throw saved.value;
+  let chunks = 0;
+  let length = 0;
+  for await (const chunk of storage.open(saved.value)) { chunks++; length += chunk.length; }
+  expect(chunks).toBeGreaterThan(1);
+  expect(length).toBe(3 * 1024 * 1024);
+});
+it.each(["../secret.csv", "a/b.csv", "missing.csv"])("Unsafe or missing read throws on iteration: %s", async key => {
+  await writeFile(join(root, "secret.csv"), "private");
+  const read = async () => { for await (const _chunk of storage.open(key)) { /* Consume to surface IO errors. */ } };
+  await expect(read()).rejects.toThrow();
+  expect(await readFile(join(root, "secret.csv"), "utf8")).toBe("private");
+});

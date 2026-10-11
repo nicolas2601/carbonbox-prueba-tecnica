@@ -1,4 +1,5 @@
 import { lstat, mkdir, open, rename, rm } from "node:fs/promises";
+import { createReadStream } from "node:fs";
 import { join } from "node:path";
 import { Either } from "../../../shared/domain/Either";
 import type { IFileStorage } from "../../application/ports/IFileStorage";
@@ -21,8 +22,9 @@ async function ensureAbsent(path: string): Promise<void> {
 }
 
 export class FsFileStorage implements IFileStorage {
-  open(_key: string): AsyncIterable<Uint8Array> {
-    throw new Error("File reading is not implemented yet (M4b2)");
+  async *open(key: string): AsyncIterable<Uint8Array> {
+    if (!safeKey(key)) throw new StorageFailureError("Invalid storage key");
+    yield* createReadStream(join(this.directory, key));
   }
   constructor(private readonly directory: string, private readonly ids: IIdGenerator) {}
   async save(stream: AsyncIterable<Uint8Array>): Promise<Either<StorageFailureError, string>> {
