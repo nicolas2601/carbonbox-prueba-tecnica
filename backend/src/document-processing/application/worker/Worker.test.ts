@@ -9,14 +9,15 @@ import { MalformedCsvError } from "../csv/MalformedCsvError";
 
 const time = new Date("2024-01-15T00:00:00Z");
 const claim = { jobId: "j1", uploadId: "u1", claimToken: "private-token" };
-function setup() {
+function setup(pollMs = 100, visibilityMs = 1000) {
   const queue = { claim: vi.fn<IJobQueue["claim"]>().mockResolvedValue(claim),
     fail: vi.fn<IJobQueue["fail"]>().mockResolvedValue(Either.right("RETRY")) };
   const handler = { execute: vi.fn<(command: ProcessFileCommand) => Promise<Either<StaleClaimError, void>>>()
     .mockResolvedValue(Either.right(undefined)) };
   const logger = new MemoryLogger();
-  const worker = new Worker(queue, handler, { now: () => time }, logger, 1000);
-  return { worker, queue, handler, logger };
+  const wait = { wait: vi.fn<(ms: number, signal: AbortSignal) => Promise<void>>().mockResolvedValue(undefined) };
+  const worker = new Worker(queue, handler, { now: () => time }, logger, visibilityMs, pollMs, wait);
+  return { worker, queue, handler, logger, wait };
 }
 it("Nothing to do", async () => {
   const { worker, queue, handler } = setup();
@@ -78,4 +79,68 @@ it("Failure recording can itself lose the claim", async () => {
   expect(await worker.runOnce()).toBe(true);
   expect(queue.fail).toHaveBeenCalledExactlyOnceWith(claim, "File processing failed", time, false);
   expect(logger.events[0]?.level).toBe("warn");
+});
+
+it("Idle waiting uses the configured interval", async () => {
+  const { worker, queue, wait } = setup();
+  const controller = new AbortController();
+  queue.claim.mockResolvedValue(null);
+  wait.wait.mockImplementation(async () => { controller.abort(); });
+  await worker.run(controller.signal);
+  expect(wait.wait).toHaveBeenCalledExactlyOnceWith(100, controller.signal);
+});
+it("Shutdown during a wait", async () => {
+  const { worker, queue, wait } = setup();
+  const controller = new AbortController();
+  queue.claim.mockResolvedValue(null);
+  let entered!: () => void;
+  const waiting = new Promise<void>(resolve => { entered = resolve; });
+  wait.wait.mockImplementation((_ms, signal) => new Promise<void>(resolve => {
+    signal.addEventListener("abort", () => { resolve(); }, { once: true });
+    entered();
+  }));
+  const running = worker.run(controller.signal);
+  await waiting;
+  controller.abort();
+  await running;
+});
+it("Shutdown during a job finishes the current job", async () => {
+  const { worker, handler, wait } = setup();
+  const controller = new AbortController();
+  let entered!: () => void;
+  let release!: () => void;
+  const started = new Promise<void>(resolve => { entered = resolve; });
+  const resume = new Promise<void>(resolve => { release = resolve; });
+  let finished = false;
+  handler.execute.mockImplementation(async () => { entered(); await resume; finished = true; return Either.right(undefined); });
+  const running = worker.run(controller.signal);
+  await started;
+  controller.abort();
+  expect(finished).toBe(false);
+  release();
+  await running;
+  expect(finished).toBe(true);
+  expect(wait.wait).not.toHaveBeenCalled();
+});
+it.each(["claim", "fail"] as const)("An unavailable queue causes a cooldown: %s", async method => {
+  const { worker, queue, handler, wait } = setup();
+  const controller = new AbortController();
+  if (method === "claim") queue.claim.mockRejectedValue(new Error("DB unavailable"));
+  else { handler.execute.mockRejectedValue(new Error("IO failure")); queue.fail.mockRejectedValue(new Error("DB unavailable")); }
+  wait.wait.mockImplementation(async () => { controller.abort(); });
+  await worker.run(controller.signal);
+  expect(wait.wait).toHaveBeenCalledExactlyOnceWith(100, controller.signal);
+});
+it("A processed job asks again immediately before idle waiting", async () => {
+  const { worker, queue, wait } = setup();
+  const controller = new AbortController();
+  queue.claim.mockResolvedValueOnce(claim).mockResolvedValue(null);
+  wait.wait.mockImplementation(async () => { controller.abort(); });
+  await worker.run(controller.signal);
+  expect(queue.claim).toHaveBeenCalledTimes(2);
+  expect(wait.wait).toHaveBeenCalledTimes(1);
+});
+
+it.each([[0, 1000], [-1, 1000], [1.5, 1000], [100, 0], [100, -1], [100, NaN]])("Worker durations are positive integers: %j", (poll, visibility) => {
+  expect(() => setup(poll, visibility)).toThrow("Worker durations");
 });

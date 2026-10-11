@@ -4,11 +4,24 @@ import type { ILogger } from "../ports/ILogger";
 import type { ProcessFileCommandHandler } from "../process-file/ProcessFileCommandHandler";
 import type { JobClaim } from "../ports/JobClaim";
 import { MalformedCsvError } from "../csv/MalformedCsvError";
+import type { IWait } from "../ports/IWait";
 
 export class Worker {
   private cooldown = false;
   constructor(private readonly queue: IJobQueue, private readonly handler: Pick<ProcessFileCommandHandler, "execute">,
-    private readonly clock: IClock, private readonly logger: ILogger, private readonly visibilityMs: number) {}
+    private readonly clock: IClock, private readonly logger: ILogger, private readonly visibilityMs: number,
+    private readonly pollIntervalMs: number, private readonly wait: IWait) {
+    if (![visibilityMs, pollIntervalMs].every(value => Number.isSafeInteger(value) && value > 0)) {
+      throw new Error("Worker durations must be positive integers");
+    }
+  }
+  async run(signal: AbortSignal): Promise<void> {
+    while (!signal.aborted) {
+      const processed = await this.runOnce();
+      if (signal.aborted) return;
+      if (!processed || this.cooldown) await this.wait.wait(this.pollIntervalMs, signal);
+    }
+  }
   async runOnce(): Promise<boolean> {
     this.cooldown = false;
     let claim: JobClaim | null;
