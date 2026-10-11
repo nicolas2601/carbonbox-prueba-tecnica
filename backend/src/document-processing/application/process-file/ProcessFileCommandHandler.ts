@@ -10,9 +10,12 @@ import type { IClock } from "../ports/IClock";
 import type { JobClaim } from "../ports/JobClaim";
 import { validateHeader } from "../csv/validateHeader";
 import { validateRow } from "../csv/validateRow";
-import type { CsvColumns } from "../csv/types";
+import type { CsvColumns, RowError } from "../csv/types";
+import { summarizeRowErrors } from "../csv/summarizeRowErrors";
 import type { ProcessFileCommand } from "./ProcessFileCommand";
 import type { StaleClaimError } from "./StaleClaimError";
+
+const ERROR_SUMMARY_LIMIT = 10;
 
 interface FileState {
   upload: Upload;
@@ -20,6 +23,7 @@ interface FileState {
   rows: ActivityData[];
   processedRows: number;
   failedRows: number;
+  errors: RowError[];
 }
 
 export class ProcessFileCommandHandler {
@@ -35,10 +39,10 @@ export class ProcessFileCommandHandler {
     await this.repository.begin(claim, now);
     const started = upload.startProcessing(now);
     if (started.isLeft()) throw started.value;
-    const state: FileState = { upload, columns: null, rows: [], processedRows: 0, failedRows: 0 };
+    const state: FileState = { upload, columns: null, rows: [], processedRows: 0, failedRows: 0, errors: [] };
     await this.read(state, claim);
     upload.complete({ totalRows: state.processedRows + state.failedRows,
-      processedRows: state.processedRows, failedRows: state.failedRows }, this.clock.now());
+      processedRows: state.processedRows, failedRows: state.failedRows }, this.clock.now(), summarizeRowErrors(state.errors, ERROR_SUMMARY_LIMIT) ?? undefined);
     return this.repository.finish(claim, upload);
   }
   private async read(state: FileState, claim: JobClaim): Promise<void> {
@@ -57,7 +61,11 @@ export class ProcessFileCommandHandler {
   }
   private addRow(record: CsvRecord, state: FileState, columns: CsvColumns): void {
     const validated = validateRow(record.fields, columns, record.line);
-    if (validated.isLeft()) throw new Error(validated.value.reason);
+    if (validated.isLeft()) {
+      state.failedRows++;
+      state.errors.push(validated.value);
+      return;
+    }
     const row = ActivityData.create({ ...validated.value, id: this.ids.next(), uploadId: state.upload.id });
     if (row.isLeft()) throw row.value;
     state.rows.push(row.value);

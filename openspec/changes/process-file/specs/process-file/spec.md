@@ -22,6 +22,11 @@ rejected rows in `errorMessage` when the upload completes.
 - **WHEN** a file has 3 valid and 2 invalid rows
 - **THEN** the upload is `COMPLETED` with processed 3, failed 2, total 5 and an `errorMessage` that lists the lines
 
+#### Scenario: Rejected-only batches still record progress
+- **WHEN** a batch contains only rejected records and a later record is valid
+- **THEN** saveBatch receives no activity rows but the cumulative failedRows counters are persisted
+  so the lease can be extended; batch size counts all handled records, not just valid rows
+
 ### Requirement: Unusable files end as failed
 The system SHALL end the upload as `FAILED` with a reason, and mark the job done, when the header
 is invalid, the file has no records, or no record is valid.
