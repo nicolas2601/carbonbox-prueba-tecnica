@@ -2,14 +2,18 @@ import Fastify, { type FastifyInstance } from "fastify";
 import cors from "@fastify/cors";
 import multipart from "@fastify/multipart";
 import type { IConvictProps } from "../config/IConvictProps";
+import type { ApiServices } from "../document-processing/presentation/http/ApiServices";
+import { registerErrorHandlers } from "../document-processing/presentation/http/errorHandlers";
+import { registerUploadRoutes } from "../document-processing/presentation/http/registerUploadRoutes";
 
 const BYTES_PER_MB = 1024 * 1024;
 
 export class App {
-  constructor(private readonly settings: IConvictProps) {}
+  constructor(private readonly settings: IConvictProps, private readonly services?: ApiServices) {}
 
   async build(): Promise<FastifyInstance> {
     const server = Fastify({ logger: this.loggerOptions() });
+    registerErrorHandlers(server);
 
     await server.register(cors, { origin: this.settings.corsOrigin });
     await server.register(multipart, {
@@ -17,6 +21,7 @@ export class App {
     });
 
     server.get("/health", async () => ({ status: "ok" }));
+    if (this.services) registerUploadRoutes(server, this.services);
 
     return server;
   }

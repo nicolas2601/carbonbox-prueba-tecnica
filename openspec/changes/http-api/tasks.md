@@ -6,7 +6,7 @@
 
 ## 2. Routes
 
-- [ ] 2.1 `GET /uploads/stats` and `GET /uploads/:id`
+- [x] 2.1 `GET /uploads/stats` and `GET /uploads/:id`
 - [ ] 2.2 `GET /uploads` with pagination
 - [ ] 2.3 `GET /uploads/:id/results`
 - [ ] 2.4 `POST /uploads`: valid file, missing file, wrong content type
