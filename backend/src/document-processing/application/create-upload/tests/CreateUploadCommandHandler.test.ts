@@ -87,3 +87,20 @@ it.each(["left", "throw"] as const)("The cleanup also fails: %s", async mode => 
   expect(remove).toHaveBeenCalledExactlyOnceWith("k1.csv");
   expect(storage.files.size).toBe(1);
 });
+
+it.each(["storage", "repository"] as const)("Unexpected failures bubble from %s", async source => {
+  const { storage, repository, handler } = setup();
+  const unexpected = new Error("Unexpected failure");
+  if (source === "storage") vi.spyOn(storage, "save").mockRejectedValue(unexpected);
+  else vi.spyOn(repository, "saveWithJob").mockRejectedValue(unexpected);
+  const remove = vi.spyOn(storage, "delete");
+  await expect(handler.execute(command())).rejects.toBe(unexpected);
+  expect(remove).not.toHaveBeenCalled();
+});
+it("File bytes are stored before persistence receives the pair", async () => {
+  const { storage, repository, handler } = setup();
+  const save = vi.spyOn(storage, "save");
+  const persist = vi.spyOn(repository, "saveWithJob");
+  await handler.execute(command());
+  expect(save.mock.invocationCallOrder[0]).toBeLessThan(persist.mock.invocationCallOrder[0]!);
+});
