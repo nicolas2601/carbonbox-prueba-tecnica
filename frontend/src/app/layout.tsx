@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { AppShell } from "@/components/AppShell";
+import { QueryProvider } from "@/lib/query/QueryProvider";
 import "./globals.css";
 
 const display = Fraunces({
@@ -32,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${display.variable} ${body.variable} ${data.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><AppShell>{children}</AppShell></body>
+      <body className="min-h-full flex flex-col"><QueryProvider><AppShell>{children}</AppShell></QueryProvider></body>
     </html>
   );
 }
