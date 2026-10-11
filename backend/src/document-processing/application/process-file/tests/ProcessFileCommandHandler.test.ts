@@ -1,4 +1,4 @@
-import { expect, it, vi } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
 import { ProcessFileCommandHandler } from "../ProcessFileCommandHandler";
 import { claim, now, createUpload, MemoryProcessingRepository, MemoryUploadReader, PreparedRecords, SequenceIds } from "./fakes";
 import { MemoryStorage, FixedClock } from "../../create-upload/tests/fakes";
@@ -7,6 +7,12 @@ import { Either } from "../../../../shared/domain/Either";
 import { StaleClaimError } from "../StaleClaimError";
 import { Upload } from "../../../domain/entities/Upload";
 import { uploadProps } from "./fakes";
+import { ActivityData } from "../../../domain/entities/ActivityData";
+import { InvalidActivityDataError } from "../../../domain/errors/InvalidActivityDataError";
+import { InvalidProgressError } from "../../../domain/errors/InvalidProgressError";
+import { InvalidStatusTransitionError } from "../../../domain/errors/InvalidStatusTransitionError";
+
+afterEach(() => { vi.restoreAllMocks(); });
 
 const header = ["category", "amount", "unit", "date"];
 const valid = ["Electricity", "150.5", "kWh", "2024-01-15"];
@@ -28,6 +34,45 @@ it.each([5, 3])("A fully valid file of %s rows", async count => {
   expect(repository.uploads.get("u1")).toMatchObject({ status: "COMPLETED", totalRows: count,
     processedRows: count, failedRows: 0, errorMessage: null });
   expect(repository.done).toBe(true);
+});
+
+it("The reader throws midway", async () => {
+  const { repository, reader, handler } = setup();
+  const error = new Error("Reader failed midway");
+  vi.spyOn(reader, "read").mockImplementation(async function* () {
+    yield { line: 1, fields: header };
+    yield { line: 2, fields: valid };
+    yield { line: 3, fields: valid };
+    throw error;
+  });
+  const finish = vi.spyOn(repository, "finish");
+  await expect(handler.execute({ claim })).rejects.toBe(error);
+  expect(finish).not.toHaveBeenCalled();
+  expect(repository.uploads.get("u1")?.status).toBe("PROCESSING");
+  expect(repository.rows).toHaveLength(2);
+});
+it.each(["open", "begin", "saveBatch", "finish"] as const)("Unexpected collaborator failure propagates: %s", async method => {
+  const { repository, storage, handler } = setup();
+  const error = new Error("Infrastructure failed");
+  if (method === "open") vi.spyOn(storage, "open").mockImplementation(() => { throw error; });
+  else vi.spyOn(repository, method).mockRejectedValueOnce(error);
+  await expect(handler.execute({ claim })).rejects.toBe(error);
+  expect(repository.done).toBe(false);
+});
+it("ActivityData remains the final invariant guard", async () => {
+  const { repository, handler } = setup();
+  const error = new InvalidActivityDataError("amount", "Invariant failed");
+  vi.spyOn(ActivityData, "create").mockReturnValueOnce(Either.left(error));
+  await expect(handler.execute({ claim })).rejects.toBe(error);
+  expect(repository.rows).toEqual([]);
+  expect(repository.done).toBe(false);
+});
+it.each(["start", "complete"] as const)("Internal aggregate failure is not silently ignored: %s", async stage => {
+  const { handler } = setup();
+  const error = stage === "start" ? new InvalidStatusTransitionError("PENDING", "PROCESSING") : new InvalidProgressError("Invariant failed");
+  if (stage === "start") vi.spyOn(Upload.prototype, "startProcessing").mockReturnValue(Either.left(error as InvalidStatusTransitionError));
+  else vi.spyOn(Upload.prototype, "complete").mockReturnValueOnce(Either.left(error));
+  await expect(handler.execute({ claim })).rejects.toBe(error);
 });
 
 it.each(["COMPLETED", "FAILED"] as const)("Already terminal: %s", async status => {
