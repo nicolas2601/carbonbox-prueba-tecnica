@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Skeleton } from "@/components/Skeleton";
 import { StatCard } from "@/components/StatCard";
 import { useUploadStats } from "./hooks";
+import { RecentUploads } from "./RecentUploads";
 
 const CARDS = [
   { key: "total", label: "Total uploads", detail: "Files received" },
@@ -27,5 +28,6 @@ export function Dashboard() {
   return <div className="space-y-10">
     <PageHeader title="Your activity, in focus" description="A clear view of the files behind your emissions data." />
     <UploadTotals />
+    <RecentUploads />
   </div>;
 }
