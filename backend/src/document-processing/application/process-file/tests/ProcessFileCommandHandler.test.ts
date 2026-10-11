@@ -115,6 +115,7 @@ it("Only invalid rows", async () => {
   await handler.execute({ claim });
   expect(repository.uploads.get("u1")?.status).toBe("FAILED");
   expect(repository.uploads.get("u1")?.errorMessage).toContain("No valid row");
+  expect(repository.uploads.get("u1")).toMatchObject({ totalRows: 3, processedRows: 0, failedRows: 3 });
   expect(repository.rows).toEqual([]);
   expect(repository.batches).toEqual([{ processedRows: 0, failedRows: 2 }, { processedRows: 0, failedRows: 3 }]);
   expect(repository.done).toBe(true);

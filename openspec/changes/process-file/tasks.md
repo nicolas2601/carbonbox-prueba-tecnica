@@ -2,6 +2,7 @@
 
 - [x] 1.1 `JobClaim`, `StaleClaimError` and the ports with in-memory fakes
 - [x] 1.2 `Upload.complete` with optional summary
+- [x] 1.3 Approved extra cycle: `Upload.fail` with optional consistent final counters and failed-file totals
 
 ## 2. ProcessFile handler
 

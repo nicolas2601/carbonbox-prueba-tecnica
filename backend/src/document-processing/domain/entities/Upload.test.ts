@@ -55,6 +55,21 @@ it.each(["2 rows rejected", undefined])("Completing with an optional summary: %s
   expect(upload.errorMessage).toBe(summary ?? null);
 });
 
+it.each([{ totalRows: 10, processedRows: 0, failedRows: 10 }, { totalRows: 3, processedRows: 1, failedRows: 2 }])("Failing with consistent final counters: %j", counters => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  expect(upload.fail("No valid row", now, counters).isRight()).toBe(true);
+  expect(snapshot(upload)).toMatchObject({ ...counters, status: "FAILED", errorMessage: "No valid row", updatedAt: now });
+});
+it.each([{ totalRows: 10, processedRows: 0, failedRows: 9 }, { totalRows: -1, processedRows: 0, failedRows: -1 },
+  { totalRows: 1.5, processedRows: 0, failedRows: 1.5 }, { totalRows: Infinity, processedRows: 0, failedRows: Infinity }])("Invalid failure counters leave the aggregate untouched: %j", counters => {
+  const upload = pending();
+  upload.startProcessing(createdAt);
+  const before = snapshot(upload);
+  expect(upload.fail("No valid row", now, counters).value).toBeInstanceOf(InvalidProgressError);
+  expect(snapshot(upload)).toEqual(before);
+});
+
 it.each(["COMPLETED", "FAILED"] as const)("A terminal upload cannot change: %s", status => {
   const upload = Upload.reconstitute({ ...snapshot(pending()), status,
     totalRows: 10, processedRows: 8, failedRows: 2, errorMessage: "original" });

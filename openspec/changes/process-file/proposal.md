@@ -13,6 +13,7 @@ PostgreSQL, `csv-parse` or the polling loop exist.
   `ICsvRecordReader`, extend `IFileStorage` with `open(key)`.
 - Define `JobClaim` (job id, upload id, claim token) and `StaleClaimError`.
 - `Upload.complete` gains an optional summary so rejected rows can be described in `errorMessage`.
+- `Upload.fail` accepts optional validated final counters so wholly rejected files retain their known totals.
 - Nothing here touches the database, the file system or the process loop.
 
 ## Capabilities
@@ -22,10 +23,10 @@ PostgreSQL, `csv-parse` or the polling loop exist.
 - `processing-ports`: the contracts for fenced writes, reading and record tokenizing
 
 ### Modified Capabilities
-- `upload-lifecycle`: `complete` accepts an optional summary stored as `errorMessage`
+- `upload-lifecycle`: `complete` accepts an optional summary; `fail` accepts optional consistent final counters
 
 ## Impact
 
 - New code under `backend/src/document-processing/application/process-file` and `ports`.
-- One small change in the `Upload` aggregate.
+- Small changes to completion and failure metadata in the `Upload` aggregate.
 - `queue-and-worker` implements the ports and runs the handler.
