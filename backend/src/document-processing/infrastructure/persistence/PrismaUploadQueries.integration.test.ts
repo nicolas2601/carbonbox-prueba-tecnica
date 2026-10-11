@@ -2,6 +2,9 @@ import { afterAll, beforeEach, expect, it } from "vitest";
 import { PrismaUploadQueries } from "./PrismaUploadQueries";
 import { integrationClient, truncateTables } from "../tests/database";
 import { NOW } from "../tests/queueFixtures";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../../../generated/prisma/client";
+import { testDatabaseUrl } from "../tests/testDatabaseUrl";
 
 const client = integrationClient();
 const queries = new PrismaUploadQueries(client);
@@ -70,4 +73,23 @@ it("Large result set returns page50 of5000 rows with a stable tie breaker", asyn
   expect(result.data).toHaveLength(100);
   expect(result.data[0]).toMatchObject({ category: "r4900", amount: 4901, date: "2024-04-11" });
   expect(result.data[99]?.category).toBe("r4999");
+});
+
+it("Stats use one grouped query for all four buckets", async () => {
+  await uploads(7);
+  const states = ["PENDING", "PENDING", "PROCESSING", "COMPLETED", "COMPLETED", "COMPLETED", "FAILED"];
+  await client.$transaction(states.map((status, index) => client.upload.update({ where: { id: `u${String(index).padStart(3, "0")}` }, data: { status } })));
+  const observed = new PrismaClient({ adapter: new PrismaPg({ connectionString: testDatabaseUrl(process.env.DATABASE_URL) }),
+    log: [{ emit: "event", level: "query" }] });
+  const sql: string[] = [];
+  try {
+    await observed.$connect();
+    observed.$on("query", event => { sql.push(event.query); });
+    expect(await new PrismaUploadQueries(observed).stats()).toEqual({ total: 7, completed: 3, inProgress: 3, failed: 1 });
+    expect(sql).toHaveLength(1);
+    expect(sql[0]).toMatch(/GROUP BY/i);
+  } finally { await observed.$disconnect(); }
+});
+it("Empty stats are zero", async () => {
+  expect(await queries.stats()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0 });
 });
