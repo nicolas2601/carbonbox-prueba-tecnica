@@ -5,7 +5,7 @@
 ## 2. Handlers with fakes
 
 - [x] 2.1 `GetUploadById`: found and not found
-- [ ] 2.2 `ListUploads`: defaults, second page, empty, out of range
+- [x] 2.2 `ListUploads`: defaults, second page, empty, out of range
 - [ ] 2.3 `GetUploadResults`: rows, isolation, empty upload, missing upload, pagination rules
 - [ ] 2.4 `GetUploadStats`: mixed states and empty
 
