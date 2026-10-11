@@ -11,7 +11,7 @@
 
 ## 3. CSV reader
 
-- [ ] 3.1 Add `csv-parse`; records with physical lines for a plain file
+- [x] 3.1 Add `csv-parse`; records with physical lines for a plain file
 - [ ] 3.2 Quoted comma, escaped quote, quoted line break with correct following line
 - [ ] 3.3 Byte order mark, CRLF, empty lines, short rows
 - [ ] 3.4 `MalformedCsvError` for unclosed quote and oversized record
