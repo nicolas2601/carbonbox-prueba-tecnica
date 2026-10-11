@@ -19,7 +19,8 @@ export class App {
     await server.register(multipart, {
       // Preserve the original metadata so FileName rejects paths instead of accepting a cleaned basename.
       preservePath: true,
-      limits: { fileSize: this.settings.maxUploadMb * BYTES_PER_MB, files: 1 },
+      // Leave one byte for our limiter to detect overflow before the plugin truncates it.
+      limits: { fileSize: this.settings.maxUploadMb * BYTES_PER_MB + 1, files: 1 },
     });
 
     server.get("/health", async () => ({ status: "ok" }));
