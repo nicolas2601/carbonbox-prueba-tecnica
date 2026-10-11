@@ -5,12 +5,12 @@ The system SHALL answer every error with `{ "error": { "code", "message" } }` an
 
 #### Scenario: Shape
 - **WHEN** any endpoint answers an error
-- **THEN** the body has exactly an `error` object with a string `code` and a string `message`
+- **THEN** 4xx has exactly an error object with code and message; 5xx additionally includes the Fastify requestId inside error
 
 ### Requirement: Error codes map to statuses in one table
 The system SHALL map `INVALID_FILE_NAME`, `INVALID_PAGINATION`, `MISSING_FILE` and `VALIDATION_ERROR` to 400,
 `UPLOAD_NOT_FOUND` and `ROUTE_NOT_FOUND` to 404, `FILE_TOO_LARGE` to 413, and any other code, including
-`STORAGE_FAILURE` and `UPLOAD_PERSISTENCE_FAILURE`, to 500.
+`STORAGE_FAILURE` and `UPLOAD_PERSISTENCE_FAILURE`, to 500. SERVICE_UNAVAILABLE maps to 503.
 
 #### Scenario: Mapping table
 - **WHEN** each code is passed to the mapping
@@ -19,6 +19,8 @@ The system SHALL map `INVALID_FILE_NAME`, `INVALID_PAGINATION`, `MISSING_FILE` a
 ### Requirement: Server errors do not leak internals
 The system SHALL answer 5xx with code `INTERNAL_ERROR`, the fixed message `Internal server error` and the
 request id, and SHALL log the real cause with that id. Messages of 4xx errors keep their specific text.
+Readiness is represented by SERVICE_UNAVAILABLE, fixed text Database unavailable and the request id,
+without exposing the database cause. The status comes from the same mapping table.
 
 #### Scenario: Unexpected exception
 - **WHEN** a handler throws an error whose message contains a database host name

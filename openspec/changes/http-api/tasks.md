@@ -1,6 +1,6 @@
 ## 1. Error handling
 
-- [ ] 1.1 Error code to status table and envelope builder
+- [x] 1.1 Error code to status table and envelope builder
 - [ ] 1.2 Central error handler (unexpected, validation) and not found handler
 - [ ] 1.3 Byte limiting iterator with the exceeded flag
 

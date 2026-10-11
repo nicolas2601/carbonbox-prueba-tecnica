@@ -9,6 +9,10 @@ field `file`, run `CreateUpload` with the fixed user `anonymous`, and answer 201
 - **WHEN** `sample-data.csv` is posted
 - **THEN** the answer is 201 with status `PENDING`, the file name and an id, and one upload row and one job exist
 
+#### Scenario: The created resource has a Location header
+- **WHEN** a file is successfully posted
+- **THEN** the 201 response includes Location /api/v1/uploads/<id>, declared in OpenAPI
+
 #### Scenario: No file
 - **WHEN** the request is multipart without a `file` part
 - **THEN** the answer is 400 with code `MISSING_FILE`
