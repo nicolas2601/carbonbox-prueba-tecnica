@@ -42,6 +42,9 @@ export class ProcessFileCommandHandler {
     if (started.isLeft()) throw started.value;
     const state: FileState = { upload, columns: null, rows: [], processedRows: 0, failedRows: 0, errors: [], failure: null };
     await this.read(state, claim);
+    if (!state.failure && state.processedRows === 0) {
+      state.failure = state.columns ? "No valid row was found" : "CSV has no records";
+    }
     const finished = state.failure ? upload.fail(state.failure, this.clock.now()) :
       upload.complete({ totalRows: state.processedRows + state.failedRows,
         processedRows: state.processedRows, failedRows: state.failedRows }, this.clock.now(), summarizeRowErrors(state.errors, ERROR_SUMMARY_LIMIT) ?? undefined);

@@ -25,6 +25,24 @@ it.each([5, 3])("A fully valid file of %s rows", async count => {
     processedRows: count, failedRows: 0, errorMessage: null });
   expect(repository.done).toBe(true);
 });
+
+it("Only invalid rows", async () => {
+  const { repository, handler } = setup(Array.from({ length: 3 }, () => ["Water", "0", "m3", "2024-01-15"]));
+  await handler.execute({ claim });
+  expect(repository.uploads.get("u1")?.status).toBe("FAILED");
+  expect(repository.uploads.get("u1")?.errorMessage).toContain("No valid row");
+  expect(repository.rows).toEqual([]);
+  expect(repository.batches).toEqual([{ processedRows: 0, failedRows: 2 }, { processedRows: 0, failedRows: 3 }]);
+  expect(repository.done).toBe(true);
+});
+it.each([true, false])("Header only or an empty file: %s", async hasHeader => {
+  const { repository, reader, handler } = setup([]);
+  if (!hasHeader) reader.records.length = 0;
+  await handler.execute({ claim });
+  expect(repository.uploads.get("u1")?.status).toBe("FAILED");
+  expect(repository.rows).toEqual([]);
+  expect(repository.done).toBe(true);
+});
 it("Progress is recorded per batch", async () => {
   const { repository, handler } = setup();
   await handler.execute({ claim });
