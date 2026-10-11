@@ -7,7 +7,7 @@
 
 - [x] 2.1 Valid file: batches, counters per batch and `COMPLETED`
 - [x] 2.2 Rejected rows counted, summary stored
-- [ ] 2.3 Invalid header ends `FAILED`
+- [x] 2.3 Invalid header ends `FAILED`
 - [ ] 2.4 No valid row and header only end `FAILED`
 - [ ] 2.5 Stale claim stops the work
 - [ ] 2.6 Redelivery: terminal upload skipped, processing upload restarted

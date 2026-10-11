@@ -60,3 +60,14 @@ it("Rejected-row detail is capped at ten", async () => {
   expect(summary?.match(/line \d+:/g)).toHaveLength(10);
   expect(summary).toContain("2 more omitted");
 });
+
+it("Missing header column", async () => {
+  const { repository, reader, handler } = setup();
+  reader.records[0] = { line: 1, fields: ["category", "amount", "date"] };
+  expect((await handler.execute({ claim })).isRight()).toBe(true);
+  expect(repository.uploads.get("u1")).toMatchObject({ status: "FAILED" });
+  expect(repository.uploads.get("u1")?.errorMessage).toContain("unit");
+  expect(repository.rows).toEqual([]);
+  expect(repository.batches).toEqual([]);
+  expect(repository.done).toBe(true);
+});

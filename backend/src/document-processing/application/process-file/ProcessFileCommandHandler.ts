@@ -24,6 +24,7 @@ interface FileState {
   processedRows: number;
   failedRows: number;
   errors: RowError[];
+  failure: string | null;
 }
 
 export class ProcessFileCommandHandler {
@@ -39,10 +40,12 @@ export class ProcessFileCommandHandler {
     await this.repository.begin(claim, now);
     const started = upload.startProcessing(now);
     if (started.isLeft()) throw started.value;
-    const state: FileState = { upload, columns: null, rows: [], processedRows: 0, failedRows: 0, errors: [] };
+    const state: FileState = { upload, columns: null, rows: [], processedRows: 0, failedRows: 0, errors: [], failure: null };
     await this.read(state, claim);
-    upload.complete({ totalRows: state.processedRows + state.failedRows,
-      processedRows: state.processedRows, failedRows: state.failedRows }, this.clock.now(), summarizeRowErrors(state.errors, ERROR_SUMMARY_LIMIT) ?? undefined);
+    const finished = state.failure ? upload.fail(state.failure, this.clock.now()) :
+      upload.complete({ totalRows: state.processedRows + state.failedRows,
+        processedRows: state.processedRows, failedRows: state.failedRows }, this.clock.now(), summarizeRowErrors(state.errors, ERROR_SUMMARY_LIMIT) ?? undefined);
+    if (finished.isLeft()) throw finished.value;
     return this.repository.finish(claim, upload);
   }
   private async read(state: FileState, claim: JobClaim): Promise<void> {
@@ -50,7 +53,7 @@ export class ProcessFileCommandHandler {
     for await (const record of records) {
       if (!state.columns) {
         const header = validateHeader(record.fields);
-        if (header.isLeft()) throw header.value;
+        if (header.isLeft()) { state.failure = header.value.message; return; }
         state.columns = header.value;
         continue;
       }
