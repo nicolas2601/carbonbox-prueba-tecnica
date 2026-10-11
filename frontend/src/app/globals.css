@@ -151,3 +151,10 @@ p { text-wrap: pretty; max-width: 70ch; }
 .progress-track { position: relative; height: 8px; border-radius: 4px; overflow: hidden; background: var(--line); }
 .progress-fill { display: block; width: 100%; height: 100%; background: var(--accent); transform-origin: left; transition: transform var(--feedback) var(--ease-out); }
 @media (prefers-reduced-motion: reduce) { .progress-fill { transition: none; } }
+
+.progress-track[data-indeterminate="true"] .progress-fill { width: 40%; transform: translateX(75%); transition: none; }
+.progress-track[data-indeterminate="true"][data-visible="true"] .progress-fill { animation: processing-slide 1.4s linear infinite; }
+@keyframes processing-slide { from { transform: translateX(-100%); } to { transform: translateX(350%); } }
+@media (prefers-reduced-motion: reduce) {
+  .progress-track[data-indeterminate="true"] .progress-fill { animation: none; }
+}

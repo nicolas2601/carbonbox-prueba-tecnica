@@ -35,3 +35,18 @@ it("Recovers unexpected detail errors through the retry action", async () => {
   expect(await screen.findByRole("heading", { name: "u1.csv" })).toBeInTheDocument();
   expect(calls).toBe(2);
 });
+it("Shows queued work without an invented percentage", async () => {
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", "PENDING"))));
+  render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByRole("heading", { name: "Waiting for a worker" })).toBeInTheDocument();
+  const progress = screen.getByRole("progressbar");
+  expect(progress).not.toHaveAttribute("aria-valuenow");
+  expect(progress).not.toHaveAttribute("aria-valuemax");
+});
+it("Combines valid and rejected rows into an honest processing counter", async () => {
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json({ ...upload("u1", "PROCESSING"), processedRows: 1500, failedRows: 12, totalRows: null })));
+  render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByText("1,512 rows handled")).toBeInTheDocument();
+  expect(screen.getByRole("progressbar")).not.toHaveAttribute("aria-valuenow");
+  expect(screen.queryByText(/%/)).not.toBeInTheDocument();
+});

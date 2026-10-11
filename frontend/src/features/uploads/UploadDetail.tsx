@@ -5,6 +5,7 @@ import { ErrorState } from "@/components/ErrorState";
 import { Skeleton } from "@/components/Skeleton";
 import { useUploadDetail } from "./hooks";
 import { DetailHeader } from "./DetailHeader";
+import { ActivePanel } from "./ActivePanel";
 
 function DetailContent({ id }: { id: string }) {
   const query = useUploadDetail(id);
@@ -14,7 +15,7 @@ function DetailContent({ id }: { id: string }) {
       <p className="mt-3 text-sm text-ink-muted">This upload does not exist. Return to the list to choose another file.</p></div>;
   }
   if (query.isError) return <><h1 className="sr-only">Upload detail</h1><ErrorState error={query.error} onRetry={() => query.refetch()} /></>;
-  return <DetailHeader upload={query.data} />;
+  return <div className="space-y-10"><DetailHeader upload={query.data} /><ActivePanel upload={query.data} /></div>;
 }
 export function UploadDetail({ id, page }: { id: string; page: number }) {
   return <div className="space-y-6" data-page={page}>
