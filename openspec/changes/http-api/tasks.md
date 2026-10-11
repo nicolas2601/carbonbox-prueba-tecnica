@@ -12,7 +12,7 @@
 - [x] 2.4 `POST /uploads`: valid file, missing file, wrong content type
 - [x] 2.5 `POST /uploads`: invalid names and path in the name
 - [x] 2.6 `POST /uploads`: size limit, exactly at the limit, nothing stored when exceeded
-- [ ] 2.7 `/health/ready`
+- [x] 2.7 `/health/ready`
 
 ## 3. Documentation
 

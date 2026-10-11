@@ -16,6 +16,19 @@ it("Stats is static, not an upload id", async () => {
   } finally { await api.close(); }
 });
 
+it("Readiness checks the database independently of liveness", async () => {
+  const api = await apiHarness();
+  try {
+    expect((await api.server.inject("/health/ready")).statusCode).toBe(200);
+    api.services.ready = async () => { throw new Error("Database host db.private.example is down"); };
+    const response = await api.server.inject("/health/ready");
+    expect(response.statusCode).toBe(503);
+    expect(response.json()).toEqual({ error: { code: "SERVICE_UNAVAILABLE", message: "Database unavailable", requestId: expect.any(String) } });
+    expect(response.body).not.toContain("db.private.example");
+    expect((await api.server.inject("/health")).statusCode).toBe(200);
+  } finally { await api.close(); }
+});
+
 it("Results return one upload page with numeric amounts and calendar dates", async () => {
   await seedJob(client);
   await client.upload.update({ where: { id: "u1" }, data: { status: "COMPLETED", totalRows: 60, processedRows: 60, failedRows: 0 } });
