@@ -6,7 +6,7 @@
 ## 2. CreateUpload handler
 
 - [x] 2.1 Valid file: stores, creates a `PENDING` upload and saves it with its job
-- [ ] 2.2 File name trimmed and key kept as `fileUrl`
+- [x] 2.2 File name trimmed and key kept as `fileUrl`
 - [ ] 2.3 Invalid file name: left, nothing stored or saved
 - [ ] 2.4 Storage failure: left, nothing saved
 - [ ] 2.5 Persistence failure: left and stored file deleted

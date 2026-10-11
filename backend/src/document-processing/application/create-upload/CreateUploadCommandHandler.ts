@@ -19,6 +19,6 @@ export class CreateUploadCommandHandler {
     const upload = Upload.create({ id: this.ids.next(), fileName: name.value, fileUrl: stored.value,
       userId: command.userId, now: this.clock.now() });
     await this.repository.saveWithJob(upload, { uploadId: upload.id });
-    return Either.right({ id: upload.id, status: "PENDING", fileName: command.fileName, createdAt: upload.createdAt });
+    return Either.right({ id: upload.id, status: "PENDING", fileName: upload.fileName.value, createdAt: upload.createdAt });
   }
 }

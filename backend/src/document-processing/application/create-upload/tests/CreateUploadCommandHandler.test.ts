@@ -22,3 +22,11 @@ it.each(["u1", "u2"])("Creating an upload: %s", async id => {
   expect(repository.uploads[0]).toMatchObject({ id, status: "PENDING", userId: "user" });
   expect(repository.jobs).toEqual([{ uploadId: id }]);
 });
+
+it("The file name is trimmed and the stream key is kept", async () => {
+  const { repository, handler } = setup();
+  const result = await handler.execute(command("  report.csv  "));
+  expect(result.value).toMatchObject({ fileName: "report.csv" });
+  expect(repository.uploads[0]?.fileUrl).toBe("k1.csv");
+  expect(repository.jobs).toEqual([{ uploadId: "u1" }]);
+});
