@@ -43,3 +43,8 @@ the database. The three sample files and a malformed file cover the paths of the
   would mislead whoever fixes the file.
 - The loop is single threaded per process; throughput scales by starting more workers, which the
   queue already supports.
+- `max_record_size` bounds record/field buffers, except that `raw: true` retains skipped empty-line
+  prefixes. Those prefixes are bounded by the maximum accepted file size at the HTTP boundary
+  (`MAX_UPLOAD_MB`, default 10 MB; enforcement belongs to M5), not by the record limit. Buffer,
+  decoded-string and newline-match-array overhead can exceed the encoded file size. No extra
+  reader guard was added; internal callers bypassing the HTTP limit must supply bounded files.

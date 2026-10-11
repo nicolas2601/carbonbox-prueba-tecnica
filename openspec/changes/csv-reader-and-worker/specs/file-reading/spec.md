@@ -71,3 +71,12 @@ The system SHALL read `sample-invalid.csv` so that the invalid records are on th
 #### Scenario: Fixture lines
 - **WHEN** the file is read and each record is validated
 - **THEN** exactly the lines 3, 5, 7, 9, 11, 13, 15, 17, 19 and 21 are rejected
+
+## Implementation limits
+
+Record/field buffer size is constrained by `max_record_size` except for raw skipped empty-line
+prefixes. A probe with 2000 leading newlines and a 64-character record limit produced a raw
+prefix/header of length 2026. The maximum file size at the HTTP boundary bounds these prefixes;
+`MAX_UPLOAD_MB` defaults to 10 MB, with enforcement in M5, not in this reader. This is a bound
+on encoded input, not an exact RAM cap: decoded strings, buffers and newline-match arrays add
+overhead. Direct internal callers bypassing HTTP are responsible for bounded input files.
