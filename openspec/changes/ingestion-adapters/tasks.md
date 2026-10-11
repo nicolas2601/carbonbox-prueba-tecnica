@@ -1,6 +1,6 @@
 ## 1. Test infrastructure
 
-- [ ] 1.1 `test:integration` script and separate Vitest project; unit suite excludes `*.integration.test.ts`; helper that truncates tables
+- [x] 1.1 `test:integration` script and separate Vitest project; unit suite excludes `*.integration.test.ts`; helper that truncates tables
 
 ## 2. File storage
 
