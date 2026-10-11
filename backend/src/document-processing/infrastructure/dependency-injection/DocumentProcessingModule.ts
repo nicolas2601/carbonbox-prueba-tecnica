@@ -17,6 +17,11 @@ import { CsvParseRecordReader } from "../csv/CsvParseRecordReader";
 import { JsonConsoleLogger } from "../logging/JsonConsoleLogger";
 import { SystemClock } from "../runtime/SystemClock";
 import { AbortableWait } from "../runtime/AbortableWait";
+import { PrismaUploadQueries } from "../persistence/PrismaUploadQueries";
+import { GetUploadByIdQueryHandler } from "../../application/queries/GetUploadByIdQueryHandler";
+import { GetUploadStatsQueryHandler } from "../../application/queries/GetUploadStatsQueryHandler";
+import { ListUploadsQueryHandler } from "../../application/queries/ListUploadsQueryHandler";
+import { GetUploadResultsQueryHandler } from "../../application/queries/GetUploadResultsQueryHandler";
 
 interface RuntimeOverrides { clock?: IClock; logger?: ILogger; processing?: (real: IProcessingRepository) => IProcessingRepository; }
 export interface DocumentProcessingModule {
@@ -29,6 +34,11 @@ export interface DocumentProcessingModule {
   storage: FsFileStorage;
   reader: CsvParseRecordReader;
   logger: ILogger;
+  getUploadById: GetUploadByIdQueryHandler;
+  getUploadStats: GetUploadStatsQueryHandler;
+  listUploads: ListUploadsQueryHandler;
+  getUploadResults: GetUploadResultsQueryHandler;
+  ready(): Promise<void>;
   close(): Promise<void>;
 }
 
@@ -47,5 +57,9 @@ export function createDocumentProcessingModule(settings: IConvictProps, runtime:
   const processFile = new ProcessFileCommandHandler(uploads, storage, reader, processing, ids, clock, settings.workerBatchSize);
   const worker = new Worker(queue, processFile, clock, logger, settings.workerVisibilityTimeoutMs,
     settings.workerPollIntervalMs, new AbortableWait());
-  return { createUpload, processFile, worker, queue, processing, uploads, storage, reader, logger, close: () => client.$disconnect() };
+  const queries = new PrismaUploadQueries(client);
+  return { createUpload, processFile, worker, queue, processing, uploads, storage, reader, logger,
+    getUploadById: new GetUploadByIdQueryHandler(queries), getUploadStats: new GetUploadStatsQueryHandler(queries),
+    listUploads: new ListUploadsQueryHandler(queries), getUploadResults: new GetUploadResultsQueryHandler(queries),
+    ready: async () => { await client.$queryRaw`SELECT 1`; }, close: () => client.$disconnect() };
 }

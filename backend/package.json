@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:coverage:all": "vitest run --coverage --coverage.reportsDirectory=coverage/unit && vitest run --config config/vitest.coverage.ts --coverage --coverage.reportsDirectory=coverage/all",
     "test:watch": "vitest",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
@@ -23,6 +24,8 @@
   "dependencies": {
     "@fastify/cors": "^11.3.1",
     "@fastify/multipart": "^10.1.3",
+    "@fastify/swagger": "^9.9.2",
+    "@fastify/swagger-ui": "^6.1.2",
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
     "convict": "^6.2.5",
