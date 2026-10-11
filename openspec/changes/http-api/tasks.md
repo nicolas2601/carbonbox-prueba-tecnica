@@ -9,7 +9,7 @@
 - [x] 2.1 `GET /uploads/stats` and `GET /uploads/:id`
 - [x] 2.2 `GET /uploads` with pagination
 - [x] 2.3 `GET /uploads/:id/results`
-- [ ] 2.4 `POST /uploads`: valid file, missing file, wrong content type
+- [x] 2.4 `POST /uploads`: valid file, missing file, wrong content type
 - [ ] 2.5 `POST /uploads`: invalid names and path in the name
 - [ ] 2.6 `POST /uploads`: size limit, exactly at the limit, nothing stored when exceeded
 - [ ] 2.7 `/health/ready`

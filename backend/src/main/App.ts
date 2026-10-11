@@ -21,7 +21,7 @@ export class App {
     });
 
     server.get("/health", async () => ({ status: "ok" }));
-    if (this.services) registerUploadRoutes(server, this.services);
+    if (this.services) registerUploadRoutes(server, this.services, this.settings.maxUploadMb * BYTES_PER_MB);
 
     return server;
   }
