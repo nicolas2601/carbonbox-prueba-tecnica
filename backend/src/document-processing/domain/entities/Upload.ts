@@ -4,6 +4,8 @@ import { Either } from "../../../shared/domain/Either";
 import { InvalidStatusTransitionError } from "../errors/InvalidStatusTransitionError";
 import { InvalidProgressError } from "../errors/InvalidProgressError";
 
+const COUNTER_MISMATCH = "Processed and failed rows must equal total rows";
+
 export interface UploadProps {
   id: string;
   fileName: FileName;
@@ -19,6 +21,7 @@ export interface UploadProps {
 }
 
 type CreateUploadProps = Pick<UploadProps, "id" | "fileName" | "fileUrl" | "userId"> & { now: Date };
+export interface UploadCounters { totalRows: number; processedRows: number; failedRows: number; }
 
 export class Upload {
   private constructor(private readonly props: UploadProps) {}
@@ -42,18 +45,19 @@ export class Upload {
   private validCounters(values: number[]): boolean {
     return values.every(value => Number.isSafeInteger(value) && value >= 0);
   }
-  complete(counters: { totalRows: number; processedRows: number; failedRows: number }, now: Date): Either<InvalidStatusTransitionError | InvalidProgressError, void> {
+  complete(counters: UploadCounters, now: Date, summary?: string): Either<InvalidStatusTransitionError | InvalidProgressError, void> {
     if (this.status !== "PROCESSING") return Either.left(new InvalidStatusTransitionError(this.status, "COMPLETED"));
-    if (!this.validCounters(Object.values(counters)) || counters.processedRows + counters.failedRows !== counters.totalRows) {
-      return Either.left(new InvalidProgressError("Processed and failed rows must equal total rows"));
+    if (!this.validFinalCounters(counters)) {
+      return Either.left(new InvalidProgressError(COUNTER_MISMATCH));
     }
-    Object.assign(this.props, counters, { status: "COMPLETED", updatedAt: now });
+    Object.assign(this.props, counters, { status: "COMPLETED", updatedAt: now, errorMessage: summary ?? null });
     return Either.right(undefined);
   }
   get id(): string { return this.props.id; }
-  fail(reason: string, now: Date): Either<InvalidStatusTransitionError, void> {
+  fail(reason: string, now: Date, counters?: UploadCounters): Either<InvalidStatusTransitionError | InvalidProgressError, void> {
     if (this.terminal()) return Either.left(new InvalidStatusTransitionError(this.status, "FAILED"));
-    Object.assign(this.props, { status: "FAILED", errorMessage: reason, updatedAt: now });
+    if (counters && !this.validFinalCounters(counters)) return Either.left(new InvalidProgressError(COUNTER_MISMATCH));
+    Object.assign(this.props, counters ?? {}, { status: "FAILED", errorMessage: reason, updatedAt: now });
     return Either.right(undefined);
   }
   get fileName(): FileName { return this.props.fileName; }
@@ -67,4 +71,7 @@ export class Upload {
   get createdAt(): Date { return this.props.createdAt; }
   get updatedAt(): Date { return this.props.updatedAt; }
   private terminal(): boolean { return this.status === "COMPLETED" || this.status === "FAILED"; }
+  private validFinalCounters(counters: UploadCounters): boolean {
+    return this.validCounters(Object.values(counters)) && counters.processedRows + counters.failedRows === counters.totalRows;
+  }
 }

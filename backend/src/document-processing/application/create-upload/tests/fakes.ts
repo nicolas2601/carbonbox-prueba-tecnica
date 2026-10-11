@@ -10,6 +10,11 @@ import type { UploadPersistenceError } from "../UploadPersistenceError";
 
 export class MemoryStorage implements IFileStorage {
   readonly files = new Map<string, Uint8Array[]>();
+  async *open(key: string): AsyncIterable<Uint8Array> {
+    const chunks = this.files.get(key);
+    if (!chunks) throw new Error("Stored file is missing");
+    yield* chunks;
+  }
   async save(stream: AsyncIterable<Uint8Array>): Promise<Either<StorageFailureError, string>> {
     const chunks: Uint8Array[] = [];
     for await (const chunk of stream) chunks.push(chunk.slice());
