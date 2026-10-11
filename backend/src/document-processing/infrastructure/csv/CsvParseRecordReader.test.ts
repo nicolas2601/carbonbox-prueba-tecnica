@@ -53,3 +53,21 @@ it("Closing quote on a separate physical line and no final newline", async () =>
   expect(records.map(record => record.line)).toEqual([1, 2, 5]);
   expect(records[1]?.fields[0]).toBe("Business\r\nTravel\r\n");
 });
+
+it("Unclosed quote becomes a safe permanent CSV error", async () => {
+  await expect(collect('category,amount,unit,date\n"private-content,10,L,2024-01-15'))
+    .rejects.toMatchObject({ code: "MALFORMED_CSV", message: "The file is not valid CSV: check quotes and field sizes" });
+});
+it("Oversized record becomes a permanent CSV error", async () => {
+  await expect(collect(`category,amount,unit,date\n${"x".repeat(128)},10,L,2024-01-15\n`, new CsvParseRecordReader(64)))
+    .rejects.toMatchObject({ code: "MALFORMED_CSV" });
+});
+it("An upstream IO failure preserves its identity", async () => {
+  const error = new Error("Source failed");
+  async function* broken(): AsyncIterable<Uint8Array> {
+    yield new TextEncoder().encode("category,amount,unit,date\n");
+    throw error;
+  }
+  const read = async () => { for await (const _record of new CsvParseRecordReader().read(broken())) { /* Consume. */ } };
+  await expect(read()).rejects.toBe(error);
+});
