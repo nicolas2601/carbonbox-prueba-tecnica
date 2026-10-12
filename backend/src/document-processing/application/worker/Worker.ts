@@ -30,14 +30,14 @@ export class Worker {
     if (!claim) return false;
     try {
       const result = await this.handler.execute({ claim });
-      const context = { jobId: claim.jobId, uploadId: claim.uploadId };
+      const context = { jobId: claim.jobId, uploadId: claim.uploadId, attempt: claim.attempt };
       if (result.isLeft()) this.logger.warn("Job claim is stale", context);
       else this.logger.info("Job processed", context);
     } catch (error) { await this.recordFailure(claim, error); }
     return true;
   }
   private async recordFailure(claim: JobClaim, error: unknown): Promise<void> {
-    const context = { jobId: claim.jobId, uploadId: claim.uploadId };
+    const context = { jobId: claim.jobId, uploadId: claim.uploadId, attempt: claim.attempt };
     const reason = error instanceof Error ? error.message : "File processing failed";
     try {
       const result = await this.queue.fail(claim, reason, this.clock.now(), error instanceof MalformedCsvError);

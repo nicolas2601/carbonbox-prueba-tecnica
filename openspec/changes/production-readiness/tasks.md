@@ -8,7 +8,7 @@
 
 - [x] 2.1 Metrics endpoint with request duration and process metrics
 - [x] 2.2 Queue depth gauges and oldest queued age
-- [ ] 2.3 Structured logs for 5xx and worker job outcomes
+- [x] 2.3 Structured logs for 5xx and worker job outcomes
 
 ## 3. Object storage
 

@@ -12,7 +12,7 @@ afterAll(async () => { await client.$disconnect(); });
 it("Claiming a queued job", async () => {
   const job = await seedJob(client);
   const claim = await queue.claim(NOW, VISIBILITY_MS);
-  expect(claim).toMatchObject({ jobId: job.id, uploadId: "u1", claimToken: expect.any(String) });
+  expect(claim).toMatchObject({ jobId: job.id, uploadId: "u1", claimToken: expect.any(String), attempt: 1 });
   expect(await client.job.findUnique({ where: { id: job.id } })).toMatchObject({ attempts: 1,
     claimToken: claim?.claimToken, lockedUntil: new Date(NOW.getTime() + VISIBILITY_MS), updatedAt: NOW });
 });
@@ -66,6 +66,7 @@ it("Expired lease", async () => {
   const second = await queue.claim(later, VISIBILITY_MS);
   expect(second?.jobId).toBe(first?.jobId);
   expect(second?.claimToken).not.toBe(first?.claimToken);
+  expect(second).toMatchObject({ attempt: 2 });
   expect(await client.job.findUnique({ where: { id: job.id } })).toMatchObject({ attempts: 2, updatedAt: later });
 });
 it("Raw Date parameters preserve UTC milliseconds in a non-UTC session", async () => {
@@ -153,7 +154,7 @@ it("A claim for a different upload cannot fail either job", async () => {
   expect(await client.job.findMany({ orderBy: { id: "asc" } })).toEqual(jobs);
 });
 it("A missing job or cleared token is stale", async () => {
-  expect((await queue.fail({ jobId: "missing", uploadId: "u1", claimToken: "old" }, "Failure", NOW, false)).isLeft()).toBe(true);
+  expect((await queue.fail({ jobId: "missing", uploadId: "u1", claimToken: "old", attempt: 1 }, "Failure", NOW, false)).isLeft()).toBe(true);
   const job = await seedJob(client);
-  expect((await queue.fail({ jobId: job.id, uploadId: "u1", claimToken: "old" }, "Failure", NOW, false)).isLeft()).toBe(true);
+  expect((await queue.fail({ jobId: job.id, uploadId: "u1", claimToken: "old", attempt: 1 }, "Failure", NOW, false)).isLeft()).toBe(true);
 });

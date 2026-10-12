@@ -22,7 +22,7 @@ it("Atomically resets a dead job and its failed upload, invalidating its old fen
     attempts: 0, maxAttempts: 3, availableAt: NOW, updatedAt: NOW, claimToken: null, lockedUntil: null, lastError: null });
   expect(await client.upload.findUnique({ where: { id: "u1" } })).toMatchObject({ status: "PENDING",
     totalRows: null, processedRows: null, failedRows: null, errorMessage: null, updatedAt: NOW });
-  const oldClaim = { jobId: job.id, uploadId: "u1", claimToken: "old-token" };
+  const oldClaim = { jobId: job.id, uploadId: "u1", claimToken: "old-token", attempt: 3 };
   expect((await new PrismaProcessingRepository(client, 1000).begin(oldClaim, NOW)).isLeft()).toBe(true);
 });
 it.each(["QUEUED", "DONE"] as const)("Refuses %s without changing state", async (status) => {
