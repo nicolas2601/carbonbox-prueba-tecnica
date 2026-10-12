@@ -5,6 +5,27 @@
 .table-scroll { max-height: 640px; }
 .results-table { min-width: 520px; }
 .upload-form { max-width: 800px; padding: 24px; }
+.upload-workspace { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr); gap: 20px; align-items: start; }
+.upload-form { width: 100%; max-width: none; min-width: 0; }
+.upload-context { display: grid; gap: 16px; min-width: 0; }
+.before-upload, .recent-uploads-compact { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: var(--card-shadow); }
+.before-upload h2, .recent-uploads-heading h2 { margin: 0; font-family: var(--font-sora); font-size: 18px; font-weight: 600; }
+.before-upload h3 { margin: 16px 0 4px; font-size: 12px; color: var(--text-muted); }
+.before-upload p, .before-upload li { font-size: 13px; line-height: 1.5; }
+.before-upload ul { display: grid; gap: 4px; margin: 10px 0; padding-left: 20px; }
+.sample-download { display: inline-flex; min-height: 44px; align-items: center; margin-top: 8px; color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
+.recent-uploads-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.recent-upload-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.recent-upload-link { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px 12px; min-height: 52px; padding: 8px 0; border-top: 1px solid var(--line); }
+.recent-upload-name { overflow: hidden; color: var(--text); font-family: var(--font-geist-mono); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.recent-upload-link time { grid-column: 1; color: var(--text-muted); font-size: 11px; }
+.recent-upload-link .status-badge { grid-column: 2; grid-row: 1 / span 2; }
+.recent-uploads-empty { margin-top: 12px; color: var(--text-muted); font-size: 13px; }
+.dropzone-compact { display: flex; min-height: 104px; align-items: center; justify-content: flex-start; gap: 16px; padding: 18px 20px; }
+.dropzone-compact .dropzone-symbol { width: 48px; height: 48px; flex: 0 0 48px; margin: 0; border-radius: 14px; }
+.dropzone-section-compact { display: grid; gap: 12px; }
+.selected-file-compact { min-height: 56px; padding: 8px 12px; }
+@media (max-width: 1023px) { .upload-workspace { grid-template-columns: minmax(0, 1fr); } }
 .dropzone { position: relative; overflow: hidden; padding: 48px 24px; border: 1px dashed var(--accent-strong); background: var(--bg); }
 .dropzone::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%); opacity: 0; transition: opacity var(--feedback) var(--ease-out); }
 .dropzone > * { position: relative; }
@@ -28,4 +49,5 @@
 .back-link, .canvas-link { color: var(--text); text-decoration-color: var(--accent-strong); }
 @keyframes processing-breathe { 50% { transform: scale(1.05); opacity: 0.35; } }
 @media (max-width: 639px) { .table-scroll { max-height: none; } .uploads-table td { height: auto; padding: 0; } .upload-form { padding: 20px; } .dropzone { padding: 32px 16px; } }
+@media (max-width: 639px) { .dropzone-compact { min-height: 84px; padding: 12px; gap: 12px; } .dropzone-compact .dropzone-symbol { width: 40px; height: 40px; flex-basis: 40px; margin: 0; } .before-upload, .recent-uploads-compact { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { .dropzone::before, .uploads-table .data-row, .results-table tr { transition: none; } .processing-halo { animation: none !important; } }
