@@ -5,8 +5,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-document_processing}
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -59,8 +57,7 @@ services:
       - "${API_PORT:-3001}:3001"
     volumes:
       - app_storage:/app/storage
-    expose:
-      - "9090"
+    # Metrics bind to localhost inside this container; no public/network port.
     depends_on:
       migrate:
         condition: service_completed_successfully
