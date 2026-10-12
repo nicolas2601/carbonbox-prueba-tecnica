@@ -18,7 +18,7 @@ export function UploadOverview({ stats }: { stats: UploadStats }) {
     <section aria-label="Upload totals" className="rail-counts">{COUNTS.map(item => <article key={item.key} aria-label={item.label}>
       <span><i aria-hidden="true" />{item.label}</span><strong><CountUp value={stats[item.key]} /><span className="sr-only">Count: {stats[item.key]}</span></strong>
     </article>)}</section>
-    <table className="sr-only"><caption>Upload completion gauge values</caption><tbody><tr><th scope="row">Completed</th><td>{stats.completed}</td></tr><tr><th scope="row">Total</th><td>{stats.total}</td></tr></tbody></table>
+    <div className="sr-only"><table><caption>Upload completion gauge values</caption><tbody><tr><th scope="row">Completed</th><td>{stats.completed}</td></tr><tr><th scope="row">Total</th><td>{stats.total}</td></tr></tbody></table></div>
     <div className="rail-api"><ApiStatus /></div>
   </>;
 }

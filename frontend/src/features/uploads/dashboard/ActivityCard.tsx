@@ -20,10 +20,10 @@ export function ActivityCard() {
       : <><div className="activity-plot" role="img" aria-label={`Processed and rejected rows in the last 12 uploads, ${points.length} files. Values are in the following table.`}>
         <div aria-hidden="true" className="activity-chart"><ActivityChart points={points} /></div>
       </div><ul className="activity-legend" aria-label="Activity series"><li><i aria-hidden="true" />Processed</li><li><i aria-hidden="true" />Rejected</li><li>Time in UTC</li></ul>
-      <table className="sr-only"><caption>Rows in the last 12 uploads</caption><thead><tr><th>File</th><th>Received</th><th>Processed</th><th>Rejected</th><th>Rows handled</th><th>Status</th></tr></thead>
+      <div className="sr-only"><table><caption>Rows in the last 12 uploads</caption><thead><tr><th>File</th><th>Received</th><th>Processed</th><th>Rejected</th><th>Rows handled</th><th>Status</th></tr></thead>
         <tbody>{points.map(point => <tr key={point.id}><th scope="row">{point.fileName}</th><td>{point.date}</td>
           <td>{point.reported ? numberFormatter.format(point.processed) : "Not yet"}</td><td>{point.reported ? numberFormatter.format(point.rejected) : "Not yet"}</td>
           <td>{point.reported ? numberFormatter.format(point.rows) : "Not yet"}</td><td>{point.status === "PENDING" ? "Waiting" : point.status.toLowerCase()}</td></tr>)}</tbody>
-      </table></>}
+      </table></div></>}
   </SpotlightCard>;
 }

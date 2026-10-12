@@ -79,6 +79,12 @@ function sourceFiles(directory: string): string[] {
     return /\.(tsx?|css)$/.test(file) && !file.includes(".test.") ? [file] : [];
   });
 }
+it("Clips accessibility tables through a wrapper rather than an intrinsic table box", () => {
+  for (const file of sourceFiles(join(root, "features/uploads/dashboard"))) {
+    const source = readFileSync(file, "utf8");
+    expect(source, file).not.toMatch(/<table[^>]*className="sr-only"/);
+  }
+});
 it("Uses no hexadecimal colors or font family names outside the stylesheet and font loader", () => {
   for (const file of sourceFiles(root)) {
     const content = readFileSync(file, "utf8");
