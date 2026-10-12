@@ -17,7 +17,7 @@
 - [x] 2.3 Polling transition, live announcement, crossfade and reduced motion
 - [x] 2.4 Finished panel: counts and paginated results table
 - [x] 2.5 Rejected rows notice
-- [ ] 2.6 Failed panel
+- [x] 2.6 Failed panel
 
 ## 3. End to end
 

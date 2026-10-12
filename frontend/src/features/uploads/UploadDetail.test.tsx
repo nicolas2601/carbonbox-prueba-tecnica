@@ -77,3 +77,10 @@ it("Connects completed detail to the first 25 processed rows", async () => {
   expect(await screen.findByRole("table", { name: "Processed rows" })).toBeInTheDocument();
   expect(screen.getByText("Page 1 of 3")).toBeInTheDocument();
 });
+it("Shows a terminal failure reason without requesting results", async () => {
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json({ ...upload("u1", "FAILED"), errorMessage: "Missing required column: unit" })));
+  render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByText("Missing required column: unit")).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "Upload another file" })).toHaveAttribute("href", "/uploads/new");
+  expect(screen.queryByRole("table")).not.toBeInTheDocument();
+});
