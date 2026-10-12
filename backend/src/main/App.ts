@@ -13,10 +13,11 @@ import type { IIdGenerator } from "../document-processing/application/ports/IIdG
 import { requestId } from "../document-processing/presentation/http/requestId";
 import { registerProtection } from "../document-processing/presentation/http/registerProtection";
 import { registerRateLimits } from "../document-processing/presentation/http/registerRateLimits";
+import type { HttpMetrics } from "../document-processing/presentation/metrics/HttpMetrics";
 
 const BYTES_PER_MB = 1024 * 1024;
 interface LogStream { write(line: string): void; }
-export interface AppRuntime { ids?: IIdGenerator; logStream?: LogStream; }
+export interface AppRuntime { ids?: IIdGenerator; logStream?: LogStream; metrics?: HttpMetrics; }
 
 export class App {
   constructor(private readonly settings: IConvictProps, private readonly services?: ApiServices, private readonly runtime: AppRuntime = {}) {}
@@ -26,6 +27,7 @@ export class App {
     const server = Fastify({ logger: this.loggerOptions(), routerOptions: { ignoreTrailingSlash: true },
       requestIdHeader: false, genReqId: request => requestId(request.headers["x-request-id"], ids) });
     server.addHook("onRequest", async (request, reply) => { reply.header("x-request-id", request.id); });
+    this.runtime.metrics?.instrument(server);
     registerErrorHandlers(server);
     await registerProtection(server, this.settings.corsOrigin);
     await registerRateLimits(server, this.settings);

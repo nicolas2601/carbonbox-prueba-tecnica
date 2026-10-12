@@ -14,6 +14,8 @@ export interface IConvictProps {
   rateLimitMax: number;
   uploadRateLimitMax: number;
   rateLimitWindowMs: number;
+  metricsHost: string;
+  metricsPort: number;
   workerPollIntervalMs: number;
   workerBatchSize: number;
   workerMaxAttempts: number;

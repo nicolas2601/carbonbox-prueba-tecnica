@@ -63,6 +63,18 @@ const schema = convict<IConvictProps>({
     default: 600,
     env: "RATE_LIMIT_MAX",
   },
+  metricsHost: {
+    doc: "Private metrics listener address; keep loopback or an internal network",
+    format: String,
+    default: "127.0.0.1",
+    env: "METRICS_HOST",
+  },
+  metricsPort: {
+    doc: "Private metrics port, zero reserves an ephemeral test port",
+    format: Number,
+    default: 9090,
+    env: "METRICS_PORT",
+  },
   uploadRateLimitMax: {
     doc: "Uploads allowed per client in the rate window",
     format: Number,
@@ -104,6 +116,7 @@ const schema = convict<IConvictProps>({
 export function loadSettings(): IConvictProps {
   schema.validate({ allowed: "strict" });
   const settings = schema.getProperties();
+  if (!Number.isInteger(settings.metricsPort) || settings.metricsPort < 0 || settings.metricsPort > 65535) throw new Error("METRICS_PORT must be a TCP port");
   const positiveIntegers = { WORKER_MAX_ATTEMPTS: settings.workerMaxAttempts,
     RATE_LIMIT_MAX: settings.rateLimitMax, UPLOAD_RATE_LIMIT_MAX: settings.uploadRateLimitMax, RATE_LIMIT_WINDOW_MS: settings.rateLimitWindowMs,
     WORKER_VISIBILITY_TIMEOUT_MS: settings.workerVisibilityTimeoutMs, WORKER_RETRY_BASE_MS: settings.workerRetryBaseMs };

@@ -13,10 +13,15 @@ it("API composition exposes shared read and write adapters", async () => {
   try {
     expect((await api.server.inject("/api/v1/uploads/stats")).json()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0 });
     expect((await api.server.inject("/health/ready")).statusCode).toBe(200);
+    expect((await api.server.inject("/metrics")).statusCode).toBe(404);
+    const metrics = await api.metricsServer.inject("/metrics");
+    expect(metrics.statusCode).toBe(200);
+    expect(metrics.body).toContain('carbonbox_queue_jobs{status="QUEUED"} 0');
+    expect(metrics.body).toContain("carbonbox_http_request_duration_seconds");
   } finally { await api.server.close(); await harness.close(); }
 });
 it("Real bun run start closes cleanly after SIGTERM", async () => {
-  const child = spawn("bun", ["run", "start"], { cwd: process.cwd(), env: { ...process.env, NODE_ENV: "development", LOG_LEVEL: "info", HOST: "127.0.0.1", PORT: "0" } });
+  const child = spawn("bun", ["run", "start"], { cwd: process.cwd(), env: { ...process.env, NODE_ENV: "development", LOG_LEVEL: "info", HOST: "127.0.0.1", PORT: "0", METRICS_PORT: "0" } });
   let output = "";
   const listening = new Promise<string>((resolve, reject) => {
     child.stdout.on("data", chunk => { output += String(chunk); const address = output.match(/http:\/\/127\.0\.0\.1:\d+/)?.[0]; if (address) resolve(address); });
