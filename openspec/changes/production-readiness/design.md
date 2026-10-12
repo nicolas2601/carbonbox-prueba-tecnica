@@ -22,6 +22,9 @@ and abuse is rejected with the standard error envelope (429).
 
 ### Metrics that answer operator questions
 Request latency by route, error counts, and queue depth by job status answer "is it slow, is it failing, is it backed up". The worker is observable through the queue depth and its structured logs.
+Metrics use a separate private listener, `METRICS_HOST=127.0.0.1` and `METRICS_PORT=9090` by default. Compose does not publish that port.
+The public API and Swagger have no metrics route; CORS is not an access-control substitute. On AWS, an internal scraper or ADOT collects it.
+Frontend CSP explicitly permits the inline scripts/styles required by static Next.js PPR and hydration; it is not described as a nonce-strict policy.
 
 ## Risks
 

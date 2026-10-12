@@ -9,14 +9,22 @@ import { HEALTH_SCHEMA, registerApiSchemas } from "../document-processing/presen
 import { registerDocs } from "../document-processing/presentation/http/registerDocs";
 import { HTTP_LOG_REDACTION } from "../document-processing/presentation/http/redactSecrets";
 import { registerResponsePolicy } from "../document-processing/presentation/http/registerResponsePolicy";
+import { randomUUID } from "node:crypto";
+import type { IIdGenerator } from "../document-processing/application/ports/IIdGenerator";
+import { requestId } from "../document-processing/presentation/http/requestId";
 
 const BYTES_PER_MB = 1024 * 1024;
+interface LogStream { write(line: string): void; }
+export interface AppRuntime { ids?: IIdGenerator; logStream?: LogStream; }
 
 export class App {
-  constructor(private readonly settings: IConvictProps, private readonly services?: ApiServices) {}
+  constructor(private readonly settings: IConvictProps, private readonly services?: ApiServices, private readonly runtime: AppRuntime = {}) {}
 
   async build(): Promise<FastifyInstance> {
-    const server = Fastify({ logger: this.loggerOptions(), routerOptions: { ignoreTrailingSlash: true } });
+    const ids = this.runtime.ids ?? { next: randomUUID };
+    const server = Fastify({ logger: this.loggerOptions(), routerOptions: { ignoreTrailingSlash: true },
+      requestIdHeader: false, genReqId: request => requestId(request.headers["x-request-id"], ids) });
+    server.addHook("onRequest", async (request, reply) => { reply.header("x-request-id", request.id); });
     registerErrorHandlers(server);
     registerApiSchemas(server);
     await registerDocs(server);
@@ -42,7 +50,7 @@ export class App {
     return server;
   }
 
-  private loggerOptions(): { level: string; redact: string[] } | false {
-    return this.settings.env === "test" ? false : { level: this.settings.logLevel, redact: HTTP_LOG_REDACTION };
+  private loggerOptions(): { level: string; redact: string[]; stream?: LogStream } | false {
+    return this.settings.env === "test" ? false : { level: this.settings.logLevel, redact: HTTP_LOG_REDACTION, stream: this.runtime.logStream };
   }
 }

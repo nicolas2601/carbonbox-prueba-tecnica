@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Prometheus metrics endpoint
-The system SHALL expose `/metrics` in Prometheus text format with request duration by route and status class, request counts, and default process metrics, not listed in the public API documentation and not reachable through the public frontend origin.
+The system SHALL expose `/metrics` on a separate private listener in Prometheus text format with request duration by route and status class, request counts and default process metrics. The default bind SHALL be `127.0.0.1:9090`, configurable through `METRICS_HOST` and `METRICS_PORT`. The public API and Swagger SHALL have no metrics route, and Compose SHALL NOT publish the metrics port.
 
 #### Scenario: Metrics present
 - **WHEN** a few requests are made and `/metrics` is read
