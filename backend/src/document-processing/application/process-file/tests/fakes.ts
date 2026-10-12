@@ -9,7 +9,7 @@ import type { ICsvRecordReader, CsvRecord } from "../../ports/ICsvRecordReader";
 import type { IIdGenerator } from "../../ports/IIdGenerator";
 import { StaleClaimError } from "../StaleClaimError";
 
-export const claim: JobClaim = { jobId: "job1", uploadId: "u1", claimToken: "owner1" };
+export const claim: JobClaim = { jobId: "job1", uploadId: "u1", claimToken: "owner1", attempt: 1 };
 export const now = new Date("2024-01-15T00:00:00Z");
 export function createUpload(): Upload {
   const name = FileName.create("report.csv");

@@ -7,11 +7,11 @@ glass cards, orange to red mountain charts, dark graphite panels and big radial 
 ## Direction
 
 A bright analytics workspace with dark graphite panels for the numbers that matter. Solid, cool tinted cards float on a cool light
-canvas; one warm orange-to-red gradient draws the data (a ridge-line mountain behind the activity chart, the gauge sweep, the primary
-action); graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
-tabular. The ridge landscape is drawn as SVG and ties the interface to the climate subject without stock photography.
+canvas; one warm orange-to-red gradient draws the real activity series, the gauge sweep and the primary
+action; graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
+tabular. No fixed landscape is drawn inside the data plot. One upload is a single bar; an area requires at least two real samples.
 
-Memorable details: the glowing ridge area chart, the big radial gauge on the graphite rail, the animated active pill in the
+Memorable details: the warm real-data activity chart, the big radial gauge on the graphite rail, the animated active pill in the
 navigation and status dots that breathe only while a file is processed.
 
 Scene: an emissions analyst on a 27 inch monitor in a bright office, checking between meetings whether yesterday's uploads finished and
@@ -49,7 +49,7 @@ CSS variables in `src/app/globals.css`, exposed to Tailwind through `@theme`; sh
 | `--teal` | `#0E9F8E` | secondary series and "healthy" accents (graphics only) |
 
 All text and badge pairs meet WCAG AA (4.5:1); essential graphics need 3:1 against their background. A test verifies the pairs.
-On light surfaces, the activity line and progress outline use `--accent-strong`; orange gradient fills and the faint ridge are decorative.
+On light surfaces, the activity line and progress outline use `--accent-strong`; orange gradient fills are decorative.
 Canvas links use `--text`, with accent underlines: accent-strong on canvas-bottom measured 4.10:1, below the small-text threshold.
 
 Depth: soft, cool, wide shadows (`0 18px 40px -22px rgba(18,24,27,0.25)`), no black drop shadows. The orange card glow uses the accent at 18 percent.
@@ -73,8 +73,8 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 ## Navigation
 
-- Desktop (from 1024 px): a white sidebar of 248 px with the lockup, three links with icons (Lucide, stroke 1.75) and an animated
-  active pill that glides between items (shared layout transition, transform only), the primary "Upload a file" button, and a footer
+- Desktop (from 1024 px): a solid tinted sidebar of 248 px with the lockup, three links with icons (Lucide, stroke 1.75) and an animated
+  active pill that glides between items (shared layout transition, transform only), and a footer
   with an API status dot (green online, red offline, from the readiness endpoint every 30 s) with a tooltip. Its completion mini indicator
   uses native SVG so the shared shell never loads Recharts.
 - Below 1024 px: a slim top bar with the lockup and a menu button that opens a drawer (shadcn Sheet) with the same links; focus trapped,
@@ -85,7 +85,7 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 - Three zones from 1280 px: sidebar (248), content (flexible, max 1000), graphite rail (320). Between 1024 and 1279 px the rail
   becomes a graphite band under the page header; below 1024 px everything is one column.
-- Dashboard content: header (title, subtitle, Upload button); the **Activity** card with the ridge area chart; three cards in a row
+- Dashboard content: header (title, subtitle, the primary Upload button); the **Activity** card with the real-data area/bar chart; three cards in a row
   (Completion donut, Status bars, Latest upload); the Recent uploads table. The rail holds the big radial gauge of completion, four
   compact counts (total, completed, in progress, failed) and the API status. The gauge is the only large figure; contextual facts explain the counts.
 - 16 px gaps, 24 px card padding, 20 px card radius. Tables scroll inside their card on narrow screens; the list becomes stacked rows below 640 px.
@@ -104,8 +104,8 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 - **Card**: solid `--surface`, 20 px radius, hairline and subtle inner highlight. No backdrop blur.
 - **GraphiteCard**: `--graphite`, same radius, `--on-graphite` text, used for the rail and any key figure.
 - **StatCard**: compact label and inline CountUp figure with caption. No standalone hero-metric grid.
-- **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads; line with the accent gradient, gradient fill fading to transparent,
-  a faint SVG ridge landscape behind, date labels. Real data only; empty state when no uploads.
+- **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads when there are at least two samples; one upload uses a single bar.
+  Gradient fill fades to transparent, date labels sit below the plot. No decorative peaks inside the data area; empty state when no uploads.
 - **Gauge**: Recharts radial bar of the completed share with the percentage in the center, gradient sweep, soft inner track.
 - **StatusBars**: Recharts horizontal bars for completed, in progress and failed, with counts.
 - **StatusBadge**: pill with dot; the dot pulses only for PROCESSING.
@@ -121,6 +121,7 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 - First load: cards rise 8 px and fade, 40 ms stagger, once. The activity area reveals left to right through a transform on a clip rectangle; the gauge
   sweeps with a rotation transform.
 - Only `transform` and `opacity` animate. No `transition: all`.
+- Table text does not fade on entrance: transient opacity lowers contrast. Hover keeps the transform-only feedback.
 - `prefers-reduced-motion: reduce` removes entrances, reveals, sweeps, pulses, sliding and the CountUp (final value shown at once).
 
 ## Accessibility
@@ -134,6 +135,9 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 Part of the design: first load JS of the dashboard at most 200 KB gzip, only the used font weights, LCP at most 1.8 s and CLS at most 0.05 on a cold
 load of the production build on localhost; charts are code split. The budget and the measurements live in the performance change.
+These are deferred measurement targets, not verified cold-load results. The
+completed performance scope records API/worker numbers and structural frontend
+safeguards; no screenshot or successful build proves the browser budgets.
 
 ## Copy
 

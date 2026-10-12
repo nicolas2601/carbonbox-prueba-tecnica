@@ -18,7 +18,7 @@ export class PgJobQueue implements IJobQueue {
         SELECT id FROM jobs WHERE status = 'QUEUED' AND "availableAt" <= ${now}::timestamp
           AND ("lockedUntil" IS NULL OR "lockedUntil" <= ${now}::timestamp)
         ORDER BY "availableAt", id FOR UPDATE SKIP LOCKED LIMIT 1
-      ) RETURNING id AS "jobId", "uploadId", "claimToken"`;
+      ) RETURNING id AS "jobId", "uploadId", "claimToken", attempts AS attempt`;
     return claims[0] ?? null;
   }
   async fail(claim: JobClaim, reason: string, now: Date, permanent: boolean): Promise<Either<StaleClaimError, "RETRY" | "DEAD">> {

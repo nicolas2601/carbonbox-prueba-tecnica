@@ -17,13 +17,23 @@ test("@screenshot curated README pages at desktop and mobile widths", async ({ p
     { name: "detail-completed", path: `/uploads/${completed}`, ready: () => page.getByRole("table", { name: "Processed rows" }) },
     { name: "detail-failed", path: `/uploads/${failed}`, ready: () => page.getByRole("heading", { name: "This file could not be processed" }) },
   ];
-  for (const width of [1280, 360]) {
-    await page.setViewportSize({ width, height: 900 });
-    for (const route of routes) {
-      await page.goto(route.path);
-      await expect(route.ready()).toBeVisible();
-      await page.evaluate(() => document.fonts.ready);
-      await page.screenshot({ path: join(output, `${route.name}-${width}.png`), fullPage: true, animations: "disabled" });
+  for (const reducedMotion of ["no-preference", "reduce"] as const) {
+    await page.emulateMedia({ reducedMotion });
+    for (const width of [1280, 360]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const route of routes) {
+        await page.goto(route.path);
+        await expect(route.ready()).toBeVisible();
+        await page.evaluate(() => document.fonts.ready);
+        if (route.name === "dashboard") {
+          await expect(page.locator(".chart-placeholder")).toHaveCount(0);
+          for (const [name, count] of [["Total uploads", "2"], ["Completed", "1"], ["In progress", "0"], ["Failed", "1"]]) {
+            await expect(page.getByRole("article", { name, exact: true }).getByText(count, { exact: true })).toBeVisible();
+          }
+        }
+        await page.waitForFunction(() => document.getAnimations().every(animation => animation.effect?.getTiming().iterations === Infinity || animation.playState !== "running"));
+        await page.screenshot({ path: join(output, `${route.name}-${width}${reducedMotion === "reduce" ? "-reduced" : ""}.png`), fullPage: true, animations: "disabled" });
+      }
     }
   }
 });

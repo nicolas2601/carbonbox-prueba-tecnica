@@ -20,10 +20,12 @@ it("Passes the isolated database and ownership environment into the test process
   const stack: E2eStack = { runId: "test123", processes: new Set(), databaseOwned: true,
     databaseName: "carbonbox_e2e_test123", databaseUrl: "postgresql://postgres:postgres@localhost:5432/carbonbox_e2e_test123",
     apiUrl: "http://127.0.0.1:3211", baseURL: "http://127.0.0.1:3210", storageDir: "/tmp/carbonbox-e2e-test123-owned" };
-  expect(await new LocalE2eStack(false, { NODE_ENV: "test" }).runTests(stack)).toBe(0);
+  expect(await new LocalE2eStack(false, { NODE_ENV: "test", E2E_PRODUCTION: "1" }).runTests(stack)).toBe(0);
   expect(spawn.mock.calls[0][2].env).toMatchObject({
     DATABASE_URL: stack.databaseUrl, E2E_DATABASE_URL: stack.databaseUrl, E2E_STACK_OWNED: stack.databaseName,
     E2E_API_URL: stack.apiUrl, E2E_BASE_URL: stack.baseURL, E2E_STORAGE_DIR: stack.storageDir,
+    NEXT_DIST_DIR: ".next-e2e", RATE_LIMIT_MAX: "1000000", UPLOAD_RATE_LIMIT_MAX: "1000000", METRICS_PORT: "0",
+    NODE_ENV: "production",
   });
 });
 it.each(["document_processing", "carbonbox_test"])("Refuses admin connections to the %s database", database => {

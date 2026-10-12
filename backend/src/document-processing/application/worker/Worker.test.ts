@@ -8,7 +8,7 @@ import { MemoryLogger } from "../create-upload/tests/MemoryLogger";
 import { MalformedCsvError } from "../csv/MalformedCsvError";
 
 const time = new Date("2024-01-15T00:00:00Z");
-const claim = { jobId: "j1", uploadId: "u1", claimToken: "private-token" };
+const claim = { jobId: "j1", uploadId: "u1", claimToken: "private-token", attempt: 2 };
 function setup(pollMs = 100, visibilityMs = 1000) {
   const queue = { claim: vi.fn<IJobQueue["claim"]>().mockResolvedValue(claim),
     fail: vi.fn<IJobQueue["fail"]>().mockResolvedValue(Either.right("RETRY")) };
@@ -30,14 +30,14 @@ it("A job is processed", async () => {
   expect(await worker.runOnce()).toBe(true);
   expect(queue.claim).toHaveBeenCalledExactlyOnceWith(time, 1000);
   expect(handler.execute).toHaveBeenCalledExactlyOnceWith({ claim });
-  expect(logger.events).toEqual([{ level: "info", message: "Job processed", context: { jobId: "j1", uploadId: "u1" } }]);
+  expect(logger.events).toEqual([{ level: "info", message: "Job processed", context: { jobId: "j1", uploadId: "u1", attempt: 2 } }]);
 });
 it("Stale claim", async () => {
   const { worker, queue, handler, logger } = setup();
   handler.execute.mockResolvedValue(Either.left(new StaleClaimError("Other owner")));
   expect(await worker.runOnce()).toBe(true);
   expect(queue.fail).not.toHaveBeenCalled();
-  expect(logger.events).toEqual([{ level: "warn", message: "Job claim is stale", context: { jobId: "j1", uploadId: "u1" } }]);
+  expect(logger.events).toEqual([{ level: "warn", message: "Job claim is stale", context: { jobId: "j1", uploadId: "u1", attempt: 2 } }]);
 });
 
 it.each(["RETRY", "DEAD"] as const)("Transient failure follows queue outcome %s", async outcome => {
@@ -46,7 +46,7 @@ it.each(["RETRY", "DEAD"] as const)("Transient failure follows queue outcome %s"
   queue.fail.mockResolvedValue(Either.right(outcome));
   expect(await worker.runOnce()).toBe(true);
   expect(queue.fail).toHaveBeenCalledExactlyOnceWith(claim, "Temporary failure", time, false);
-  expect(logger.events[0]).toMatchObject({ level: "error", context: { outcome } });
+  expect(logger.events[0]).toMatchObject({ level: "error", context: { outcome, attempt: 2 } });
   expect(JSON.stringify(logger.events)).not.toContain("Temporary failure");
   expect(JSON.stringify(logger.events)).not.toContain("private-token");
 });

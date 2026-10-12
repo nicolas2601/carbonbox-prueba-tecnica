@@ -9,8 +9,14 @@ export interface IConvictProps {
   logLevel: LogLevel;
   databaseUrl: string;
   storageDir: string;
+  storageDriver: "fs";
   maxUploadMb: number;
   corsOrigin: string;
+  rateLimitMax: number;
+  uploadRateLimitMax: number;
+  rateLimitWindowMs: number;
+  metricsHost: string;
+  metricsPort: number;
   workerPollIntervalMs: number;
   workerBatchSize: number;
   workerMaxAttempts: number;

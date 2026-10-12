@@ -10,7 +10,6 @@
 .workspace-link[aria-current="page"] { color: var(--text); }
 .workspace-link > span, .workspace-link > svg { position: relative; z-index: 1; }
 .workspace-link > .active-pill { position: absolute; inset: 0; z-index: 0; border-radius: 14px; background: color-mix(in srgb, var(--accent) 12%, var(--surface-solid)); }
-.sidebar-upload { margin-top: 24px; }
 .sidebar-footer { margin-top: auto; padding-top: 24px; display: grid; gap: 28px; }
 .api-status { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text-muted); font-size: 12px; cursor: help; }
 .api-dot { width: 7px; height: 7px; border: 1px solid var(--completed); border-radius: 50%; background: var(--failed); }

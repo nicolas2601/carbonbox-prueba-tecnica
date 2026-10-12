@@ -5,7 +5,7 @@ import { SystemClock } from "../document-processing/infrastructure/runtime/Syste
 
 async function main(): Promise<void> {
   const settings = loadSettings();
-  const { server } = await createApiModule(settings);
+  const { server, metricsServer } = await createApiModule(settings);
   let stopping = false;
   const stop = (): void => {
     if (stopping) return;
@@ -14,7 +14,10 @@ async function main(): Promise<void> {
   };
   process.once("SIGINT", stop);
   process.once("SIGTERM", stop);
-  try { await server.listen({ host: settings.host, port: settings.port }); }
+  try {
+    await metricsServer.listen({ host: settings.metricsHost, port: settings.metricsPort });
+    await server.listen({ host: settings.host, port: settings.port });
+  }
   catch (error) { await server.close(); throw error; }
 }
 

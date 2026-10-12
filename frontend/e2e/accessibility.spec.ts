@@ -16,6 +16,8 @@ test("dashboard, list, upload and both terminal detail panels have no serious ax
   for (const route of routes) {
     await page.goto(route.path);
     await expect(route.ready()).toBeVisible();
+    await page.waitForFunction(() => document.getAnimations().every(animation =>
+      animation.effect?.getTiming().iterations === Infinity || animation.playState !== "running"));
     const audit = await new AxeBuilder({ page }).analyze();
     const blocking = audit.violations.filter(issue => issue.impact === "serious" || issue.impact === "critical");
     expect(blocking, `Accessibility at ${route.path}: ${JSON.stringify(blocking)}`).toEqual([]);

@@ -39,6 +39,12 @@ const schema = convict<IConvictProps>({
     default: "./storage",
     env: "STORAGE_DIR",
   },
+  storageDriver: {
+    doc: "Implemented storage driver; S3 remains deferred",
+    format: ["fs"],
+    default: "fs",
+    env: "STORAGE_DRIVER",
+  },
   maxUploadMb: {
     doc: "Maximum accepted upload size in megabytes",
     format: "nat",
@@ -48,7 +54,7 @@ const schema = convict<IConvictProps>({
   corsOrigin: {
     doc: "Origin allowed to call the API from a browser",
     format: String,
-    default: "http://localhost:3000",
+    default: "http://localhost:3000,http://127.0.0.1:3000",
     env: "CORS_ORIGIN",
   },
   workerPollIntervalMs: {
@@ -56,6 +62,36 @@ const schema = convict<IConvictProps>({
     format: "nat",
     default: 1000,
     env: "WORKER_POLL_INTERVAL_MS",
+  },
+  rateLimitMax: {
+    doc: "Read requests allowed per client in the rate window",
+    format: Number,
+    default: 600,
+    env: "RATE_LIMIT_MAX",
+  },
+  metricsHost: {
+    doc: "Private metrics listener address; keep loopback or an internal network",
+    format: String,
+    default: "127.0.0.1",
+    env: "METRICS_HOST",
+  },
+  metricsPort: {
+    doc: "Private metrics port, zero reserves an ephemeral test port",
+    format: Number,
+    default: 9090,
+    env: "METRICS_PORT",
+  },
+  uploadRateLimitMax: {
+    doc: "Uploads allowed per client in the rate window",
+    format: Number,
+    default: 30,
+    env: "UPLOAD_RATE_LIMIT_MAX",
+  },
+  rateLimitWindowMs: {
+    doc: "Rate limiting window in milliseconds",
+    format: Number,
+    default: 60000,
+    env: "RATE_LIMIT_WINDOW_MS",
   },
   workerBatchSize: {
     doc: "Rows persisted per batch, which is also the progress granularity",
@@ -86,7 +122,9 @@ const schema = convict<IConvictProps>({
 export function loadSettings(): IConvictProps {
   schema.validate({ allowed: "strict" });
   const settings = schema.getProperties();
+  if (!Number.isInteger(settings.metricsPort) || settings.metricsPort < 0 || settings.metricsPort > 65535) throw new Error("METRICS_PORT must be a TCP port");
   const positiveIntegers = { WORKER_MAX_ATTEMPTS: settings.workerMaxAttempts,
+    RATE_LIMIT_MAX: settings.rateLimitMax, UPLOAD_RATE_LIMIT_MAX: settings.uploadRateLimitMax, RATE_LIMIT_WINDOW_MS: settings.rateLimitWindowMs,
     WORKER_VISIBILITY_TIMEOUT_MS: settings.workerVisibilityTimeoutMs, WORKER_RETRY_BASE_MS: settings.workerRetryBaseMs };
   for (const [name, value] of Object.entries(positiveIntegers)) {
     if (!Number.isSafeInteger(value) || value < 1) throw new Error(`${name} must be a positive integer`);

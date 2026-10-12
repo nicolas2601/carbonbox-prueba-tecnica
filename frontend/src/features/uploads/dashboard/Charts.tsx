@@ -8,15 +8,22 @@ import type { UploadStats } from "@/lib/api/models";
 import { completionShare, statusCounts } from "./chartModels";
 
 const config = { rows: { label: "Rows handled", color: "var(--accent-strong)" } };
+function ActivityAxes() {
+  return <><XAxis dataKey="label" axisLine={false} tickLine={false} minTickGap={32} tickMargin={10} height={36} tick={{ fill: "var(--text-muted)", fontSize: 11 }} />
+    <YAxis axisLine={false} tickLine={false} allowDecimals={false} tick={{ fill: "var(--text-muted)", fontSize: 11 }} /></>;
+}
 export function ActivityChart({ points }: { points: ActivityPoint[] }) {
   const id = useId().replaceAll(":", "");
+  if (points.length === 1) return <ChartContainer config={config}><BarChart data={points} margin={{ top: 20, right: 12, bottom: 8, left: -28 }} accessibilityLayer={false}>
+    <ActivityAxes /><ChartTooltip content={<ChartTooltipContent />} isAnimationActive={false} />
+    <Bar dataKey="rows" name="Rows handled" fill="var(--accent-strong)" barSize={32} radius={[6, 6, 0, 0]} isAnimationActive={false} />
+  </BarChart></ChartContainer>;
   return <ChartContainer config={config}>
-    <AreaChart data={points} margin={{ top: 20, right: 12, bottom: 0, left: -28 }} accessibilityLayer={false}>
+    <AreaChart data={points} margin={{ top: 20, right: 12, bottom: 8, left: -28 }} accessibilityLayer={false}>
       <defs><linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.55} /><stop offset="65%" stopColor="var(--accent-2)" stopOpacity={0.12} /><stop offset="100%" stopColor="var(--accent-2)" stopOpacity={0} />
       </linearGradient><clipPath id={`${id}-reveal`}><rect width="100%" height="100%" className="area-reveal-mask" /></clipPath></defs>
-      <XAxis dataKey="label" axisLine={false} tickLine={false} minTickGap={32} tickMargin={12} />
-      <YAxis axisLine={false} tickLine={false} allowDecimals={false} tick={{ fill: "var(--text-muted)", fontSize: 11 }} />
+      <ActivityAxes />
       <ChartTooltip content={<ChartTooltipContent />} isAnimationActive={false} />
       <g clipPath={`url(#${id}-reveal)`}><Area type="monotone" dataKey="rows" name="Rows handled" stroke="var(--accent-strong)" strokeWidth={2.5} fill={`url(#${id})`} isAnimationActive={false} /></g>
     </AreaChart>
@@ -25,7 +32,7 @@ export function ActivityChart({ points }: { points: ActivityPoint[] }) {
 export function CompletionDonut({ stats }: { stats: UploadStats }) {
   const values = [{ value: stats.completed }, { value: stats.total - stats.completed || (stats.total === 0 ? 1 : 0) }];
   return <ChartContainer config={{ completed: { color: "var(--accent-strong)" } }}>
-    <PieChart accessibilityLayer={false}><Pie data={values} dataKey="value" innerRadius="70%" outerRadius="95%" startAngle={90} endAngle={-270} stroke="none" isAnimationActive={false}>
+    <PieChart accessibilityLayer={false}><Pie data={values} dataKey="value" innerRadius="70%" outerRadius="95%" startAngle={90} endAngle={-270} stroke="none" isAnimationActive={false} rootTabIndex={-1}>
       <Cell fill="var(--accent-strong)" /><Cell fill="var(--line)" />
     </Pie></PieChart>
   </ChartContainer>;
