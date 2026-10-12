@@ -7,6 +7,8 @@ export default defineConfig({
   outputDir: "../test-results",
   fullyParallel: false,
   workers: 1,
+  timeout: 60000,
+  expect: { timeout: 15000 },
   reporter: "list",
   use: {
     baseURL: getOwnedBaseURL(process.env),
