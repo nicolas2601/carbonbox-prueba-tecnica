@@ -1,7 +1,7 @@
 ## 1. Activity chart
 
-- [ ] 1.1 RED/GREEN pure point/label/compact-number models for 1/2/12 uploads and large counters
-- [ ] 1.2 Stacked bars, filename/time axes, full tooltip, legend and accessible table; update DESIGN.md
+- [x] 1.1 RED/GREEN pure point/label/compact-number models for 1/2/12 uploads and large counters
+- [x] 1.2 Stacked bars, filename/time axes, full tooltip, legend and accessible table; update DESIGN.md
 
 ## 2. Server-backed ledger
 
@@ -17,6 +17,7 @@
 
 ## 4. Additional context
 
+- [ ] 4.0 Tested PROCESSING readout with observed poll rate, elapsed time and no fabricated stages/percentage
 - [ ] 4.1 Tested row-quality and approximate terminal elapsed models with honest empty states
 - [ ] 4.2 Two scoped dashboard views and quiet recent-file sidebar context
 

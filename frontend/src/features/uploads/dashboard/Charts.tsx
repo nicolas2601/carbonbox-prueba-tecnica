@@ -1,32 +1,29 @@
 "use client";
 
 import { useId } from "react";
-import { Area, AreaChart, Bar, BarChart, Cell, Pie, PieChart, PolarAngleAxis, RadialBar, RadialBarChart, XAxis, YAxis } from "recharts";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { Bar, BarChart, Cell, Pie, PieChart, PolarAngleAxis, RadialBar, RadialBarChart, XAxis, YAxis } from "recharts";
+import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import type { ActivityPoint } from "./chartModels";
 import type { UploadStats } from "@/lib/api/models";
-import { completionShare, statusCounts } from "./chartModels";
+import { completionShare, statusCounts, formatRows } from "./chartModels";
+import { ActivityTooltip } from "./ActivityTooltip";
+import { FileAxisTick } from "./FileAxisTick";
 
-const config = { rows: { label: "Rows handled", color: "var(--accent-strong)" } };
-function ActivityAxes() {
-  return <><XAxis dataKey="label" axisLine={false} tickLine={false} minTickGap={32} tickMargin={10} height={36} tick={{ fill: "var(--text-muted)", fontSize: 11 }} />
-    <YAxis axisLine={false} tickLine={false} allowDecimals={false} tick={{ fill: "var(--text-muted)", fontSize: 11 }} /></>;
+const config = { processed: { label: "Processed", color: "var(--accent-strong)" }, rejected: { label: "Rejected", color: "var(--failed)" } };
+function ActivityAxes({ points }: { points: ActivityPoint[] }) {
+  return <><XAxis dataKey="id" axisLine={false} tickLine={false} minTickGap={12} tickMargin={8} height={48} fontSize={12}
+    tickFormatter={id => points.find(point => point.id === id)?.shortName ?? ""} tick={<FileAxisTick points={points} />} />
+    <YAxis width={56} axisLine={false} tickLine={false} allowDecimals={false} tickCount={4} tickFormatter={formatRows}
+      tick={{ fill: "var(--text-muted)", fontSize: 12 }} /></>;
 }
 export function ActivityChart({ points }: { points: ActivityPoint[] }) {
-  const id = useId().replaceAll(":", "");
-  if (points.length === 1) return <ChartContainer config={config}><BarChart data={points} margin={{ top: 20, right: 12, bottom: 8, left: -28 }} accessibilityLayer={false}>
-    <ActivityAxes /><ChartTooltip content={<ChartTooltipContent />} isAnimationActive={false} />
-    <Bar dataKey="rows" name="Rows handled" fill="var(--accent-strong)" barSize={32} radius={[6, 6, 0, 0]} isAnimationActive={false} />
-  </BarChart></ChartContainer>;
-  return <ChartContainer config={config}>
-    <AreaChart data={points} margin={{ top: 20, right: 12, bottom: 8, left: -28 }} accessibilityLayer={false}>
-      <defs><linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.55} /><stop offset="65%" stopColor="var(--accent-2)" stopOpacity={0.12} /><stop offset="100%" stopColor="var(--accent-2)" stopOpacity={0} />
-      </linearGradient><clipPath id={`${id}-reveal`}><rect width="100%" height="100%" className="area-reveal-mask" /></clipPath></defs>
-      <ActivityAxes />
-      <ChartTooltip content={<ChartTooltipContent />} isAnimationActive={false} />
-      <g clipPath={`url(#${id}-reveal)`}><Area type="monotone" dataKey="rows" name="Rows handled" stroke="var(--accent-strong)" strokeWidth={2.5} fill={`url(#${id})`} isAnimationActive={false} /></g>
-    </AreaChart>
+  if (points.length === 0) return null;
+  return <ChartContainer config={config} className="aspect-auto h-full w-full">
+    <BarChart data={points} margin={{ top: 16, right: 16, bottom: 12, left: 12 }} maxBarSize={36} accessibilityLayer={false}>
+      <ActivityAxes points={points} /><ChartTooltip content={<ActivityTooltip />} isAnimationActive={false} />
+      <Bar dataKey="processed" name="Processed" stackId="rows" fill="var(--accent-strong)" isAnimationActive={false} />
+      <Bar dataKey="rejected" name="Rejected" stackId="rows" fill="var(--failed)" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+    </BarChart>
   </ChartContainer>;
 }
 export function CompletionDonut({ stats }: { stats: UploadStats }) {

@@ -72,3 +72,12 @@ it("Shows real activity points, contextual completion and the graphite rail", as
   expect(screen.getByText("3 of 7 uploads completed")).toBeInTheDocument();
   expect(screen.getByRole("complementary", { name: "Upload overview" })).toHaveAttribute("data-surface", "graphite");
 });
+it("Exposes separate processed and rejected rows in the activity text alternative", async () => {
+  server.use(http.get(`${API_URL}/uploads`, () => HttpResponse.json(page([{ ...upload("mixed"), processedRows: 15, failedRows: 10 }]))));
+  render(<Dashboard />, { wrapper: queryHarness().wrapper });
+  const table = await screen.findByRole("table", { name: "Rows in the last 12 uploads" });
+  expect(within(table).getByRole("columnheader", { name: "Processed" })).toBeInTheDocument();
+  expect(within(table).getByRole("columnheader", { name: "Rejected" })).toBeInTheDocument();
+  const row = within(table).getAllByRole("row")[1];
+  expect(row).toHaveTextContent("15"); expect(row).toHaveTextContent("10");
+});
