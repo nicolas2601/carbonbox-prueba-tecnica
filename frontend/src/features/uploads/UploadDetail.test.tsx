@@ -6,6 +6,9 @@ import { API_URL, server } from "@/tests/server";
 import { queryHarness } from "@/tests/queryHarness";
 import { upload } from "@/tests/fixtures";
 import { UploadDetail } from "./UploadDetail";
+import { page as resultPage } from "@/tests/fixtures";
+
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
 
 it("Displays file information and a back link from the public DTO", async () => {
   server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", "PENDING"))));
@@ -53,16 +56,24 @@ it("Combines valid and rejected rows into an honest processing counter", async (
 it("Announces one status transition and stops requests after completion", async () => {
   vi.useFakeTimers();
   let calls = 0;
-  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", ++calls === 1 ? "PROCESSING" : "COMPLETED"))));
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", ++calls === 1 ? "PROCESSING" : "COMPLETED"))),
+    http.get(`${API_URL}/uploads/u1/results`, () => HttpResponse.json(resultPage([], 0, 1, 25))));
   const view = render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
-  await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Upload processing"));
+  await vi.waitFor(() => expect(screen.getByRole("status", { name: "Upload status" })).toHaveTextContent("Upload processing"));
   const announcements: string[] = [];
-  const observer = new MutationObserver(() => { announcements.push(screen.getByRole("status").textContent!); });
-  observer.observe(screen.getByRole("status"), { childList: true, characterData: true, subtree: true });
+  const observer = new MutationObserver(() => { announcements.push(screen.getByRole("status", { name: "Upload status" }).textContent!); });
+  observer.observe(screen.getByRole("status", { name: "Upload status" }), { childList: true, characterData: true, subtree: true });
   await act(() => vi.advanceTimersByTimeAsync(3000));
-  await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Upload completed"));
+  await vi.waitFor(() => expect(screen.getByRole("status", { name: "Upload status" })).toHaveTextContent("Upload completed"));
   await act(() => vi.advanceTimersByTimeAsync(9000));
   expect(announcements).toEqual(["Upload completed"]);
   expect(calls).toBe(2);
   observer.disconnect(); view.unmount();
+});
+it("Connects completed detail to the first 25 processed rows", async () => {
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload())),
+    http.get(`${API_URL}/uploads/u1/results`, () => HttpResponse.json(resultPage(Array.from({ length: 25 }, () => ({ category: "Water", amount: 4, unit: "m3", date: "2024-01-15" })), 60, 1, 25))));
+  render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByRole("table", { name: "Processed rows" })).toBeInTheDocument();
+  expect(screen.getByText("Page 1 of 3")).toBeInTheDocument();
 });
