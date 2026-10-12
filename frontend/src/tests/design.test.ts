@@ -37,6 +37,14 @@ it("Defines the visible keyboard focus ring", () => {
   expect(css).toContain("outline: 2px solid var(--accent-strong)");
   expect(css).toContain("outline-offset: 2px");
 });
+it("Keeps the focused skip link above fixed and sticky navigation", () => {
+  const shell = readFileSync(join(root, "styles/shell.css"), "utf8");
+  const skipLayer = Number(css.match(/\.skip-link\s*\{[^}]*z-index:\s*(\d+)/)?.[1]);
+  for (const selector of ["desktop-sidebar", "mobile-topbar"]) {
+    const navigationLayer = Number(shell.match(new RegExp(`\\.${selector}\\s*\\{[^}]*z-index:\\s*(\\d+)`))?.[1]);
+    expect(skipLayer).toBeGreaterThan(navigationLayer);
+  }
+});
 it("Reveals only the activity area through a transform-only SVG clip", () => {
   const chart = readFileSync(join(root, "features/uploads/dashboard/Charts.tsx"), "utf8");
   const styles = readFileSync(join(root, "styles/dashboard.css"), "utf8");

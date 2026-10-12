@@ -53,6 +53,14 @@ const graphicPairs: Pair[] = [
   ...["accent", "accent-2", "teal"].map(token => [`${token} gauge/status on graphite`, color(token), color("graphite")] as Pair),
   ...["completed", "processing", "failed"].map(token => [`${token} status bar`, color(token), color("surface")] as Pair),
 ];
+const hoverOpacity = Number(css.match(/\.button[^{}]*:hover\s*\{\s*opacity:\s*([\d.]+)/)?.[1] ?? 1);
+const hoverPairs: Pair[] = surfaces.slice(0, 4).flatMap(surface => Array.from({ length: 11 }, (_, step) => [
+  `primary hover on ${surface}, gradient ${step * 10}%`, blend(color("accent-ink"), color(surface), hoverOpacity),
+  blend(blend(color("accent"), color("accent-2"), step / 10), color(surface), hoverOpacity),
+] as Pair));
+it.each(hoverPairs)("Hover text contrast >= 4.5:1: %s", (label, foreground, background) => {
+  expect(contrast(foreground, background), label).toBeGreaterThanOrEqual(4.5);
+});
 it.each(graphicPairs)("Essential graphics contrast >= 3:1: %s", (label, foreground, background) => {
   expect(contrast(foreground, background), label).toBeGreaterThanOrEqual(3);
 });
