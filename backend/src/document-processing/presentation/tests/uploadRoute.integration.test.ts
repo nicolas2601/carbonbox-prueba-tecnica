@@ -18,6 +18,9 @@ it("A valid CSV creates one pending upload and job with Location", async () => {
     expect(response.statusCode).toBe(201);
     expect(response.json()).toMatchObject({ status: "PENDING", fileName: "report.csv", id: expect.any(String) });
     expect(response.headers.location).toBe(`/api/v1/uploads/${response.json().id}`);
+    expect(response.headers["content-type"]).toBe("application/json; charset=utf-8");
+    expect(Number(response.headers["content-length"])).toBe(response.rawPayload.length);
+    expect(response.headers["cache-control"]).toBe("no-store");
     expect(await client.upload.findFirstOrThrow()).toMatchObject({ userId: "anonymous" });
     expect(await client.job.count()).toBe(1);
   } finally { await api.close(); }
@@ -30,6 +33,8 @@ it.each([0, 1])("Streaming byte boundary: limit plus %s byte", async extra => {
     const data = new Uint8Array(1024 * 1024 + extra).fill(65);
     const response = await api.server.inject({ method: "POST", url: "/api/v1/uploads", ...multipart([{ name: "file", filename: "size.csv", data }]) });
     expect(response.statusCode).toBe(extra ? 413 : 201);
+    expect(response.headers["content-type"]).toBe("application/json; charset=utf-8");
+    expect(response.headers["cache-control"]).toBe("no-store");
     expect(await client.upload.count()).toBe(extra ? 0 : 1);
     expect(await client.job.count()).toBe(extra ? 0 : 1);
     const files = await readdir(api.runtime.settings.storageDir);
