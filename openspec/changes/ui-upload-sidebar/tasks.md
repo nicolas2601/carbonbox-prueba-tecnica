@@ -9,4 +9,4 @@
 
 ## 3. Final verification
 - [x] 3.1 Validate this change and run lint, TypeScript, and full test suite against baseline.
-- [ ] 3.2 Review scope, commit TDD cycles, report branch and SHAs.
+- [x] 3.2 Review scope, commit TDD cycles, report branch and SHAs.
