@@ -1,7 +1,7 @@
 # upload-page Specification
 
 ## Purpose
-TBD - created by archiving change frontend-upload-detail. Update Purpose after archive.
+Let the user choose a file, validate it early and upload it with visible progress.
 ## Requirements
 ### Requirement: Choose a file by selecting or dropping
 The system SHALL render at `/uploads/new` a drop area that is also a labelled file input, usable with keyboard and screen readers,

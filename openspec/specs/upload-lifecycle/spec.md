@@ -1,7 +1,7 @@
 # upload-lifecycle Specification
 
 ## Purpose
-TBD - created by archiving change domain-foundations. Update Purpose after archive.
+Define the closed set of upload statuses and the allowed transitions.
 ## Requirements
 ### Requirement: UploadStatus is a closed set
 The system SHALL provide `UploadStatus.create(value)` returning

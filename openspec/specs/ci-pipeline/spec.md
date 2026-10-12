@@ -1,7 +1,7 @@
 # ci-pipeline Specification
 
 ## Purpose
-TBD - created by archiving change production-readiness. Update Purpose after archive.
+Describe the checks that run on every push and pull request.
 ## Requirements
 ### Requirement: Push and pull request checks are defined
 The system SHALL provide a GitHub Actions workflow definition for push and pull request with locked dependency installation, frontend lint, type checks, backend unit/coverage and PostgreSQL integration tests, frontend tests/build and strict specification validation. This requirement concerns configuration and local equivalents, not an unobserved remote green run.

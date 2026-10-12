@@ -1,7 +1,7 @@
 # process-file Specification
 
 ## Purpose
-TBD - created by archiving change process-file. Update Purpose after archive.
+Process a stored file into rows, tolerate rejected rows and fail unusable files.
 ## Requirements
 ### Requirement: A valid file is processed into stored rows
 The system SHALL provide a `ProcessFile` command with a `JobClaim` and a handler returning

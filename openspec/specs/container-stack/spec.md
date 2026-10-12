@@ -1,7 +1,7 @@
 # container-stack Specification
 
 ## Purpose
-TBD - created by archiving change production-readiness. Update Purpose after archive.
+Run the whole system from containers with one command and documented configuration.
 ## Requirements
 ### Requirement: Images are multi stage, non root and self checking
 The system SHALL provide multi stage Dockerfiles for the API, the worker and the frontend that run as a non root user, include runtime bundles/dependencies and define a health check. The worker check SHALL establish process liveness only; actual progress is observed through queue metrics and outcome logs.

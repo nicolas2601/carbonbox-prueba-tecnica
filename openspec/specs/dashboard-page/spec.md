@@ -1,7 +1,7 @@
 # dashboard-page Specification
 
 ## Purpose
-TBD - created by archiving change frontend-foundation. Update Purpose after archive.
+Show totals, recent uploads and every loading, empty and error state.
 ## Requirements
 ### Requirement: Totals at a glance
 The system SHALL render at `/` four stat cards for total, completed, in progress and failed uploads, and a primary link to `/uploads/new`.

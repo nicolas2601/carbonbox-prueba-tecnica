@@ -1,7 +1,7 @@
 # visual-system Specification
 
 ## Purpose
-TBD - created by archiving change frontend-redesign. Update Purpose after archive.
+Define the Carbon Day tokens, verified contrast and reduced motion behaviour.
 ## Requirements
 ### Requirement: Carbon Day tokens and fonts
 The system SHALL define the tokens of `DESIGN.md` v2.2 as CSS variables exposed to Tailwind and SHALL load Sora, Geist and Geist Mono

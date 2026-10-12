@@ -1,7 +1,7 @@
 # http-routes Specification
 
 ## Purpose
-TBD - created by archiving change http-api. Update Purpose after archive.
+Expose the upload, list, detail, results and stats routes.
 ## Requirements
 ### Requirement: Upload a file
 The system SHALL expose `POST /api/v1/uploads` accepting `multipart/form-data` with one file in the

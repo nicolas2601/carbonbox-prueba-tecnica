@@ -1,7 +1,7 @@
 # design-system Specification
 
 ## Purpose
-TBD - created by archiving change frontend-foundation. Update Purpose after archive.
+Keep tokens, fonts, status badges and motion rules in one place.
 ## Requirements
 ### Requirement: Tokens and fonts are defined once
 The system SHALL define the color, spacing and motion tokens of `DESIGN.md` as

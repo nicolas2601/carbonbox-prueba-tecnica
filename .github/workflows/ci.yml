@@ -114,7 +114,7 @@ jobs:
         with:
           node-version: 26.2
       - name: Validate specifications and active changes
-        run: npx --yes @fission-ai/openspec@latest validate --all --strict --no-interactive
+        run: npx --yes @fission-ai/openspec@1.6.0 validate --all --strict --no-interactive
 
   containers:
     name: Container build and smoke

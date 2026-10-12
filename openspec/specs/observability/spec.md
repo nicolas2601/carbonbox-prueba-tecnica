@@ -1,7 +1,7 @@
 # observability Specification
 
 ## Purpose
-TBD - created by archiving change production-readiness. Update Purpose after archive.
+Expose metrics and queue depth and make failures traceable.
 ## Requirements
 ### Requirement: Prometheus metrics endpoint
 The system SHALL expose `/metrics` on a separate private listener in Prometheus text format with request duration by route and status class, request counts and default process metrics. The default bind SHALL be `127.0.0.1:9090`, configurable through `METRICS_HOST` and `METRICS_PORT`. The public API and Swagger SHALL have no metrics route, and Compose SHALL NOT publish the metrics port.

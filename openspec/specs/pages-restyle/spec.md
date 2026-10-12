@@ -1,7 +1,7 @@
 # pages-restyle Specification
 
 ## Purpose
-TBD - created by archiving change frontend-redesign. Update Purpose after archive.
+Apply the visual system to the uploads list, upload and detail pages.
 ## Requirements
 ### Requirement: Uploads list in the new system
 The system SHALL show the list as a solid tinted table card with a sticky header, transform-only hover row feedback, badges, right aligned mono numbers, and stacked rows below 640 px, keeping ten rows per page and the page in the URL. Table text SHALL NOT fade on entrance.

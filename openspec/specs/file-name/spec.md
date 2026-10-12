@@ -1,7 +1,7 @@
 # file-name Specification
 
 ## Purpose
-TBD - created by archiving change domain-foundations. Update Purpose after archive.
+Accept only valid CSV file names and compare them by value.
 ## Requirements
 ### Requirement: FileName accepts only valid CSV file names
 The system SHALL provide `FileName.create(raw)` returning `Either<InvalidFileNameError, FileName>`.

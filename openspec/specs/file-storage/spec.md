@@ -1,7 +1,7 @@
 # file-storage Specification
 
 ## Purpose
-TBD - created by archiving change ingestion-adapters. Update Purpose after archive.
+Save and delete uploaded files safely under generated keys.
 ## Requirements
 ### Requirement: Saving writes the stream under a generated key
 The system SHALL provide `FsFileStorage` implementing `IFileStorage`. `save(stream)` SHALL write

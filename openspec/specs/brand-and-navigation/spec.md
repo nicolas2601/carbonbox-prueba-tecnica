@@ -1,7 +1,7 @@
 # brand-and-navigation Specification
 
 ## Purpose
-TBD - created by archiving change frontend-redesign. Update Purpose after archive.
+Define the brand mark and the desktop and mobile navigation of the application.
 ## Requirements
 ### Requirement: One brand mark, many uses
 The system SHALL define the logo once as `LogoMark` (inline SVG, 48 by 48 viewBox) and a `Lockup` that adds the wordmark, and SHALL export the same drawing as

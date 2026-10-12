@@ -1,7 +1,7 @@
 # domain-errors Specification
 
 ## Purpose
-TBD - created by archiving change domain-foundations. Update Purpose after archive.
+Give domain failures stable codes and readable messages.
 ## Requirements
 ### Requirement: Domain errors carry a stable code and a readable message
 The system SHALL define a `DomainError` base class that extends `Error` and exposes a string `code`

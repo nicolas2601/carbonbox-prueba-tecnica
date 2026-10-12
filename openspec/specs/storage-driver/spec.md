@@ -1,7 +1,7 @@
 # storage-driver Specification
 
 ## Purpose
-TBD - created by archiving change production-readiness. Update Purpose after archive.
+Select the storage driver and refuse unsupported values.
 ## Requirements
 ### Requirement: Filesystem is the supported default
 The system SHALL default `STORAGE_DRIVER` to `fs` and retain the existing filesystem storage port implementation for API and worker processes. This change SHALL NOT advertise an unimplemented S3 runtime as supported.
