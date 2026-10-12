@@ -22,6 +22,7 @@
   --release: 100ms;
   --entrance: 280ms;
   --stagger: 40ms;
+  --crossfade: 200ms;
 }
 
 @theme inline {
@@ -157,4 +158,16 @@ p { text-wrap: pretty; max-width: 70ch; }
 @keyframes processing-slide { from { transform: translateX(-100%); } to { transform: translateX(350%); } }
 @media (prefers-reduced-motion: reduce) {
   .progress-track[data-indeterminate="true"] .progress-fill { animation: none; }
+}
+
+.status-transition { display: grid; min-width: 0; }
+.status-transition[data-inline="true"] { display: inline-grid; }
+.status-transition-current, .status-transition-previous { grid-area: 1 / 1; min-width: 0; }
+.status-transition-previous { pointer-events: none; animation: panel-out var(--crossfade) var(--ease-out) both; }
+.status-transition[data-changing="true"] .status-transition-current { animation: panel-in var(--crossfade) var(--ease-out) both; }
+@keyframes panel-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes panel-out { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .status-transition-previous { display: none; }
+  .status-transition[data-changing="true"] .status-transition-current { animation: none; }
 }

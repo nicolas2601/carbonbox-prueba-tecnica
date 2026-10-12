@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw/http";
-import { expect, it } from "vitest";
+import { expect, it, vi } from "vitest";
 import { API_URL, server } from "@/tests/server";
 import { queryHarness } from "@/tests/queryHarness";
 import { upload } from "@/tests/fixtures";
@@ -49,4 +49,20 @@ it("Combines valid and rejected rows into an honest processing counter", async (
   expect(await screen.findByText("1,512 rows handled")).toBeInTheDocument();
   expect(screen.getByRole("progressbar")).not.toHaveAttribute("aria-valuenow");
   expect(screen.queryByText(/%/)).not.toBeInTheDocument();
+});
+it("Announces one status transition and stops requests after completion", async () => {
+  vi.useFakeTimers();
+  let calls = 0;
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", ++calls === 1 ? "PROCESSING" : "COMPLETED"))));
+  const view = render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
+  await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Upload processing"));
+  const announcements: string[] = [];
+  const observer = new MutationObserver(() => { announcements.push(screen.getByRole("status").textContent!); });
+  observer.observe(screen.getByRole("status"), { childList: true, characterData: true, subtree: true });
+  await act(() => vi.advanceTimersByTimeAsync(3000));
+  await vi.waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Upload completed"));
+  await act(() => vi.advanceTimersByTimeAsync(9000));
+  expect(announcements).toEqual(["Upload completed"]);
+  expect(calls).toBe(2);
+  observer.disconnect(); view.unmount();
 });
