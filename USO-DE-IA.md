@@ -7,7 +7,7 @@ Este documento describe, sin maquillar, cómo se usó IA para construir esta sol
 
 - [x] Claude Code (varias sesiones en paralelo, cada una con un rol distinto, ver más abajo)
 - [ ] GitHub Copilot
-- [ ] ChatGPT
+- [x] ChatGPT: modelos de OpenAI (ChatGPT) usados dentro de Claude Code a través de un proxy, junto a los modelos de Claude
 - [ ] Cursor AI
 - [x] Otras herramientas con IA o automatización: OpenSpec (especificaciones antes del código), una herramienta de diagramas de arquitectura (archify) para el diagrama de AWS, Playwright y axe-core para las pruebas de navegador y accesibilidad
 
@@ -18,6 +18,8 @@ Una persona dirigió el trabajo y varias sesiones de Claude Code lo ejecutaron c
 - **Sesión de planificación y revisión**: escribe la especificación de cada módulo, revisa el resultado con evidencia (corre las pruebas, lee el código, mira la base de datos) y explica cada decisión.
 - **Sesión de implementación**: construye cada módulo con TDD estricto (primero una prueba que falla, luego el código) y un commit pequeño por ciclo, citando la prueba roja de la que partió.
 - **Sesión de pruebas en navegador**: capturas, auditoría de accesibilidad y mediciones.
+
+Además de las sesiones de Claude, usé ChatGPT dentro del mismo Claude Code, a través de un proxy, para tener dos perspectivas independientes sobre decisiones de diseño, revisión de cambios y pruebas. Las respuestas de ambos modelos se contrastaron con el código y las pruebas antes de aceptarlas.
 
 Cada módulo se especificó antes de construirlo (`openspec/specs`), se implementó, se verificó de forma independiente contra el sistema corriendo y recién entonces se mezcló.
 
