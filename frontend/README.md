@@ -100,8 +100,8 @@ motion, twenty images in total. Captures wait for fonts, actual figures, lazy
 charts and finite animations; no fixed page sleeps are used. Production mode
 builds before starting Next, so the development badge is absent.
 
-On 2026-10-12 the complete Chromium suite passed: 13 tests in 49.2 seconds,
-including five axe audits, both in development and in production mode. The
+On 2026-10-12 the complete Chromium suite passed: 13 tests, including five axe
+audits, in development (49.2 seconds) and production (latest run: 47.2 seconds). The
 dedicated production capture run passed in 15.7 seconds. Independent queries
 after capture found no remaining `carbonbox_e2e_*` databases or temporary storage.
 Actual browser failures led to an unfocusable decorative pie and removal of row

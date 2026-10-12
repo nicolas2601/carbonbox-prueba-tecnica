@@ -26,9 +26,20 @@
 ## 5. Operations
 
 - [x] 5.1 `job:requeue` command with tests
-- [ ] 5.2 `docs/operations.md` runbook and the queue migration section in the README
+- [x] 5.2 `docs/operations.md` runbook and the queue migration section in the README
 
 ## 6. Verification
 
 - [ ] 6.1 All unit, integration and end to end suites pass; CI green
 - [ ] 6.2 Failure drills documented with evidence: worker killed, database restarted, bucket unreachable
+
+## Handoff limits
+
+Ten tasks are complete. Object storage 3.1–3.3 is deferred; 4.2 has a verified
+filesystem stack and configured profile, not a verified S3 runtime. For 4.4,
+clean-source Docker builds/HTTP smoke and owned production browser journeys passed
+separately; the actual Docker UI journey remains unverified because Playwright
+MCP's shared browser is in use. For 6.1 all local suites pass, but remote CI needs
+an authorized push. For 6.2 real worker crash/replay and database outage/recovery
+passed; the bucket drill is not implemented. These tasks stay unchecked rather
+than presenting partial evidence as completion. See `docs/operations.md`.
