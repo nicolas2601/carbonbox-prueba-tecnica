@@ -23,6 +23,7 @@ The system SHALL define the logo once as `LogoMark` (inline SVG, 48 by 48 viewBo
 ### Requirement: Desktop navigation
 The system SHALL render at 1024 px and above a sidebar with the lockup, links to Dashboard, Uploads and Upload a file with icons, the primary upload button, and the live completion mini gauge. The
 current link SHALL have `aria-current="page"` and an active pill that moves between items with a shared layout transition.
+The sidebar mini gauge SHALL use native SVG and the shared completion-share calculation, not load Recharts into the shared shell.
 
 #### Scenario: Current page
 - **WHEN** the user is on `/uploads`
