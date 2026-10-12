@@ -4,9 +4,9 @@ import { useState } from "react";
 import { expect, it } from "vitest";
 import { Dropzone } from "./Dropzone";
 
-function Harness({ disabled = false }: { disabled?: boolean }) {
+function Harness({ disabled = false, compact = false }: { disabled?: boolean; compact?: boolean }) {
   const [file, setFile] = useState<File | null>(null);
-  return <Dropzone file={file} onChange={setFile} disabled={disabled} limitMb={2} />;
+  return <Dropzone file={file} onChange={setFile} disabled={disabled} limitMb={2} compact={compact} />;
 }
 it("Selects, shows name and size, and removes a file", async () => {
   render(<Harness />);
@@ -16,6 +16,15 @@ it("Selects, shows name and size, and removes a file", async () => {
   expect(screen.getByText("4 B")).toBeInTheDocument();
   await user.click(screen.getByRole("button", { name: "Remove file" }));
   expect(screen.queryByText("report.csv")).not.toBeInTheDocument();
+});
+it("compacts the selected file row for the upload workspace", async () => {
+  render(<Harness compact />);
+  await userEvent.setup().upload(screen.getByLabelText("Choose a CSV file"), new File(["data"], "report.csv"));
+  expect(screen.getByText("report.csv")).toBeInTheDocument();
+  expect(screen.getByText("4 B")).toBeInTheDocument();
+  expect(screen.getByLabelText("Choose a CSV file").closest("label")).toHaveClass("dropzone-compact");
+  expect(screen.queryByText("Or drag and drop it here")).not.toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Remove file" })).toBeInTheDocument();
 });
 it("Accepts dropped files, tracks nested drag events and rejects several", () => {
   render(<Harness />);
