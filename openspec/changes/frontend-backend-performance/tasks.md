@@ -1,7 +1,7 @@
 ## 1. Baseline
 
 - [ ] 1.1 Measure route sizes and cold load metrics of the three pages in a real browser; write `docs/performance.md` baseline
-- [ ] 1.2 Measure API latency and throughput under 20 concurrent connections for the four endpoints; worker throughput on the 5000 row sample
+- [x] 1.2 Measure API latency and throughput under 20 concurrent connections for the four endpoints; worker throughput on the 5000 row sample
 
 ## 2. Frontend
 
@@ -12,7 +12,7 @@
 
 ## 3. API and database
 
-- [ ] 3.1 Composite index migration and query plan evidence
+- [ ] 3.1 Candidate index experiment and before/after plan evidence; production migration only for a measured >=30% improvement without worker-write regression
 - [ ] 3.2 Response compression and cache headers
 - [ ] 3.3 Pool and batch size experiments
 
