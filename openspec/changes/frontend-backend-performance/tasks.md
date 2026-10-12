@@ -12,7 +12,7 @@
 
 ## 3. API and database
 
-- [ ] 3.1 Candidate index experiment and before/after plan evidence; production migration only for a measured >=30% improvement without worker-write regression
+- [x] 3.1 Candidate index experiment and before/after plan evidence; measured and rejected (4.79% HTTP improvement, 10.09% lower worker throughput), no production migration
 - [ ] 3.2 Response compression and cache headers
 - [ ] 3.3 Pool and batch size experiments
 

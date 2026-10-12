@@ -87,6 +87,32 @@ Adoption requires at least 30 percent measured results improvement without
 regressing the worker's writes. Until that comparison, no production migration
 is justified.
 
+## Index candidate: measured, not adopted
+
+Run `541844_mv4tg7dv_2ba35217aaba`, measurement commit `4a2836f`. A candidate
+`(uploadId, date, id)` index was created only in its disposable database after
+seeding. The 10,000 existing uploads and 100,000 existing activity rows remained
+unchanged in count. Three real large uploads then measured the additional write
+work. No production schema or migration was changed.
+
+| Measure | Baseline | Candidate | Observed change |
+|---|---:|---:|---|
+| Results HTTP p95 ms | 28.939 | 27.553 | 4.79% lower, below the 30% adoption gate |
+| Results requests/s | 805.74 | 851.40 | 5.67% higher |
+| First results EXPLAIN ms | 13.294 | 0.183 | Sort removed, index scan reads 25 rows |
+| Deep results EXPLAIN ms | 27.430 | 27.355 | Planner still chooses bitmap scan and sort |
+| Worker median processing ms | 982.709 | 1,093.014 | Higher in this experiment |
+| Worker median rows/s | 5,087.975 | 4,574.506 | 10.09% lower in this experiment |
+
+Candidate worker trials were 1,143.047 / 1,093.014 / 1,044.721 ms. All four load
+endpoints returned zero errors, non-2xx responses and timeouts. The SQL first-page
+plan improved, but that did not produce the required end-to-end improvement.
+Single-run changes are not universal causal estimates; the predefined performance
+and no-write-regression gates are not met, so the index is **not adopted**.
+The separate uploads-list ordering is outside this candidate's scope.
+Independent cleanup found zero owned databases, storage directories and listeners
+on port 35281. Raw candidate plans and every latency sample remain in `performance/`.
+
 ## Isolation and limitations
 
 - Independent post-run checks found zero matching databases, temporary storage
@@ -97,5 +123,5 @@ is justified.
   Package resolution and explicit local configuration fixed the invocation.
 - Browser route bytes, LCP, FCP, CLS and fonts remain with worker2. No frontend
   performance budget is claimed met by these API measurements.
-- All numbers are from one reference run; small differences are not proof of an
-  improvement. Candidate evaluation and final measurements remain pending.
+- Each profile has one reference load run; small differences are not proof of an
+  improvement. Final response-policy measurements remain pending.
