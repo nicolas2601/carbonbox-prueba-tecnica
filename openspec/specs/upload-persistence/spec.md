@@ -1,7 +1,7 @@
 # upload-persistence Specification
 
 ## Purpose
-TBD - created by archiving change ingestion-adapters. Update Purpose after archive.
+Store an upload and its job together so one never exists without the other.
 ## Requirements
 ### Requirement: The jobs table models a durable queue entry
 The system SHALL add a `jobs` table with an id, the upload id (unique, referencing `uploads`

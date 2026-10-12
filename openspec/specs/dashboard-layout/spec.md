@@ -1,7 +1,7 @@
 # dashboard-layout Specification
 
 ## Purpose
-TBD - created by archiving change frontend-redesign. Update Purpose after archive.
+Define the application shell and the bento dashboard arrangement.
 ## Requirements
 ### Requirement: Application shell
 The system SHALL render a solid tinted sidebar of 248 px with the brand, navigation (Dashboard, Uploads, Upload a file) with the current page marked, and a live completion gauge, and SHALL turn it into a top bar below 1024 px.

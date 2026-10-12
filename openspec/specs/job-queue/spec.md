@@ -1,7 +1,7 @@
 # job-queue Specification
 
 ## Purpose
-TBD - created by archiving change queue-and-fencing. Update Purpose after archive.
+Provide a durable queue where one worker claims one job, with leases and retries.
 ## Requirements
 ### Requirement: Claiming gives one worker one job
 The system SHALL provide `PgJobQueue.claim(now, visibilityMs)` returning a `JobClaim` or null.

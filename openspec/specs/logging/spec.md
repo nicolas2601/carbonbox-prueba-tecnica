@@ -1,7 +1,7 @@
 # logging Specification
 
 ## Purpose
-TBD - created by archiving change csv-reader-and-worker. Update Purpose after archive.
+Provide a logger port with a JSON adapter and leave a trace on failed cleanups.
 ## Requirements
 ### Requirement: A logger port with a JSON adapter
 The system SHALL define `ILogger` with `info`, `warn` and `error`, each taking a message and an

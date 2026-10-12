@@ -1,7 +1,7 @@
 # either-result Specification
 
 ## Purpose
-TBD - created by archiving change domain-foundations. Update Purpose after archive.
+Represent success or failure as a value that can be combined and consumed.
 ## Requirements
 ### Requirement: Either represents success or failure as a value
 The system SHALL provide an `Either<L, R>` type created with `Either.left(error)` or

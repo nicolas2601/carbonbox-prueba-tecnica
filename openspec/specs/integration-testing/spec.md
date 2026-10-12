@@ -1,7 +1,7 @@
 # integration-testing Specification
 
 ## Purpose
-TBD - created by archiving change ingestion-adapters. Update Purpose after archive.
+Run database tests apart from the unit suite and never against development data.
 ## Requirements
 ### Requirement: Database tests run apart from the unit suite
 The system SHALL run files named `*.integration.test.ts` only with `bun run test:integration`,

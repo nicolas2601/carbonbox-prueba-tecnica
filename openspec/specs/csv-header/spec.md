@@ -1,7 +1,7 @@
 # csv-header Specification
 
 ## Purpose
-TBD - created by archiving change csv-validation. Update Purpose after archive.
+Require the four mandatory columns in the CSV header.
 ## Requirements
 ### Requirement: The header must contain the four required columns
 The system SHALL provide `validateHeader(fields)` returning

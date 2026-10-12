@@ -1,7 +1,7 @@
 # frontend-performance Specification
 
 ## Purpose
-TBD - created by archiving change frontend-backend-performance. Update Purpose after archive.
+Keep the front end light: split heavy code, configure fonts and stop polling when done.
 ## Requirements
 ### Requirement: Heavy code is split
 The system SHALL load dashboard chart implementations through a dynamic import with a reserved loading placeholder. The shared application shell SHALL use native SVG for its navigation indicator rather than importing Recharts.

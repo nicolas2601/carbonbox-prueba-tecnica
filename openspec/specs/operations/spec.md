@@ -1,7 +1,7 @@
 # operations Specification
 
 ## Purpose
-TBD - created by archiving change production-readiness. Update Purpose after archive.
+Document how to operate the system and how to recover dead jobs.
 ## Requirements
 ### Requirement: A runbook for operators
 The system SHALL provide `docs/operations.md` with supported health/private metrics checks, DEAD-job recovery, safe deployment/rollback boundaries, the observed worker/database failure drills and explicit unverified/deferred limitations. Environment examples SHALL be identified as public local-demo defaults, not deployment secrets.

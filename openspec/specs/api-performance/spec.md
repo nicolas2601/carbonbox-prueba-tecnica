@@ -1,7 +1,7 @@
 # api-performance Specification
 
 ## Purpose
-TBD - created by archiving change frontend-backend-performance. Update Purpose after archive.
+Measure API latency under concurrency and set the budget the endpoints must meet.
 ## Requirements
 ### Requirement: Latency is measured under concurrency
 The system SHALL record latency (p50, p95, p99) and throughput of list, stats, one upload and a results page at 20 concurrent connections against the real database, with and without the improvements.

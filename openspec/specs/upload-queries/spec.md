@@ -1,7 +1,7 @@
 # upload-queries Specification
 
 ## Purpose
-TBD - created by archiving change upload-queries. Update Purpose after archive.
+Read one upload, a paginated list and the processed rows of an upload.
 ## Requirements
 ### Requirement: Fetch one upload
 The system SHALL provide `GetUploadById` returning `Either<UploadNotFoundError, UploadView>` where the
