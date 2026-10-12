@@ -6,6 +6,8 @@ import { LogoMark, Lockup } from "./LogoMark";
 it("Names the standalone mark and hides the decorative mark in its lockup", () => {
   const view = render(<LogoMark />);
   expect(screen.getByRole("img", { name: "CarbonBox" })).toHaveAttribute("viewBox", "0 0 48 48");
+  expect(view.container.querySelector("use")).toHaveAttribute("width", "48");
+  expect(view.container.querySelector("use")).toHaveAttribute("height", "48");
   view.rerender(<Lockup />);
   expect(screen.queryByRole("img")).not.toBeInTheDocument();
   expect(screen.getByText("Carbon")).toBeInTheDocument();

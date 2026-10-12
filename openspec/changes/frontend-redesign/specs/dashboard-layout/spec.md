@@ -35,6 +35,7 @@ The system SHALL compute the completed share as completed divided by total (zero
 
 ### Requirement: The activity chart plots real uploads
 The system SHALL plot, for the latest 12 uploads in chronological order, the rows handled (processed plus rejected) as a Recharts area chart with date labels, and the card SHALL state "Rows in the last 12 uploads". A visually hidden table SHALL expose the same values.
+With exactly one upload, the system SHALL render one bar instead of an area. The plot SHALL NOT include a decorative landscape that can be mistaken for data, and date labels SHALL remain below the plotting area.
 
 #### Scenario: Points
 - **WHEN** 7 uploads exist

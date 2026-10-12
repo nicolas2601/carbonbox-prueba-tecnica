@@ -7,11 +7,11 @@ glass cards, orange to red mountain charts, dark graphite panels and big radial 
 ## Direction
 
 A bright analytics workspace with dark graphite panels for the numbers that matter. Solid, cool tinted cards float on a cool light
-canvas; one warm orange-to-red gradient draws the data (a ridge-line mountain behind the activity chart, the gauge sweep, the primary
-action); graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
-tabular. The ridge landscape is drawn as SVG and ties the interface to the climate subject without stock photography.
+canvas; one warm orange-to-red gradient draws the real activity series, the gauge sweep and the primary
+action; graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
+tabular. No fixed landscape is drawn inside the data plot. One upload is a single bar; an area requires at least two real samples.
 
-Memorable details: the glowing ridge area chart, the big radial gauge on the graphite rail, the animated active pill in the
+Memorable details: the warm real-data activity chart, the big radial gauge on the graphite rail, the animated active pill in the
 navigation and status dots that breathe only while a file is processed.
 
 Scene: an emissions analyst on a 27 inch monitor in a bright office, checking between meetings whether yesterday's uploads finished and
@@ -104,8 +104,8 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 - **Card**: solid `--surface`, 20 px radius, hairline and subtle inner highlight. No backdrop blur.
 - **GraphiteCard**: `--graphite`, same radius, `--on-graphite` text, used for the rail and any key figure.
 - **StatCard**: compact label and inline CountUp figure with caption. No standalone hero-metric grid.
-- **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads; line with the accent gradient, gradient fill fading to transparent,
-  a faint SVG ridge landscape behind, date labels. Real data only; empty state when no uploads.
+- **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads when there are at least two samples; one upload uses a single bar.
+  Gradient fill fades to transparent, date labels sit below the plot. No decorative peaks inside the data area; empty state when no uploads.
 - **Gauge**: Recharts radial bar of the completed share with the percentage in the center, gradient sweep, soft inner track.
 - **StatusBars**: Recharts horizontal bars for completed, in progress and failed, with counts.
 - **StatusBadge**: pill with dot; the dot pulses only for PROCESSING.

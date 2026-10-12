@@ -16,6 +16,7 @@ it.each([["/", "Dashboard"], ["/uploads", "Uploads"], ["/uploads/one", "Uploads"
     render(<AppShell><h1>Activity ledger</h1></AppShell>, { wrapper: queryHarness().wrapper });
     expect(screen.getAllByRole("main")).toHaveLength(1);
     expect(screen.getByRole("navigation", { name: "Main navigation" })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: "Upload a file" })).toHaveLength(1);
     expect(screen.getByRole("link", { name })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("link", { name: "Skip to content" })).toHaveAttribute("href", "#main-content");
     await userEvent.setup().tab();

@@ -1,7 +1,7 @@
 export function LogoMark({ decorative = false, size = 48 }: { decorative?: boolean; size?: number }) {
   return <svg viewBox="0 0 48 48" width={size} height={size} className="logo-mark" role={decorative ? undefined : "img"}
     aria-hidden={decorative || undefined} aria-label={decorative ? undefined : "CarbonBox"}>
-    <use href="/favicon.svg#carbonbox-mark" />
+    <use href="/favicon.svg#carbonbox-mark" width={48} height={48} />
   </svg>;
 }
 export function Lockup() {

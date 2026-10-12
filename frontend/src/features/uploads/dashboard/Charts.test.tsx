@@ -17,6 +17,16 @@ it("Registers area data inside its SVG reveal group without invalid geometry", (
   expect(area).toBeInTheDocument();
   expect(area?.getAttribute("d")).not.toContain("NaN");
 });
+it("Shows a single sample as one bar rather than an invented area", () => {
+  const { container } = render(<ActivityChart points={activityPoints([upload("one")])} />);
+  expect(container.querySelectorAll(".recharts-bar-rectangle")).toHaveLength(1);
+  expect(container.querySelector(".recharts-area-area")).toBeNull();
+});
+it("Renders no data shapes for an empty series", () => {
+  const { container } = render(<ActivityChart points={[]} />);
+  expect(container.querySelector(".recharts-area-area")).toBeNull();
+  expect(container.querySelector(".recharts-bar-rectangle")).toBeNull();
+});
 it("Renders zero-total completion graphics without invalid paths", () => {
   const stats = { total: 0, completed: 0, inProgress: 0, failed: 0 };
   const { container } = render(<><CompletionGauge stats={stats} /><CompletionDonut stats={stats} /></>);
