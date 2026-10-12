@@ -1,4 +1,4 @@
-# CarbonBox Uploads — Design System v2.1 "Carbon Day"
+# CarbonBox Uploads: Design System v2.2 "Carbon Day"
 
 Source of truth for every interface decision in `frontend/`. Read it before touching UI. It replaces v1 (warm paper and serif),
 which tested as correct but flat. References chosen by Nico live in `docs/design-references/` (light bento boards with white
@@ -6,13 +6,20 @@ glass cards, orange to red mountain charts, dark graphite panels and big radial 
 
 ## Direction
 
-A bright analytics workspace with dark graphite panels for the numbers that matter. White frosted cards float on a cool light
+A bright analytics workspace with dark graphite panels for the numbers that matter. Solid, cool tinted cards float on a cool light
 canvas; one warm orange-to-red gradient draws the data (a ridge-line mountain behind the activity chart, the gauge sweep, the primary
 action); graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
 tabular. The ridge landscape is drawn as SVG and ties the interface to the climate subject without stock photography.
 
 Memorable details: the glowing ridge area chart, the big radial gauge on the graphite rail, the animated active pill in the
 navigation and status dots that breathe only while a file is processed.
+
+Scene: an emissions analyst on a 27 inch monitor in a bright office, checking between meetings whether yesterday's uploads finished and
+what was rejected. Daylight and long glances force a light canvas; the graphite rail is the one place for numbers that must stand out.
+
+Impeccable alignment: solid tinted surfaces, asymmetric bento spans, compact contextual counts and one large completion gauge.
+No generic four-card metric grid, glass everywhere, pure white or black, gradient text, side stripes, em dashes or bouncing motion.
+Backdrop blur is reserved for the drawer overlay and sticky mobile top bar.
 
 ## Tokens
 
@@ -21,8 +28,9 @@ CSS variables in `src/app/globals.css`, exposed to Tailwind through `@theme`; sh
 | Token | Value | Use |
 |---|---|---|
 | `--bg` | `#EBEEF1` | canvas (a soft vertical gradient to `#DDE2E8` at the bottom) |
-| `--surface` | `rgba(255,255,255,0.82)` | frosted cards, with 1 px white inner highlight |
-| `--surface-solid` | `#FFFFFF` | sidebar, inputs, table body |
+| `--surface` | `#FAFBFC` | solid, cool tinted cards with a subtle inner highlight |
+| `--surface-solid` | `#F5F7F8` | sidebar and inputs |
+| `--table-surface` | `#FBFCFD` | table body |
 | `--line` | `rgba(18,24,27,0.08)` | borders and rules |
 | `--text` | `#12181B` | primary text (about 17:1 on white) |
 | `--text-muted` | `#57656D` | secondary text (about 6:1 on white) |
@@ -59,7 +67,7 @@ Scale 12 / 14 / 16 / 20 / 28 / 56. Figures 56 px weight 600, tight tracking. Max
 The mark is an isometric box in two teals with an orange leaf growing out of its open top: data goes in, something living grows
 out. It is a single inline SVG (`LogoMark`, 48 by 48 viewBox, source in `assets/logo-mark.svg`) that stays legible from 16 px (favicon)
 to 64 px, works on white, graphite and the canvas, and is exported as `public/favicon.svg`. The wordmark sets "Carbon" in Sora 600 and
-"Box" in Sora 300. Next to the wordmark the mark is decorative (`aria-hidden`); alone it carries `aria-label="CarbonBox"`.
+"Box" in Sora 400. Next to the wordmark the mark is decorative (`aria-hidden`); alone it carries `aria-label="CarbonBox"`.
 
 ## Navigation
 
@@ -76,7 +84,7 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
   becomes a graphite band under the page header; below 1024 px everything is one column.
 - Dashboard content: header (title, subtitle, Upload button); the **Activity** card with the ridge area chart; three cards in a row
   (Completion donut, Status bars, Latest upload); the Recent uploads table. The rail holds the big radial gauge of completion, four
-  KPI figures (total, completed, in progress, failed) and the API status.
+  compact counts (total, completed, in progress, failed) and the API status. The gauge is the only large figure; contextual facts explain the counts.
 - 16 px gaps, 24 px card padding, 20 px card radius. Tables scroll inside their card on narrow screens; the list becomes stacked rows below 640 px.
 
 ## Libraries
@@ -90,9 +98,9 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 ## Components
 
-- **Card**: `--surface`, 20 px radius, hairline, inner highlight, backdrop blur 12 px.
+- **Card**: solid `--surface`, 20 px radius, hairline and subtle inner highlight. No backdrop blur.
 - **GraphiteCard**: `--graphite`, same radius, `--on-graphite` text, used for the rail and any key figure.
-- **StatCard**: label, 56 px Sora figure with CountUp, caption.
+- **StatCard**: compact label and inline CountUp figure with caption. No standalone hero-metric grid.
 - **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads; line with the accent gradient, gradient fill fading to transparent,
   a faint SVG ridge landscape behind, date labels. Real data only; empty state when no uploads.
 - **Gauge**: Recharts radial bar of the completed share with the percentage in the center, gradient sweep, soft inner track.
