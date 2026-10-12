@@ -41,3 +41,11 @@ it("Keeps result rows during pagination and puts the target page in the URL", as
   release();
   await screen.findByText("Row 2");
 });
+it("Explains rejected rows beside the retained valid results", async () => {
+  server.use(http.get(`${API_URL}/uploads/u1/results`, () => HttpResponse.json(page([], 15, 1, 25))));
+  render(<FinishedPanel upload={{ ...upload(), processedRows: 15, failedRows: 10, totalRows: 25,
+    errorMessage: "10 rows rejected. line 3: amount - Must be positive; line 5: date - Invalid date" }} page={1} />, { wrapper: queryHarness().wrapper });
+  expect(screen.getByRole("note", { name: "Rejected rows" })).toHaveTextContent("Valid rows were kept");
+  expect(screen.getAllByRole("listitem")).toHaveLength(2);
+  await screen.findByRole("table", { name: "Processed rows" });
+});

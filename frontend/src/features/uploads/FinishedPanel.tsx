@@ -9,6 +9,7 @@ import { StatCard } from "@/components/StatCard";
 import { useUploadResults } from "./hooks";
 import { ResultTable } from "./ResultTable";
 import { RESULTS_PAGE_SIZE } from "./pagination";
+import { RejectedNotice } from "./RejectedNotice";
 
 function ProcessedResults({ upload, page }: { upload: Upload; page: number }) {
   const router = useRouter();
@@ -29,6 +30,7 @@ export function FinishedPanel({ upload, page }: { upload: Upload; page: number }
       <StatCard label="Processed rows" count={upload.processedRows ?? 0} />
       <StatCard label="Rejected rows" count={upload.failedRows ?? 0} />
     </div>
+    <RejectedNotice count={upload.failedRows ?? 0} summary={upload.errorMessage} />
     <ProcessedResults upload={upload} page={page} />
   </section>;
 }

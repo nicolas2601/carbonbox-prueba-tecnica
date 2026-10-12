@@ -16,7 +16,7 @@
 - [x] 2.2 Waiting and working panels with the row counter
 - [x] 2.3 Polling transition, live announcement, crossfade and reduced motion
 - [x] 2.4 Finished panel: counts and paginated results table
-- [ ] 2.5 Rejected rows notice
+- [x] 2.5 Rejected rows notice
 - [ ] 2.6 Failed panel
 
 ## 3. End to end
