@@ -1,8 +1,19 @@
 import type { Pool } from "pg";
+import { verifyCandidate } from "./candidate";
 
 export const SEED_UPLOADS = 10000;
 export const ROWS_PER_SEED_UPLOAD = 10;
 const ANCHOR = "2024-10-12T00:00:00.000Z";
+export async function candidateIndex(pool: Pool, name: string) {
+  await assertDatabase(pool, name);
+  const snapshot = async () => {
+    const result = await pool.query<{ uploads: string; rows: string }>("SELECT (SELECT COUNT(*) FROM uploads) AS uploads,(SELECT COUNT(*) FROM activity_data) AS rows");
+    const value = result.rows[0];
+    if (!value) throw new Error("Cannot inspect candidate data");
+    return { uploads: Number(value.uploads), rows: Number(value.rows) };
+  };
+  return verifyCandidate({ snapshot, apply: async () => { await pool.query('CREATE INDEX perf_activity_upload_date_id ON activity_data ("uploadId",date,id)'); } });
+}
 export async function assertDatabase(pool: Pool, name: string): Promise<void> {
   const actual = await pool.query<{ database: string }>("SELECT current_database() AS database");
   if (actual.rows[0]?.database !== name) throw new Error("Unexpected performance database");

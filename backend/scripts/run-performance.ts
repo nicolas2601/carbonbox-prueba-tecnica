@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { parse } from "dotenv";
 import { PerformanceStack } from "../src/performance/stack";
 import { adminUrl } from "../src/performance/scope";
-import { seed, plans, assertDatabase, SEED_UPLOADS, ROWS_PER_SEED_UPLOAD } from "../src/performance/dataset";
+import { seed, plans, assertDatabase, candidateIndex, SEED_UPLOADS, ROWS_PER_SEED_UPLOAD } from "../src/performance/dataset";
 import { largeUpload } from "../src/performance/http";
 import { load } from "../src/performance/load";
 import { redactSecrets } from "../src/document-processing/presentation/http/redactSecrets";
@@ -35,6 +35,7 @@ async function record(stack: PerformanceStack, phase: string): Promise<void> {
   if (!stack.data || !stack.apiUrl || !stack.worker) throw new Error("Owned stack is incomplete");
   await assertDatabase(stack.data, stack.database.name);
   await seed(stack.data, stack.database.name);
+  const candidate = phase === "index-candidate" ? await candidateIndex(stack.data, stack.database.name) : undefined;
   const processing = [];
   for (let trial = 0; trial < 3; trial++) processing.push(await largeUpload(stack.apiUrl, sample, stack.worker, controller.signal));
   const uploadId = processing[0]?.id;
@@ -48,7 +49,7 @@ async function record(stack: PerformanceStack, phase: string): Promise<void> {
     sampleSha256: createHash("sha256").update(await readFile(sample)).digest("hex"), seedUploads: SEED_UPLOADS, rowsPerSeedUpload: ROWS_PER_SEED_UPLOAD,
     workerBatchSize: 500, workerPollMs: 1000, apiPoolDefault: 10, workerPoolDefault: 10, apiLogging: "silent", measuredSeconds: 15, connections: 20, pipelining: 1,
     requestHeaders: { "accept-encoding": "gzip" }, percentileMethod: "nearest rank of unrounded response-event milliseconds" };
-  await save(`${phase}-${stack.runId}-setup`, { metadata, processing, queryPlans });
+  await save(`${phase}-${stack.runId}-setup`, { metadata, processing, queryPlans, candidate });
   const targets = { list: "/uploads?page=1&limit=10", stats: "/uploads/stats", detail: `/uploads/${uploadId}`, results: `/uploads/${uploadId}/results?page=1&limit=25` };
   for (const [name, path] of Object.entries(targets)) {
     const url = `${stack.apiUrl}/api/v1${path}`;
@@ -60,7 +61,7 @@ async function record(stack: PerformanceStack, phase: string): Promise<void> {
 }
 async function main(): Promise<void> {
   const phase = process.argv[2] ?? "baseline";
-  if (!["baseline", "after"].includes(phase)) throw new Error("Use baseline or after");
+  if (!["baseline", "after", "index-candidate"].includes(phase)) throw new Error("Use baseline, after or index-candidate");
   const stack = new PerformanceStack(backend, await connection());
   try { await stack.prepare(controller.signal); await record(stack, phase); }
   finally { await stack.close(); }
