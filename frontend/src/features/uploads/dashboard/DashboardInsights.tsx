@@ -11,7 +11,7 @@ export function DashboardInsights({ stats, uploads }: { stats: UploadStats; uplo
   const median = uploads ? medianElapsed(uploads) : null;
   const queueNote = stats.pending !== undefined && stats.processing !== undefined
     ? `${stats.pending} pending / ${stats.processing} processing` : "Pending or processing files";
-  return <aside className="insight-rail" aria-label="Upload overview" data-surface="graphite">
+  return <aside className="insight-rail" aria-label="Dashboard metrics" data-surface="light">
     <MetricTile label="Rows handled" value={quality ? numberFormatter.format(quality.total) : "Not available"} note="Reported counters across all uploads" />
     <MetricTile label="Rejection rate" value={quality?.rejectionShare !== null && quality?.rejectionShare !== undefined
       ? `${PERCENT.format(quality.rejectionShare)}%` : "No row totals yet"} note="Rejected / handled rows across all uploads" />

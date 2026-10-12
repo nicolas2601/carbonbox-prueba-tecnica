@@ -25,7 +25,7 @@ export function LargestUploadsChart({ points, orientation = "vertical" }: { poin
     <BarChart data={points} layout="vertical" margin={{ top: 8, right: 44, bottom: 8, left: 8 }} barCategoryGap={8} accessibilityLayer={false}>
       <XAxis type="number" tickFormatter={formatRows} tick={{ fill: "var(--on-graphite-muted)", fontSize: 12 }} tickLine={false} axisLine={false} />
       <YAxis type="category" dataKey="id" width={140} interval={0} tick={<FullNameTick points={points} />} tickLine={false} axisLine={false} />
-      <ChartTooltip content={<ActivityTooltip />} isAnimationActive={false} />
+      <ChartTooltip cursor={false} content={<ActivityTooltip />} isAnimationActive={false} />
       <Bar dataKey="processed" name="Processed" stackId="rows" fill="var(--accent)" maxBarSize={24} isAnimationActive={false} />
       <Bar dataKey="rejected" name="Rejected" stackId="rows" fill="var(--teal)" maxBarSize={24} isAnimationActive={false}>
         <LabelList dataKey="rows" position="right" formatter={labelRows} fill="var(--on-graphite)" fontSize={12} />
@@ -37,7 +37,7 @@ export function LargestUploadsChart({ points, orientation = "vertical" }: { poin
       <XAxis dataKey="id" axisLine={false} tickLine={false} minTickGap={12} tickMargin={8} height={48} fontSize={12}
         tickFormatter={id => points.find(point => point.id === id)?.shortName ?? ""} tick={<FileAxisTick points={points} />} />
       <YAxis width={56} axisLine={false} tickLine={false} allowDecimals={false} tickCount={4} tickFormatter={formatRows} tick={{ fill: "var(--on-graphite-muted)", fontSize: 12 }} />
-      <ChartTooltip content={<ActivityTooltip />} isAnimationActive={false} />
+      <ChartTooltip cursor={false} content={<ActivityTooltip />} isAnimationActive={false} />
       <Bar dataKey="processed" name="Processed" stackId="rows" fill="var(--accent)" maxBarSize={24} isAnimationActive={false}>
         <LabelList dataKey="rows" position="top" formatter={labelRows} fill="var(--on-graphite)" fontSize={12} />
       </Bar>
