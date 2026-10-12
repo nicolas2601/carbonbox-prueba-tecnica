@@ -12,18 +12,32 @@ React Query, Axios and Tailwind on the front end; Docker Compose for the whole s
 - Operations runbook: [`docs/operations.md`](docs/operations.md). Measured performance: [`docs/performance.md`](docs/performance.md)
 - Per module working notes: [`docs/ai-log.md`](docs/ai-log.md) and the specifications in [`openspec/specs`](openspec/specs)
 
+## Live demo
+
+- Frontend: https://carbonbox.nicolasmoreno.site
+- API: https://carbonbox-api.nicolasmoreno.site/api/v1 (readiness: https://carbonbox-api.nicolasmoreno.site/health/ready)
+
+Temporary deployment on a personal VPS: the same `docker-compose.yml` as this repository, exposed through a Cloudflare Tunnel. It will be taken down after the evaluation.
+
+What to try:
+
+- Open the dashboard and upload `sample-data.csv` from the repository root. Expect 60 valid rows and `COMPLETED`.
+- Upload `samples/sample-invalid.csv`. Expect 15 valid rows and 10 rejected lines, each with its line number, field and reason.
+- Watch the processing readout on the detail page while the file is `PENDING` or `PROCESSING`.
+
 ## Contents
 
-1. [What it does](#what-it-does)
-2. [Requirements](#requirements)
-3. [Run it](#run-it)
-4. [Try it](#try-it)
-5. [Architecture](#architecture)
-6. [Production readiness](#production-readiness)
-7. [Technical decisions](#technical-decisions)
-8. [Known limitations](#known-limitations)
-9. [Tests and quality](#tests-and-quality)
-10. [Project layout](#project-layout)
+1. [Live demo](#live-demo)
+2. [What it does](#what-it-does)
+3. [Requirements](#requirements)
+4. [Run it](#run-it)
+5. [Try it](#try-it)
+6. [Architecture](#architecture)
+7. [Production readiness](#production-readiness)
+8. [Technical decisions](#technical-decisions)
+9. [Known limitations](#known-limitations)
+10. [Tests and quality](#tests-and-quality)
+11. [Project layout](#project-layout)
 
 ## What it does
 
