@@ -34,10 +34,12 @@ export class LocalE2eStack implements StackLifecycle {
   private readonly runScreenshots: boolean;
   private readonly adminDatabaseUrl: string;
   private readonly parentEnv: NodeJS.ProcessEnv;
+  private readonly production: boolean;
 
   constructor(runScreenshots: boolean, parentEnv: NodeJS.ProcessEnv = process.env) {
     this.runScreenshots = runScreenshots;
     this.parentEnv = parentEnv;
+    this.production = parentEnv.E2E_PRODUCTION === "1";
     this.adminDatabaseUrl = parentEnv.E2E_ADMIN_DATABASE_URL ?? DEFAULT_ADMIN_URL;
     validateLocalDatabaseUrl(this.adminDatabaseUrl);
   }
@@ -53,7 +55,11 @@ export class LocalE2eStack implements StackLifecycle {
     stack.baseURL = `http://127.0.0.1:${webPort}`;
     const env = this.createStackEnv(stack, apiPort);
     await this.migrate(stack, env);
-    await this.start("bun", ["run", "dev", "--hostname", "127.0.0.1", "--port", String(webPort)], FRONTEND_DIR, env, stack, "frontend");
+    if (this.production) {
+      const build = await this.runToCompletion("bun", ["run", "build"], FRONTEND_DIR, env, stack, false);
+      if (build !== 0) throw new Error("E2E production build failed");
+    }
+    await this.start("bun", ["run", this.production ? "start" : "dev", "--hostname", "127.0.0.1", "--port", String(webPort)], FRONTEND_DIR, env, stack, "frontend");
     await this.start("bun", ["run", "start"], BACKEND_DIR, env, stack, "api");
     await this.start("bun", ["run", "worker"], BACKEND_DIR, env, stack, "worker");
     await waitForHttp(`${stack.apiUrl}/health/ready`, stack, STARTUP_TIMEOUT_MS);
@@ -130,10 +136,12 @@ export class LocalE2eStack implements StackLifecycle {
   }
 
   private createStackEnv(stack: E2eStack, apiPort?: number): NodeJS.ProcessEnv {
-    const env: NodeJS.ProcessEnv = { ...this.parentEnv, NODE_ENV: "development", HOST: "127.0.0.1", STORAGE_DIR: stack.storageDir,
+    const env: NodeJS.ProcessEnv = { ...this.parentEnv, NODE_ENV: this.production ? "production" : "development", HOST: "127.0.0.1", STORAGE_DIR: stack.storageDir,
       DATABASE_URL: stack.databaseUrl, PORT: apiPort === undefined ? undefined : String(apiPort),
       CORS_ORIGIN: stack.baseURL, MAX_UPLOAD_MB: this.parentEnv.E2E_API_MAX_UPLOAD_MB ?? "1",
       NEXT_PUBLIC_API_URL: stack.apiUrl ? `${stack.apiUrl}/api/v1` : undefined,
+      NEXT_DIST_DIR: this.parentEnv.NEXT_DIST_DIR ?? ".next-e2e", METRICS_PORT: "0",
+      RATE_LIMIT_MAX: "1000000", UPLOAD_RATE_LIMIT_MAX: "1000000",
       NEXT_PUBLIC_MAX_UPLOAD_MB: this.parentEnv.E2E_FRONTEND_MAX_UPLOAD_MB ?? "10" };
     for (const key of ["WORKER_BATCH_SIZE", "WORKER_POLL_INTERVAL_MS", "WORKER_MAX_ATTEMPTS",
       "WORKER_VISIBILITY_TIMEOUT_MS", "WORKER_RETRY_BASE_MS"]) delete env[key];

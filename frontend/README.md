@@ -79,7 +79,8 @@ Playwright checks of layout, focus and real API behavior at mobile and desktop w
 ```sh
 bunx playwright install chromium
 bun run e2e
-bun run e2e:screenshots
+NEXT_DIST_DIR=.next-e2e E2E_PRODUCTION=1 bun run e2e
+NEXT_DIST_DIR=.next-e2e E2E_PRODUCTION=1 bun run e2e:screenshots
 ```
 
 Only Chromium is required (its installer may also download its headless shell and
@@ -94,15 +95,30 @@ same frontend build directory.
 Cases cover valid/mixed/wrong-header CSVs, early validation, server limits,
 mid-transfer cancel/no orphan file, totals, URL pagination, unknown id and axe on
 five pages. Serious/critical axe issues fail the suite. Screenshots are generated
-into `docs/screenshots` for five pages at 1280 and 360 px; no fixed page sleeps are used.
+into `docs/screenshots` for five pages at 1280 and 360 px in normal and reduced
+motion, twenty images in total. Captures wait for fonts, actual figures, lazy
+charts and finite animations; no fixed page sleeps are used. Production mode
+builds before starting Next, so the development badge is absent.
 
-The E2E bootstrap passed and its owned DB/storage/process cleanup was checked after
-both a failing run and success. The full new suite and curated screenshots are not
-yet claimed green: browser execution/review was reassigned to `worker2`; final
-evidence and images are pending that pass. Unit/RTL, lint and type checks continue
-here. Redesign builds use `NEXT_DIST_DIR=.next-redesign bun run build` to avoid
-overwriting the `.next` directory used by a concurrent verifier. Use the same
-`NEXT_DIST_DIR` when serving that build.
+On 2026-10-12 the complete Chromium suite passed: 13 tests in 49.2 seconds,
+including five axe audits, both in development and in production mode. The
+dedicated production capture run passed in 15.7 seconds. Independent queries
+after capture found no remaining `carbonbox_e2e_*` databases or temporary storage.
+Actual browser failures led to an unfocusable decorative pie and removal of row
+entrance opacity that temporarily reduced text contrast. Thresholds and journey
+assertions were not relaxed. Unit tests: 289; lint, types and production build pass.
+This is Chromium evidence, not a cross-browser or complete manual WCAG audit.
+Redesign builds use `NEXT_DIST_DIR=.next-redesign bun run build`; the owned E2E
+runner defaults to `.next-e2e`. Neither overwrites a concurrent `.next` verifier.
+Use the same `NEXT_DIST_DIR` when serving a build.
+
+| Page | Desktop | Mobile | Reduced motion |
+|---|---|---|---|
+| Dashboard | [1280](../docs/screenshots/dashboard-1280.png) | [360](../docs/screenshots/dashboard-360.png) | [1280](../docs/screenshots/dashboard-1280-reduced.png), [360](../docs/screenshots/dashboard-360-reduced.png) |
+| Uploads | [1280](../docs/screenshots/uploads-1280.png) | [360](../docs/screenshots/uploads-360.png) | [1280](../docs/screenshots/uploads-1280-reduced.png), [360](../docs/screenshots/uploads-360-reduced.png) |
+| Upload | [1280](../docs/screenshots/upload-1280.png) | [360](../docs/screenshots/upload-360.png) | [1280](../docs/screenshots/upload-1280-reduced.png), [360](../docs/screenshots/upload-360-reduced.png) |
+| Completed | [1280](../docs/screenshots/detail-completed-1280.png) | [360](../docs/screenshots/detail-completed-360.png) | [1280](../docs/screenshots/detail-completed-1280-reduced.png), [360](../docs/screenshots/detail-completed-360-reduced.png) |
+| Failed | [1280](../docs/screenshots/detail-failed-1280.png) | [360](../docs/screenshots/detail-failed-360.png) | [1280](../docs/screenshots/detail-failed-1280-reduced.png), [360](../docs/screenshots/detail-failed-360-reduced.png) |
 
 ## Component licenses
 

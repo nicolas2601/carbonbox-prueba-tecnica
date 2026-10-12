@@ -33,3 +33,7 @@ it("Renders zero-total completion graphics without invalid paths", () => {
   expect(container.querySelectorAll("svg")).toHaveLength(2);
   for (const path of container.querySelectorAll("path")) expect(path.getAttribute("d")).not.toContain("NaN");
 });
+it("Keeps the decorative donut out of keyboard focus", () => {
+  const { container } = render(<CompletionDonut stats={{ total: 1, completed: 1, inProgress: 0, failed: 0 }} />);
+  expect(container.querySelector(".recharts-pie")).toHaveAttribute("tabindex", "-1");
+});

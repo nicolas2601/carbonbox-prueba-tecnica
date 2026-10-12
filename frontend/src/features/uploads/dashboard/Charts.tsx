@@ -32,7 +32,7 @@ export function ActivityChart({ points }: { points: ActivityPoint[] }) {
 export function CompletionDonut({ stats }: { stats: UploadStats }) {
   const values = [{ value: stats.completed }, { value: stats.total - stats.completed || (stats.total === 0 ? 1 : 0) }];
   return <ChartContainer config={{ completed: { color: "var(--accent-strong)" } }}>
-    <PieChart accessibilityLayer={false}><Pie data={values} dataKey="value" innerRadius="70%" outerRadius="95%" startAngle={90} endAngle={-270} stroke="none" isAnimationActive={false}>
+    <PieChart accessibilityLayer={false}><Pie data={values} dataKey="value" innerRadius="70%" outerRadius="95%" startAngle={90} endAngle={-270} stroke="none" isAnimationActive={false} rootTabIndex={-1}>
       <Cell fill="var(--accent-strong)" /><Cell fill="var(--line)" />
     </Pie></PieChart>
   </ChartContainer>;
