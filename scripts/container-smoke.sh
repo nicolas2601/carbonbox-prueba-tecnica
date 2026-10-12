@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+compose_file="$script_dir/../docker-compose.yml"
 project="${COMPOSE_PROJECT_NAME:?Container smoke requires an explicit owned compose project}"
 case "$project" in
   carbonbox-smoke-*|carbonbox-ci-*) ;;
   *) printf 'Refusing a non-smoke compose project\n' >&2; exit 1 ;;
 esac
-container=$(docker compose -p "$project" ps -q api)
+container=$(docker compose -f "$compose_file" -p "$project" ps -q api)
 [[ -n "$container" ]] || { printf 'Owned API container not found\n' >&2; exit 1; }
 owner=$(docker inspect --format '{{index .Config.Labels "com.docker.compose.project"}}' "$container")
 [[ "$owner" == "$project" ]] || { printf 'API project ownership mismatch\n' >&2; exit 1; }
-published=$(docker compose -p "$project" port api 3001)
+published=$(docker compose -f "$compose_file" -p "$project" port api 3001)
 port="${published##*:}"
 api_base_url="${API_BASE_URL:-http://127.0.0.1:$port}"
 [[ "$api_base_url" == "http://127.0.0.1:$port" || "$api_base_url" == "http://localhost:$port" ]] || {
   printf 'API URL must match the owned published port\n' >&2; exit 1;
 }
-sample_csv="${SAMPLE_CSV:-sample-data.csv}"
+sample_csv="${SAMPLE_CSV:-$script_dir/../sample-data.csv}"
+[[ -f "$sample_csv" ]] || { printf 'Smoke CSV fixture not found\n' >&2; exit 1; }
 ready_url="$api_base_url/health/ready"
 
 for attempt in $(seq 1 60); do
