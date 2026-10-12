@@ -7,9 +7,12 @@
 .bento-heading > svg { color: var(--accent-strong); flex-shrink: 0; }
 .activity-card, .completion-card, .status-card, .latest-card { padding: 24px; }
 .activity-card { --order: 0; }
+.activity-skeleton { height: 100%; border-radius: 12px; }
+.bento-placeholder { min-height: 216px; }
 .activity-plot { position: relative; height: 260px; margin: 24px -12px 0; }
 .ridge-landscape { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.chart-reveal { width: 100%; height: 100%; animation: chart-reveal 700ms var(--ease-out); transform-origin: left; }
+.chart-reveal { width: 100%; height: 100%; }
+.area-reveal-mask { animation: area-reveal 700ms var(--ease-out); transform-origin: left; }
 .chart-placeholder { width: 100%; height: 100%; border-radius: 12px; background: var(--line); }
 .completion-card { --order: 1; }
 .completion-fact { display: flex; align-items: center; gap: 20px; margin-top: 24px; }
@@ -24,7 +27,7 @@
 .status-bars-layout dd { font-family: var(--font-geist-mono); }
 .bars-chart { height: 108px; margin-top: 0; }
 .bars-chart > div { height: 100%; }
-.latest-card { --order: 3; }
+.latest-card { --order: 3; min-height: 224px; }
 .latest-file { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 44px; margin-top: 16px; font-size: 14px; overflow-wrap: anywhere; }
 .latest-file > svg { flex-shrink: 0; color: var(--accent-strong); }
 .latest-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
@@ -35,6 +38,12 @@
 .file-timeline li[data-active="false"]::before { background: var(--text-muted); }
 .graphite-panel { background: var(--graphite); color: var(--on-graphite); border-radius: 20px; }
 .dashboard-rail { padding: 28px 24px; align-self: start; }
+.overview-skeleton { min-height: 560px; }
+.overview-skeleton .carbon-skeleton { background: var(--graphite-2); }
+.overview-heading { width: 70%; height: 20px; border-radius: 4px; }
+.overview-gauge { width: 224px; height: 224px; max-width: 100%; border-radius: 50%; margin: 32px auto; }
+.overview-counts { display: grid; gap: 20px; margin-top: 40px; }
+.overview-count-row { height: 20px; border-radius: 4px; }
 .rail-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--on-graphite-muted); }
 .dashboard-rail h2 { font-family: var(--font-sora); font-size: 20px; margin-top: 12px; }
 .large-gauge { position: relative; height: 260px; margin: 8px -12px -20px; }
@@ -57,6 +66,6 @@
 @media (min-width: 1024px) and (max-width: 1279px) { .dashboard-rail { grid-row: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; } .large-gauge { grid-column: 1; grid-row: 2 / span 3; } .rail-counts { grid-column: 2; grid-row: 2 / span 3; align-self: center; } .rail-context, .rail-api { margin: 0; } .rail-separator { display: none; } }
 @media (min-width: 1280px) { .dashboard-zones { grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; } .dashboard-rail { position: sticky; top: 28px; } }
 @media (min-width: 1600px) { .completion-card, .status-card, .latest-card { grid-column: span 4; } }
-@keyframes chart-reveal { from { opacity: 0; transform: scaleX(0.96); } to { opacity: 1; transform: scaleX(1); } }
+@keyframes area-reveal { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes gauge-sweep { from { opacity: 0; transform: rotate(-12deg); } to { opacity: 1; transform: rotate(0); } }
-@media (prefers-reduced-motion: reduce) { .chart-reveal, .gauge-sweep { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .area-reveal-mask, .gauge-sweep { animation: none; } }

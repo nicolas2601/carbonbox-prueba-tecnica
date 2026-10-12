@@ -14,11 +14,11 @@ export function ActivityChart({ points }: { points: ActivityPoint[] }) {
     <AreaChart data={points} margin={{ top: 20, right: 12, bottom: 0, left: -28 }} accessibilityLayer={false}>
       <defs><linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.55} /><stop offset="65%" stopColor="var(--accent-2)" stopOpacity={0.12} /><stop offset="100%" stopColor="var(--accent-2)" stopOpacity={0} />
-      </linearGradient></defs>
+      </linearGradient><clipPath id={`${id}-reveal`}><rect width="100%" height="100%" className="area-reveal-mask" /></clipPath></defs>
       <XAxis dataKey="label" axisLine={false} tickLine={false} minTickGap={32} tickMargin={12} />
       <YAxis axisLine={false} tickLine={false} allowDecimals={false} tick={{ fill: "var(--text-muted)", fontSize: 11 }} />
       <ChartTooltip content={<ChartTooltipContent />} isAnimationActive={false} />
-      <Area type="monotone" dataKey="rows" name="Rows handled" stroke="var(--accent-strong)" strokeWidth={2.5} fill={`url(#${id})`} isAnimationActive={false} />
+      <g clipPath={`url(#${id}-reveal)`}><Area type="monotone" dataKey="rows" name="Rows handled" stroke="var(--accent-strong)" strokeWidth={2.5} fill={`url(#${id})`} isAnimationActive={false} /></g>
     </AreaChart>
   </ChartContainer>;
 }

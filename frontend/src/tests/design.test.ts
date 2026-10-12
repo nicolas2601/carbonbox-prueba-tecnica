@@ -37,6 +37,13 @@ it("Defines the visible keyboard focus ring", () => {
   expect(css).toContain("outline: 2px solid var(--accent-strong)");
   expect(css).toContain("outline-offset: 2px");
 });
+it("Reveals only the activity area through a transform-only SVG clip", () => {
+  const chart = readFileSync(join(root, "features/uploads/dashboard/Charts.tsx"), "utf8");
+  const styles = readFileSync(join(root, "styles/dashboard.css"), "utf8");
+  expect(chart).toContain('className="area-reveal-mask"');
+  expect(styles).toContain(".area-reveal-mask { animation: area-reveal 700ms");
+  expect(styles).toContain(".area-reveal-mask, .gauge-sweep { animation: none;");
+});
 it("Keeps pointer press deliberate and release snappy without animating keyboard actions", () => {
   expect(css).toContain("--release: 100ms");
   expect(css).toContain("transition-duration: var(--feedback), var(--feedback)");
