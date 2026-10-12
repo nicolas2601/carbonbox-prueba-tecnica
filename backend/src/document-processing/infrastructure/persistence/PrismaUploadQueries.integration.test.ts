@@ -44,6 +44,37 @@ it("Empty list and a page beyond the last are not coerced", async () => {
   await uploads(1);
   expect(await queries.list({ page: 10, limit: 10 })).toEqual({ data: [], total: 1, page: 10, limit: 10 });
 });
+it("Searches and counts matching uploads across the full dataset", async () => {
+  await client.upload.createMany({ data: Array.from({ length: 12 }, (_, index) => ({
+    id: `search-${index}`, fileName: index === 11 ? "Needle-latest.csv" : index === 1 ? "needle-old.csv" : `other-${index}.csv`,
+    fileUrl: "private-key.csv", userId: "user", status: "COMPLETED", createdAt: new Date(NOW.getTime() + index), updatedAt: NOW,
+  })) });
+  const result = await queries.list({ page: 1, limit: 1, q: "needle", sort: "newest" });
+  expect(result).toMatchObject({ total: 2, page: 1, limit: 1 });
+  expect(result.data.map(row => row.fileName)).toEqual(["Needle-latest.csv"]);
+});
+it("Search treats SQL-looking text, wildcard characters and backslashes literally", async () => {
+  await client.upload.createMany({ data: ["literal%_\\needle.csv", "literalXX\\needle.csv", "report ' OR 1=1 --.csv"].map((fileName, index) => ({
+    id: `literal-${index}`, fileName, fileUrl: "private-key.csv", userId: "user", status: "PENDING", createdAt: NOW, updatedAt: NOW,
+  })) });
+  const result = await queries.list({ page: 1, limit: 10, q: "%_\\", sort: "newest" });
+  expect(result.total).toBe(1);
+  expect(result.data[0]?.fileName).toBe("literal%_\\needle.csv");
+  const sqlLookingText = await queries.list({ page: 1, limit: 10, q: "' OR 1=1 --", sort: "newest" });
+  expect(sqlLookingText.total).toBe(1);
+  expect(sqlLookingText.data[0]?.fileName).toBe("report ' OR 1=1 --.csv");
+});
+it("Status filtering shares the count predicate and name sorting has an id tie breaker", async () => {
+  await client.upload.createMany({ data: [
+    { id: "name-z", fileName: "same.csv", status: "COMPLETED" },
+    { id: "name-a", fileName: "same.csv", status: "COMPLETED" },
+    { id: "name-b", fileName: "alpha.csv", status: "COMPLETED" },
+    { id: "name-p", fileName: "aaa.csv", status: "PENDING" },
+  ].map(row => ({ ...row, fileUrl: "private-key.csv", userId: "user", createdAt: NOW, updatedAt: NOW })) });
+  const result = await queries.list({ page: 1, limit: 10, status: "COMPLETED", sort: "name" });
+  expect(result.total).toBe(3);
+  expect(result.data.map(row => row.id)).toEqual(["name-b", "name-a", "name-z"]);
+});
 
 it("Results use only own rows ordered by date then id with number and UTC date formats", async () => {
   await uploads(2);

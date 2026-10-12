@@ -2,7 +2,7 @@ export interface ErrorEnvelope { error: { code: string; message: string; request
 export interface ErrorResponse { status: number; body: ErrorEnvelope; }
 
 const ERROR_STATUS: Readonly<Record<string, number>> = {
-  INVALID_FILE_NAME: 400, INVALID_PAGINATION: 400, MISSING_FILE: 400, VALIDATION_ERROR: 400,
+  INVALID_FILE_NAME: 400, INVALID_PAGINATION: 400, INVALID_UPLOAD_FILTER: 400, MISSING_FILE: 400, VALIDATION_ERROR: 400,
   UPLOAD_NOT_FOUND: 404, ROUTE_NOT_FOUND: 404, FILE_TOO_LARGE: 413, SERVICE_UNAVAILABLE: 503,
   RATE_LIMITED: 429,
 };

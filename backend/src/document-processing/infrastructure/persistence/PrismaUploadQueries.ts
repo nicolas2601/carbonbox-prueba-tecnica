@@ -1,5 +1,5 @@
 import type { Prisma, PrismaClient } from "../../../generated/prisma/client";
-import type { Page, Pagination, ResultRow, UploadView, UploadStats } from "../../application/queries/models";
+import type { Page, Pagination, ResultRow, UploadListQuery, UploadView, UploadStats } from "../../application/queries/models";
 import type { IUploadQueries } from "../../application/ports/IUploadQueries";
 import { pageOffset } from "../../application/queries/validatePagination";
 
@@ -9,6 +9,12 @@ type UploadRecord = Prisma.UploadGetPayload<{ select: typeof UPLOAD_SELECT }>;
 function uploadView(row: UploadRecord): UploadView {
   return { ...row, createdAt: row.createdAt.toISOString(), updatedAt: row.updatedAt.toISOString() };
 }
+function escapeLikeLiteral(value: string): string { return value.replace(/[\\%_]/gu, "\\$&"); }
+function uploadOrder(sort: UploadListQuery["sort"]): Prisma.UploadOrderByWithRelationInput[] {
+  if (sort === "oldest") return [{ createdAt: "asc" }, { id: "asc" }];
+  if (sort === "name") return [{ fileName: "asc" }, { id: "asc" }];
+  return [{ createdAt: "desc" }, { id: "asc" }];
+}
 
 export class PrismaUploadQueries implements IUploadQueries {
   constructor(private readonly client: PrismaClient) {}
@@ -16,11 +22,16 @@ export class PrismaUploadQueries implements IUploadQueries {
     const row = await this.client.upload.findUnique({ where: { id }, select: UPLOAD_SELECT });
     return row ? uploadView(row) : null;
   }
-  async list(pagination: Pagination): Promise<Page<UploadView>> {
+  async list(query: UploadListQuery): Promise<Page<UploadView>> {
+    const where: Prisma.UploadWhereInput = {
+      ...(query.q ? { fileName: { contains: escapeLikeLiteral(query.q), mode: "insensitive" } } : {}),
+      ...(query.status ? { status: query.status } : {}),
+    };
+    const pagination = { page: query.page, limit: query.limit };
     const [rows, total] = await this.client.$transaction([
-      this.client.upload.findMany({ select: UPLOAD_SELECT, orderBy: [{ createdAt: "desc" }, { id: "asc" }],
+      this.client.upload.findMany({ where, select: UPLOAD_SELECT, orderBy: uploadOrder(query.sort),
         skip: pageOffset(pagination), take: pagination.limit }),
-      this.client.upload.count(),
+      this.client.upload.count({ where }),
     ]);
     return { data: rows.map(uploadView), total, ...pagination };
   }

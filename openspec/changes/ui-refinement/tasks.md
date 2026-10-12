@@ -5,21 +5,22 @@
 
 ## 2. Server-backed ledger
 
-- [ ] 2.1 RED/GREEN backend validation, literal case-insensitive search, status/sort and matching count/page integration
-- [ ] 2.2 OpenAPI/query schema and regression checks for invalid/injection/wildcard inputs
+- [x] 2.1 RED/GREEN backend validation, literal case-insensitive search, status/sort and matching count/page integration
+- [x] 2.2 OpenAPI/query schema and regression checks for invalid/injection/wildcard inputs
 - [x] 2.3 URL-driven frontend filters/sort, 300 ms debounce, page reset and clearable filtered empty state
 
 ## 3. Intake workspace
 
-- [ ] 3.1 Compact selection, requirements/rules/limit guidance and downloadable public sample
-- [ ] 3.2 Transfer file row and actual accepted status/detail link, preserving cancel/error rules
-- [ ] 3.3 Recent uploads shared with sidebar using existing list data
+- [ ] 3.1 Worker2: compact selection, guidance/sample download (main integrates and verifies)
+- [ ] 3.2 Worker2: transfer file row and accepted status/detail link (main integrates and verifies)
+- [ ] 3.3 Worker2: recent files/white sidebar gauge and real KPIs (main integrates and verifies)
 
 ## 4. Additional context
 
 - [ ] 4.0 Tested PROCESSING readout with observed poll rate, elapsed time and no fabricated stages/percentage
-- [ ] 4.1 Tested row-quality and approximate terminal elapsed models with honest empty states
-- [ ] 4.2 Two scoped dashboard views and quiet recent-file sidebar context
+- [ ] 4.1 Tested global row-quality and scoped approximate median elapsed/largest-upload models
+- [ ] 4.2 Dashboard-only graphite stage, completion arc, largest-upload bars and four honest tiles
+- [ ] 4.3 Global stats sums/counts and tested hydration-mismatch fix
 
 ## 5. Verification
 
