@@ -20,7 +20,7 @@
 
 - [x] 4.1 Dockerfiles for API, worker, frontend (multi stage, non root, health checks)
 - [ ] 4.2 Compose stack with migration step, restart policies and the `s3` profile
-- [ ] 4.3 GitHub Actions workflow with PostgreSQL service and container smoke test
+- [x] 4.3 GitHub Actions workflow with PostgreSQL service and container smoke test (configuration validated; remote run pending authorized push)
 - [ ] 4.4 Clean clone dry run: one command, upload through the interface, completed
 
 ## 5. Operations
