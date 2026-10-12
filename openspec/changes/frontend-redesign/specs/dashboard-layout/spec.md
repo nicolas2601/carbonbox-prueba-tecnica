@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Application shell
-The system SHALL render a white sidebar of 248 px with the brand, navigation (Dashboard, Uploads, Upload a file) with the current page marked, and a live completion gauge, and SHALL turn it into a top bar below 1024 px.
+The system SHALL render a solid tinted sidebar of 248 px with the brand, navigation (Dashboard, Uploads, Upload a file) with the current page marked, and a live completion gauge, and SHALL turn it into a top bar below 1024 px.
 
 #### Scenario: Navigation
 - **WHEN** any page renders at 1280 px
@@ -12,7 +12,7 @@ The system SHALL render a white sidebar of 248 px with the brand, navigation (Da
 - **THEN** the sidebar is replaced by a top bar with the same links and the page has no horizontal scroll
 
 ### Requirement: Bento dashboard with a graphite rail
-The system SHALL render the dashboard with the activity chart, the completion donut, the status bars, the latest upload card and the recent uploads table in the content area, and a graphite rail with the big radial gauge, the four KPI figures and the API status, and a primary action to upload a file. From 1280 px the rail is a column; between 1024 and 1279 px it is a band under the header; below 1024 px everything is one column.
+The system SHALL render the dashboard with the activity chart, the completion donut, the status bars, the latest upload card and the recent uploads table in the content area, and a graphite rail with the single large radial gauge, four compact contextual counts and the API status, and a primary action to upload a file. From 1280 px the rail is a column; between 1024 and 1279 px it is a band under the header; below 1024 px everything is one column.
 
 #### Scenario: Sections
 - **WHEN** the dashboard has data

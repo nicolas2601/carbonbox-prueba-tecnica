@@ -35,3 +35,23 @@
 - [x] 4.2 `NEXT_DIST_DIR=.next-redesign bun run build` passes without touching the served `.next`
 - [x] 4.3 Fresh visual review at 360 and 1280 px and reduced motion by the reassigned coordinator/worker, findings fixed
 - [x] 4.4 `bun run e2e` and `bun run e2e:screenshots` pass (authorized exception) with new README images
+
+## Evidence
+
+Twenty normal/reduced-motion production captures exist at 360/1280 px. The
+coordinator accepted dashboard, failed-detail and mobile-list review. The latest
+production Chromium suite passed 13 tests in 47.2 s; frontend 289 tests, lint,
+types and isolated build pass. Existing behavior test intents were preserved.
+The design-system delta explicitly supersedes the canonical warm-theme font
+requirement so archiving does not leave contradictory typography specifications.
+
+## Deferred
+
+- Cold-load transfer/chunk, LCP and CLS measurements: targets remain unverified
+  and are listed in the performance change, not counted as screenshot evidence.
+- Optional visual refinement: activity-card whitespace and distinct same-day
+  axis labels. The coordinator marked these non-blocking; no new UI is introduced.
+- Source-only critique follow-up: state-specific overview heading, mobile details
+  affordance and consolidation of the drag glow token. Not a new runtime audit.
+- Full manual keyboard-only, cross-browser and WCAG assessment: covered automated
+  checks do not establish complete compliance.

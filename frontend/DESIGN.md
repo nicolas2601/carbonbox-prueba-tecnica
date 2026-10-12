@@ -135,6 +135,9 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 Part of the design: first load JS of the dashboard at most 200 KB gzip, only the used font weights, LCP at most 1.8 s and CLS at most 0.05 on a cold
 load of the production build on localhost; charts are code split. The budget and the measurements live in the performance change.
+These are deferred measurement targets, not verified cold-load results. The
+completed performance scope records API/worker numbers and structural frontend
+safeguards; no screenshot or successful build proves the browser budgets.
 
 ## Copy
 

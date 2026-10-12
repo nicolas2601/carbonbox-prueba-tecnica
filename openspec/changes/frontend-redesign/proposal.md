@@ -6,7 +6,7 @@ state of the work is visible in seconds. This change redesigns the visual system
 
 ## What Changes
 
-- Replace the visual system with "Carbon Day": a bright canvas with frosted white cards, an orange-to-red gradient, dark graphite panels, a white sidebar, new typography
+- Replace the visual system with "Carbon Day": a cool bright canvas with solid tinted cards, an orange-to-red gradient, dark graphite panels, a tinted sidebar, new typography
   (Sora, Geist, Geist Mono) and updated tokens.
 - Add the application shell with a sidebar and a responsive top bar.
 - Rebuild the dashboard as a bento grid with an activity area chart, a completion donut, status bars, a latest upload card
@@ -31,3 +31,17 @@ state of the work is visible in seconds. This change redesigns the visual system
 
 - Frontend only. New runtime dependencies: `recharts`, `motion`, `lucide-react`, `class-variance-authority`, `clsx`, `tailwind-merge` and the Radix packages that shadcn components require. Fonts through `next/font`. Licenses are recorded in the README.
 - `frontend/DESIGN.md` is replaced by v2. Screenshots for the README are regenerated.
+
+## Delivered scope and deferred work
+
+The accepted design uses one large completion gauge, compact contextual counts,
+dashboard-only lazy charts and a single bar for one real activity sample. No
+decorative landscape is drawn in the data plot. Twenty production captures and
+the 13-test Chromium suite verify the delivered layout and behavior.
+
+Cold-load JavaScript/LCP/CLS targets are deferred measurements in the performance
+change, not a claimed result of this redesign. Optional visual refinements
+(activity-card whitespace and same-day axis labels) and source-only UX critique
+(state-specific overview heading and clearer mobile details affordance) are not
+part of this completed change. Full manual WCAG/cross-browser audits are also
+outside the verified Chromium/axe scope.

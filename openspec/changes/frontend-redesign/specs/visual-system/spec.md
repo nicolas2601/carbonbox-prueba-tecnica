@@ -31,7 +31,7 @@ The system SHALL animate only transform and opacity, SHALL NOT use `transition: 
 - **THEN** the cards, charts and status dots have no animation
 
 ### Requirement: Focus and touch targets
-The system SHALL show a 2 px accent focus ring on every interactive element and keep touch targets at least 44 px.
+The system SHALL show a 2 px theme focus ring on every interactive element (accent strong on light surfaces, on-graphite on dark surfaces) and keep touch targets at least 44 px.
 
 #### Scenario: Focus ring
 - **WHEN** a link or button receives keyboard focus
@@ -46,8 +46,8 @@ The system SHALL use shadcn/ui components copied into `src/components/ui` and th
 - **THEN** they map to the project tokens and no default shadcn color remains
 
 #### Scenario: Chart loading
-- **WHEN** the production build is analysed
-- **THEN** Recharts is only part of the dashboard chunk, not of the shared chunk
+- **WHEN** the dashboard and shared-shell import boundaries are inspected
+- **THEN** dashboard charts use dynamic imports and the shared navigation uses native SVG without importing Recharts
 
 #### Scenario: React Bits and reduced motion
 - **WHEN** reduced motion is preferred

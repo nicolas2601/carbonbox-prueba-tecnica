@@ -19,6 +19,11 @@ Rejected alternative: add a backend field now; the backend is closed and verifie
 ### Bright with graphite panels, one theme
 The references Nico chose are bright boards with dark panels for the key numbers. One theme is built and tested well; a second would double the contrast checks and the visual review, so a dark theme is listed as a limitation.
 
+Cards and sidebar use solid tinted surfaces, not default frosted glass. The gauge
+is the single large figure; other totals remain compact. One activity sample uses
+a bar, and the plot contains no decorative peaks. Table text does not fade on
+entrance because the real browser audit found transient contrast failures.
+
 ### Graphite rail as the anchor
 The dark rail concentrates the figures that answer "is it healthy": the completion gauge, the four totals and the API status. Against the bright canvas it gives hierarchy without borders and matches the reference boards.
 
@@ -37,3 +42,12 @@ act as the regression net for the redesign.
 
 - A large visual change can hide regressions: the end to end suite and a fresh visual review at 360 and 1280 px are mandatory before closing.
 - Dark UI contrast is easy to get wrong; a test verifies every text and badge pair.
+
+## Verification and deferred work
+
+Frontend lint/types, 289 tests, the isolated production build, 13 Chromium
+journeys and five axe audits pass. Desktop/mobile and reduced-motion captures
+were reviewed by the reassigned coordinator/worker, not the inactive worker2.
+No build-chunk transfer budget, cold-load LCP/CLS or full manual WCAG result is
+inferred from screenshots. Those measurements and optional activity-card/axis or
+overview/mobile-affordance refinements remain deferred without new UI changes.
