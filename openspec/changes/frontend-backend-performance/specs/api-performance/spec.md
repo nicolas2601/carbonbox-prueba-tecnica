@@ -40,8 +40,8 @@ The system SHALL send `Cache-Control: no-store` on all upload-data responses, in
 - **THEN** the response forbids storing
 
 ### Requirement: Connections and workload are sized on purpose
-The system SHALL document and test the database pool size for the API and the worker, and the worker batch size, with the measured throughput of the 5000 row sample.
+The system SHALL document the default database pool sizes for API and worker and the default worker batch size, with the measured throughput of the 5000 row sample in the baseline, candidate and final profiles. Alternate pool/batch matrices are out of scope unless measurements demonstrate a capacity bottleneck.
 
 #### Scenario: Throughput recorded
 - **WHEN** the 5000 row sample is processed
-- **THEN** the elapsed time and rows per second are recorded for the chosen batch size and for two alternatives
+- **THEN** elapsed time and rows per second are recorded for the unchanged default batch size 500 and pool defaults 10, including the explicit decision not to tune

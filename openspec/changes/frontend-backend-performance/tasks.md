@@ -13,8 +13,8 @@
 ## 3. API and database
 
 - [x] 3.1 Candidate index experiment and before/after plan evidence; measured and rejected (4.79% HTTP improvement, 10.09% lower worker throughput), no production migration
-- [ ] 3.2 Response compression and cache headers
-- [ ] 3.3 Pool and batch size experiments
+- [x] 3.2 Response compression and cache headers; 71.21% / 65.87% list/results wire reduction, fresh upload data, no request decompression
+- [x] 3.3 Defaults 10/500 measured in three profiles; no tuning justified, alternate pool/batch matrix explicitly out of scope by coordinator decision
 
 ## 4. Verification
 

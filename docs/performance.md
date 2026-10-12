@@ -113,6 +113,48 @@ The separate uploads-list ordering is outside this candidate's scope.
 Independent cleanup found zero owned databases, storage directories and listeners
 on port 35281. Raw candidate plans and every latency sample remain in `performance/`.
 
+## Final response-policy comparison
+
+Run `552294_mv4u1tax_18f0fbec8b0a`, application commit `ccddc81`. No candidate
+index remains. Upload data has `Cache-Control: no-store`; negotiated JSON above
+1,024 bytes uses gzip at best-speed level. Incoming request decompression is
+disabled, so the multipart streaming/size contract is unchanged.
+
+| Endpoint | Baseline p95 ms | Final p95 ms | Baseline wire bytes/response | Final wire bytes/response | Wire reduction |
+|---|---:|---:|---:|---:|---:|
+| List | 22.300 | 25.723 | 2,518 | 725 | 71.21% |
+| Totals | 7.333 | 7.785 | 282 | 307 | -8.87% |
+| Detail | 8.522 | 8.710 | 471 | 496 | -5.31% |
+| Results | 28.939 | 32.370 | 2,136 | 729 | 65.87% |
+
+Wire bytes include HTTP headers and are computed from the raw throughput total
+divided by completed requests. The list and results exceed the predefined
+50 percent byte-reduction gate, so compression is retained. Small totals/detail
+bodies stay uncompressed; their additional 25 bytes are the freshness header.
+All four runs had zero errors, non-2xx responses and timeouts, and all required
+API p95 values remain below 50 ms. **This is a bandwidth improvement, not a
+latency improvement.** Observed p95 increased 15.35 percent for list and 11.85
+percent for results. That CPU/bandwidth trade-off is reported rather than hidden.
+
+Final worker timings were 1,306.024 / 1,221.188 / 877.172 ms (median 4,094.374
+rows/s). Worker implementation, batch 500, pool defaults 10 and queue poll 1,000 ms
+are unchanged. These three measurements vary substantially; do not attribute
+the difference to a worker optimization or claim a causal write-speed gain.
+
+Verification: 350 unit tests, 106 real integration tests and typecheck passed.
+The real App harness separately verifies 1 MiB succeeds and 1 MiB plus one byte
+returns 413 without an upload/job/orphan file; new assertions verify JSON
+Content-Type, valid Content-Length and no-store. The real API/worker curl smoke
+still processes mixed CSV rows. Gzip wire tests decode to identical rows, dates
+and decimal values, with correct compressed length or no length header.
+Independent final cleanup found zero owned DB/storage/listeners on port 41359.
+
+The mandatory security scanner exited 1: one intentionally fake password in the
+existing URL-redaction regression and six `innerHTML` findings in ignored,
+generated Istanbul assets. They were inspected and accepted by the coordinator
+as false positives. This is not presented as a green scan. Its newly created
+policy artifact was inspected and removed without touching existing files.
+
 ## Isolation and limitations
 
 - Independent post-run checks found zero matching databases, temporary storage
@@ -124,4 +166,4 @@ on port 35281. Raw candidate plans and every latency sample remain in `performan
 - Browser route bytes, LCP, FCP, CLS and fonts remain with worker2. No frontend
   performance budget is claimed met by these API measurements.
 - Each profile has one reference load run; small differences are not proof of an
-  improvement. Final response-policy measurements remain pending.
+  improvement. Pool/batch defaults are documented, not opportunistically tuned.

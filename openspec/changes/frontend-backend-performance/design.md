@@ -20,6 +20,11 @@ Only immutable hashed assets receive long caching. Compression is evaluated sepa
 The results endpoint filters by upload and orders by date then id. Measure its actual plans and timing first. Add an additive composite index only if those
 numbers support it; compare first and deep pages on the same dataset. Do not force the planner or add a migration solely to satisfy an assumption.
 
+### Bounded finish decision
+The measured default API/worker pg pools are 10 and the worker batch is 500 across baseline, index candidate and final response-policy profiles.
+Every required API p95 is below 50 ms. The coordinator explicitly removed the alternate pool/batch matrix from scope because there is no demonstrated
+capacity bottleneck requiring that tuning. Keep the 1,000 ms queue poll and record its end-to-end trade-off. This is a documented decision, not a silently skipped experiment.
+
 ## Risks
 
 - Performance numbers vary between machines; the document states the machine and the method and compares only runs on the same one.
