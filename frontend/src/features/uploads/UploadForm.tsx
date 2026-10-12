@@ -8,6 +8,8 @@ import { ErrorState } from "@/components/ErrorState";
 import { Dropzone } from "./Dropzone";
 import { useUploadAction, type Uploader } from "./useUploadAction";
 import { Card } from "@/components/ui/card";
+import { BeforeYouUpload } from "./BeforeYouUpload";
+import { RecentUploadsCompact } from "./RecentUploadsCompact";
 
 export function UploadForm({ uploader }: { uploader?: Uploader }) {
   const [file, setFile] = useState<File | null>(null);
@@ -16,14 +18,20 @@ export function UploadForm({ uploader }: { uploader?: Uploader }) {
     <header><Link href="/uploads" className="back-link">Back to uploads</Link>
       <h1 className="page-title font-display mt-4">Upload an activity file</h1>
       <p className="mt-3 text-sm text-ink-muted">Choose your CSV. We&apos;ll check every row and keep the valid data.</p></header>
-    <Card className="upload-form space-y-6">
-      <Dropzone file={file} onChange={next => { mutation.reset(); setFile(next); }} disabled={mutation.isPending} />
-      {mutation.isPending && <ProgressBar label={progress === 100 ? "Finishing" : "Uploading"} value={progress} />}
-      {mutation.error && mutation.error.code !== "CANCELLED" && <ErrorState title="We couldn't upload this file" error={mutation.error} onRetry={() => { if (file) upload(file); }} />}
-      <div className="flex flex-wrap gap-3">
-        <Button tone="primary" disabled={!file || mutation.isPending} onClick={() => { if (file) upload(file); }}>Upload file</Button>
-        {mutation.isPending && <Button disabled={progress >= 100} onClick={cancel}>Cancel upload</Button>}
-      </div>
-    </Card>
+    <div className="upload-workspace">
+      <Card className="upload-form space-y-6">
+        <Dropzone file={file} onChange={next => { mutation.reset(); setFile(next); }} disabled={mutation.isPending} compact />
+        {mutation.isPending && <ProgressBar label={progress === 100 ? "Finishing" : "Uploading"} value={progress} />}
+        {mutation.error && mutation.error.code !== "CANCELLED" && <ErrorState title="We couldn't upload this file" error={mutation.error} onRetry={() => { if (file) upload(file); }} />}
+        <div className="flex flex-wrap gap-3">
+          <Button tone="primary" disabled={!file || mutation.isPending} onClick={() => { if (file) upload(file); }}>Upload file</Button>
+          {mutation.isPending && <Button disabled={progress >= 100} onClick={cancel}>Cancel upload</Button>}
+        </div>
+      </Card>
+      <aside className="upload-context" aria-label="Upload information">
+        <BeforeYouUpload />
+        <RecentUploadsCompact />
+      </aside>
+    </div>
   </div>;
 }

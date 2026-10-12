@@ -44,6 +44,37 @@ it("Empty list and a page beyond the last are not coerced", async () => {
   await uploads(1);
   expect(await queries.list({ page: 10, limit: 10 })).toEqual({ data: [], total: 1, page: 10, limit: 10 });
 });
+it("Searches and counts matching uploads across the full dataset", async () => {
+  await client.upload.createMany({ data: Array.from({ length: 12 }, (_, index) => ({
+    id: `search-${index}`, fileName: index === 11 ? "Needle-latest.csv" : index === 1 ? "needle-old.csv" : `other-${index}.csv`,
+    fileUrl: "private-key.csv", userId: "user", status: "COMPLETED", createdAt: new Date(NOW.getTime() + index), updatedAt: NOW,
+  })) });
+  const result = await queries.list({ page: 1, limit: 1, q: "needle", sort: "newest" });
+  expect(result).toMatchObject({ total: 2, page: 1, limit: 1 });
+  expect(result.data.map(row => row.fileName)).toEqual(["Needle-latest.csv"]);
+});
+it("Search treats SQL-looking text, wildcard characters and backslashes literally", async () => {
+  await client.upload.createMany({ data: ["literal%_\\needle.csv", "literalXX\\needle.csv", "report ' OR 1=1 --.csv"].map((fileName, index) => ({
+    id: `literal-${index}`, fileName, fileUrl: "private-key.csv", userId: "user", status: "PENDING", createdAt: NOW, updatedAt: NOW,
+  })) });
+  const result = await queries.list({ page: 1, limit: 10, q: "%_\\", sort: "newest" });
+  expect(result.total).toBe(1);
+  expect(result.data[0]?.fileName).toBe("literal%_\\needle.csv");
+  const sqlLookingText = await queries.list({ page: 1, limit: 10, q: "' OR 1=1 --", sort: "newest" });
+  expect(sqlLookingText.total).toBe(1);
+  expect(sqlLookingText.data[0]?.fileName).toBe("report ' OR 1=1 --.csv");
+});
+it("Status filtering shares the count predicate and name sorting has an id tie breaker", async () => {
+  await client.upload.createMany({ data: [
+    { id: "name-z", fileName: "same.csv", status: "COMPLETED" },
+    { id: "name-a", fileName: "same.csv", status: "COMPLETED" },
+    { id: "name-b", fileName: "alpha.csv", status: "COMPLETED" },
+    { id: "name-p", fileName: "aaa.csv", status: "PENDING" },
+  ].map(row => ({ ...row, fileUrl: "private-key.csv", userId: "user", createdAt: NOW, updatedAt: NOW })) });
+  const result = await queries.list({ page: 1, limit: 10, status: "COMPLETED", sort: "name" });
+  expect(result.total).toBe(3);
+  expect(result.data.map(row => row.id)).toEqual(["name-b", "name-a", "name-z"]);
+});
 
 it("Results use only own rows ordered by date then id with number and UTC date formats", async () => {
   await uploads(2);
@@ -85,11 +116,27 @@ it("Stats use one grouped query for all four buckets", async () => {
   try {
     await observed.$connect();
     observed.$on("query", event => { sql.push(event.query); });
-    expect(await new PrismaUploadQueries(observed).stats()).toEqual({ total: 7, completed: 3, inProgress: 3, failed: 1 });
+    expect(await new PrismaUploadQueries(observed).stats()).toEqual({ total: 7, completed: 3, inProgress: 3, failed: 1,
+      pending: 2, processing: 1, processedRows: 0, rejectedRows: 0 });
     expect(sql).toHaveLength(1);
     expect(sql[0]).toMatch(/GROUP BY/i);
+    expect(sql[0]).toMatch(/SUM/i);
   } finally { await observed.$disconnect(); }
 });
 it("Empty stats are zero", async () => {
-  expect(await queries.stats()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0 });
+  expect(await queries.stats()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0,
+    pending: 0, processing: 0, processedRows: 0, rejectedRows: 0 });
+});
+it("Stats sum nullable counters globally, including uploads older than the latest twelve", async () => {
+  await uploads(13);
+  const changes = Array.from({ length: 13 }, (_, index) => client.upload.update({
+    where: { id: `u${String(index).padStart(3, "0")}` },
+    data: { status: index === 0 ? "COMPLETED" : index % 2 ? "PENDING" : "PROCESSING",
+      processedRows: index === 12 ? null : index === 0 ? 100 : 2,
+      failedRows: index === 12 ? null : index === 0 ? 20 : 1,
+      createdAt: index === 0 ? new Date(NOW.getTime() - 86_400_000) : NOW },
+  }));
+  await client.$transaction(changes);
+  expect(await queries.stats()).toEqual({ total: 13, completed: 1, inProgress: 12, failed: 0,
+    pending: 6, processing: 6, processedRows: 122, rejectedRows: 31 });
 });

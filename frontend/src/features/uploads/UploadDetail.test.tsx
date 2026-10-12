@@ -1,14 +1,16 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw/http";
-import { expect, it, vi } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
 import { API_URL, server } from "@/tests/server";
 import { queryHarness } from "@/tests/queryHarness";
 import { upload } from "@/tests/fixtures";
 import { UploadDetail } from "./UploadDetail";
 import { page as resultPage } from "@/tests/fixtures";
+import { elapsedLabel, observeHandledRows } from "./processingReadout";
 
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
+afterEach(() => { vi.useRealTimers(); });
 
 it("Displays file information and a back link from the public DTO", async () => {
   server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", "PENDING"))));
@@ -42,16 +44,44 @@ it("Shows queued work without an invented percentage", async () => {
   server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json(upload("u1", "PENDING"))));
   render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
   expect(await screen.findByRole("heading", { name: "Waiting for a worker" })).toBeInTheDocument();
-  const progress = screen.getByRole("progressbar");
-  expect(progress).not.toHaveAttribute("aria-valuenow");
-  expect(progress).not.toHaveAttribute("aria-valuemax");
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 });
-it("Combines valid and rejected rows into an honest processing counter", async () => {
+it("Shows actual handled rows and unknown total without fabricated progress", async () => {
   server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json({ ...upload("u1", "PROCESSING"), processedRows: 1500, failedRows: 12, totalRows: null })));
   render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
-  expect(await screen.findByText("1,512 rows handled")).toBeInTheDocument();
-  expect(screen.getByRole("progressbar")).not.toHaveAttribute("aria-valuenow");
+  expect(await screen.findByText("1,512", { selector: "dd" })).toBeInTheDocument();
+  expect(screen.getByText("Total unknown until the file ends.")).toBeInTheDocument();
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
   expect(screen.queryByText(/%/)).not.toBeInTheDocument();
+  expect(screen.queryByText(/Reading|Validating|Saving/)).not.toBeInTheDocument();
+});
+it("Shows elapsed processing time without an observed rate sample", async () => {
+  vi.setSystemTime(new Date("2024-10-12T12:00:00.000Z"));
+  server.use(http.get(`${API_URL}/uploads/u1`, () => HttpResponse.json({
+    ...upload("u1", "PROCESSING"), processedRows: 100, failedRows: 0,
+    createdAt: "2024-10-12T11:59:30.000Z", totalRows: null,
+  })));
+  render(<UploadDetail id="u1" page={1} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByText("30s", { selector: "dd" })).toBeInTheDocument();
+  expect(screen.queryByText(/rows\/s/)).not.toBeInTheDocument();
+});
+it("Resets observed rate after the handled counter regresses", async () => {
+  const first = observeHandledRows(null, { id: "u1", handled: 100, at: 0 });
+  const second = observeHandledRows(first, { id: "u1", handled: 400, at: 3000 });
+  expect(second.rate).toBe(100);
+  const regressed = observeHandledRows(second, { id: "u1", handled: 20, at: 6000 });
+  expect(regressed.rate).toBeUndefined();
+  expect(regressed.handled).toBe(20);
+});
+it("Formats elapsed time with minute and second units", () => {
+  expect(elapsedLabel(65)).toBe("1m 5s");
+  expect(elapsedLabel(120)).toBe("2m");
+});
+it("Omits rate until a second positive sample arrives", () => {
+  const first = observeHandledRows(null, { id: "u1", handled: 100, at: 0 });
+  const unchanged = observeHandledRows(first, { id: "u1", handled: 100, at: 3000 });
+  expect(unchanged.rate).toBeUndefined();
+  expect(observeHandledRows(unchanged, { id: "u1", handled: 400, at: 6000 }).rate).toBe(100);
 });
 it("Announces one status transition and stops requests after completion", async () => {
   vi.useFakeTimers();

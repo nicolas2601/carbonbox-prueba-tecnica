@@ -17,7 +17,9 @@ export function registerApiSchemas(server: FastifyInstance): void {
   server.addSchema({ $id: "UploadView", type: "object", additionalProperties: false, required: Object.keys(upload), properties: upload });
   const row = { category: TEXT, amount: { type: "number" }, unit: TEXT, date: { type: "string", format: "date" } };
   server.addSchema({ $id: "ResultRow", type: "object", additionalProperties: false, required: Object.keys(row), properties: row });
-  const stats = { total: { type: "integer" }, completed: { type: "integer" }, inProgress: { type: "integer" }, failed: { type: "integer" } };
+  const stats = { total: { type: "integer" }, completed: { type: "integer" }, inProgress: { type: "integer" },
+    failed: { type: "integer" }, pending: { type: "integer" }, processing: { type: "integer" },
+    processedRows: { type: "integer" }, rejectedRows: { type: "integer" } };
   server.addSchema({ $id: "UploadStats", type: "object", additionalProperties: false, required: Object.keys(stats), properties: stats });
 }
 export function pageSchema(item: string): object {

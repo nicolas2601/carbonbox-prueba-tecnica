@@ -64,3 +64,14 @@ it.each(hoverPairs)("Hover text contrast >= 4.5:1: %s", (label, foreground, back
 it.each(graphicPairs)("Essential graphics contrast >= 3:1: %s", (label, foreground, background) => {
   expect(contrast(foreground, background), label).toBeGreaterThanOrEqual(3);
 });
+it("Carbon Day dashboard remains light and keeps the dark accent rail isolated", () => {
+  const dashboard = readFileSync("src/styles/dashboard.css", "utf8");
+  expect(dashboard).not.toMatch(/\.dashboard-stage\s*\{/);
+  expect(dashboard).not.toContain("--text-muted: var(--on-graphite-muted)");
+  expect(dashboard).toContain(".insight-tile");
+  expect(dashboard).toContain(".recent-table th, .recent-table td { color: var(--text); background: var(--table-surface)");
+  expect(contrast(color("text"), color("table-surface"))).toBeGreaterThanOrEqual(4.5);
+  for (const surface of ["surface", "surface-solid", "table-surface", "bg"]) {
+    for (const token of ["text", "text-muted"]) expect(contrast(color(token), color(surface))).toBeGreaterThanOrEqual(4.5);
+  }
+});

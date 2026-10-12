@@ -21,7 +21,8 @@ it("Upload, process and read the mixed sample through HTTP", async () => {
     expect(results.json().data).toHaveLength(15);
     expect(results.json().total).toBe(15);
     const stats = await api.server.inject("/api/v1/uploads/stats");
-    expect(stats.json()).toEqual({ total: 1, completed: 1, inProgress: 0, failed: 0 });
+    expect(stats.json()).toEqual({ total: 1, completed: 1, inProgress: 0, failed: 0,
+      pending: 0, processing: 0, processedRows: 15, rejectedRows: 10 });
     expect((await api.server.inject("/api/v1/uploads/missing")).statusCode).toBe(404);
   } finally { await api.close(); }
 });

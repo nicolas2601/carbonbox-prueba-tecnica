@@ -20,6 +20,6 @@ export function RecentUploads() {
       ? <ErrorState error={uploads.error} onRetry={() => uploads.refetch()} />
       : uploads.data.data.length === 0
         ? <EmptyState title="No uploads yet" message="Start your activity ledger with a CSV file." />
-        : <div className="table-card"><UploadsTable uploads={uploads.data.data.slice(0, RECENT_LIMIT)} caption="Recent uploads" /></div>}
+        : <div className="table-card recent-table" data-surface="light"><UploadsTable uploads={uploads.data.data.slice(0, RECENT_LIMIT)} caption="Recent uploads" /></div>}
   </section>;
 }

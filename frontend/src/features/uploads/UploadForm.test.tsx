@@ -6,12 +6,44 @@ import type { CreatedUpload } from "@/lib/api/models";
 import { queryHarness } from "@/tests/queryHarness";
 import { UploadForm } from "./UploadForm";
 import { ApiError } from "@/lib/api/ApiError";
+import { server } from "@/tests/server";
+import { http, HttpResponse } from "msw/http";
 
 const { push } = vi.hoisted(() => ({ push: vi.fn() }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
 const created: CreatedUpload = { id: "new-id", status: "PENDING", fileName: "data.csv", createdAt: "2024-10-12T10:00:00.000Z" };
 
+function mockRecentUploads() {
+  server.use(http.get("http://localhost:3001/api/v1/uploads", ({ request }) => {
+    const limit = Number(new URL(request.url).searchParams.get("limit"));
+    const data = Array.from({ length: limit }, (_, index) => ({
+      id: `recent-${index}`, fileName: `recent-${index}.csv`, status: "COMPLETED" as const, createdAt: "2024-10-12T10:00:00.000Z", updatedAt: "2024-10-12T10:00:00.000Z", totalRows: 8, processedRows: 8, failedRows: 0, errorMessage: null,
+    }));
+    return HttpResponse.json({ data, total: 5, page: 1, limit });
+  }));
+}
+
+function mockSuccessfulUpload() {
+  server.use(http.post("http://localhost:3001/api/v1/uploads", () => HttpResponse.json(created, { status: 201 })));
+}
+
+it("shows CSV guidance and only the three latest uploads", async () => {
+  mockRecentUploads();
+  const harness = queryHarness();
+  render(<UploadForm />, { wrapper: harness.wrapper });
+  expect(await screen.findByRole("heading", { name: "Before you upload" })).toBeInTheDocument();
+  expect(screen.getByText("category, amount, unit, date")).toBeInTheDocument();
+  expect(screen.getByText("Amount must be a decimal greater than zero")).toBeInTheDocument();
+  expect(screen.getByText("Date must use YYYY-MM-DD")).toBeInTheDocument();
+  expect(screen.getByText(`Maximum file size: ${process.env.NEXT_PUBLIC_MAX_UPLOAD_MB ?? "10"} MB`)).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "Download sample CSV" })).toHaveAttribute("href", "/sample-activity.csv");
+  expect(await screen.findByRole("heading", { name: "Recent uploads" })).toBeInTheDocument();
+  expect(screen.getAllByRole("link", { name: /recent-\d\.csv/ })).toHaveLength(3);
+  harness.client.clear();
+});
+
 it("Uses uploader progress, disables file controls, finishes and invalidates before redirect", async () => {
+  mockRecentUploads(); mockSuccessfulUpload();
   let progress: (percent: number) => void = () => {};
   let resolve: (result: CreatedUpload) => void = () => {};
   const completion = new Promise<CreatedUpload>(done => { resolve = done; });
@@ -38,6 +70,7 @@ it("Uses uploader progress, disables file controls, finishes and invalidates bef
   harness.client.clear();
 });
 it("Aborts a transfer, keeps selection and ignores late progress or responses", async () => {
+  mockRecentUploads();
   push.mockClear();
   let signal: AbortSignal | undefined;
   let progress: (percent: number) => void = () => {};
@@ -63,6 +96,7 @@ it("Aborts a transfer, keeps selection and ignores late progress or responses", 
   expect(screen.queryByRole("alert")).not.toBeInTheDocument();
 });
 it("Prevents cancel once bytes are sent and aborts on navigation away", async () => {
+  mockRecentUploads();
   let signal: AbortSignal | undefined;
   let progress: (percent: number) => void = () => {};
   const uploader = (_file: File, update?: (percent: number) => void, abort?: AbortSignal) => {
@@ -80,6 +114,7 @@ it("Prevents cancel once bytes are sent and aborts on navigation away", async ()
   expect(signal?.aborted).toBe(true);
 });
 it.each([400, 413, 500, 0])("Keeps the file and recovers upload failure %s", async status => {
+  mockRecentUploads();
   const error = new ApiError(status ? "FAILED" : "NETWORK_ERROR", status === 413 ? "File exceeds server limit" : "Cannot finish upload", status, status === 500 ? "req-upload" : undefined);
   const uploader = vi.fn().mockRejectedValueOnce(error).mockResolvedValueOnce(created);
   render(<UploadForm uploader={uploader} />, { wrapper: queryHarness().wrapper });
