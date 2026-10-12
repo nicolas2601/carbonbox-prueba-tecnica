@@ -12,7 +12,7 @@
 .before-upload h2, .recent-uploads-heading h2 { margin: 0; font-family: var(--font-sora); font-size: 18px; font-weight: 600; }
 .before-upload h3 { margin: 16px 0 4px; font-size: 12px; color: var(--text-muted); }
 .before-upload p, .before-upload li { font-size: 13px; line-height: 1.5; }
-.before-upload ul { display: grid; gap: 4px; margin: 10px 0; padding-left: 20px; }
+.before-upload ul { display: grid; gap: 4px; margin: 10px 0; padding-left: 18px; list-style: disc; }
 .sample-download { display: inline-flex; min-height: 44px; align-items: center; margin-top: 8px; color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
 .recent-uploads-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
 .recent-upload-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
@@ -21,8 +21,8 @@
 .recent-upload-link time { grid-column: 1; color: var(--text-muted); font-size: 11px; }
 .recent-upload-link .status-badge { grid-column: 2; grid-row: 1 / span 2; }
 .recent-uploads-empty { margin-top: 12px; color: var(--text-muted); font-size: 13px; }
-.dropzone-compact { display: flex; min-height: 104px; align-items: center; justify-content: flex-start; gap: 16px; padding: 18px 20px; }
-.dropzone-compact .dropzone-symbol { width: 48px; height: 48px; flex: 0 0 48px; margin: 0; border-radius: 14px; }
+.dropzone.dropzone-compact { display: flex; min-height: 104px; align-items: center; justify-content: flex-start; gap: 16px; padding: 18px 20px; text-align: left; }
+.dropzone.dropzone-compact .dropzone-symbol { width: 48px; height: 48px; flex: 0 0 48px; margin: 0; border-radius: 14px; }
 .dropzone-section-compact { display: grid; gap: 12px; }
 .selected-file-compact { min-height: 56px; padding: 8px 12px; }
 @media (max-width: 1023px) { .upload-workspace { grid-template-columns: minmax(0, 1fr); } }
@@ -49,5 +49,6 @@
 .back-link, .canvas-link { color: var(--text); text-decoration-color: var(--accent-strong); }
 @keyframes processing-breathe { 50% { transform: scale(1.05); opacity: 0.35; } }
 @media (max-width: 639px) { .table-scroll { max-height: none; } .uploads-table td { height: auto; padding: 0; } .upload-form { padding: 20px; } .dropzone { padding: 32px 16px; } }
-@media (max-width: 639px) { .dropzone-compact { min-height: 84px; padding: 12px; gap: 12px; } .dropzone-compact .dropzone-symbol { width: 40px; height: 40px; flex-basis: 40px; margin: 0; } .before-upload, .recent-uploads-compact { padding: 16px; } }
+@media (max-width: 639px) { .dropzone.dropzone-compact { min-height: 84px; padding: 12px; gap: 12px; } .dropzone.dropzone-compact .dropzone-symbol { width: 40px; height: 40px; flex-basis: 40px; margin: 0; } .before-upload, .recent-uploads-compact { padding: 16px; } }
 @media (prefers-reduced-motion: reduce) { .dropzone::before, .uploads-table .data-row, .results-table tr { transition: none; } .processing-halo { animation: none !important; } }
+.selected-file-compact button { white-space: nowrap; flex: 0 0 auto; }

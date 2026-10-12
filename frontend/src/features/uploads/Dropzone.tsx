@@ -39,7 +39,7 @@ export function Dropzone({ file, onChange, disabled = false, limitMb = maxUpload
       <span className="dropzone-symbol" aria-hidden="true"><CloudUpload size={compactSelected ? 24 : 32} strokeWidth={1.5} /></span>
       <span id={`${id}-title`} className={compactSelected ? "block text-sm font-semibold" : "block font-display text-[28px]"}>Choose a CSV file</span>
       {!compactSelected && <span className="mt-2 block text-sm text-ink-muted">Or drag and drop it here</span>}
-      {!compactSelected && <span id={`${id}-hint`} className="mt-4 block text-xs text-ink-muted">One .csv file, up to {limitMb} MB. Required columns: category, amount, unit, date.</span>}
+      {!compactSelected && <span id={`${id}-hint`} className="mt-4 block text-xs text-ink-muted">One .csv file, up to {limitMb} MB.</span>}
     </label>
     {file && <div className={compactSelected ? "selected-file selected-file-compact" : "selected-file"}><div className="min-w-0"><p className="break-all font-mono text-sm">{file.name}</p><p className="mt-1 text-xs text-ink-muted">{fileSize(file.size)}</p></div>
       <Button disabled={disabled} onClick={remove}>Remove file</Button></div>}
