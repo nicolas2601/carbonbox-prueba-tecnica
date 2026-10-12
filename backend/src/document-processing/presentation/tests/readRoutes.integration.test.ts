@@ -12,7 +12,8 @@ it("Stats is static, not an upload id", async () => {
   try {
     const response = await api.server.inject("/api/v1/uploads/stats");
     expect(response.statusCode).toBe(200);
-    expect(response.json()).toEqual({ total: 1, completed: 0, inProgress: 1, failed: 0 });
+    expect(response.json()).toEqual({ total: 1, completed: 0, inProgress: 1, failed: 0,
+      pending: 1, processing: 0, processedRows: 0, rejectedRows: 0 });
   } finally { await api.close(); }
 });
 

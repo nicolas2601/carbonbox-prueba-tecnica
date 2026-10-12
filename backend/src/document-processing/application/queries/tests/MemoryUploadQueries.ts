@@ -26,9 +26,18 @@ export class MemoryUploadQueries implements IUploadQueries {
     return this.page(data, pagination);
   }
   async stats(): Promise<UploadStats> {
-    return { total: this.uploads.length, completed: this.uploads.filter(row => row.status === "COMPLETED").length,
-      failed: this.uploads.filter(row => row.status === "FAILED").length,
-      inProgress: this.uploads.filter(row => row.status === "PENDING" || row.status === "PROCESSING").length };
+    const stats: UploadStats = { total: this.uploads.length, completed: 0, inProgress: 0, failed: 0,
+      pending: 0, processing: 0, processedRows: 0, rejectedRows: 0 };
+    for (const upload of this.uploads) {
+      stats.processedRows += upload.processedRows ?? 0;
+      stats.rejectedRows += upload.failedRows ?? 0;
+      if (upload.status === "COMPLETED") stats.completed++;
+      if (upload.status === "FAILED") stats.failed++;
+      if (upload.status === "PENDING") stats.pending++;
+      if (upload.status === "PROCESSING") stats.processing++;
+    }
+    stats.inProgress = stats.pending + stats.processing;
+    return stats;
   }
   private page<T>(data: T[], pagination: Pagination): Page<T> {
     const offset = pageOffset(pagination);

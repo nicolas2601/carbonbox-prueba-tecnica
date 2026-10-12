@@ -25,4 +25,13 @@ export interface UploadView {
   updatedAt: string;
 }
 export interface ResultRow { category: string; amount: number; unit: string; date: string; }
-export interface UploadStats { total: number; completed: number; inProgress: number; failed: number; }
+export interface UploadStats {
+  total: number;
+  completed: number;
+  inProgress: number;
+  failed: number;
+  pending: number;
+  processing: number;
+  processedRows: number;
+  rejectedRows: number;
+}

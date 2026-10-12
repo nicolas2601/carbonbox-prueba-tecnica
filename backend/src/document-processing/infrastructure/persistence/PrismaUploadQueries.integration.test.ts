@@ -116,11 +116,27 @@ it("Stats use one grouped query for all four buckets", async () => {
   try {
     await observed.$connect();
     observed.$on("query", event => { sql.push(event.query); });
-    expect(await new PrismaUploadQueries(observed).stats()).toEqual({ total: 7, completed: 3, inProgress: 3, failed: 1 });
+    expect(await new PrismaUploadQueries(observed).stats()).toEqual({ total: 7, completed: 3, inProgress: 3, failed: 1,
+      pending: 2, processing: 1, processedRows: 0, rejectedRows: 0 });
     expect(sql).toHaveLength(1);
     expect(sql[0]).toMatch(/GROUP BY/i);
+    expect(sql[0]).toMatch(/SUM/i);
   } finally { await observed.$disconnect(); }
 });
 it("Empty stats are zero", async () => {
-  expect(await queries.stats()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0 });
+  expect(await queries.stats()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0,
+    pending: 0, processing: 0, processedRows: 0, rejectedRows: 0 });
+});
+it("Stats sum nullable counters globally, including uploads older than the latest twelve", async () => {
+  await uploads(13);
+  const changes = Array.from({ length: 13 }, (_, index) => client.upload.update({
+    where: { id: `u${String(index).padStart(3, "0")}` },
+    data: { status: index === 0 ? "COMPLETED" : index % 2 ? "PENDING" : "PROCESSING",
+      processedRows: index === 12 ? null : index === 0 ? 100 : 2,
+      failedRows: index === 12 ? null : index === 0 ? 20 : 1,
+      createdAt: index === 0 ? new Date(NOW.getTime() - 86_400_000) : NOW },
+  }));
+  await client.$transaction(changes);
+  expect(await queries.stats()).toEqual({ total: 13, completed: 1, inProgress: 12, failed: 0,
+    pending: 6, processing: 6, processedRows: 122, rejectedRows: 31 });
 });

@@ -45,15 +45,21 @@ export class PrismaUploadQueries implements IUploadQueries {
     return { data: rows.map(row => ({ ...row, date: row.date.toISOString().slice(0, 10) })), total, ...pagination };
   }
   async stats(): Promise<UploadStats> {
-    const groups = await this.client.upload.groupBy({ by: ["status"], _count: { _all: true } });
-    const stats: UploadStats = { total: 0, completed: 0, inProgress: 0, failed: 0 };
+    const groups = await this.client.upload.groupBy({ by: ["status"], _count: { _all: true },
+      _sum: { processedRows: true, failedRows: true } });
+    const stats: UploadStats = { total: 0, completed: 0, inProgress: 0, failed: 0,
+      pending: 0, processing: 0, processedRows: 0, rejectedRows: 0 };
     for (const group of groups) {
       const count = group._count._all;
       stats.total += count;
+      stats.processedRows += group._sum.processedRows ?? 0;
+      stats.rejectedRows += group._sum.failedRows ?? 0;
       if (group.status === "COMPLETED") stats.completed += count;
       if (group.status === "FAILED") stats.failed += count;
-      if (group.status === "PENDING" || group.status === "PROCESSING") stats.inProgress += count;
+      if (group.status === "PENDING") stats.pending += count;
+      if (group.status === "PROCESSING") stats.processing += count;
     }
+    stats.inProgress = stats.pending + stats.processing;
     return stats;
   }
 }

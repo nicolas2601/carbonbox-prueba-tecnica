@@ -2,8 +2,11 @@ import { afterAll, beforeEach, expect, it } from "vitest";
 import { apiHarness } from "./apiHarness";
 import { integrationClient, truncateTables } from "../../infrastructure/tests/database";
 
-interface Operation { tags: string[]; responses: Record<string, { headers?: Record<string, unknown> }>; parameters?: { name: string; schema?: { enum?: string[] } }[]; requestBody?: { content: Record<string, { schema: { properties: { file: { type: string; format: string } } } }> }; }
-interface Document { openapi: string; info: { title: string; version: string }; paths: Record<string, { get?: Operation; post?: Operation }>; }
+interface Operation { tags: string[]; responses: Record<string, { headers?: Record<string, unknown>;
+  content?: Record<string, { schema?: { $ref?: string } }> }>; parameters?: { name: string; schema?: { enum?: string[] } }[];
+  requestBody?: { content: Record<string, { schema: { properties: { file: { type: string; format: string } } } }> }; }
+interface Document { openapi: string; info: { title: string; version: string }; paths: Record<string, { get?: Operation; post?: Operation }>;
+  components?: { schemas?: Record<string, { properties?: Record<string, unknown> }> }; }
 const client = integrationClient();
 beforeEach(async () => { await truncateTables(client); });
 afterAll(async () => { await client.$disconnect(); });
@@ -27,6 +30,11 @@ it("OpenAPI lists all five operations with response envelopes and binary multipa
     expect(list?.parameters?.find(parameter => parameter.name === "status")?.schema?.enum)
       .toEqual(["PENDING", "PROCESSING", "COMPLETED", "FAILED"]);
     expect(list?.parameters?.find(parameter => parameter.name === "sort")?.schema?.enum).toEqual(["newest", "oldest", "name"]);
+    const statsRef = document.paths["/api/v1/uploads/stats"]?.get?.responses["200"]?.content?.["application/json"]?.schema?.$ref;
+    const statsSchemaId = statsRef?.split("/").at(-1) ?? "";
+    expect(Object.keys(document.components?.schemas?.[statsSchemaId]?.properties ?? {})).toEqual(expect.arrayContaining([
+      "total", "completed", "inProgress", "failed", "pending", "processing", "processedRows", "rejectedRows",
+    ]));
     const post = document.paths["/api/v1/uploads"]?.post;
     expect(post?.requestBody?.content["multipart/form-data"]?.schema.properties.file).toEqual({ type: "string", format: "binary" });
     expect(post?.responses["201"]?.headers?.Location).toBeDefined();
