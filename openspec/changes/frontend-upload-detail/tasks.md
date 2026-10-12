@@ -21,7 +21,7 @@
 
 ## 3. End to end
 
-- [ ] 3.1 Playwright setup and stack script (fresh database, three processes, teardown)
+- [x] 3.1 Playwright setup and stack script (fresh database, three processes, teardown)
 - [ ] 3.2 Journeys: valid, invalid rows, wrong header
 - [ ] 3.3 Validation, size limit, cancel
 - [ ] 3.4 Dashboard, pagination, unknown id
