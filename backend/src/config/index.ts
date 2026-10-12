@@ -39,6 +39,12 @@ const schema = convict<IConvictProps>({
     default: "./storage",
     env: "STORAGE_DIR",
   },
+  storageDriver: {
+    doc: "Implemented storage driver; S3 remains deferred",
+    format: ["fs"],
+    default: "fs",
+    env: "STORAGE_DRIVER",
+  },
   maxUploadMb: {
     doc: "Maximum accepted upload size in megabytes",
     format: "nat",
