@@ -1,6 +1,6 @@
 ## 0. Safe working setup
 
-- [ ] 0.1 `next.config.ts` reads an optional `NEXT_DIST_DIR` so builds for this work go to a separate ignored directory and never overwrite a build another session is serving
+- [x] 0.1 `next.config.ts` reads an optional `NEXT_DIST_DIR` so builds for this work go to a separate ignored directory and never overwrite a build another session is serving
 
 ## 1. Visual system
 
