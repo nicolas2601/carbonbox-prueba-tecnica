@@ -1,7 +1,7 @@
 # ingestion-ports Specification
 
 ## Purpose
-TBD - created by archiving change upload-ingestion. Update Purpose after archive.
+Describe what the upload use case needs from storage and persistence, not how.
 ## Requirements
 ### Requirement: The ports describe what the use case needs, not how it is done
 The system SHALL define these contracts in the application layer, free of any framework or

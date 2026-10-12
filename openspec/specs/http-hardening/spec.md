@@ -1,7 +1,7 @@
 # http-hardening Specification
 
 ## Purpose
-TBD - created by archiving change production-readiness. Update Purpose after archive.
+Apply security headers, rate limiting and a strict CORS policy.
 ## Requirements
 ### Requirement: Security headers
 The system SHALL send standard security headers on every API response and the frontend SHALL send a content security policy and the equivalent headers.

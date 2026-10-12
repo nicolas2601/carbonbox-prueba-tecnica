@@ -1,7 +1,7 @@
 # file-reading Specification
 
 ## Purpose
-TBD - created by archiving change csv-reader-and-worker. Update Purpose after archive.
+Read stored files as a stream of records with their physical line numbers.
 ## Requirements
 ### Requirement: Stored files are read as a stream
 The system SHALL implement `FsFileStorage.open(key)` returning an `AsyncIterable<Uint8Array>` that

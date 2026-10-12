@@ -1,7 +1,7 @@
 # http-errors Specification
 
 ## Purpose
-TBD - created by archiving change http-api. Update Purpose after archive.
+Return one error envelope with a single code to status table and no internal leaks.
 ## Requirements
 ### Requirement: One error envelope
 The system SHALL answer every error with `{ "error": { "code", "message" } }` and a matching status.

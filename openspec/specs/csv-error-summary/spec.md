@@ -1,7 +1,7 @@
 # csv-error-summary Specification
 
 ## Purpose
-TBD - created by archiving change csv-validation. Update Purpose after archive.
+Summarize rejected rows in one short message the user can act on.
 ## Requirements
 ### Requirement: Rejected rows are summarized in one short message
 The system SHALL provide `summarizeRowErrors(errors, limit, total)` where `total` is the real

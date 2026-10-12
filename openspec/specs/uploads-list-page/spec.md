@@ -1,7 +1,7 @@
 # uploads-list-page Specification
 
 ## Purpose
-TBD - created by archiving change frontend-foundation. Update Purpose after archive.
+List uploads in a table whose page lives in the URL.
 ## Requirements
 ### Requirement: Table of uploads
 The system SHALL render at `/uploads` a table with the columns file name, status, upload date, processed rows and actions, ten uploads per page,

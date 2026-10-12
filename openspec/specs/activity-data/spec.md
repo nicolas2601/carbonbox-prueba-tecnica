@@ -1,7 +1,7 @@
 # activity-data Specification
 
 ## Purpose
-TBD - created by archiving change domain-foundations. Update Purpose after archive.
+Define what makes one CSV row a valid activity record and how it is built.
 ## Requirements
 ### Requirement: ActivityData enforces the rules of one CSV row
 The system SHALL provide `ActivityData.create(props)` returning

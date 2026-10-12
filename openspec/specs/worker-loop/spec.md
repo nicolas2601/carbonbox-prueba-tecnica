@@ -1,7 +1,7 @@
 # worker-loop Specification
 
 ## Purpose
-TBD - created by archiving change csv-reader-and-worker. Update Purpose after archive.
+Run the worker loop: one job per iteration, retry policy and graceful stop.
 ## Requirements
 ### Requirement: One iteration processes at most one job
 The system SHALL provide `Worker.runOnce()` that claims a job with the configured lease, runs the

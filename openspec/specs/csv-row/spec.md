@@ -1,7 +1,7 @@
 # csv-row Specification
 
 ## Purpose
-TBD - created by archiving change csv-validation. Update Purpose after archive.
+Decide when a CSV record is a valid activity row: amount, date and text fields.
 ## Requirements
 ### Requirement: A valid record becomes an activity row
 The system SHALL provide `validateRow(fields, columns, line)` returning

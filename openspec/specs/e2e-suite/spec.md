@@ -1,7 +1,7 @@
 # e2e-suite Specification
 
 ## Purpose
-TBD - created by archiving change frontend-upload-detail. Update Purpose after archive.
+Prove the main journey in a real browser against a fresh, isolated stack.
 ## Requirements
 ### Requirement: The suite owns a fresh stack
 The system SHALL provide `bun run e2e` that creates a new database, applies the migrations, starts API, worker and frontend on test ports,

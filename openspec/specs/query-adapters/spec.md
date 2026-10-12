@@ -1,7 +1,7 @@
 # query-adapters Specification
 
 ## Purpose
-TBD - created by archiving change upload-queries. Update Purpose after archive.
+Implement the read side of the queries on PostgreSQL.
 ## Requirements
 ### Requirement: The read port is implemented on PostgreSQL
 The system SHALL provide a Prisma adapter of `IUploadQueries` with `findById`, `list`, `results`

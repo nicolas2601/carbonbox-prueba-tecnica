@@ -1,7 +1,7 @@
 # api-client Specification
 
 ## Purpose
-TBD - created by archiving change frontend-foundation. Update Purpose after archive.
+Give the front end one typed, single place to call the API and report failures.
 ## Requirements
 ### Requirement: Typed functions over one Axios instance
 The system SHALL provide an Axios instance whose base URL comes from `NEXT_PUBLIC_API_URL`, and typed functions `getStats`,

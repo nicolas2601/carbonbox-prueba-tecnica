@@ -1,7 +1,7 @@
 # fenced-processing Specification
 
 ## Purpose
-TBD - created by archiving change queue-and-fencing. Update Purpose after archive.
+Allow only the current holder of a job claim to write processing results.
 ## Requirements
 ### Requirement: Only the current claim holder can write
 The system SHALL provide `PrismaProcessingRepository` implementing `IProcessingRepository`. Each of

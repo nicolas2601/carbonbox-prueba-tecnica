@@ -1,7 +1,7 @@
 # processing-ports Specification
 
 ## Purpose
-TBD - created by archiving change process-file. Update Purpose after archive.
+Describe the fenced writes and the reading collaborators the processor depends on.
 ## Requirements
 ### Requirement: Fenced processing writes
 The system SHALL define `IProcessingRepository` with `begin(claim, now)`,

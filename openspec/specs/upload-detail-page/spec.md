@@ -1,7 +1,7 @@
 # upload-detail-page Specification
 
 ## Purpose
-TBD - created by archiving change frontend-upload-detail. Update Purpose after archive.
+Show one upload with live status, polling, and its result or failure.
 ## Requirements
 ### Requirement: Upload information and navigation
 The system SHALL render at `/uploads/<id>` the file name, status badge, upload date and id, and a button to go back to the list.

@@ -1,7 +1,7 @@
 # create-upload Specification
 
 ## Purpose
-TBD - created by archiving change upload-ingestion. Update Purpose after archive.
+Turn a valid CSV file into a pending upload with a queued job, and refuse anything else.
 ## Requirements
 ### Requirement: A valid file becomes a pending upload with a queued job
 The system SHALL provide a `CreateUpload` command with a file name, a byte stream and a user
