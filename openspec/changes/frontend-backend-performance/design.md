@@ -13,12 +13,16 @@ Order: remove what is not needed (unused font weights, unused code), split what 
 index what is slow (results ordering). Bigger moves (CDN, edge, SSR changes) are listed but not done.
 
 ### Cache with care
-Polled status endpoints stay uncached so state is never stale; lists and results may use short private caching with revalidation. Compression is safe everywhere.
+All upload-data responses (list, totals, detail and results) use `no-store`; no `max-age` or private data caching is introduced.
+Only immutable hashed assets receive long caching. Compression is evaluated separately from freshness.
 
 ### Index for the actual query
-The results endpoint filters by upload and orders by date then id. A composite index on those three columns removes a sort and keeps deep pages cheap; the migration is additive.
+The results endpoint filters by upload and orders by date then id. Measure its actual plans and timing first. Add an additive composite index only if those
+numbers support it; compare first and deep pages on the same dataset. Do not force the planner or add a migration solely to satisfy an assumption.
 
 ## Risks
 
 - Performance numbers vary between machines; the document states the machine and the method and compares only runs on the same one.
-- Aggressive caching can show stale data; limited to endpoints where staleness is harmless and tested.
+- Aggressive data caching can hide status transitions; upload data remains uncached and this is tested.
+- Browser/CWV measurements belong to worker2. API/worker load runs serially, never concurrently with their browser baseline.
+- Every benchmark owns a fresh `carbonbox_perf_*` database and temporary storage; development and shared test databases are refused.

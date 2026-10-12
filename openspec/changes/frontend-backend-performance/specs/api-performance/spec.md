@@ -15,14 +15,14 @@ The system SHALL keep p95 at or under 50 ms for list, stats and a 25 row results
 - **THEN** p95 is at or under 50 ms with no errors
 
 ### Requirement: The results query has an index that fits it
-The system SHALL add an additive migration with a composite index on the upload, date and id columns of the activity rows, and the query plan for the results page SHALL use it without a separate sort.
+The system SHALL inspect the real results-query plan and timing on the reference dataset before changing indexes. It SHALL add an additive composite index on upload, date and id only when those measurements justify it, and SHALL compare the plans and timing afterward.
 
 #### Scenario: Plan
-- **WHEN** the plan of the results query is inspected
-- **THEN** it uses the composite index and has no sort node
+- **WHEN** the baseline plan and timings identify a consequential results sort
+- **THEN** the before and after plans document whether the composite index removes it and improves the measured query
 
 #### Scenario: Migration is additive
-- **WHEN** the migrations are applied on a database with existing data
+- **WHEN** an evidence-supported index migration is applied on a database with existing data
 - **THEN** no data is changed and the index exists
 
 ### Requirement: Responses are compressed
@@ -33,10 +33,10 @@ The system SHALL compress JSON responses above a small threshold when the client
 - **THEN** the response is compressed and decodes to the same body
 
 ### Requirement: Caching never hides state
-The system SHALL send `Cache-Control: no-store` on status and upload detail responses, and allow short private revalidated caching only on responses where staleness is harmless.
+The system SHALL send `Cache-Control: no-store` on all upload-data responses, including lists, totals, detail and results. It SHALL NOT introduce max-age or private caching for upload data; immutable hashed assets are the caching exception.
 
 #### Scenario: Status is never cached
-- **WHEN** an upload detail or the totals are requested
+- **WHEN** the upload list, detail, totals or results are requested
 - **THEN** the response forbids storing
 
 ### Requirement: Connections and workload are sized on purpose
