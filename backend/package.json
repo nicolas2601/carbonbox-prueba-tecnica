@@ -11,6 +11,8 @@
     "dev": "tsx watch src/main/index.ts",
     "start": "tsx src/main/index.ts",
     "worker": "tsx src/workers/FileProcessingWorker.ts",
+    "performance": "tsx scripts/run-performance.ts",
+    "measure:worker": "tsx scripts/measure-worker.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:integration": "vitest run --config vitest.integration.config.ts",
@@ -35,10 +37,12 @@
     "pg": "^8.23.1"
   },
   "devDependencies": {
+    "@types/autocannon": "^7.12.7",
     "@types/convict": "^6.1.6",
     "@types/node": "^22.19.0",
     "@types/pg": "^8.23.1",
     "@vitest/coverage-v8": "5.0.3",
+    "autocannon": "^8.0.0",
     "pino-pretty": "^13.2.0",
     "prisma": "^7.10.0",
     "tsx": "^4.23.15",
