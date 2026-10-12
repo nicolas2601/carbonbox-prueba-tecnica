@@ -23,7 +23,7 @@ it("Shows five scoped headers, all statuses, grouped counters and detail actions
   expect(headers.map(header => header.textContent)).toEqual(["File name", "Status", "Upload date", "Processed rows", "Actions"]);
   for (const header of headers) expect(header).toHaveAttribute("scope", "col");
   for (const status of ["Pending", "Processing", "Completed", "Failed"]) expect(within(table).getByText(status)).toBeInTheDocument();
-  expect(within(table).getByText("—")).toBeInTheDocument();
+  expect(within(table).getByText("Not yet")).toBeInTheDocument();
   expect(within(table).getByText("5,000")).toBeInTheDocument();
   expect(within(table).getByText("0")).toBeInTheDocument();
   expect(within(table).getByRole("link", { name: "View completed.csv" })).toHaveAttribute("href", "/uploads/completed");
