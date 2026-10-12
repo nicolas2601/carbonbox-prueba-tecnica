@@ -2,7 +2,7 @@
 
 The activity ledger uses Next.js 16.4, React, TanStack Query, Axios and Tailwind CSS 4.
 `DESIGN.md` is the visual source of truth: Carbon Day's cool tinted surfaces,
-orange graphics, graphite rail, Sora figures, Geist text and Geist Mono data.
+orange graphics, graphite rail, Manrope text and figures, JetBrains Mono data.
 `PRODUCT.md` records the analyst workflow and product tone.
 
 ## Run
@@ -27,9 +27,10 @@ bun run build
 bun run start
 ```
 
-`next/font/google` downloads fonts during the first build and self-hosts them
-thereafter. That first build requires network access. Next generates route types
-at build time, so a fresh checkout should build before relying on generated types.
+Fonts are self-hosted with `next/font/local` from `src/app/fonts/` (Manrope and
+JetBrains Mono, latin variable woff2), so the build needs no network access.
+Next generates route types at build time, so a fresh checkout should build before
+relying on generated types.
 
 ## Structure and behavior
 

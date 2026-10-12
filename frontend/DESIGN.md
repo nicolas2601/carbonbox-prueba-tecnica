@@ -57,11 +57,10 @@ Dashboard scope aliases surface to graphite-2, canvas to graphite, text to on-gr
 
 ## Typography
 
-`next/font/google`, self hosted, `display: swap`, latin subset only.
+`next/font/local`, self hosted from `src/app/fonts/`, variable woff2, `display: swap`, latin subset only.
 
-- Display and figures: **Sora** 400 to 600. Titles, stat figures, gauge numbers.
-- Interface: **Geist**. Navigation, labels, body.
-- Data: **Geist Mono**. File names, ids, table values; always `font-variant-numeric: tabular-nums`.
+- Display, interface and figures: **Manrope** (variable 200 to 800). Titles, stat figures, gauge numbers, navigation, labels, body.
+- Data: **JetBrains Mono** (variable 100 to 800). File names, ids, table values; always `font-variant-numeric: tabular-nums`.
 
 Scale 12 / 14 / 16 / 20 / 28 / 56. Figures 56 px weight 600, tight tracking. Max line length 70ch.
 
@@ -69,8 +68,8 @@ Scale 12 / 14 / 16 / 20 / 28 / 56. Figures 56 px weight 600, tight tracking. Max
 
 The mark is an isometric box in two teals with an orange leaf growing out of its open top: data goes in, something living grows
 out. It is a single inline SVG (`LogoMark`, 48 by 48 viewBox, source in `assets/logo-mark.svg`) that stays legible from 16 px (favicon)
-to 64 px, works on white, graphite and the canvas, and is exported as `public/favicon.svg`. The wordmark sets "Carbon" in Sora 600 and
-"Box" in Sora 400. Next to the wordmark the mark is decorative (`aria-hidden`); alone it carries `aria-label="CarbonBox"`.
+to 64 px, works on white, graphite and the canvas, and is exported as `public/favicon.svg`. The wordmark sets "Carbon" in Manrope 600 and
+"Box" in Manrope 400. Next to the wordmark the mark is decorative (`aria-hidden`); alone it carries `aria-label="CarbonBox"`.
 
 ## Navigation
 

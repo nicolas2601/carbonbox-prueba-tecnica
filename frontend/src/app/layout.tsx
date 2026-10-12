@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
-import { Sora, Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { AppShell } from "@/components/AppShell";
 import { QueryProvider } from "@/lib/query/QueryProvider";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const display = Sora({
+const display = localFont({
+  src: "./fonts/manrope-latin-wght-normal.woff2",
   variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "200 800",
   display: "swap",
 });
 
-const body = Geist({
+const body = localFont({
+  src: "./fonts/manrope-latin-wght-normal.woff2",
   variable: "--font-geist",
-  subsets: ["latin"],
+  weight: "200 800",
   display: "swap",
 });
 
-const data = Geist_Mono({
+const data = localFont({
+  src: "./fonts/jetbrains-mono-latin-wght-normal.woff2",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "100 800",
   display: "swap",
 });
 
