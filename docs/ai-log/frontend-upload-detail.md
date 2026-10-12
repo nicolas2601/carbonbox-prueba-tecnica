@@ -45,8 +45,10 @@ Date: 2026-10-11
   tests pass, including ten token-pair contrast checks. Status crossfade has inert
   outgoing paint, one live-region mutation per transition and reduced-motion rules.
   Results preserve precision, original dates, 25-row paging and previous data.
-- Infrastructure agent hit its timebox and left an unverified snapshot. Main session
-  stopped it and integrated directly. A real regression exposed missing child env,
+- Infrastructure agent delivered eight scoped tests and a scoped typecheck; those
+  completion notifications arrived late. Main session bounded the task and reviewed
+  integration independently rather than treating scoped checks as runtime proof.
+  A real regression exposed missing child env,
   which could have made migration use an unintended URL; fixed before the first
   runner execution. Added admin-database and actual-owned-storage guards. Original
   test/development targets are refused. No development migration ran.
