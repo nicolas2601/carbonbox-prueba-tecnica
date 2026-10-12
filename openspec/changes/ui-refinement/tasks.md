@@ -7,7 +7,7 @@
 
 - [ ] 2.1 RED/GREEN backend validation, literal case-insensitive search, status/sort and matching count/page integration
 - [ ] 2.2 OpenAPI/query schema and regression checks for invalid/injection/wildcard inputs
-- [ ] 2.3 URL-driven frontend filters/sort, 300 ms debounce, page reset and clearable filtered empty state
+- [x] 2.3 URL-driven frontend filters/sort, 300 ms debounce, page reset and clearable filtered empty state
 
 ## 3. Intake workspace
 

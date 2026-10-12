@@ -7,8 +7,39 @@ import { API_URL, server } from "@/tests/server";
 import { page, upload } from "@/tests/fixtures";
 import { UploadsList } from "./UploadsList";
 
-const { push } = vi.hoisted(() => ({ push: vi.fn() }));
-vi.mock("next/navigation", () => ({ useRouter: () => ({ push }) }));
+const { push, replace } = vi.hoisted(() => ({ push: vi.fn(), replace: vi.fn() }));
+vi.mock("next/navigation", () => ({ useRouter: () => ({ push, replace }) }));
+
+it("Filters on the server and preserves q/status/sort when changing pages", async () => {
+  const filters = { q: "fuel", status: "COMPLETED", sort: "name" };
+  server.use(http.get(`${API_URL}/uploads`, ({ request }) => {
+    const params = new URL(request.url).searchParams;
+    expect(params.get("q")).toBe("fuel"); expect(params.get("status")).toBe("COMPLETED");
+    expect(params.get("sort")).toBe("name");
+    return HttpResponse.json(page([upload("fuel")], 25, 2));
+  }));
+  render(<UploadsList page={2} filters={filters} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByRole("table", { name: "Matching uploads" })).toBeInTheDocument();
+  expect(screen.getByRole("searchbox", { name: "Search filenames" })).toHaveValue("fuel");
+  await userEvent.setup().click(screen.getByRole("button", { name: "Next" }));
+  expect(push).toHaveBeenLastCalledWith("/uploads?page=3&q=fuel&status=COMPLETED&sort=name", { scroll: false });
+});
+it("Explains a genuinely empty match and clears the filters instead of claiming no upload history", async () => {
+  server.use(http.get(`${API_URL}/uploads`, () => HttpResponse.json(page([]))));
+  render(<UploadsList page={1} filters={{ q: "missing", status: "FAILED" }} />, { wrapper: queryHarness().wrapper });
+  expect(await screen.findByRole("heading", { name: "No matching uploads" })).toBeInTheDocument();
+  expect(screen.getByText(/missing/)).toBeInTheDocument();
+  expect(screen.queryByText("No uploads yet")).toBeNull();
+  await userEvent.setup().click(screen.getByRole("button", { name: "Show all uploads" }));
+  expect(replace).toHaveBeenLastCalledWith("/uploads?page=1", { scroll: false });
+});
+it("Reflects URL-driven back/navigation changes in the search input", async () => {
+  server.use(http.get(`${API_URL}/uploads`, () => HttpResponse.json(page([upload()]))));
+  const view = render(<UploadsList page={1} filters={{ q: "fuel" }} />, { wrapper: queryHarness().wrapper });
+  await screen.findByRole("searchbox");
+  view.rerender(<UploadsList page={1} filters={{ q: "water" }} />);
+  expect(screen.getByRole("searchbox")).toHaveValue("water");
+});
 
 it("Shows five scoped headers, all statuses, grouped counters and detail actions", async () => {
   const items = [upload("pending", "PENDING"), upload("processing", "PROCESSING"), upload("completed"), upload("failed", "FAILED")];

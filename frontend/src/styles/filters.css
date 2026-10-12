@@ -1,0 +1,9 @@
+.upload-filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: end; }
+.upload-filters label { display: grid; gap: 8px; font-size: 12px; font-weight: 500; }
+.upload-filters input, .upload-filters select { min-width: 0; width: 100%; height: 44px; border: 1px solid var(--text-muted); border-radius: 12px; background: var(--surface); color: var(--text); padding: 10px 12px; font-size: 14px; font-weight: 400; }
+.upload-filters input::placeholder { color: var(--text-muted); opacity: 1; }
+.upload-filters input:focus-visible, .upload-filters select:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
+.filtered-empty { overflow-wrap: anywhere; }
+.filtered-empty p { margin-block: 16px 24px; color: var(--text-muted); font-size: 14px; }
+.filtered-empty strong { color: var(--text); font-weight: 500; }
+@media (min-width: 640px) { .upload-filters { grid-template-columns: minmax(0, 1fr) 160px 160px; } .upload-filters > button { justify-self: start; } }
