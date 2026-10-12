@@ -11,7 +11,7 @@
 ## 1b. Brand and navigation
 
 - [x] 1b.1 shadcn/ui init with Tailwind 4, tokens mapped, base components themed (Button, Card, Badge, Table, Skeleton, Sheet, Tooltip, Separator, Chart)
-- [ ] 1b.2 `LogoMark`, `Lockup`, favicon and Apple icon from the single SVG source in `assets/logo-mark.svg`
+- [x] 1b.2 `LogoMark`, `Lockup`, favicon and Apple icon from the single SVG source in `assets/logo-mark.svg`
 - [ ] 1b.3 Sidebar with active pill, completion mini gauge and API status dot
 - [ ] 1b.4 Mobile top bar and drawer
 - [ ] 1b.5 React Bits CountUp and SpotlightCard adapted, licenses checked and recorded
