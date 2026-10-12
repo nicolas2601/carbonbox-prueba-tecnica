@@ -1,7 +1,7 @@
 ## 1. HTTP hardening
 
 - [x] 1.1 Request id header and log correlation
-- [ ] 1.2 Security headers, strict CORS from configuration
+- [x] 1.2 Security headers, strict CORS from configuration
 - [ ] 1.3 Rate limiting with the standard error and a tighter upload limit
 
 ## 2. Observability

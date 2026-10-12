@@ -1,5 +1,4 @@
 import Fastify, { type FastifyInstance } from "fastify";
-import cors from "@fastify/cors";
 import multipart from "@fastify/multipart";
 import type { IConvictProps } from "../config/IConvictProps";
 import type { ApiServices } from "../document-processing/presentation/http/ApiServices";
@@ -12,6 +11,7 @@ import { registerResponsePolicy } from "../document-processing/presentation/http
 import { randomUUID } from "node:crypto";
 import type { IIdGenerator } from "../document-processing/application/ports/IIdGenerator";
 import { requestId } from "../document-processing/presentation/http/requestId";
+import { registerProtection } from "../document-processing/presentation/http/registerProtection";
 
 const BYTES_PER_MB = 1024 * 1024;
 interface LogStream { write(line: string): void; }
@@ -26,11 +26,11 @@ export class App {
       requestIdHeader: false, genReqId: request => requestId(request.headers["x-request-id"], ids) });
     server.addHook("onRequest", async (request, reply) => { reply.header("x-request-id", request.id); });
     registerErrorHandlers(server);
+    await registerProtection(server, this.settings.corsOrigin);
     registerApiSchemas(server);
     await registerDocs(server);
     await registerResponsePolicy(server);
 
-    await server.register(cors, { origin: this.settings.corsOrigin });
     await server.register(multipart, {
       // Preserve the original metadata so FileName rejects paths instead of accepting a cleaned basename.
       preservePath: true,
