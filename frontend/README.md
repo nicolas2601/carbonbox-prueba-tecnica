@@ -1,8 +1,9 @@
 # CarbonBox frontend
 
 The activity ledger uses Next.js 16.4, React, TanStack Query, Axios and Tailwind CSS 4.
-`DESIGN.md` is the visual source of truth: warm paper, semantic status colors,
-Fraunces display figures, Instrument Sans text and JetBrains Mono data.
+`DESIGN.md` is the visual source of truth: Carbon Day's cool tinted surfaces,
+orange graphics, graphite rail, Sora figures, Geist text and Geist Mono data.
+`PRODUCT.md` records the analyst workflow and product tone.
 
 ## Run
 
@@ -64,7 +65,11 @@ multipart headers, filename and file bytes, not just a mocked call.
 Current routes include dashboard `/`, the paginated list `/uploads`, file selection
 and transfer `/uploads/new`, and live detail/results `/uploads/[id]`. Cancellation
 aborts transfer before Finishing, keeps selection and makes no rollback promise
-after all bytes have been sent. No authentication, dark mode, charts or i18n is included.
+after all bytes have been sent. No authentication, dark mode or i18n is included.
+Dashboard charts show real upload totals and handled rows in the latest 12 uploads.
+Recharts is dynamically loaded by the dashboard, not imported by the shared shell.
+The sidebar's small completion indicator uses native SVG. API readiness is checked
+every 30 seconds separately from upload polling.
 Motion is limited to transform/opacity; reduced motion removes entrances, stagger
 and pulses. Processing pulses pause when offscreen. Verification also requires
 Playwright checks of layout, focus and real API behavior at mobile and desktop widths.
@@ -95,4 +100,24 @@ The E2E bootstrap passed and its owned DB/storage/process cleanup was checked af
 both a failing run and success. The full new suite and curated screenshots are not
 yet claimed green: browser execution/review was reassigned to `worker2`; final
 evidence and images are pending that pass. Unit/RTL, lint and type checks continue
-here. The final production build waits until the shared verification stack stops.
+here. Redesign builds use `NEXT_DIST_DIR=.next-redesign bun run build` to avoid
+overwriting the `.next` directory used by a concurrent verifier. Use the same
+`NEXT_DIST_DIR` when serving that build.
+
+## Component licenses
+
+| Library | License | Use |
+|---|---|---|
+| shadcn/ui | MIT | Copied, token-themed primitives; notice in `src/components/ui/LICENSE` |
+| Recharts | MIT | Dashboard-only area, donut, bars and radial gauge |
+| React Bits | MIT + Commons Clause v1.0 | Minimal CountUp and SpotlightCard adaptations only |
+| motion | MIT | Active navigation pill, counting and pointer-follow light |
+| Lucide | ISC, with MIT-derived Feather icons | Consistent interface icons |
+
+React Bits is **not unrestricted MIT**. Its copyright and permission notice are
+retained in `src/components/react-bits/LICENSE`. Embedded use in an application,
+website or product, including commercial use, is allowed; selling, sublicensing
+or redistributing the components themselves (alone, bundled or ported) is not.
+Source: https://github.com/DavidHDev/react-bits/blob/main/LICENSE.md.
+The adaptations remove its default palettes, ambient effects and broad settings;
+reduced motion shows the final figure and no moving spotlight.
