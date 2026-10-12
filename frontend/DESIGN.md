@@ -1,88 +1,134 @@
-# CarbonBox Uploads — Design System
+# CarbonBox Uploads — Design System v2.1 "Carbon Day"
 
-Source of truth for every interface decision in `frontend/`. Read it before touching UI.
+Source of truth for every interface decision in `frontend/`. Read it before touching UI. It replaces v1 (warm paper and serif),
+which tested as correct but flat. References chosen by Nico live in `docs/design-references/` (light bento boards with white
+glass cards, orange to red mountain charts, dark graphite panels and big radial gauges).
 
 ## Direction
 
-A ledger for emissions data: calm, precise, editorial. Numbers are the hero, so they get the
-serif display face and tabular figures; everything else stays quiet. Warm paper background, deep
-green-black ink, one moss accent. Status colors are the only saturated colors on screen, so state is
-readable at a glance.
+A bright analytics workspace with dark graphite panels for the numbers that matter. White frosted cards float on a cool light
+canvas; one warm orange-to-red gradient draws the data (a ridge-line mountain behind the activity chart, the gauge sweep, the primary
+action); graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
+tabular. The ridge landscape is drawn as SVG and ties the interface to the climate subject without stock photography.
 
-Memorable detail: stat figures set in a soft serif with a thin ruled underline, like a printed
-report, and a progress bar that breathes while a file is being processed.
+Memorable details: the glowing ridge area chart, the big radial gauge on the graphite rail, the animated active pill in the
+navigation and status dots that breathe only while a file is processed.
 
 ## Tokens
 
-Defined once as CSS variables in `src/app/globals.css` and exposed to Tailwind through `@theme`.
+CSS variables in `src/app/globals.css`, exposed to Tailwind through `@theme`; shadcn variables map onto them. No hex colors anywhere else.
 
 | Token | Value | Use |
 |---|---|---|
-| `--paper` | `#F6F3EC` | page background |
-| `--surface` | `#FCFBF8` | cards, table, inputs |
-| `--ink` | `#14201A` | body text (contrast on paper 15.14:1) |
-| `--ink-muted` | `#55645B` | secondary text (contrast 5.6:1) |
-| `--line` | `#DAD5C7` | borders, rules |
-| `--accent` | `#1F5B3A` | primary action, focus ring |
-| `--accent-ink` | `#FFFFFF` | text on accent |
-| `--pending` / `--pending-bg` | `#8A5A00` / `#FBEFD0` | PENDING badge (yellow) |
-| `--processing` / `--processing-bg` | `#1B4FBF` / `#E1EAFB` | PROCESSING badge (blue) |
-| `--completed` / `--completed-bg` | `#14633A` / `#DBF1E2` | COMPLETED badge (green) |
-| `--failed` / `--failed-bg` | `#A82116` / `#FBE2DF` | FAILED badge (red) |
+| `--bg` | `#EBEEF1` | canvas (a soft vertical gradient to `#DDE2E8` at the bottom) |
+| `--surface` | `rgba(255,255,255,0.82)` | frosted cards, with 1 px white inner highlight |
+| `--surface-solid` | `#FFFFFF` | sidebar, inputs, table body |
+| `--line` | `rgba(18,24,27,0.08)` | borders and rules |
+| `--text` | `#12181B` | primary text (about 17:1 on white) |
+| `--text-muted` | `#57656D` | secondary text (about 6:1 on white) |
+| `--accent` | `#F26B2A` | gradient start, fills, chart line, gauge; never small text |
+| `--accent-2` | `#E5483B` | gradient end |
+| `--accent-strong` | `#BF3F0B` | links and small accent text (about 5.6:1 on white) |
+| `--accent-ink` | `#1A0E07` | text on accent fills (about 6.5:1) |
+| `--graphite` | `#171D21` | dark panels and the rail |
+| `--graphite-2` | `#222B31` | raised areas inside dark panels |
+| `--on-graphite` | `#EEF2F0` | text on graphite (about 15:1) |
+| `--on-graphite-muted` | `#9FB0B7` | secondary text on graphite (about 7:1) |
+| `--pending` / `--pending-bg` | `#8A5A00` / `#FBEFD0` | PENDING |
+| `--processing` / `--processing-bg` | `#1B4FBF` / `#E3ECFD` | PROCESSING |
+| `--completed` / `--completed-bg` | `#0F6B3F` / `#DDF3E6` | COMPLETED |
+| `--failed` / `--failed-bg` | `#A82116` / `#FBE4E1` | FAILED |
+| `--teal` | `#0E9F8E` | secondary series and "healthy" accents (graphics only) |
 
-All text and badge pairs meet WCAG AA (4.5:1). No dark mode in this version; documented limitation.
+All text and badge pairs meet WCAG AA (4.5:1); gradients and graphics need 3:1 against their background. A test verifies the pairs.
+
+Depth: soft, cool, wide shadows (`0 18px 40px -22px rgba(18,24,27,0.25)`), no black drop shadows. The orange card glow uses the accent at 18 percent.
 
 ## Typography
 
-Loaded with `next/font/google`, self hosted, `display: swap`.
+`next/font/google`, self hosted, `display: swap`, latin subset only.
 
-- Display: **Fraunces** (variable, optical size). Page titles and stat figures.
-- Body: **Instrument Sans**. Interface text.
-- Data: **JetBrains Mono**. File names, ids, table numerals; always `font-variant-numeric: tabular-nums`.
+- Display and figures: **Sora** 400 to 600. Titles, stat figures, gauge numbers.
+- Interface: **Geist**. Navigation, labels, body.
+- Data: **Geist Mono**. File names, ids, table values; always `font-variant-numeric: tabular-nums`.
 
-Scale: 12 / 14 / 16 / 20 / 28 / 44 px. Line height 1.5 body, 1.15 display. Max line length 70ch.
+Scale 12 / 14 / 16 / 20 / 28 / 56. Figures 56 px weight 600, tight tracking. Max line length 70ch.
+
+## Brand
+
+The mark is an isometric box in two teals with an orange leaf growing out of its open top: data goes in, something living grows
+out. It is a single inline SVG (`LogoMark`, 48 by 48 viewBox, source in `assets/logo-mark.svg`) that stays legible from 16 px (favicon)
+to 64 px, works on white, graphite and the canvas, and is exported as `public/favicon.svg`. The wordmark sets "Carbon" in Sora 600 and
+"Box" in Sora 300. Next to the wordmark the mark is decorative (`aria-hidden`); alone it carries `aria-label="CarbonBox"`.
+
+## Navigation
+
+- Desktop (from 1024 px): a white sidebar of 248 px with the lockup, three links with icons (Lucide, stroke 1.75) and an animated
+  active pill that glides between items (shared layout transition, transform only), the primary "Upload a file" button, and a footer
+  with an API status dot (green online, red offline, from the readiness endpoint every 30 s) with a tooltip.
+- Below 1024 px: a slim top bar with the lockup and a menu button that opens a drawer (shadcn Sheet) with the same links; focus trapped,
+  Escape and outside tap close it.
+- The current page carries `aria-current="page"`.
 
 ## Layout
 
-- Container max width 1080 px, side padding 20 px on mobile, 32 px from 768 px.
-- 4 px spacing unit; sections separated by 40 px.
-- Tables scroll horizontally inside their card on narrow screens; they never break the page.
-- Upload records are stacked as name, status and date below 640 px; full upload tables start at 640 px. Result tables retain their scroll region.
-- Single column below 640 px; stat cards 2 by 2 from 640 px, 4 across from 1024 px.
+- Three zones from 1280 px: sidebar (248), content (flexible, max 1000), graphite rail (320). Between 1024 and 1279 px the rail
+  becomes a graphite band under the page header; below 1024 px everything is one column.
+- Dashboard content: header (title, subtitle, Upload button); the **Activity** card with the ridge area chart; three cards in a row
+  (Completion donut, Status bars, Latest upload); the Recent uploads table. The rail holds the big radial gauge of completion, four
+  KPI figures (total, completed, in progress, failed) and the API status.
+- 16 px gaps, 24 px card padding, 20 px card radius. Tables scroll inside their card on narrow screens; the list becomes stacked rows below 640 px.
+
+## Libraries
+
+- **shadcn/ui** as the component base (Button, Card, Badge, Table, Skeleton, Sheet, Tooltip, Separator, Chart), copied into `src/components/ui`
+  and fully themed with the tokens above; the generic default look is not acceptable.
+- **Recharts** through shadcn `chart` for every chart, loaded only on the dashboard with a dynamic import.
+- **React Bits** components copied and adapted, limited to two: CountUp for the figures and SpotlightCard for the card hover light. Both
+  respect reduced motion and the animation rules; their license is checked and recorded in the README.
+- **motion** for the sidebar pill and entrances. **Lucide** for icons.
 
 ## Components
 
-- **StatusBadge**: pill, 12 px uppercase label with a leading 6 px dot. The dot pulses slowly only for PROCESSING.
-- **StatCard**: label, display figure, thin rule. Figure is a link target only when it filters something.
-- **Button**: primary (accent fill), secondary (surface with border). 40 px high, 12 px radius. Pressed state scales to 0.97.
-- **Dropzone**: dashed border card, whole area is a `<label>` for the file input so it is keyboard and screen reader operable.
-- **ProgressBar**: determinate (upload) fills with `transform: scaleX`; indeterminate (processing) slides a segment. Always paired with a text figure.
-- **Pagination**: previous / next with "Page X of Y", disabled state at the ends.
-- **States**: every data view has loading (skeleton shaped like the final content), empty (one sentence and an action) and error (message, request id when present, retry button).
+- **Card**: `--surface`, 20 px radius, hairline, inner highlight, backdrop blur 12 px.
+- **GraphiteCard**: `--graphite`, same radius, `--on-graphite` text, used for the rail and any key figure.
+- **StatCard**: label, 56 px Sora figure with CountUp, caption.
+- **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads; line with the accent gradient, gradient fill fading to transparent,
+  a faint SVG ridge landscape behind, date labels. Real data only; empty state when no uploads.
+- **Gauge**: Recharts radial bar of the completed share with the percentage in the center, gradient sweep, soft inner track.
+- **StatusBars**: Recharts horizontal bars for completed, in progress and failed, with counts.
+- **StatusBadge**: pill with dot; the dot pulses only for PROCESSING.
+- **Button**: primary (accent gradient fill, accent-ink text), secondary (white with hairline). 44 px high, 14 px radius. Press scale 0.97, release 100 ms.
+- **Dropzone**: large card with a dashed accent border; on drag the border turns solid and an accent glow appears with opacity only.
+- **ProgressBar**: determinate segmented; indeterminate slides a segment.
+- **Table**: sticky header, 56 px rows, hover raises the row, numbers right aligned in mono.
+- **States**: skeleton shaped like the content, empty with one action, error with retry and request id.
 
 ## Motion
 
-Rules: purposeful, short, interruptible, and never on the layout itself.
-
-- Easing `cubic-bezier(0.23, 1, 0.32, 1)` (ease out) for entrances; 160 ms for hover and press, 280 ms for entrances.
-- Page load: stat cards and table rows fade and rise 8 px with a 40 ms stagger, once.
-- Only `transform` and `opacity` are animated. No `transition: all`.
-- Status change on the detail page crossfades the badge and the panel (200 ms).
-- `prefers-reduced-motion: reduce` removes entrances, stagger, pulses and sliding; progress becomes a static bar with its figure.
+- Easing `cubic-bezier(0.23, 1, 0.32, 1)`; 160 ms hover and press, 280 ms entrances, 700 ms chart reveal.
+- First load: cards rise 8 px and fade, 40 ms stagger, once. The activity area reveals left to right through a transform on a clip rectangle; the gauge
+  sweeps with a rotation transform.
+- Only `transform` and `opacity` animate. No `transition: all`.
+- `prefers-reduced-motion: reduce` removes entrances, reveals, sweeps, pulses, sliding and the CountUp (final value shown at once).
 
 ## Accessibility
 
-- Visible focus ring on every interactive element: 2 px accent outline with 2 px offset.
-- Status and progress changes are announced: `aria-live="polite"` region on the detail page.
-- Progress bars use `role="progressbar"` with `aria-valuenow` when known, and no value when indeterminate.
-- Badges never rely on color alone; the label is always text.
-- Touch targets at least 40 px. Table headers use `<th scope="col">`; links have discernible text.
-- Tab order follows visual order; the dropzone and its errors are reachable and announced.
+- Visible focus ring: 2 px `--accent-strong` outline with 2 px offset on every interactive element (on graphite, `--on-graphite`).
+- Charts have a text alternative: a visually hidden table with the same numbers and `role="img"` with a label.
+- Status and progress changes are announced in a polite live region; gauge and bars never rely on color alone.
+- Touch targets at least 44 px; skip link and landmarks kept; contrast pairs verified by a test.
+
+## Performance budget
+
+Part of the design: first load JS of the dashboard at most 200 KB gzip, only the used font weights, LCP at most 1.8 s and CLS at most 0.05 on a cold
+load of the production build on localhost; charts are code split. The budget and the measurements live in the performance change.
 
 ## Copy
 
-English, short, concrete. Errors say what happened and what to do: "Only .csv files are accepted. Choose a file ending in .csv." No exclamation marks, no emoji.
+English, short, concrete. Labels say what is measured: "Rows in the last 12 uploads", never an invented total.
 
 ## What this system does not do
 
-No dark mode, no i18n, no authentication screens, no charts. Each is a deliberate omission for the scope of the exercise.
+No dark theme, no i18n, no authentication screens, no stock photography. Charts use only real API data; where the API does not provide a figure, the
+label states the period it covers.
