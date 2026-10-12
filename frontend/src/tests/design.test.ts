@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, it } from "vitest";
 
@@ -25,8 +25,13 @@ it("Uses solid tinted surfaces without pure white, pure black or card blur", () 
   expect(css).not.toMatch(/#(?:FFFFFF|000000)\b/i);
   expect(css).not.toMatch(/backdrop-filter/);
 });
-it("Loads Sora, Geist and Geist Mono with swap", () => {
-  for (const name of ["Sora", "Geist", "Geist_Mono"]) expect(layout).toContain(`${name}(`);
+it("Self-hosts Manrope and JetBrains Mono with swap", () => {
+  expect(layout).toContain('from "next/font/local"');
+  expect(layout).not.toMatch(/next\/font\/google/);
+  for (const file of ["manrope", "jetbrains-mono"]) {
+    expect(layout).toContain(`src: "./fonts/${file}-latin-wght-normal.woff2"`);
+    expect(existsSync(join(root, "app/fonts", `${file}-latin-wght-normal.woff2`))).toBe(true);
+  }
   expect(layout.match(/display: "swap"/g)).toHaveLength(3);
   expect(layout).toContain('variable: "--font-sora"');
   expect(layout).toContain('variable: "--font-geist"');

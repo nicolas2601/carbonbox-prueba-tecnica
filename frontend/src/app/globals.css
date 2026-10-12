@@ -151,6 +151,7 @@ body {
 h1, h2 { text-wrap: balance; }
 p { text-wrap: pretty; max-width: 70ch; }
 .font-display { font-family: var(--font-sora), sans-serif; font-optical-sizing: auto; line-height: 1.15; }
+h1.font-display, h2.font-display { font-weight: 600; }
 .font-mono, .tabular-nums { font-variant-numeric: tabular-nums; }
 
 :focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
@@ -208,7 +209,7 @@ p { text-wrap: pretty; max-width: 70ch; }
 .stat-rule { margin-top: 24px; height: 1px; background: var(--line); }
 .stat-figure { margin-top: 8px; font-size: 28px; font-weight: 600; line-height: 1.15; letter-spacing: -0.04em; }
 
-.page-title { font-size: 28px; }
+.page-title { font-size: 28px; font-weight: 600; }
 @media (min-width: 640px) { .page-title { font-size: 44px; } }
 .enter { animation: ledger-enter var(--entrance) var(--ease-out) both; animation-delay: calc(var(--order, 0) * var(--stagger)); }
 .stat-card:nth-child(2) { --order: 1; }
