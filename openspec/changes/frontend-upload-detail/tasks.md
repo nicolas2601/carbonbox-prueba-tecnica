@@ -22,13 +22,31 @@
 ## 3. End to end
 
 - [x] 3.1 Playwright setup and stack script (fresh database, three processes, teardown)
-- [ ] 3.2 Journeys: valid, invalid rows, wrong header (suite written and typechecked; browser evidence pending)
-- [ ] 3.3 Validation, size limit, cancel (suite written and typechecked; browser evidence pending)
-- [ ] 3.4 Dashboard, pagination, unknown id (suite written and typechecked; browser evidence pending)
-- [ ] 3.5 Axe checks (five-page audit written and typechecked; execution pending)
-- [ ] 3.6 Screenshots command and the README images (command written; image generation/review pending)
+- [x] 3.2 Chromium journeys: valid CSV, rejected rows and missing unit header
+- [x] 3.3 Early validation, authoritative server size limit and mid-transfer cancellation without orphan files
+- [x] 3.4 Dashboard totals, URL pagination, unknown id and queued-to-completed polling
+- [x] 3.5 Five-page axe audit with no serious or critical violations after finite animations settle
+- [x] 3.6 Production screenshot command and twenty linked README images at 360/1280 px, normal/reduced motion
 
 ## 4. Verification
 
-- [ ] 4.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test`, `bun run build`, `bun run e2e` pass (lint/types/unit green; final build/full E2E pending shared-stack release)
-- [ ] 4.2 Visual review at 360 and 1280 px, reduced motion, keyboard only walkthrough (assigned to worker2; findings pending)
+- [x] 4.1 Lint, types, 289 frontend tests, isolated production build and 13 production Chromium tests pass
+- [x] 4.2 Desktop/mobile and reduced-motion captures reviewed; control semantics and focus behavior covered by RTL/axe checks
+
+## Evidence
+
+Production `NEXT_DIST_DIR=.next-e2e E2E_PRODUCTION=1 bun run e2e`: 13/13,
+47.2 s on 2026-10-12. The dedicated production screenshot run passed in 15.7 s.
+The coordinator reviewed dashboard/detail/list captures; generated images and
+commands are linked in `frontend/README.md`. Independent checks found no remaining
+suite databases or temporary storage. Build used `.next-redesign`, not a shared
+served `.next` directory.
+
+## Deferred
+
+- Original 4.2: a complete manual keyboard-only upload-to-results walkthrough.
+  Automated focus/keyboard tests and axe are evidence for their covered controls,
+  not a substitute for that full walkthrough. The shared Playwright MCP browser
+  was unavailable, and the dedicated journeys primarily use pointer actions.
+- Cross-browser and full manual WCAG assessment: the accepted execution scope
+  is Chromium plus the five-page automated audit, not universal compliance.

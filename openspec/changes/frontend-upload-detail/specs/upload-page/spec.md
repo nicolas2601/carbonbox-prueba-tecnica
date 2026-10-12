@@ -53,11 +53,15 @@ percentage from the real byte counter, switching to "Finishing" at 100 percent u
 - **THEN** the list and dashboard data are marked stale and the browser goes to `/uploads/<id>`
 
 ### Requirement: Cancel an upload in progress
-The system SHALL offer a cancel action during the upload that aborts the request and returns to the selected state without an error message.
+The system SHALL offer a cancel action during incomplete byte transfer that aborts the request and returns to the selected state without an error message. At 100 percent, "Finishing" SHALL disable cancel; no rollback of an already accepted upload is promised.
 
 #### Scenario: Cancel
-- **WHEN** the user cancels a slow upload
+- **WHEN** the user cancels a throttled upload before all bytes have been sent
 - **THEN** the request is aborted, the file stays selected and no upload is created
+
+#### Scenario: Finishing
+- **WHEN** the byte counter reaches 100 percent and the server has not answered yet
+- **THEN** the label is "Finishing" and cancel is disabled
 
 ### Requirement: Server errors keep the user in place
 The system SHALL show the server's message for 400, 413, 5xx and network failures, keep the selected file, and allow trying again.

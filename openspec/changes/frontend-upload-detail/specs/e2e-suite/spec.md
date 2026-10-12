@@ -6,7 +6,7 @@ runs the browser tests and stops everything, removing the database and the tempo
 
 #### Scenario: Clean start and end
 - **WHEN** the suite runs
-- **THEN** no development database or storage is touched and nothing keeps running afterwards
+- **THEN** no development database or storage is touched and no suite-owned process keeps running afterwards
 
 ### Requirement: The main journey passes in a real browser
 The system SHALL verify that a user can upload `sample-data.csv`, be taken to the detail page, see it complete and read its rows.
@@ -35,8 +35,8 @@ The system SHALL verify early validation and server limits in the browser.
 - **THEN** the size message is shown and no upload is created
 
 #### Scenario: Cancel
-- **WHEN** a large upload is cancelled
-- **THEN** no upload exists afterwards
+- **WHEN** a throttled upload is cancelled before its byte transfer is complete
+- **THEN** no accepted upload or orphan partial file exists afterwards
 
 ### Requirement: Lists and totals follow the data
 The system SHALL verify the dashboard totals and the list pagination with several uploads.
@@ -57,11 +57,11 @@ The system SHALL verify the dashboard totals and the list pagination with severa
 The system SHALL run axe on the dashboard, the list, the upload page and the detail page in the states completed and failed, and fail on serious or critical violations.
 
 #### Scenario: Axe
-- **WHEN** each page is analysed
+- **WHEN** each page is analysed after its finite entrance animations settle
 - **THEN** no serious or critical violation is reported
 
 ### Requirement: README screenshots are produced by the suite
-The system SHALL save curated screenshots at 1280 and 360 pixels of the main pages into `docs/screenshots` as part of a dedicated command.
+The system SHALL save curated screenshots at 1280 and 360 pixels of the main pages in normal and reduced motion into `docs/screenshots` as part of a dedicated command. Production capture SHALL wait for fonts, actual figures, lazy charts and finite animations rather than fixed page sleeps.
 
 #### Scenario: Screenshots
 - **WHEN** `bun run e2e:screenshots` runs

@@ -11,8 +11,9 @@ there is a short gap while the server stores the file; the label changes from "U
 so the interface never looks stuck.
 
 ### Cancel is real
-The request is aborted with an `AbortController`. The server treats an aborted stream as a storage failure and removes
-its partial file, so cancelling leaves no upload and no file; the end to end suite checks the upload count.
+The request is aborted with an `AbortController` while transfer is still in progress. The server removes an incomplete
+stream's partial file; the throttled browser journey verifies no accepted upload or orphan file. At 100 percent the page
+shows "Finishing" and disables cancel. Aborting after all bytes were sent is not a server-side rollback guarantee.
 
 ### One panel per state, one source of truth
 The detail page renders from a single status value. Each state has its own panel (waiting, working, finished, failed) and
@@ -38,3 +39,10 @@ tears everything down, so the suite never touches development data and anyone ca
 
 - Browser tests are slower and can be flaky; waits are on visible state, never fixed sleeps.
 - Playwright needs browser binaries; the README documents the one time install.
+
+## Verification boundary and deferred work
+
+The production Chromium suite passed 13 tests, including the five-page axe audit.
+Twenty normal/reduced-motion desktop/mobile captures were produced and reviewed.
+The full manual keyboard-only journey and cross-browser/manual WCAG assessment
+remain deferred; no claim that axe or pointer journeys prove those checks is made.

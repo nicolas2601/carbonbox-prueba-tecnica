@@ -27,3 +27,11 @@ None.
 - New dev dependencies: `@playwright/test`, `@axe-core/playwright`.
 - New env var `NEXT_PUBLIC_MAX_UPLOAD_MB` (default 10) used only for the hint and early validation; the server stays authoritative.
 - New directory `frontend/e2e` and a script that starts and stops the whole stack for the tests.
+
+## Delivered scope and deferred verification
+
+The upload/detail flow, owned Chromium stack, five-page axe audit and twenty
+production captures are verified. The complete manual keyboard-only journey and
+cross-browser/manual WCAG assessment are deferred with reasons in `tasks.md`.
+Cancellation is guaranteed only during incomplete transfer, not after all bytes
+have been sent or an upload has been accepted.

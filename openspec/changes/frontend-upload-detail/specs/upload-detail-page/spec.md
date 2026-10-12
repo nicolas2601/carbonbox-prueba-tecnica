@@ -13,7 +13,7 @@ reaches COMPLETED or FAILED.
 
 #### Scenario: Transition
 - **WHEN** the upload changes from PROCESSING to COMPLETED between two polls
-- **THEN** the page shows the finished state and no further requests are made
+- **THEN** the page shows the finished state and automatic polling stops
 
 #### Scenario: Announcement
 - **WHEN** the status changes
