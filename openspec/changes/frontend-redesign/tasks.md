@@ -6,7 +6,7 @@
 
 - [x] 1.1 Tokens, fonts (Sora, Geist, Geist Mono) and global styles; stray color and font tests
 - [ ] 1.2 Contrast test for every text and badge pair
-- [ ] 1.3 Base components: Card, Button, StatusBadge, Table, focus ring, reduced motion
+- [x] 1.3 Base components: Card, Button, StatusBadge, Table, focus ring, reduced motion
 
 ## 1b. Brand and navigation
 
