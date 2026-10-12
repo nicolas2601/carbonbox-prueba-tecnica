@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { ActivityChart, CompletionGauge, CompletionDonut } from "./Charts";
-import { activityPoints } from "./chartModels";
-import { upload } from "@/tests/fixtures";
+import { LargestUploadsChart } from "./LargestUploadsChart";
 
 beforeEach(() => {
   vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (this: HTMLElement) {
@@ -14,14 +13,28 @@ beforeEach(() => {
 afterEach(() => vi.restoreAllMocks());
 
 it.each([1, 2, 12])("Shows %s files as processed/rejected stacks without invented areas", count => {
-  const points = activityPoints(Array.from({ length: count }, (_, index) => ({ ...upload(String(index)), processedRows: 15, failedRows: 10 })));
+  const points = Array.from({ length: count }, (_, index) => ({ id: String(index), fileName: `file-${index}.csv`, shortName: `file-${index}.csv`, label: `file-${index}.csv 10:00`, date: "2026-10-12T10:00:00Z", time: "10:00", processed: 15, rejected: 10, reported: true, rows: 25, status: "COMPLETED" as const }));
   const { container } = render(<ActivityChart points={points} />);
-  expect(container.querySelectorAll(".recharts-bar-rectangle")).toHaveLength(count * 2);
+  expect(container.querySelectorAll(".recharts-rectangle")).toHaveLength(count * 2);
   expect(container.querySelector(".recharts-area-area")).toBeNull();
   for (const path of container.querySelectorAll("path")) expect(path.getAttribute("d")).not.toContain("NaN");
 });
+it.each([1, 3, 6])("Uses readable horizontal stacks with full filenames and values for %s files", count => {
+  const points = Array.from({ length: count }, (_, index) => ({ id: String(index), fileName: `full-file-${index}.csv`, shortName: `full-file-${index}.csv`, label: `full-file-${index}.csv 10:00`, date: "2026-10-12T10:00:00Z", time: "10:00", processed: 15, rejected: 10, reported: true, rows: 25, status: "COMPLETED" as const }));
+  const { container } = render(<LargestUploadsChart points={points} orientation="horizontal" />);
+  expect(container.querySelector(".recharts-yAxis")).toBeInTheDocument();
+  expect(container.textContent).toContain("full-file-0.csv");
+  expect(container.textContent).toContain("25");
+});
+it("Shows numeric totals above vertical columns for twelve files", () => {
+  const points = Array.from({ length: 12 }, (_, index) => ({ id: String(index), fileName: `file-${index}.csv`, shortName: `file-${index}.csv`, label: `file-${index}.csv 10:00`, date: "2026-10-12T10:00:00Z", time: "10:00", processed: 100000, rejected: 0, reported: true, rows: 100000, status: "COMPLETED" as const }));
+  const { container } = render(<LargestUploadsChart points={points} />);
+  expect(container.querySelector(".activity-horizontal")).toBeNull();
+  expect(container.querySelector(".recharts-label-list .recharts-label")?.textContent).toContain("100k");
+});
 it("Uses compact large-value ticks rather than clipped six-digit counts", () => {
-  const { container } = render(<ActivityChart points={activityPoints([{ ...upload("large"), processedRows: 100000, failedRows: 0 }])} />);
+  const points = Array.from({ length: 12 }, (_, index) => ({ id: String(index), fileName: `file-${index}.csv`, shortName: `file-${index}.csv`, label: `file-${index}.csv 10:00`, date: "2026-10-12T10:00:00Z", time: "10:00", processed: 100000, rejected: 0, reported: true, rows: 100000, status: "COMPLETED" as const }));
+  const { container } = render(<LargestUploadsChart points={points} />);
   const axis = container.querySelector(".recharts-yAxis-tick-labels");
   expect(axis).toHaveTextContent(/\d+(?:\.\d+)?k/);
   expect(axis).not.toHaveTextContent("100000");

@@ -1,9 +1,9 @@
 import type { Upload, UploadStats } from "@/lib/api/models";
+import { compactNumberFormatter } from "@/lib/format";
 
-const ROW_FORMAT = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
 const TIME_FORMAT = new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" });
 const SHORT_NAME_LENGTH = 15;
-export function formatRows(value: number): string { return ROW_FORMAT.format(value).toLowerCase(); }
+export function formatRows(value: number): string { return compactNumberFormatter.format(value).toLowerCase(); }
 function shortFileName(value: string): string {
   const chars = Array.from(value);
   return chars.length <= SHORT_NAME_LENGTH ? value : `${chars.slice(0, SHORT_NAME_LENGTH - 1).join("")}…`;
@@ -35,3 +35,14 @@ export function activityPoints(uploads: readonly Upload[]) {
   });
 }
 export type ActivityPoint = ReturnType<typeof activityPoints>[number];
+export function activitySummary(points: readonly ActivityPoint[]) {
+  const observed = points.filter(point => point.reported);
+  const processed = observed.reduce((sum, point) => sum + point.processed, 0);
+  const rejected = observed.reduce((sum, point) => sum + point.rejected, 0);
+  const total = processed + rejected;
+  const largest = [...observed].filter(point => point.rows > 0).sort((a, b) => b.rows - a.rows || a.id.localeCompare(b.id))[0] ?? null;
+  const latest = points.at(-1);
+  return { processed, rejected, total, reported: observed.length > 0,
+    rejectionShare: total > 0 ? rejected / total * 100 : null, largest,
+    latestRejectionShare: latest?.reported && latest.rows > 0 ? latest.rejected / latest.rows * 100 : null };
+}

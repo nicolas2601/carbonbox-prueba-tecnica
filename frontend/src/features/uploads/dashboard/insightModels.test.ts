@@ -1,6 +1,7 @@
 import { expect, it } from "vitest";
 import { upload } from "@/tests/fixtures";
-import { rowQuality, elapsedSamples, medianElapsed, largestUploads, formatElapsed } from "./insightModels";
+import { activityPoints } from "./chartModels";
+import { rowQuality, elapsedSamples, medianElapsed, largestUploads, formatElapsed, latestRejectionShare } from "./insightModels";
 
 const totals = { total: 2, completed: 1, inProgress: 1, failed: 0 };
 it("Uses global row counters, not one partial list, and does not invent absent or empty ratios", () => {
@@ -24,6 +25,16 @@ it("Computes a median, including even samples, and returns null with no observed
     createdAt: "2026-10-12T00:00:00Z", updatedAt: `2026-10-12T00:00:0${seconds}Z` }));
   expect(medianElapsed(items)).toBe(5000);
   expect(medianElapsed(items.slice(0, 3))).toBe(3000);
+});
+it("Calculates observed chart-cohort summary and omits unreported latest rejection rate", () => {
+  const points = [
+    { ...upload("first"), processedRows: 15, failedRows: 10, createdAt: "2026-10-11T00:00:00Z" },
+    { ...upload("last"), processedRows: null, failedRows: null, createdAt: "2026-10-12T00:00:00Z" },
+  ];
+  expect(largestUploads(points).map(point => point.id)).toEqual(["first"]);
+  expect(latestRejectionShare(activityPoints(points))).toBeNull();
+  const reported = [points[0]!, { ...upload("done"), processedRows: 60, failedRows: 0 }];
+  expect(latestRejectionShare(activityPoints(reported))).toBe(40);
 });
 it("Ranks five real handled counters in the latest twelve, not imagined all-time largest files", () => {
   const items = Array.from({ length: 14 }, (_, index) => ({ ...upload(String(index)),
