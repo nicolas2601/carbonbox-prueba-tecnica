@@ -28,6 +28,10 @@ export function medianElapsed(uploads: readonly Upload[]): number | null {
   const middle = Math.floor(values.length / 2);
   return values.length % 2 ? values[middle]! : (values[middle - 1]! + values[middle]!) / 2;
 }
+export function latestRejectionShare(points: ReturnType<typeof activityPoints>): number | null {
+  const latest = points.at(-1);
+  return latest?.reported && latest.rows > 0 ? latest.rejected / latest.rows * 100 : null;
+}
 export function largestUploads(uploads: readonly Upload[]) {
   return activityPoints(uploads).filter(point => point.reported && point.rows > 0)
     .sort((a, b) => b.rows - a.rows || a.id.localeCompare(b.id)).slice(0, TOP_UPLOADS_LIMIT);

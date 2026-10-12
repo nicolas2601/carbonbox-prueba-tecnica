@@ -1,7 +1,15 @@
 import { expect, it } from "vitest";
 import { upload } from "@/tests/fixtures";
-import { activityPoints, completionShare, statusCounts, formatRows } from "./chartModels";
+import { activityPoints, completionShare, statusCounts, formatRows, activitySummary } from "./chartModels";
 
+it("Summarizes observed cohort rows, largest upload and latest rejection without inventing a ratio", () => {
+  const points = activityPoints([{ ...upload("old"), processedRows: 60, failedRows: 0, createdAt: "2026-10-11T00:00:00Z" },
+    { ...upload("latest"), processedRows: 15, failedRows: 10, createdAt: "2026-10-12T00:00:00Z" }]);
+  expect(activitySummary(points)).toMatchObject({ processed: 75, rejected: 10, total: 85, reported: true,
+    largest: { id: "old", rows: 60 }, latestRejectionShare: 40 });
+  expect(activitySummary(activityPoints([{ ...upload("pending", "PENDING"), processedRows: null, failedRows: null }])))
+    .toMatchObject({ reported: false, rejectionShare: null, largest: null, latestRejectionShare: null });
+});
 it("Computes honest totals and an empty completion share", () => {
   expect(completionShare({ total: 12, completed: 9, inProgress: 2, failed: 1 })).toBe(75);
   expect(completionShare({ total: 0, completed: 0, inProgress: 0, failed: 0 })).toBe(0);

@@ -1,23 +1,30 @@
 import { render, screen, within } from "@testing-library/react";
-import { expect, it } from "vitest";
+import { expect, it, vi } from "vitest";
 import { upload } from "@/tests/fixtures";
+const { charts, fixture } = vi.hoisted(() => ({ charts: { CompletionGauge: vi.fn(() => null), LargestUploadsChart: vi.fn(() => null) }, fixture: vi.fn() }));
+vi.mock("./LazyCharts", () => charts);
+vi.mock("@/lib/api/uploads", () => ({ listUploads: fixture, getStats: vi.fn(), getUpload: vi.fn(), getUploadResults: vi.fn(), createUpload: vi.fn() }));
+
+import { queryHarness } from "@/tests/queryHarness";
 import { LargestUploadsCard } from "./LargestUploadsCard";
 import { CompletionArcCard } from "./CompletionArcCard";
 
-it("Lists actual largest recent uploads with counts and detail links", () => {
+it("Lists largest real uploads with values, links, and scoped chart data", () => {
   const items = [5, 20, 15].map((rows, index) => ({ ...upload(String(index)), processedRows: rows, failedRows: 0 }));
   render(<LargestUploadsCard uploads={items} />);
   const list = screen.getByRole("list", { name: "Largest recent uploads" });
   expect(within(list).getAllByRole("link").map(link => link.textContent)).toEqual(["1.csv", "2.csv", "0.csv"]);
   expect(within(list).getByText("20")).toBeVisible();
-  expect(within(list).getByRole("link", { name: "1.csv" })).toHaveAttribute("href", "/uploads/1");
-  expect(screen.getByText("Rows handled in the last 12 files")).toBeVisible();
+  expect(charts.LargestUploadsChart).toHaveBeenCalledWith(expect.objectContaining({ orientation: "horizontal" }), undefined);
+  expect(screen.getByText("Rows handled in the last 12 uploads")).toBeVisible();
 });
 it("Distinguishes loading from zero observed rows", () => {
-  const view = render(<LargestUploadsCard loading />);
-  expect(screen.getByRole("status", { name: "Loading largest uploads" })).toBeVisible();
+  fixture.mockReset().mockReturnValue(new Promise(() => {}));
+  const query = queryHarness();
+  const view = render(<LargestUploadsCard loading />, { wrapper: query.wrapper });
+  expect(screen.getByRole("status", { name: "Loading activity details" })).toBeVisible();
   view.rerender(<LargestUploadsCard uploads={[]} />);
-  expect(screen.getByText("No handled rows yet")).toBeVisible();
+  expect(screen.getByText("No row totals available yet")).toBeVisible();
 });
 it("Labels the completion arc with real global counts and share", () => {
   render(<CompletionArcCard stats={{ total: 4, completed: 3, inProgress: 1, failed: 0 }} />);
