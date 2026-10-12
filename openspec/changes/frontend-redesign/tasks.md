@@ -20,7 +20,7 @@
 
 - [x] 2.1 Shell: sidebar, responsive top bar, live completion gauge
 - [x] 2.2 Donut and status bars from the totals (Recharts), with the empty case
-- [ ] 2.3 Activity chart (Recharts) with real uploads, hidden table and empty state, dynamic import
+- [x] 2.3 Activity chart (Recharts) with real uploads, hidden table and empty state, dynamic import
 - [ ] 2.4 Dashboard grid, stat cards, latest upload, skeletons and partial error states
 
 ## 3. Pages
