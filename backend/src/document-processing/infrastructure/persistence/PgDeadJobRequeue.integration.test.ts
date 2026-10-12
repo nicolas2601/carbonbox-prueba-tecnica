@@ -44,6 +44,18 @@ it("Preserves state when invalid timestamps abort the transaction", async () => 
   expect(result.isLeft() && result.value.code).toBe("REQUEUE_FAILED");
   expect(await client.job.findUnique({ where: { id: job.id } })).toMatchObject({ status: "DEAD", attempts: 3 });
 });
+it("Rolls back a successful job reset if the upload update is rejected", async () => {
+  const job = await seedJob(client);
+  await client.job.update({ where: { id: job.id }, data: { status: "DEAD", attempts: 3 } });
+  await client.upload.update({ where: { id: "u1" }, data: { status: "FAILED" } });
+  await client.$executeRaw`ALTER TABLE uploads ADD CONSTRAINT test_requeue_reject_pending CHECK (status <> 'PENDING')`;
+  try {
+    const result = await repository.requeue("u1", NOW);
+    expect(result.isLeft() && result.value.code).toBe("REQUEUE_FAILED");
+    expect(await client.job.findUnique({ where: { id: job.id } })).toMatchObject({ status: "DEAD", attempts: 3 });
+    expect(await client.upload.findUnique({ where: { id: "u1" } })).toMatchObject({ status: "FAILED" });
+  } finally { await client.$executeRaw`ALTER TABLE uploads DROP CONSTRAINT test_requeue_reject_pending`; }
+});
 it("Serializes duplicate operator requests so only one can reset a dead job", async () => {
   const job = await seedJob(client);
   await client.job.update({ where: { id: job.id }, data: { status: "DEAD" } });

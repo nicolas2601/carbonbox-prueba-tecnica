@@ -14,3 +14,15 @@ it("Shows zero for empty backlog and clamps clock skew without negative ages", (
 it("Rejects counts that cannot be represented safely", () => {
   expect(() => queueSnapshot([{ status: "QUEUED", count: BigInt(Number.MAX_SAFE_INTEGER) + 1n, oldest: NOW }], NOW)).toThrow();
 });
+it("Refuses negative counts and invalid dates rather than exporting invented values", () => {
+  expect(() => queueSnapshot([{ status: "QUEUED", count: -1n, oldest: NOW }], NOW)).toThrow("Invalid queue metric count");
+  expect(() => queueSnapshot([{ status: "QUEUED", count: 1n, oldest: new Date(Number.NaN) }], NOW)).toThrow("Invalid queue metric date");
+});
+it("Ignores unknown statuses and leaves age zero when no timestamp exists", () => {
+  expect(queueSnapshot([{ status: "UNKNOWN", count: 9n, oldest: NOW },
+    { status: "QUEUED", count: 1n, oldest: null }], NOW))
+    .toEqual({ queued: 1, done: 0, dead: 0, oldestQueuedAgeSeconds: 0 });
+});
+it("Does not derive age from a zero-count group", () => {
+  expect(queueSnapshot([{ status: "QUEUED", count: 0n, oldest: new Date(0) }], NOW).oldestQueuedAgeSeconds).toBe(0);
+});
