@@ -9,14 +9,16 @@ import { queryHarness } from "@/tests/queryHarness";
 import { LargestUploadsCard } from "./LargestUploadsCard";
 import { CompletionArcCard } from "./CompletionArcCard";
 
-it("Lists largest real uploads with values, links, and scoped chart data", () => {
+it("Lists largest real uploads with values, links, summary, and insight sentence", () => {
   const items = [5, 20, 15].map((rows, index) => ({ ...upload(String(index)), processedRows: rows, failedRows: 0 }));
-  render(<LargestUploadsCard uploads={items} />);
+  const { container } = render(<LargestUploadsCard uploads={items} />);
   const list = screen.getByRole("list", { name: "Largest recent uploads" });
   expect(within(list).getAllByRole("link").map(link => link.textContent)).toEqual(["1.csv", "2.csv", "0.csv"]);
   expect(within(list).getByText("20")).toBeVisible();
-  expect(charts.LargestUploadsChart).toHaveBeenCalledWith(expect.objectContaining({ orientation: "horizontal" }), undefined);
   expect(screen.getByText("Rows handled in the last 12 uploads")).toBeVisible();
+  expect(within(list).getByRole("link", { name: "1.csv" })).toHaveAttribute("href", "/uploads/1");
+  expect(container.querySelector(".activity-insight")?.textContent).toBe("Largest upload: 1.csv, 20 rows. Latest upload: 0% rejected.");
+  expect(charts.LargestUploadsChart).not.toHaveBeenCalled();
 });
 it("Distinguishes loading from zero observed rows", () => {
   fixture.mockReset().mockReturnValue(new Promise(() => {}));

@@ -9,7 +9,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { numberFormatter, compactNumberFormatter } from "@/lib/format";
 import { activityPoints, activitySummary } from "./chartModels";
 import { latestRejectionShare, largestUploads } from "./insightModels";
-import { LargestUploadsChart } from "./LazyCharts";
 
 export function LargestUploadsCard({ uploads = [], loading = false, error, onRetry }: {
   uploads?: readonly Upload[]; loading?: boolean; error?: ApiError | null; onRetry?: () => void;
@@ -35,7 +34,6 @@ export function LargestUploadsCard({ uploads = [], loading = false, error, onRet
           <Link href={`/uploads/${encodeURIComponent(point.id)}`} title={point.fileName}>{point.fileName}</Link>
           <span>{numberFormatter.format(point.rows)}</span>
         </li>)}</ul>
-      <div className="largest-chart" style={{ "--file-count": points.length } as import("react").CSSProperties} aria-hidden="true"><LargestUploadsChart points={points} orientation={points.length <= 6 ? "horizontal" : "vertical"} /></div>
       </div>
       <p className="activity-insight">{summary.largest ? <>Largest upload: <Link href={`/uploads/${encodeURIComponent(summary.largest.id)}`}>{summary.largest.fileName}</Link>, {numberFormatter.format(summary.largest.rows)} rows</> : "No ranked upload available yet"}
         {latestRejection === null ? ". Latest upload rejection rate not available yet." : `. Latest upload: ${compactNumberFormatter.format(latestRejection).toLowerCase()}% rejected.`}</p></>}
