@@ -29,9 +29,9 @@ The system SHALL allow only the configured origins, methods and headers, and rej
 - **WHEN** a preflight request comes from an origin that is not configured
 - **THEN** no allow origin header is returned
 
-### Requirement: Every response carries a request id
-The system SHALL return the request id in the `x-request-id` header and accept a valid one from the client, and logs of the request SHALL include it.
+### Requirement: Every public API response carries a request id
+The public HTTP API SHALL return the request id in the `x-request-id` header and accept a bounded valid ASCII id from the client, and logs of the request SHALL include it. This does not apply to the separate private metrics listener or frontend page responses.
 
 #### Scenario: Header
-- **WHEN** any request is made
+- **WHEN** a request is made to the public API
 - **THEN** the response has `x-request-id` equal to the id in the log line of that request

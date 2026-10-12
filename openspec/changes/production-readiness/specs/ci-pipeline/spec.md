@@ -1,26 +1,26 @@
 ## ADDED Requirements
 
-### Requirement: Every push runs the full set of checks
-The system SHALL provide a GitHub Actions workflow that on push and pull request installs dependencies with a locked install, runs lint, type checks, backend unit tests, backend integration tests against a PostgreSQL service, frontend tests, both production builds and the specification validation.
+### Requirement: Push and pull request checks are defined
+The system SHALL provide a GitHub Actions workflow definition for push and pull request with locked dependency installation, frontend lint, type checks, backend unit/coverage and PostgreSQL integration tests, frontend tests/build and strict specification validation. This requirement concerns configuration and local equivalents, not an unobserved remote green run.
 
-#### Scenario: Green run
-- **WHEN** the workflow runs on the main branch
-- **THEN** every job passes
+#### Scenario: Workflow configuration
+- **WHEN** the workflow is parsed and its job definitions are inspected
+- **THEN** the push/pull-request triggers, locked installs and required local check commands are present
 
-#### Scenario: Failing test blocks
-- **WHEN** a test fails
-- **THEN** the workflow fails and names the test
+#### Scenario: Failure handling is configured
+- **WHEN** the check steps are inspected
+- **THEN** test commands are not configured to ignore failure
 
-### Requirement: Container images build in the pipeline
-The system SHALL build the three images in the workflow and run a smoke test that starts the stack and checks readiness.
+### Requirement: Container build and smoke steps are defined
+The system SHALL define migration/API/worker/frontend image builds and an owned-project container smoke step that checks readiness and CSV completion, with cleanup limited to that project.
 
 #### Scenario: Smoke
-- **WHEN** the workflow reaches the container job
-- **THEN** the stack starts, `/health/ready` answers 200 and a sample upload completes
+- **WHEN** the container job definition and its smoke script are inspected
+- **THEN** they build the required images, use explicit project ownership and check readiness plus actual CSV completion
 
-### Requirement: Caching and clear output
-The system SHALL cache dependencies, publish test and coverage summaries and keep the total run under ten minutes.
+### Requirement: Caching and summaries are configured
+The system SHALL define dependency caching, a backend coverage artifact and job summaries that refer to actual step outcomes rather than declaring success unconditionally.
 
-#### Scenario: Duration
-- **WHEN** the workflow runs with a warm cache
-- **THEN** it completes in under ten minutes
+#### Scenario: Output configuration
+- **WHEN** workflow output steps are inspected
+- **THEN** dependency caches, coverage publication and outcome-oriented summaries are defined

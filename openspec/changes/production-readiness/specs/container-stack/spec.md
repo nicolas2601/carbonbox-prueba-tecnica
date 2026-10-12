@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
-### Requirement: Images are small, non root and self checking
-The system SHALL provide multi stage Dockerfiles for the API, the worker and the frontend that run as a non root user, contain only runtime files and define a health check.
+### Requirement: Images are multi stage, non root and self checking
+The system SHALL provide multi stage Dockerfiles for the API, the worker and the frontend that run as a non root user, include runtime bundles/dependencies and define a health check. The worker check SHALL establish process liveness only; actual progress is observed through queue metrics and outcome logs.
 
 #### Scenario: Non root
 - **WHEN** a container of each image is started
@@ -14,28 +14,25 @@ The system SHALL provide multi stage Dockerfiles for the API, the worker and the
 ### Requirement: One command starts everything
 The system SHALL provide `docker compose up --build` that starts PostgreSQL, applies the migrations once, and starts the API, the worker and the frontend, each with a restart policy, waiting for the database to be healthy.
 
-#### Scenario: Cold start
-- **WHEN** the command runs on a clone without any local setup
-- **THEN** the frontend answers on its port, the API reports ready and uploading `sample-data.csv` through the interface ends in COMPLETED
+#### Scenario: Clean source startup and HTTP smoke
+- **WHEN** the command builds and starts an owned project from clean source without local dependencies or environment files
+- **THEN** the frontend answers on its port, the API reports ready and an HTTP multipart upload of `sample-data.csv` completes
 
 #### Scenario: Worker restart
-- **WHEN** the worker container is killed during processing
+- **WHEN** the owned worker process crashes during processing without an operator stopping its container
 - **THEN** it restarts and the upload still completes without duplicate rows
 
 #### Scenario: Database down
 - **WHEN** PostgreSQL is stopped and started again
 - **THEN** the API readiness returns 503 and then 200 without restarting the API
 
-### Requirement: Optional object storage profile
-The system SHALL provide a compose profile `s3` that adds MinIO with a bucket created at start, and the stack SHALL run with it by setting the storage driver.
-
-#### Scenario: S3 profile
-- **WHEN** the stack runs with the `s3` profile and `STORAGE_DRIVER=s3`
-- **THEN** an uploaded CSV is stored as an object in the bucket and processed to COMPLETED
-
 ### Requirement: Configuration is documented and validated
-The system SHALL read all container configuration from environment variables listed in `.env.example`, failing at start with a clear message when a required value is missing or invalid.
+The system SHALL document supported container/process configuration in the environment examples, keep PostgreSQL internal by default and avoid publishing the private metrics port. Unsupported storage drivers, invalid rate quotas and invalid metrics ports SHALL fail configuration validation.
 
-#### Scenario: Missing value
-- **WHEN** a required variable is absent
-- **THEN** the process exits with a message naming the variable
+#### Scenario: Invalid supported setting
+- **WHEN** a rate quota is nonpositive or a metrics port is outside the TCP range
+- **THEN** validation refuses the configuration before the service starts
+
+#### Scenario: Private ports
+- **WHEN** default Compose port bindings are inspected
+- **THEN** PostgreSQL and metrics are not published, and optional database tooling uses a separate loopback-only overlay

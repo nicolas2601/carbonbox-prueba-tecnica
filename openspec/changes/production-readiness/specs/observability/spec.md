@@ -15,7 +15,7 @@ The system SHALL expose gauges of jobs by status (queued, done, dead) and the ag
 - **THEN** the gauges report queued 3, dead 1 and an oldest age greater than zero
 
 ### Requirement: Failures leave a trace
-The system SHALL log with the request id every 5xx response and every worker job outcome (processed, retried, dead) with job and upload ids and never log file contents or secrets.
+The public API SHALL log every 5xx response with its request id. Worker job outcomes (processed, retried, dead) SHALL include job id, upload id and attempt number, without claiming that HTTP request ids are stored in jobs. Logs SHALL NOT contain file contents, claim tokens or credentials. The private metrics scrape failure uses fixed 503 text and is not part of public request-id correlation.
 
 #### Scenario: Job outcome
 - **WHEN** a job is retried
