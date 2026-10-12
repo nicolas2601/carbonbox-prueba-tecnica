@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Carbon Day tokens and fonts
-The system SHALL define the tokens of `DESIGN.md` v2 as CSS variables exposed to Tailwind and SHALL load Sora, Geist and Geist Mono
+The system SHALL define the tokens of `DESIGN.md` v2.2 as CSS variables exposed to Tailwind and SHALL load Sora, Geist and Geist Mono
 with `next/font`. No component SHALL use a hard coded color or font family.
 
 #### Scenario: Tokens exist
@@ -39,7 +39,7 @@ The system SHALL show a 2 px accent focus ring on every interactive element and 
 
 ### Requirement: Library components are themed, not default
 The system SHALL use shadcn/ui components copied into `src/components/ui` and themed with the Carbon Day tokens, Recharts for every chart, and no more than two React Bits components
-(CountUp and SpotlightCard) adapted to the motion rules.
+(CountUp and SpotlightCard) adapted to the motion rules. The shared navigation mini indicator SHALL use native SVG; Recharts SHALL remain dashboard-only.
 
 #### Scenario: Themed
 - **WHEN** the shadcn variables are read

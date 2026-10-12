@@ -48,7 +48,9 @@ CSS variables in `src/app/globals.css`, exposed to Tailwind through `@theme`; sh
 | `--failed` / `--failed-bg` | `#A82116` / `#FBE4E1` | FAILED |
 | `--teal` | `#0E9F8E` | secondary series and "healthy" accents (graphics only) |
 
-All text and badge pairs meet WCAG AA (4.5:1); gradients and graphics need 3:1 against their background. A test verifies the pairs.
+All text and badge pairs meet WCAG AA (4.5:1); essential graphics need 3:1 against their background. A test verifies the pairs.
+On light surfaces, the activity line and progress outline use `--accent-strong`; orange gradient fills and the faint ridge are decorative.
+Canvas links use `--text`, with accent underlines: accent-strong on canvas-bottom measured 4.10:1, below the small-text threshold.
 
 Depth: soft, cool, wide shadows (`0 18px 40px -22px rgba(18,24,27,0.25)`), no black drop shadows. The orange card glow uses the accent at 18 percent.
 
@@ -73,7 +75,8 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 - Desktop (from 1024 px): a white sidebar of 248 px with the lockup, three links with icons (Lucide, stroke 1.75) and an animated
   active pill that glides between items (shared layout transition, transform only), the primary "Upload a file" button, and a footer
-  with an API status dot (green online, red offline, from the readiness endpoint every 30 s) with a tooltip.
+  with an API status dot (green online, red offline, from the readiness endpoint every 30 s) with a tooltip. Its completion mini indicator
+  uses native SVG so the shared shell never loads Recharts.
 - Below 1024 px: a slim top bar with the lockup and a menu button that opens a drawer (shadcn Sheet) with the same links; focus trapped,
   Escape and outside tap close it.
 - The current page carries `aria-current="page"`.
