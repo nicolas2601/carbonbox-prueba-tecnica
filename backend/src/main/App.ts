@@ -12,6 +12,7 @@ import { randomUUID } from "node:crypto";
 import type { IIdGenerator } from "../document-processing/application/ports/IIdGenerator";
 import { requestId } from "../document-processing/presentation/http/requestId";
 import { registerProtection } from "../document-processing/presentation/http/registerProtection";
+import { registerRateLimits } from "../document-processing/presentation/http/registerRateLimits";
 
 const BYTES_PER_MB = 1024 * 1024;
 interface LogStream { write(line: string): void; }
@@ -27,6 +28,7 @@ export class App {
     server.addHook("onRequest", async (request, reply) => { reply.header("x-request-id", request.id); });
     registerErrorHandlers(server);
     await registerProtection(server, this.settings.corsOrigin);
+    await registerRateLimits(server, this.settings);
     registerApiSchemas(server);
     await registerDocs(server);
     await registerResponsePolicy(server);

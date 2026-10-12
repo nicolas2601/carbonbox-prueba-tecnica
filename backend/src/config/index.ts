@@ -48,7 +48,7 @@ const schema = convict<IConvictProps>({
   corsOrigin: {
     doc: "Origin allowed to call the API from a browser",
     format: String,
-    default: "http://localhost:3000",
+    default: "http://localhost:3000,http://127.0.0.1:3000",
     env: "CORS_ORIGIN",
   },
   workerPollIntervalMs: {
@@ -56,6 +56,24 @@ const schema = convict<IConvictProps>({
     format: "nat",
     default: 1000,
     env: "WORKER_POLL_INTERVAL_MS",
+  },
+  rateLimitMax: {
+    doc: "Read requests allowed per client in the rate window",
+    format: Number,
+    default: 600,
+    env: "RATE_LIMIT_MAX",
+  },
+  uploadRateLimitMax: {
+    doc: "Uploads allowed per client in the rate window",
+    format: Number,
+    default: 30,
+    env: "UPLOAD_RATE_LIMIT_MAX",
+  },
+  rateLimitWindowMs: {
+    doc: "Rate limiting window in milliseconds",
+    format: Number,
+    default: 60000,
+    env: "RATE_LIMIT_WINDOW_MS",
   },
   workerBatchSize: {
     doc: "Rows persisted per batch, which is also the progress granularity",
@@ -87,6 +105,7 @@ export function loadSettings(): IConvictProps {
   schema.validate({ allowed: "strict" });
   const settings = schema.getProperties();
   const positiveIntegers = { WORKER_MAX_ATTEMPTS: settings.workerMaxAttempts,
+    RATE_LIMIT_MAX: settings.rateLimitMax, UPLOAD_RATE_LIMIT_MAX: settings.uploadRateLimitMax, RATE_LIMIT_WINDOW_MS: settings.rateLimitWindowMs,
     WORKER_VISIBILITY_TIMEOUT_MS: settings.workerVisibilityTimeoutMs, WORKER_RETRY_BASE_MS: settings.workerRetryBaseMs };
   for (const [name, value] of Object.entries(positiveIntegers)) {
     if (!Number.isSafeInteger(value) || value < 1) throw new Error(`${name} must be a positive integer`);

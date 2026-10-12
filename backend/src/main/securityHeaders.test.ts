@@ -5,7 +5,7 @@ import { loadSettings } from "../config";
 import { corsOrigins } from "../document-processing/presentation/http/corsOrigins";
 
 let server: FastifyInstance;
-beforeEach(async () => { server = await new App({ ...loadSettings(), env: "test", corsOrigin: "http://localhost:3000,https://app.example.com" }).build(); });
+beforeEach(async () => { server = await new App({ ...loadSettings(), env: "test", corsOrigin: "http://localhost:3000,http://127.0.0.1:3000,https://app.example.com" }).build(); });
 afterEach(async () => { await server.close(); });
 it.each(["/health", "/missing", "/docs/json"])("Adds security headers without exposing technology at %s", async url => {
   const response = await server.inject({ url });
@@ -26,6 +26,11 @@ it("Returns no allow-origin header for an unconfigured preflight", async () => {
   const response = await server.inject({ method: "OPTIONS", url: "/health", headers: { origin: "https://evil.example", "access-control-request-method": "GET" } });
   expect(response.headers["access-control-allow-origin"]).toBeUndefined();
   expect(response.body).not.toContain("evil.example");
+});
+it.each(["http://localhost:3000", "http://127.0.0.1:3000"])("Accepts the configured loopback origin %s", async origin => {
+  const response = await server.inject({ method: "OPTIONS", url: "/health", headers: { origin, "access-control-request-method": "GET" } });
+  expect(response.statusCode).toBe(204);
+  expect(response.headers["access-control-allow-origin"]).toBe(origin);
 });
 it("Rejects wildcard, credential-bearing and non-origin configuration", () => {
   expect(corsOrigins("http://localhost:3000, https://app.example.com")).toEqual(["http://localhost:3000", "https://app.example.com"]);

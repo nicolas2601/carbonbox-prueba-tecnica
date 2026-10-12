@@ -4,6 +4,7 @@ export interface ErrorResponse { status: number; body: ErrorEnvelope; }
 const ERROR_STATUS: Readonly<Record<string, number>> = {
   INVALID_FILE_NAME: 400, INVALID_PAGINATION: 400, MISSING_FILE: 400, VALIDATION_ERROR: 400,
   UPLOAD_NOT_FOUND: 404, ROUTE_NOT_FOUND: 404, FILE_TOO_LARGE: 413, SERVICE_UNAVAILABLE: 503,
+  RATE_LIMITED: 429,
 };
 
 export function statusForCode(code: string): number { return Object.hasOwn(ERROR_STATUS, code) ? ERROR_STATUS[code]! : 500; }

@@ -41,7 +41,7 @@ services:
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-document_processing}
       STORAGE_DIR: /app/storage
       STORAGE_DRIVER: ${STORAGE_DRIVER:-fs}
-      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:${FRONTEND_PORT:-3000}}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:${FRONTEND_PORT:-3000},http://127.0.0.1:${FRONTEND_PORT:-3000}}
       METRICS_HOST: ${METRICS_HOST:-127.0.0.1}
       METRICS_PORT: ${METRICS_PORT:-9090}
       RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-600}

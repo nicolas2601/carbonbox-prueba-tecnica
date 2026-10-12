@@ -28,8 +28,11 @@ FRONTEND_PORT=32000 API_PORT=32001 docker compose up --build
 The public API URL and CORS origin are derived from those ports unless explicitly
 overridden. Public frontend settings are embedded during build; rebuild after
 changing them. `NEXT_PUBLIC_API_URL` and `CORS_ORIGIN` allow a non-localhost public
-hostname. Private metrics are bound to localhost inside the API container, not
-published; use an internal scraper/ADOT in a deployed environment.
+hostname.
+The default CORS allowlist accepts both `localhost` and `127.0.0.1` at `FRONTEND_PORT`.
+An explicit `CORS_ORIGIN` is a comma-separated allowlist and replaces those defaults.
+Private metrics are bound to localhost inside the API container, not published;
+use an internal scraper/ADOT in a deployed environment.
 
 Optional host database access for local tooling:
 

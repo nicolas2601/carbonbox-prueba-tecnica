@@ -11,6 +11,9 @@ export interface IConvictProps {
   storageDir: string;
   maxUploadMb: number;
   corsOrigin: string;
+  rateLimitMax: number;
+  uploadRateLimitMax: number;
+  rateLimitWindowMs: number;
   workerPollIntervalMs: number;
   workerBatchSize: number;
   workerMaxAttempts: number;

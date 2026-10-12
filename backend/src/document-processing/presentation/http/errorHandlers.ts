@@ -27,6 +27,7 @@ export function registerErrorHandlers(server: FastifyInstance): void {
       return sendError(request, reply, error, "VALIDATION_ERROR", `Invalid request parameter: ${field}`);
     }
     if (error.statusCode === 413) return sendError(request, reply, error, "FILE_TOO_LARGE", "File exceeds the configured size limit");
+    if (error.statusCode === 429) return sendError(request, reply, error, "RATE_LIMITED", "Too many requests");
     if (!(error instanceof DomainError) && error.statusCode && error.statusCode >= 400 && error.statusCode < 500) {
       return sendError(request, reply, error, "VALIDATION_ERROR", "Invalid request");
     }

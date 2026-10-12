@@ -8,6 +8,7 @@ it("Overrides development credentials and paths with explicit owned child settin
   expect(result.NODE_ENV).toBe("production");
   expect(result.WORKER_BATCH_SIZE).toBe("500");
   expect(result.PORT).toBe("34001");
+  expect(result.RATE_LIMIT_MAX).toBe("1000000");
 });
 it("Refuses an unowned URL before spawning a process", () => {
   expect(() => environment({ runId: "run_1", databaseUrl: "postgresql://localhost/carbonbox_test", storageDir: "/tmp/storage", port: 34001 }, { NODE_ENV: "test" })).toThrow();
