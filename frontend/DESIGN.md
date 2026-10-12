@@ -64,6 +64,8 @@ Dashboard scope aliases surface to graphite-2, canvas to graphite, text to on-gr
 
 Scale 12 / 14 / 16 / 20 / 28 / 56. Figures 56 px weight 600, tight tracking. Max line length 70ch.
 
+Weights: Manrope is set to 600 for every heading that uses the display font (page titles `h1`, section and card titles `h2`, including `.bento-heading h2` and `.dashboard-rail h2`); page titles 600 (within the 600 to 700 range). Body and interface text stay at 400 to 500.
+
 ## Brand
 
 The mark is an isometric box in two teals with an orange leaf growing out of its open top: data goes in, something living grows
