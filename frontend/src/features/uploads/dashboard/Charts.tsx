@@ -9,7 +9,7 @@ import { completionShare, statusCounts, formatRows } from "./chartModels";
 import { ActivityTooltip } from "./ActivityTooltip";
 import { FileAxisTick } from "./FileAxisTick";
 
-const config = { processed: { label: "Processed", color: "var(--accent-strong)" }, rejected: { label: "Rejected", color: "var(--failed)" } };
+const config = { processed: { label: "Processed", color: "var(--accent-strong)" }, rejected: { label: "Rejected", color: "var(--teal)" } };
 function ActivityAxes({ points }: { points: ActivityPoint[] }) {
   return <><XAxis dataKey="id" axisLine={false} tickLine={false} minTickGap={12} tickMargin={8} height={48} fontSize={12}
     tickFormatter={id => points.find(point => point.id === id)?.shortName ?? ""} tick={<FileAxisTick points={points} />} />
@@ -22,7 +22,7 @@ export function ActivityChart({ points }: { points: ActivityPoint[] }) {
     <BarChart data={points} margin={{ top: 16, right: 16, bottom: 12, left: 12 }} maxBarSize={36} accessibilityLayer={false}>
       <ActivityAxes points={points} /><ChartTooltip content={<ActivityTooltip />} isAnimationActive={false} />
       <Bar dataKey="processed" name="Processed" stackId="rows" fill="var(--accent-strong)" isAnimationActive={false} />
-      <Bar dataKey="rejected" name="Rejected" stackId="rows" fill="var(--failed)" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+      <Bar dataKey="rejected" name="Rejected" stackId="rows" fill="var(--teal)" radius={[4, 4, 0, 0]} isAnimationActive={false} />
     </BarChart>
   </ChartContainer>;
 }

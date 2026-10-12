@@ -18,9 +18,9 @@
 ## 4. Additional context
 
 - [ ] 4.0 Tested PROCESSING readout with observed poll rate, elapsed time and no fabricated stages/percentage
-- [ ] 4.1 Tested global row-quality and scoped approximate median elapsed/largest-upload models
-- [ ] 4.2 Dashboard-only graphite stage, completion arc, largest-upload bars and four honest tiles
-- [ ] 4.3 Global stats sums/counts and tested hydration-mismatch fix
+- [x] 4.1 Tested global row-quality and scoped approximate median elapsed/largest-upload models
+- [x] 4.2 Dashboard-only graphite stage, completion arc, largest-upload bars and four honest tiles
+- [x] 4.3 Global stats sums/counts and tested hydration-mismatch fix
 
 ## 5. Verification
 

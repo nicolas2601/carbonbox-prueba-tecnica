@@ -12,6 +12,16 @@ beforeEach(() => server.use(
   http.get(`${API_URL}/uploads/stats`, () => HttpResponse.json(totals)),
   http.get(`${API_URL}/uploads`, () => HttpResponse.json(page([]))),
 ));
+it("Uses a dashboard-only graphite stage with paired actions and scoped diagnostics", async () => {
+  server.use(http.get(`${API_URL}/uploads/stats`, () => HttpResponse.json({ ...totals, processedRows: 150, rejectedRows: 50, pending: 1, processing: 2 })));
+  const { container } = render(<Dashboard />, { wrapper: queryHarness().wrapper });
+  await screen.findByRole("article", { name: "Total uploads" });
+  expect(container.querySelector(".dashboard-stage")).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "View uploads" })).toHaveAttribute("href", "/uploads");
+  expect(within(screen.getByRole("article", { name: "Rows handled" })).getByText("200")).toBeVisible();
+  expect(within(screen.getByRole("article", { name: "Rejection rate" })).getByText("25%")).toBeVisible();
+});
+
 it("Shows real totals and the primary creation link", async () => {
   render(<Dashboard />, { wrapper: queryHarness().wrapper });
   for (const [label, count] of [["Total uploads", "7"], ["Completed", "3"], ["In progress", "3"], ["Failed", "1"]]) {

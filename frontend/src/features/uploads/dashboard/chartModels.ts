@@ -10,6 +10,9 @@ function shortFileName(value: string): string {
 }
 
 export const ACTIVITY_LIMIT = 12;
+export function latestUploads(uploads: readonly Upload[]): Upload[] {
+  return [...uploads].sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.id.localeCompare(a.id)).slice(0, ACTIVITY_LIMIT);
+}
 export function completionShare(stats: UploadStats): number {
   return stats.total === 0 ? 0 : Math.round(stats.completed / stats.total * 100);
 }
@@ -21,7 +24,7 @@ export function statusCounts(stats: UploadStats) {
   ];
 }
 export function activityPoints(uploads: readonly Upload[]) {
-  return [...uploads].sort((a, b) => b.createdAt.localeCompare(a.createdAt) || b.id.localeCompare(a.id)).slice(0, ACTIVITY_LIMIT).reverse().map(upload => {
+  return latestUploads(uploads).reverse().map(upload => {
     const date = new Date(upload.createdAt);
     const time = Number.isFinite(date.getTime()) ? TIME_FORMAT.format(date) : "Time unknown";
     const shortName = shortFileName(upload.fileName);

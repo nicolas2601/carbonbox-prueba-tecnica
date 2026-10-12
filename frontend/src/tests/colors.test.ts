@@ -64,3 +64,13 @@ it.each(hoverPairs)("Hover text contrast >= 4.5:1: %s", (label, foreground, back
 it.each(graphicPairs)("Essential graphics contrast >= 3:1: %s", (label, foreground, background) => {
   expect(contrast(foreground, background), label).toBeGreaterThanOrEqual(3);
 });
+it("Graphite stage uses AA labels, orange/teal essential graphics and an accessible teal action", () => {
+  const dashboard = readFileSync("src/styles/dashboard.css", "utf8");
+  expect(dashboard).toContain(".dashboard-stage");
+  expect(dashboard).toContain("--text-muted: var(--on-graphite-muted)");
+  for (const surface of ["graphite", "graphite-2"]) {
+    for (const label of ["on-graphite", "on-graphite-muted"]) expect(contrast(color(label), color(surface))).toBeGreaterThanOrEqual(4.5);
+    for (const fill of ["accent", "teal"]) expect(contrast(color(fill), color(surface))).toBeGreaterThanOrEqual(3);
+  }
+  expect(contrast(color("accent-ink"), color("teal"))).toBeGreaterThanOrEqual(4.5);
+});
