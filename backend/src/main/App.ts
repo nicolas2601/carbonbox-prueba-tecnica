@@ -8,6 +8,7 @@ import { registerUploadRoutes } from "../document-processing/presentation/http/r
 import { HEALTH_SCHEMA, registerApiSchemas } from "../document-processing/presentation/http/responseSchemas";
 import { registerDocs } from "../document-processing/presentation/http/registerDocs";
 import { HTTP_LOG_REDACTION } from "../document-processing/presentation/http/redactSecrets";
+import { registerResponsePolicy } from "../document-processing/presentation/http/registerResponsePolicy";
 
 const BYTES_PER_MB = 1024 * 1024;
 
@@ -19,6 +20,7 @@ export class App {
     registerErrorHandlers(server);
     registerApiSchemas(server);
     await registerDocs(server);
+    await registerResponsePolicy(server);
 
     await server.register(cors, { origin: this.settings.corsOrigin });
     await server.register(multipart, {

@@ -48,6 +48,31 @@ OpenAPI JSON is available at `/docs/json`, with Swagger UI at `/docs`.
 Uploads use `POST /api/v1/uploads`, multipart field `file`, and the fixed user
 `anonymous`. The exercise intentionally has no authentication.
 
+Upload-data responses use `Cache-Control: no-store`. Negotiated JSON above 1 KiB
+is gzip-compressed at best-speed level; small or unnegotiated bodies stay plain.
+Request decompression is disabled. JSON Content-Type and body values are preserved;
+compressed Content-Length is valid for the compressed bytes or omitted. Multipart
+streaming, the exact file-byte limit and 413 behavior are unchanged and tested.
+
+## Measured performance
+
+Local reference profile: 20 connections for 15 seconds per GET, 10,000 seeded
+uploads, three real 5,000-row CSVs, Node 26.2 and PostgreSQL 15.14. Full method,
+machine, raw samples and caveats are in [`docs/performance.md`](../docs/performance.md).
+
+| Endpoint | Before p95 ms | After p95 ms | Wire bytes before / after |
+|---|---:|---:|---:|
+| List | 22.300 | 25.723 | 2,518 / 725 |
+| Totals | 7.333 | 7.785 | 282 / 307 |
+| Detail | 8.522 | 8.710 | 471 / 496 |
+| Results | 28.939 | 32.370 | 2,136 / 729 |
+
+Compression saves 71.21% of list and 65.87% of results wire bytes, at an observed
+local CPU/latency cost; it is not claimed to be faster. All required API p95 values
+stay below 50 ms on this reference profile. An index candidate was measured and
+rejected: 4.79% HTTP gain did not meet the 30% gate and worker writes were worse
+in that experiment. No production index migration or pool/poll tuning was made.
+
 ## Known limits
 
 - Filesystem storage is local; API and worker must share `STORAGE_DIR`. The queue

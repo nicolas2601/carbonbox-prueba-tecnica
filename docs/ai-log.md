@@ -19,6 +19,7 @@ what was verified, and what had to be corrected.
 - [Frontend foundation](ai-log/frontend-foundation.md)
 - [Frontend upload and detail](ai-log/frontend-upload-detail.md)
 - [Frontend redesign](ai-log/frontend-redesign.md)
+- [Frontend/backend performance](ai-log/frontend-backend-performance.md)
 
 Each entry is a dated, point-in-time record. Later modules may close limitations described
 in earlier entries. Review and assemble the relevant facts for the final `USO-DE-IA.md`

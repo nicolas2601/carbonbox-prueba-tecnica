@@ -1,5 +1,6 @@
 bun.lock linguist-generated=true
 package-lock.json linguist-generated=true
+docs/performance/*.json linguist-generated=true
 * text=auto eol=lf
 
 # The CSV fixtures keep their bytes as generated: samples/sample-invalid.csv
