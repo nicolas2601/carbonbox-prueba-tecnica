@@ -23,7 +23,7 @@ function UploadTotals({ stats }: { stats: UploadStats }) {
 export function Dashboard() {
   const stats = useUploadStats();
   const recent = useUploads(1, ACTIVITY_LIMIT);
-  return <div className="dashboard dashboard-stage">
+  return <div className="dashboard">
     <header className="dashboard-heading"><div><h1 className="page-title font-display">Your activity, in focus</h1>
       <p>A clear view of the files behind your emissions data.</p></div>
       <div className="dashboard-actions"><Link className="button" data-tone="primary" href="/uploads/new">Upload a file</Link>
@@ -34,9 +34,8 @@ export function Dashboard() {
     {stats.isError && <ErrorState error={stats.error} onRetry={() => stats.refetch()} />}
     <div className="dashboard-zones"><div className="dashboard-content"><div className="dashboard-bento">
       <ActivityCard />
-      {stats.data && <CompletionArcCard stats={stats.data} />}
-      {stats.isPending && <Skeleton aria-hidden="true" className="bento-placeholder completion-arc-card" />}
-      <LargestUploadsCard uploads={recent.data?.data} loading={recent.isPending} error={recent.error} onRetry={() => recent.refetch()} />
+      {stats.data && <div className="dashboard-analysis-row"><CompletionArcCard stats={stats.data} /><LargestUploadsCard uploads={recent.data?.data} loading={recent.isPending} error={recent.error} onRetry={() => recent.refetch()} /></div>}
+      {recent.isPending && <div className="dashboard-analysis-row"><Skeleton aria-hidden="true" className="bento-placeholder completion-arc-card" /><Skeleton aria-hidden="true" className="bento-placeholder largest-uploads-card" /></div>}
     </div><RecentUploads /></div>
       {stats.data && <DashboardInsights stats={stats.data} uploads={recent.data?.data} />}
       {stats.isPending && <aside aria-hidden="true" className="insight-rail"><Skeleton className="overview-skeleton" /></aside>}

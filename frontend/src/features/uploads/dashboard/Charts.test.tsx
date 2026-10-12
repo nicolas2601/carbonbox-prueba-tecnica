@@ -39,6 +39,12 @@ it("Uses compact large-value ticks rather than clipped six-digit counts", () => 
   expect(axis).toHaveTextContent(/\d+(?:\.\d+)?k/);
   expect(axis).not.toHaveTextContent("100000");
 });
+it("Suppresses Recharts category-wide tooltip cursor shading", () => {
+  const point = { id: "file-1", fileName: "file-1.csv", shortName: "file-1.csv", label: "file-1.csv 10:00", date: "2026-10-12T10:00:00Z", time: "10:00", processed: 15, rejected: 10, reported: true, rows: 25, status: "COMPLETED" as const };
+  const { container } = render(<LargestUploadsChart points={[point]} orientation="horizontal" />);
+  expect(container.querySelectorAll(".recharts-tooltip-cursor")).toHaveLength(0);
+});
+
 it("Renders no data shapes for an empty series", () => {
   const { container } = render(<ActivityChart points={[]} />);
   expect(container.querySelector(".recharts-area-area")).toBeNull();

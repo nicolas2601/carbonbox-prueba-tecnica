@@ -20,7 +20,7 @@ export function ActivityChart({ points }: { points: ActivityPoint[] }) {
   if (points.length === 0) return null;
   return <ChartContainer config={config} className="aspect-auto h-full w-full">
     <BarChart data={points} margin={{ top: 16, right: 16, bottom: 12, left: 12 }} maxBarSize={36} accessibilityLayer={false}>
-      <ActivityAxes points={points} /><ChartTooltip content={<ActivityTooltip />} isAnimationActive={false} />
+      <ActivityAxes points={points} /><ChartTooltip cursor={false} content={<ActivityTooltip />} isAnimationActive={false} />
       <Bar dataKey="processed" name="Processed" stackId="rows" fill="var(--accent-strong)" isAnimationActive={false} />
       <Bar dataKey="rejected" name="Rejected" stackId="rows" fill="var(--teal)" radius={[4, 4, 0, 0]} isAnimationActive={false} />
     </BarChart>

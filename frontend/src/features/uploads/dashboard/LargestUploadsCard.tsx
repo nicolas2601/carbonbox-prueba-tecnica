@@ -19,7 +19,7 @@ export function LargestUploadsCard({ uploads = [], loading = false, error, onRet
   const points = largestUploads(uploads);
   const summary = activitySummary(activity);
   const latestRejection = latestRejectionShare(activity);
-  return <Card className="largest-uploads-card">
+  return <Card className="largest-uploads-card" role="region" aria-label="Activity details">
     <header className="bento-heading"><div><h2>Activity detail</h2><p>Rows handled in the last 12 uploads</p></div></header>
     {observed && <dl className="activity-summary" aria-label="Observed rows in the last 12 uploads">
       <div><dt>Processed</dt><dd>{numberFormatter.format(summary.processed)}</dd></div>
@@ -35,7 +35,7 @@ export function LargestUploadsCard({ uploads = [], loading = false, error, onRet
           <Link href={`/uploads/${encodeURIComponent(point.id)}`} title={point.fileName}>{point.fileName}</Link>
           <span>{numberFormatter.format(point.rows)}</span>
         </li>)}</ul>
-      <div className="largest-chart" aria-hidden="true"><LargestUploadsChart points={points} orientation={points.length <= 6 ? "horizontal" : "vertical"} /></div>
+      <div className="largest-chart" style={{ "--file-count": points.length } as import("react").CSSProperties} aria-hidden="true"><LargestUploadsChart points={points} orientation={points.length <= 6 ? "horizontal" : "vertical"} /></div>
       </div>
       <p className="activity-insight">{summary.largest ? <>Largest upload: <Link href={`/uploads/${encodeURIComponent(summary.largest.id)}`}>{summary.largest.fileName}</Link>, {numberFormatter.format(summary.largest.rows)} rows</> : "No ranked upload available yet"}
         {latestRejection === null ? ". Latest upload rejection rate not available yet." : `. Latest upload: ${compactNumberFormatter.format(latestRejection).toLowerCase()}% rejected.`}</p></>}

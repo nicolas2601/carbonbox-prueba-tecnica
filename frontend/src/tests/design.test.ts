@@ -79,6 +79,12 @@ function sourceFiles(directory: string): string[] {
     return /\.(tsx?|css)$/.test(file) && !file.includes(".test.") ? [file] : [];
   });
 }
+it("Keeps accessibility alternatives clipped without making the dashboard dark", () => {
+  const dashboard = readFileSync(join(root, "features/uploads/Dashboard.tsx"), "utf8");
+  const styles = readFileSync(join(root, "styles/dashboard.css"), "utf8");
+  expect(dashboard).not.toContain("dashboard-stage");
+  expect(styles).not.toContain(".workspace:has(.dashboard-stage)");
+});
 it("Clips accessibility tables through a wrapper rather than an intrinsic table box", () => {
   for (const file of sourceFiles(join(root, "features/uploads/dashboard"))) {
     const source = readFileSync(file, "utf8");
