@@ -1,0 +1,20 @@
+## 1. Ports and domain
+
+- [x] 1.1 `JobClaim`, `StaleClaimError` and the ports with in-memory fakes
+- [x] 1.2 `Upload.complete` with optional summary
+- [x] 1.3 Approved extra cycle: `Upload.fail` with optional consistent final counters and failed-file totals
+
+## 2. ProcessFile handler
+
+- [x] 2.1 Valid file: batches, counters per batch and `COMPLETED`
+- [x] 2.2 Rejected rows counted, summary stored
+- [x] 2.3 Invalid header ends `FAILED`
+- [x] 2.4 No valid row and header only end `FAILED`
+- [x] 2.5 Stale claim stops the work
+- [x] 2.6 Redelivery: terminal upload skipped, processing upload restarted
+- [x] 2.7 Unexpected errors propagate
+
+## 3. Verification
+
+- [x] 3.1 `bun run typecheck` and `bun run test` pass, coverage not below the baseline
+- [x] 3.2 No `any`, files under 300 lines, functions under 40 lines

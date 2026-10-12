@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Upload {
+  id            String   @id
+  fileName      String
+  fileUrl       String
+  status        String // PENDING, PROCESSING, COMPLETED, FAILED
+  userId        String
+  totalRows     Int?
+  processedRows Int?
+  failedRows    Int?
+  errorMessage  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  activityData ActivityData[]
+  job          Job?
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("uploads")
+}
+
+model ActivityData {
+  id        String   @id
+  uploadId  String
+  category  String
+  amount    Float
+  unit      String
+  date      DateTime
+  createdAt DateTime @default(now())
+
+  upload Upload @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+
+  @@index([uploadId])
+  @@map("activity_data")
+}
+
+enum JobStatus {
+  QUEUED
+  DONE
+  DEAD
+}
+
+model Job {
+  id           String    @id @default(uuid())
+  uploadId     String    @unique
+  status       JobStatus @default(QUEUED)
+  attempts     Int       @default(0)
+  maxAttempts  Int
+  availableAt  DateTime  @default(now())
+  lockedUntil  DateTime?
+  claimToken   String?
+  lastError    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  upload Upload @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+
+  @@index([status, availableAt])
+  @@map("jobs")
+}

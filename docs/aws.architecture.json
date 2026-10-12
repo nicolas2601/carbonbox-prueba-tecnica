@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "CarbonBox on AWS: target deployment",
+    "output": "aws-architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "users",
+      "type": "external",
+      "label": "Users",
+      "sublabel": "Browser",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        120,
+        60
+      ]
+    },
+    {
+      "id": "cognito",
+      "type": "security",
+      "label": "Cognito",
+      "sublabel": "identity, not built",
+      "pos": [
+        225,
+        110
+      ],
+      "size": [
+        140,
+        64
+      ],
+      "tag": "planned"
+    },
+    {
+      "id": "cdn",
+      "type": "cloud",
+      "label": "CloudFront",
+      "sublabel": "CDN + TLS",
+      "pos": [
+        225,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "alb",
+      "type": "cloud",
+      "label": "Load Balancer",
+      "sublabel": "public subnets",
+      "pos": [
+        410,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Next.js",
+      "sublabel": "ECS Fargate",
+      "pos": [
+        410,
+        130
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "Fastify API",
+      "sublabel": "ECS Fargate",
+      "pos": [
+        595,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "rds",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "RDS Multi-AZ",
+      "pos": [
+        780,
+        130
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "worker",
+      "type": "backend",
+      "label": "CSV Worker",
+      "sublabel": "ECS Fargate",
+      "pos": [
+        965,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "cw",
+      "type": "cloud",
+      "label": "CloudWatch",
+      "sublabel": "logs, metrics, alarms",
+      "pos": [
+        1150,
+        300
+      ],
+      "size": [
+        140,
+        60
+      ]
+    },
+    {
+      "id": "s3",
+      "type": "cloud",
+      "label": "S3",
+      "sublabel": "uploaded CSV files",
+      "pos": [
+        780,
+        470
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "tag": "private"
+    },
+    {
+      "id": "sqs",
+      "type": "messagebus",
+      "label": "SQS",
+      "sublabel": "upload jobs, VPC endpoint",
+      "pos": [
+        780,
+        300
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "tag": "DLQ after 3 tries"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "AWS Region",
+      "wraps": [
+        "cdn",
+        "alb",
+        "web",
+        "api",
+        "rds",
+        "sqs",
+        "worker",
+        "cw",
+        "s3",
+        "cognito"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "VPC 10.0.0.0/16, 2 AZ",
+      "wraps": [
+        "alb",
+        "web",
+        "api",
+        "rds",
+        "sqs",
+        "worker"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "private subnets, sg-app",
+      "wraps": [
+        "api",
+        "rds",
+        "sqs",
+        "worker"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "users-to-cdn",
+      "from": "users",
+      "to": "cdn",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "users-to-cognito",
+      "from": "users",
+      "to": "cognito",
+      "label": "sign in",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "id": "cdn-to-alb",
+      "from": "cdn",
+      "to": "alb"
+    },
+    {
+      "id": "alb-to-web",
+      "from": "alb",
+      "to": "web",
+      "label": "pages"
+    },
+    {
+      "id": "alb-to-api",
+      "from": "alb",
+      "to": "api",
+      "label": "/api/v1"
+    },
+    {
+      "id": "api-to-rds",
+      "from": "api",
+      "to": "rds",
+      "label": "SQL",
+      "fromSide": "top",
+      "toSide": "left"
+    },
+    {
+      "id": "api-to-s3",
+      "from": "api",
+      "to": "s3",
+      "label": "PutObject",
+      "variant": "dashed"
+    },
+    {
+      "id": "api-to-sqs",
+      "from": "api",
+      "to": "sqs",
+      "label": "enqueue",
+      "variant": "dashed"
+    },
+    {
+      "id": "sqs-to-worker",
+      "from": "sqs",
+      "to": "worker",
+      "label": "poll"
+    },
+    {
+      "id": "worker-to-s3",
+      "from": "worker",
+      "to": "s3",
+      "label": "GetObject",
+      "variant": "dashed"
+    },
+    {
+      "id": "worker-to-rds",
+      "from": "worker",
+      "to": "rds",
+      "label": "rows",
+      "fromSide": "top",
+      "toSide": "right"
+    },
+    {
+      "id": "worker-to-cw",
+      "from": "worker",
+      "to": "cw",
+      "label": "logs"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Network",
+      "items": [
+        "CloudFront terminates TLS before the load balancer",
+        "Load balancer in public subnets, services and database in private subnets",
+        "sg-app allows only the load balancer on the app ports"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Asynchronous path",
+      "items": [
+        "The API stores the file in S3 and enqueues a job in SQS",
+        "The worker reads the file and writes rows in batches",
+        "Jobs that fail three times land in the dead letter queue of the SQS queue"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "What this exercise runs",
+      "items": [
+        "PostgreSQL stands in for SQS, the local disk for S3",
+        "Logs go to the console; CloudWatch is the target",
+        "Cognito is not built: there is a single user"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+.uploads-table th, .results-table th { position: sticky; top: 0; z-index: 2; background: var(--graphite); color: var(--on-graphite-muted); height: 56px; padding: 12px 20px; letter-spacing: 0.04em; }
+.uploads-table td, .results-table td { height: 56px; padding: 8px 20px; background: var(--table-surface); }
+.uploads-table .data-row, .results-table tr { transition: transform var(--feedback) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .uploads-table .data-row:hover, .results-table tbody tr:hover { transform: translateY(-1px); } }
+.table-scroll { max-height: 640px; }
+.results-table { min-width: 520px; }
+.upload-form { max-width: 800px; padding: 24px; }
+.dropzone { position: relative; overflow: hidden; padding: 48px 24px; border: 1px dashed var(--accent-strong); background: var(--bg); }
+.dropzone::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%); opacity: 0; transition: opacity var(--feedback) var(--ease-out); }
+.dropzone > * { position: relative; }
+.dropzone[data-dragging="true"] { border-style: solid; border-color: var(--accent-strong); background: var(--bg); box-shadow: none; }
+.dropzone[data-dragging="true"]::before { opacity: 1; }
+.dropzone-symbol { display: grid; place-items: center; width: 64px; height: 64px; margin: 0 auto 24px; border-radius: 20px; color: var(--accent-strong); background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+.progress-track { height: 12px; border-radius: 4px; }
+.progress-fill { border: 1px solid var(--accent-strong); border-radius: 4px; }
+.progress-track::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0, transparent calc(10% - 3px), var(--surface-solid) calc(10% - 3px), var(--surface-solid) 10%); pointer-events: none; }
+.detail-header { position: relative; padding: 28px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--card-shadow); }
+.detail-header h1 { max-width: 28ch; font-size: 28px; letter-spacing: -0.04em; }
+.detail-file-symbol { color: var(--accent-strong); }
+.processing-symbol { position: relative; display: grid; place-items: center; width: 80px; height: 80px; color: var(--accent-strong); border-radius: 50%; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+.processing-halo { position: absolute; inset: -6px; border: 1px solid var(--accent-strong); border-radius: 50%; }
+.processing-symbol[data-active="true"] .processing-halo { animation: processing-breathe 2s var(--ease-out) infinite; }
+.rejected-notice { padding: 24px; border: 1px solid color-mix(in srgb, var(--pending) 30%, transparent); border-radius: 20px; background: var(--pending-bg); color: var(--text); }
+.rejected-notice > svg { color: var(--pending); }
+.error-state, .failed-panel { border-color: color-mix(in srgb, var(--failed) 25%, transparent); background: var(--failed-bg); }
+.error-state > svg, .failed-panel > svg { color: var(--failed); }
+.state-icon { margin-bottom: 20px; }
+.back-link, .canvas-link { color: var(--text); text-decoration-color: var(--accent-strong); }
+@keyframes processing-breathe { 50% { transform: scale(1.05); opacity: 0.35; } }
+@media (max-width: 639px) { .table-scroll { max-height: none; } .uploads-table td { height: auto; padding: 0; } .upload-form { padding: 20px; } .dropzone { padding: 32px 16px; } }
+@media (prefers-reduced-motion: reduce) { .dropzone::before, .uploads-table .data-row, .results-table tr { transition: none; } .processing-halo { animation: none !important; } }
