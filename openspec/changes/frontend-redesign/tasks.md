@@ -27,7 +27,7 @@
 
 - [x] 3.1 Uploads list restyle with stacked rows on mobile
 - [x] 3.2 Upload page restyle: dropzone, progress, errors
-- [ ] 3.3 Detail page restyle: header, state panels, summary, notice, table
+- [x] 3.3 Detail page restyle: header, state panels, summary, notice, table
 
 ## 4. Verification
 
