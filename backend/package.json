@@ -11,6 +11,7 @@
     "dev": "tsx watch src/main/index.ts",
     "start": "tsx src/main/index.ts",
     "worker": "tsx src/workers/FileProcessingWorker.ts",
+    "job:requeue": "tsx src/operations/requeue.ts",
     "performance": "tsx scripts/run-performance.ts",
     "measure:worker": "tsx scripts/measure-worker.ts",
     "typecheck": "tsc --noEmit",

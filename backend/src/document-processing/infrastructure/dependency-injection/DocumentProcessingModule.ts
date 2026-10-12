@@ -24,6 +24,8 @@ import { ListUploadsQueryHandler } from "../../application/queries/ListUploadsQu
 import { GetUploadResultsQueryHandler } from "../../application/queries/GetUploadResultsQueryHandler";
 import type { IQueueMetrics } from "../../application/ports/IQueueMetrics";
 import { PgQueueMetrics } from "../metrics/PgQueueMetrics";
+import { RequeueDeadJob } from "../../application/operations/RequeueDeadJob";
+import { PgDeadJobRequeue } from "../persistence/PgDeadJobRequeue";
 
 interface RuntimeOverrides { clock?: IClock; logger?: ILogger; processing?: (real: IProcessingRepository) => IProcessingRepository; }
 export interface DocumentProcessingModule {
@@ -32,6 +34,7 @@ export interface DocumentProcessingModule {
   worker: Worker;
   queue: PgJobQueue;
   queueMetrics: IQueueMetrics;
+  requeueDeadJob: RequeueDeadJob;
   processing: IProcessingRepository;
   uploads: PrismaUploadReader;
   storage: FsFileStorage;
@@ -61,7 +64,8 @@ export function createDocumentProcessingModule(settings: IConvictProps, runtime:
   const worker = new Worker(queue, processFile, clock, logger, settings.workerVisibilityTimeoutMs,
     settings.workerPollIntervalMs, new AbortableWait());
   const queries = new PrismaUploadQueries(client);
-  return { createUpload, processFile, worker, queue, queueMetrics: new PgQueueMetrics(client, clock), processing, uploads, storage, reader, logger,
+  return { createUpload, processFile, worker, queue, queueMetrics: new PgQueueMetrics(client, clock),
+    requeueDeadJob: new RequeueDeadJob(new PgDeadJobRequeue(client), clock), processing, uploads, storage, reader, logger,
     getUploadById: new GetUploadByIdQueryHandler(queries), getUploadStats: new GetUploadStatsQueryHandler(queries),
     listUploads: new ListUploadsQueryHandler(queries), getUploadResults: new GetUploadResultsQueryHandler(queries),
     ready: async () => { await client.$queryRaw`SELECT 1`; }, close: () => client.$disconnect() };

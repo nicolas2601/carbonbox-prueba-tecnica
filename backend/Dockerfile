@@ -9,7 +9,8 @@ FROM backend-dependencies AS backend-build
 COPY backend/src ./src
 RUN bun run db:generate \
     && bun build src/main/index.ts --target=node --packages=external --outfile=dist/api.js \
-    && bun build src/workers/FileProcessingWorker.ts --target=node --packages=external --outfile=dist/worker.js
+    && bun build src/workers/FileProcessingWorker.ts --target=node --packages=external --outfile=dist/worker.js \
+    && bun build src/operations/requeue.ts --target=node --packages=external --outfile=dist/requeue.js
 
 FROM oven/bun:1.3.12 AS backend-runtime-dependencies
 WORKDIR /app/backend

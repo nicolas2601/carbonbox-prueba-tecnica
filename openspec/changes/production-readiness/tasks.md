@@ -25,7 +25,7 @@
 
 ## 5. Operations
 
-- [ ] 5.1 `job:requeue` command with tests
+- [x] 5.1 `job:requeue` command with tests
 - [ ] 5.2 `docs/operations.md` runbook and the queue migration section in the README
 
 ## 6. Verification
