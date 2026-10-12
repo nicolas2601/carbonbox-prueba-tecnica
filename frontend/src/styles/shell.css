@@ -14,10 +14,18 @@
 .api-status { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text-muted); font-size: 12px; cursor: help; }
 .api-dot { width: 7px; height: 7px; border: 1px solid var(--completed); border-radius: 50%; background: var(--failed); }
 .api-dot[data-online="true"] { background: var(--teal); }
-.mini-completion { display: flex; gap: 12px; align-items: center; padding: 16px 12px; border-radius: 16px; background: var(--bg); }
-.mini-ring { position: relative; width: 56px; height: 56px; }
-.mini-ring-svg { position: absolute; inset: 0; width: 56px; height: 56px; }
-.mini-ring-value { display: grid; place-items: center; width: 100%; height: 100%; font-family: var(--font-sora); font-size: 11px; }
+.sidebar-stats { display: grid; gap: 18px; padding: 18px 14px; border-radius: 16px; background: var(--graphite); color: var(--on-graphite); }
+.sidebar-stats-top { display: flex; align-items: center; gap: 12px; }
+.sidebar-ring { position: relative; width: 96px; height: 96px; flex: 0 0 96px; }
+.sidebar-ring-svg { position: absolute; inset: 0; width: 96px; height: 96px; }
+.sidebar-ring-value { display: grid; place-items: center; width: 100%; height: 100%; font-family: var(--font-sora); font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sidebar-stats-eyebrow { font-size: 12px; color: var(--on-graphite-muted); }
+.sidebar-stats-summary { margin-top: 4px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.sidebar-kpis { display: grid; gap: 10px; margin: 0; }
+.sidebar-kpi { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.sidebar-kpi dt { font-size: 11px; line-height: 1.3; color: var(--on-graphite-muted); }
+.sidebar-kpi dd { margin: 0; font-family: var(--font-sora); font-size: 18px; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.sidebar-stats + .api-status { color: var(--text-muted); }
 .mobile-topbar { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; min-height: 80px; padding: 16px 20px; background: color-mix(in srgb, var(--surface-solid) 90%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .mobile-drawer-body { display: flex; flex-direction: column; min-height: 100%; }
 @media (min-width: 1024px) { .mobile-topbar { display: none; } .workspace { margin-left: 248px; } .workspace-main { padding: 36px 28px; } .workspace-footer { padding-inline: 28px; } }

@@ -11,6 +11,13 @@ export interface Upload {
   createdAt: string;
   updatedAt: string;
 }
-export interface UploadStats { total: number; completed: number; inProgress: number; failed: number; }
+export interface UploadStats {
+  total: number;
+  completed: number;
+  inProgress: number;
+  failed: number;
+  processedRows?: number;
+  rejectedRows?: number;
+}
 export interface ResultRow { category: string; amount: number; unit: string; date: string; }
 export interface CreatedUpload { id: string; status: "PENDING"; fileName: string; createdAt: string; }
