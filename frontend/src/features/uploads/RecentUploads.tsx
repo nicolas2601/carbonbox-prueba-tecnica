@@ -14,7 +14,7 @@ export function RecentUploads() {
   return <section aria-labelledby="recent-title" className="space-y-4">
     <div className="flex flex-wrap items-center justify-between gap-3">
       <h2 id="recent-title" className="font-display text-[28px]">Recent uploads</h2>
-      <Link href="/uploads" className="inline-flex min-h-10 items-center text-sm text-accent underline underline-offset-4">View all uploads</Link>
+      <Link href="/uploads" className="canvas-link inline-flex min-h-11 items-center text-sm underline underline-offset-4">View all uploads</Link>
     </div>
     {uploads.isPending ? <Skeleton kind="table" /> : uploads.isError
       ? <ErrorState error={uploads.error} onRetry={() => uploads.refetch()} />

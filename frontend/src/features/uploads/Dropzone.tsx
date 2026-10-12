@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import { Button } from "@/components/Button";
+import { CloudUpload } from "lucide-react";
 import { maxUploadMb, validateFile } from "./validateFile";
 
 interface DropzoneProps { file: File | null; onChange(file: File | null): void; disabled?: boolean; limitMb?: number; }
@@ -34,6 +35,7 @@ export function Dropzone({ file, onChange, disabled = false, limitMb = maxUpload
       <input ref={input} id={id} type="file" accept=".csv" className="sr-only" disabled={disabled}
         aria-labelledby={`${id}-title`} aria-describedby={`${id}-hint ${id}-error`} aria-invalid={Boolean(error)}
         onChange={event => choose(Array.from(event.target.files ?? []))} />
+      <span className="dropzone-symbol" aria-hidden="true"><CloudUpload size={32} strokeWidth={1.5} /></span>
       <span id={`${id}-title`} className="block font-display text-[28px]">Choose a CSV file</span>
       <span className="mt-2 block text-sm text-ink-muted">Or drag and drop it here</span>
       <span id={`${id}-hint`} className="mt-4 block text-xs text-ink-muted">One .csv file, up to {limitMb} MB. Required columns: category, amount, unit, date.</span>
