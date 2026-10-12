@@ -36,6 +36,35 @@ it("Equal timestamps keep a stable id tie breaker", async () => {
   if (result.isLeft()) throw result.value;
   expect(result.value.data.map(row => row.id)).toEqual(["u1", "u2"]);
 });
+it("Trims search and defaults upload ordering before querying", async () => {
+  const queries = seeded();
+  const list = vi.spyOn(queries, "list");
+  await new ListUploadsQueryHandler(queries).execute({ q: "  report_  ", status: "COMPLETED", sort: "name" });
+  expect(list).toHaveBeenCalledWith(expect.objectContaining({ q: "report_", status: "COMPLETED", sort: "name" }));
+});
+it.each(["\t", "\n spaced \r", "\u0085", "  \t "])("Rejects control characters before trimming can hide them: %j", async q => {
+  const queries = seeded(); const list = vi.spyOn(queries, "list");
+  const result = await new ListUploadsQueryHandler(queries).execute({ q });
+  expect(result.isLeft()).toBe(true);
+  expect(list).not.toHaveBeenCalled();
+});
+it("Applies the search limit after trimming", async () => {
+  const queries = seeded();
+  const list = vi.spyOn(queries, "list");
+  const q = ` ${"x".repeat(200)} `;
+  const result = await new ListUploadsQueryHandler(queries).execute({ q });
+  expect(result.isRight()).toBe(true);
+  expect(list).toHaveBeenCalledWith(expect.objectContaining({ q: "x".repeat(200) }));
+});
+it.each([
+  { q: "x".repeat(201) }, { q: "bad\u0000name" }, { status: "UNKNOWN" }, { sort: "random" },
+])("Rejects invalid list filters before IO: %j", async input => {
+  const queries = new MemoryUploadQueries();
+  const list = vi.spyOn(queries, "list");
+  const result = await new ListUploadsQueryHandler(queries).execute(input as never);
+  expect(result.isLeft()).toBe(true);
+  expect(list).not.toHaveBeenCalled();
+});
 it.each([{ page: 0 }, { limit: 0 }, { limit: 101 }, { limit: 1.5 }, { page: Number.MAX_SAFE_INTEGER, limit: 100 },
   { page: null as unknown as number }, { limit: null as unknown as number }])("Out of range before IO: %j", async input => {
   const queries = new MemoryUploadQueries();

@@ -46,17 +46,31 @@ it("Keeps the focused skip link above fixed and sticky navigation", () => {
     expect(skipLayer).toBeGreaterThan(navigationLayer);
   }
 });
-it("Reveals only the activity area through a transform-only SVG clip", () => {
+it("Keeps chart geometry static and disables the remaining gauge sweep under reduced motion", () => {
   const chart = readFileSync(join(root, "features/uploads/dashboard/Charts.tsx"), "utf8");
   const styles = readFileSync(join(root, "styles/dashboard.css"), "utf8");
-  expect(chart).toContain('className="area-reveal-mask"');
-  expect(styles).toContain(".area-reveal-mask { animation: area-reveal 700ms");
-  expect(styles).toContain(".area-reveal-mask, .gauge-sweep { animation: none;");
+  expect(chart).not.toContain("AreaChart");
+  expect(chart).toContain('stackId="rows"');
+  expect(styles).not.toContain("area-reveal");
+  expect(styles).toContain(".gauge-sweep { animation: none;");
 });
 it("Keeps pointer press deliberate and release snappy without animating keyboard actions", () => {
   expect(css).toContain("--release: 100ms");
   expect(css).toContain("transition-duration: var(--feedback), var(--feedback)");
   expect(css).toContain(":root:has(:focus-visible) .enter { animation: none");
+});
+it("Keeps the activity card at intrinsic height instead of stretching into blank space", () => {
+  const styles = readFileSync(join(root, "styles/dashboard.css"), "utf8");
+  expect(styles).toMatch(/\.dashboard-content\s*\{[^}]*align-content:\s*start/);
+  expect(styles).toMatch(/\.dashboard-bento\s*\{[^}]*align-items:\s*start/);
+  expect(styles).toMatch(/\.activity-card\s*\{[^}]*align-self:\s*start/);
+});
+it("Keeps readable axis text and positive internal plot padding", () => {
+  const tick = readFileSync(join(root, "features/uploads/dashboard/FileAxisTick.tsx"), "utf8");
+  const chart = readFileSync(join(root, "features/uploads/dashboard/Charts.tsx"), "utf8");
+  expect(tick).toContain("fontSize={12}");
+  expect(chart).toContain('fontSize: 12');
+  expect(chart).toContain("right: 16, bottom: 12, left: 12");
 });
 function sourceFiles(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -65,6 +79,18 @@ function sourceFiles(directory: string): string[] {
     return /\.(tsx?|css)$/.test(file) && !file.includes(".test.") ? [file] : [];
   });
 }
+it("Keeps accessibility alternatives clipped without making the dashboard dark", () => {
+  const dashboard = readFileSync(join(root, "features/uploads/Dashboard.tsx"), "utf8");
+  const styles = readFileSync(join(root, "styles/dashboard.css"), "utf8");
+  expect(dashboard).not.toContain("dashboard-stage");
+  expect(styles).not.toContain(".workspace:has(.dashboard-stage)");
+});
+it("Clips accessibility tables through a wrapper rather than an intrinsic table box", () => {
+  for (const file of sourceFiles(join(root, "features/uploads/dashboard"))) {
+    const source = readFileSync(file, "utf8");
+    expect(source, file).not.toMatch(/<table[^>]*className="sr-only"/);
+  }
+});
 it("Uses no hexadecimal colors or font family names outside the stylesheet and font loader", () => {
   for (const file of sourceFiles(root)) {
     const content = readFileSync(file, "utf8");

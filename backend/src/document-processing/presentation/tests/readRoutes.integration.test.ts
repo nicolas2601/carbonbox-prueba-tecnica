@@ -12,7 +12,8 @@ it("Stats is static, not an upload id", async () => {
   try {
     const response = await api.server.inject("/api/v1/uploads/stats");
     expect(response.statusCode).toBe(200);
-    expect(response.json()).toEqual({ total: 1, completed: 0, inProgress: 1, failed: 0 });
+    expect(response.json()).toEqual({ total: 1, completed: 0, inProgress: 1, failed: 0,
+      pending: 1, processing: 0, processedRows: 0, rejectedRows: 0 });
   } finally { await api.close(); }
 });
 
@@ -57,6 +58,24 @@ it("List pages return typed numeric pagination", async () => {
     expect(response.json().data).toHaveLength(5);
   } finally { await api.close(); }
 });
+it("List filters search the full dataset and apply status, sorting and trimmed query values", async () => {
+  for (let index = 0; index < 12; index++) {
+    const id = `filter-${index}`;
+    await seedJob(client, id);
+    await client.upload.update({ where: { id }, data: {
+      fileName: index === 1 || index === 11 ? `Target-${index}.csv` : `other-${index}.csv`,
+      status: index === 1 || index === 11 ? "COMPLETED" : "PENDING",
+      createdAt: new Date(Date.UTC(2024, 0, 1 + index)),
+    } });
+  }
+  const api = await apiHarness();
+  try {
+    const response = await api.server.inject("/api/v1/uploads?q=%20TARGET%20&status=COMPLETED&sort=oldest&limit=1");
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toMatchObject({ total: 2, page: 1, limit: 1 });
+    expect(response.json().data[0]).toMatchObject({ id: "filter-1", fileName: "Target-1.csv", status: "COMPLETED" });
+  } finally { await api.close(); }
+});
 it.each(["limit=101", "page=0", "limit=abc", "limit=1.5"])("Invalid list values return a client error: %s", async query => {
   const api = await apiHarness();
   try {
@@ -65,6 +84,15 @@ it.each(["limit=101", "page=0", "limit=abc", "limit=1.5"])("Invalid list values 
     expect(response.json().error.code).toMatch(/INVALID_PAGINATION|VALIDATION_ERROR/);
   } finally { await api.close(); }
 });
+it.each(["q=" + "x".repeat(201), "q=bad%00name", "status=UNKNOWN", "sort=random"])(
+  "Invalid upload filters return the standard client error envelope: %s", async query => {
+    const api = await apiHarness();
+    try {
+      const response = await api.server.inject(`/api/v1/uploads?${query}`);
+      expect(response.statusCode).toBe(400);
+      expect(response.json()).toMatchObject({ error: { code: expect.any(String), message: expect.any(String) } });
+    } finally { await api.close(); }
+  });
 it("Existing and unknown uploads", async () => {
   await seedJob(client);
   const api = await apiHarness();

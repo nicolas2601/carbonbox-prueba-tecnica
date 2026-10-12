@@ -12,6 +12,25 @@ beforeEach(() => server.use(
   http.get(`${API_URL}/uploads/stats`, () => HttpResponse.json(totals)),
   http.get(`${API_URL}/uploads`, () => HttpResponse.json(page([]))),
 ));
+it("Uses the light Carbon Day canvas with observed dashboard diagnostics", async () => {
+  server.use(http.get(`${API_URL}/uploads/stats`, () => HttpResponse.json({ ...totals, processedRows: 150, rejectedRows: 50, pending: 1, processing: 2 })));
+  render(<Dashboard />, { wrapper: queryHarness().wrapper });
+  await screen.findByRole("article", { name: "Total uploads" });
+  expect(screen.getByRole("complementary", { name: "Dashboard metrics" })).toBeVisible();
+  expect(screen.getByRole("link", { name: "View uploads" })).toHaveAttribute("href", "/uploads");
+  expect(within(screen.getByRole("article", { name: "Rows handled" })).getByText("200")).toBeVisible();
+  expect(within(screen.getByRole("article", { name: "Rejection rate" })).getByText("25%")).toBeVisible();
+});
+
+it("Recent upload rows stay explicitly on a light table surface in the dashboard", async () => {
+  server.use(http.get(`${API_URL}/uploads`, ({ request }) => new URL(request.url).searchParams.get("limit") === "12"
+    ? HttpResponse.json(page([])) : HttpResponse.json(page([upload("recent")] ))));
+  const { container } = render(<Dashboard />, { wrapper: queryHarness().wrapper });
+  const table = await screen.findByRole("table", { name: "Recent uploads" });
+  expect(container.querySelector(".recent-table")).toBeInTheDocument();
+  expect(within(table).getByRole("cell", { name: "recent.csv" })).toBeVisible();
+});
+
 it("Shows real totals and the primary creation link", async () => {
   render(<Dashboard />, { wrapper: queryHarness().wrapper });
   for (const [label, count] of [["Total uploads", "7"], ["Completed", "3"], ["In progress", "3"], ["Failed", "1"]]) {
@@ -64,11 +83,12 @@ it("Invites the first file and recovers recent-list errors independently", async
   expect(await screen.findByText("No uploads yet")).toBeInTheDocument();
   expect(calls).toBe(2);
 });
-it("Shows real activity points, contextual completion and the graphite rail", async () => {
-  server.use(http.get(`${API_URL}/uploads`, () => HttpResponse.json(page(Array.from({ length: 7 }, (_, index) => upload(`activity-${index}`))))));
+it("Exposes separate processed and rejected rows in the activity text alternative", async () => {
+  server.use(http.get(`${API_URL}/uploads`, () => HttpResponse.json(page([{ ...upload("mixed"), processedRows: 15, failedRows: 10 }]))));
   render(<Dashboard />, { wrapper: queryHarness().wrapper });
   const table = await screen.findByRole("table", { name: "Rows in the last 12 uploads" });
-  expect(within(table).getAllByRole("row")).toHaveLength(8);
-  expect(screen.getByText("3 of 7 uploads completed")).toBeInTheDocument();
-  expect(screen.getByRole("complementary", { name: "Upload overview" })).toHaveAttribute("data-surface", "graphite");
+  expect(within(table).getByRole("columnheader", { name: "Processed" })).toBeInTheDocument();
+  expect(within(table).getByRole("columnheader", { name: "Rejected" })).toBeInTheDocument();
+  const row = within(table).getAllByRole("row")[1];
+  expect(row).toHaveTextContent("15"); expect(row).toHaveTextContent("10");
 });

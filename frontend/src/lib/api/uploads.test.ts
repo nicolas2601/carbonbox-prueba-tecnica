@@ -7,6 +7,20 @@ import { page, upload } from "@/tests/fixtures";
 import { createUpload, getStats, getUpload, getUploadResults, listUploads, uploadPercent } from "./uploads";
 import { uploadKeys } from "./uploadKeys";
 
+it("Sends URL filters to the server and isolates filtered cache keys", async () => {
+  const filters = { q: "100% fuel_", status: "COMPLETED", sort: "name" };
+  server.use(http.get(`${API_URL}/uploads`, ({ request }) => {
+    const params = new URL(request.url).searchParams;
+    expect(params.get("q")).toBe(filters.q);
+    expect(params.get("status")).toBe(filters.status);
+    expect(params.get("sort")).toBe(filters.sort);
+    expect(params.get("page")).toBe("1");
+    return HttpResponse.json(page([upload("matched")]));
+  }));
+  expect((await listUploads(1, 10, filters)).data[0].id).toBe("matched");
+  expect(uploadKeys.list(1, 10, filters)).not.toEqual(uploadKeys.list(1, 10));
+  expect(uploadKeys.list(1, 10, filters)).not.toEqual(uploadKeys.list(1, 10, { ...filters, q: "different" }));
+});
 it("Requests each typed read resource with pagination and isolated ids", async () => {
   const rows = [{ category: "Water", amount: 10, unit: "m3", date: "2024-01-15" }];
   server.use(

@@ -14,7 +14,8 @@ let server: FastifyInstance;
 beforeEach(async () => {
   const services: ApiServices = { createUpload: { execute: vi.fn<ApiServices["createUpload"]["execute"]>() },
     getUploadById: { execute: async () => Either.right(upload) },
-    getUploadStats: { execute: async () => Either.right({ total: 1, completed: 1, inProgress: 0, failed: 0 }) },
+    getUploadStats: { execute: async () => Either.right({ total: 1, completed: 1, inProgress: 0, failed: 0,
+      pending: 0, processing: 0, processedRows: 5000, rejectedRows: 0 }) },
     listUploads: { execute: async () => Either.right({ data: [upload], total: 1, page: 1, limit: 10 }) },
     getUploadResults: { execute: async () => Either.right(results) }, ready: async () => {} };
   server = await new App({ ...loadSettings(), env: "test" }, services).build();

@@ -1,4 +1,4 @@
-# CarbonBox Uploads: Design System v2.2 "Carbon Day"
+# CarbonBox Uploads: Design System v2.3 "Carbon Day / Graphite Stage"
 
 Source of truth for every interface decision in `frontend/`. Read it before touching UI. It replaces v1 (warm paper and serif),
 which tested as correct but flat. References chosen by Nico live in `docs/design-references/` (light bento boards with white
@@ -6,10 +6,10 @@ glass cards, orange to red mountain charts, dark graphite panels and big radial 
 
 ## Direction
 
-A bright analytics workspace with dark graphite panels for the numbers that matter. Solid, cool tinted cards float on a cool light
-canvas; one warm orange-to-red gradient draws the real activity series, the gauge sweep and the primary
-action; graphite panels carry the key figures like the dark rail of the reference boards. Numbers are the hero: large, geometric,
-tabular. No fixed landscape is drawn inside the data plot. One upload is a single bar; an area requires at least two real samples.
+A contrast-led analytics workspace: a white navigation rail beside a deeper graphite dashboard stage, with solid graphite bento panels.
+Only the dashboard uses this scenario; ledger, intake and detail remain light. Orange represents processed rows and primary actions;
+teal represents rejected rows and secondary actions. No glass, side stripes, gradient text or fabricated landscapes.
+Numbers and measured relationships carry the hierarchy: reference-style sidebar KPIs, a completion arc, scoped overview tiles and per-file bars.
 
 Memorable details: the warm real-data activity chart, the big radial gauge on the graphite rail, the animated active pill in the
 navigation and status dots that breathe only while a file is processed.
@@ -17,7 +17,7 @@ navigation and status dots that breathe only while a file is processed.
 Scene: an emissions analyst on a 27 inch monitor in a bright office, checking between meetings whether yesterday's uploads finished and
 what was rejected. Daylight and long glances force a light canvas; the graphite rail is the one place for numbers that must stand out.
 
-Impeccable alignment: solid tinted surfaces, asymmetric bento spans, compact contextual counts and one large completion gauge.
+Impeccable alignment: solid surfaces and asymmetric bento spans. The explicit reference brief earns the sidebar KPIs, completion arc and right-side numeric tiles; avoid unrelated repeated hero-card grids.
 No generic four-card metric grid, glass everywhere, pure white or black, gradient text, side stripes, em dashes or bouncing motion.
 Backdrop blur is reserved for the drawer overlay and sticky mobile top bar.
 
@@ -53,6 +53,7 @@ On light surfaces, the activity line and progress outline use `--accent-strong`;
 Canvas links use `--text`, with accent underlines: accent-strong on canvas-bottom measured 4.10:1, below the small-text threshold.
 
 Depth: soft, cool, wide shadows (`0 18px 40px -22px rgba(18,24,27,0.25)`), no black drop shadows. The orange card glow uses the accent at 18 percent.
+Dashboard scope aliases surface to graphite-2, canvas to graphite, text to on-graphite and muted text to on-graphite-muted; cards use subtle 1 px light rules without glass. Orange/teal graphics and teal-action text are contrast-tested against both graphite surfaces.
 
 ## Typography
 
@@ -83,11 +84,9 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 
 ## Layout
 
-- Three zones from 1280 px: sidebar (248), content (flexible, max 1000), graphite rail (320). Between 1024 and 1279 px the rail
-  becomes a graphite band under the page header; below 1024 px everything is one column.
-- Dashboard content: header (title, subtitle, the primary Upload button); the **Activity** card with the real-data area/bar chart; three cards in a row
-  (Completion donut, Status bars, Latest upload); the Recent uploads table. The rail holds the big radial gauge of completion, four
-  compact counts (total, completed, in progress, failed) and the API status. The gauge is the only large figure; contextual facts explain the counts.
+- From 1280 px: white sidebar (248), flexible dashboard content and a 240 px column of graphite metric tiles. Below 1280 px tiles form a band; below 640 px they stack. Cards remain content-sized rather than stretch to the neighboring column's height.
+- Dashboard: dark, content-sized activity panel with filename/time axes and orange/teal stacks; a middle completion arc and largest-recent-file bars; right tiles for global observed rows/rejection share, approximate median terminal elapsed and active uploads. Recent uploads remain below.
+- The white sidebar's gauge/KPIs use global stats fields; partial-list diagnostics explicitly identify the latest-twelve cohort. No uploaded-row totals are inferred from one page.
 - 16 px gaps, 24 px card padding, 20 px card radius. Tables scroll inside their card on narrow screens; the list becomes stacked rows below 640 px.
 
 ## Libraries
@@ -104,8 +103,9 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 - **Card**: solid `--surface`, 20 px radius, hairline and subtle inner highlight. No backdrop blur.
 - **GraphiteCard**: `--graphite`, same radius, `--on-graphite` text, used for the rail and any key figure.
 - **StatCard**: compact label and inline CountUp figure with caption. No standalone hero-metric grid.
-- **ActivityChart**: Recharts area chart of rows handled for the latest 12 uploads when there are at least two samples; one upload uses a single bar.
-  Gradient fill fades to transparent, date labels sit below the plot. No decorative peaks inside the data area; empty state when no uploads.
+- **ActivityChart**: Recharts stacked processed/rejected bars for the latest 12 uploads, one bar per file at any sample size.
+  Filename/time ticks (UTC), compact numeric Y ticks and reserved axis width; full metadata tooltip and matching hidden table.
+  No interpolation, decorative peaks or geometry animation; empty state when no uploads and unreported counters labelled honestly.
 - **Gauge**: Recharts radial bar of the completed share with the percentage in the center, gradient sweep, soft inner track.
 - **StatusBars**: Recharts horizontal bars for completed, in progress and failed, with counts.
 - **StatusBadge**: pill with dot; the dot pulses only for PROCESSING.
@@ -118,8 +118,7 @@ to 64 px, works on white, graphite and the canvas, and is exported as `public/fa
 ## Motion
 
 - Easing `cubic-bezier(0.23, 1, 0.32, 1)`; 160 ms hover and press, 280 ms entrances, 700 ms chart reveal.
-- First load: cards rise 8 px and fade, 40 ms stagger, once. The activity area reveals left to right through a transform on a clip rectangle; the gauge
-  sweeps with a rotation transform.
+- First load: cards rise 8 px and fade, 40 ms stagger, once. Activity bar geometry remains static; the gauge sweeps with a rotation transform.
 - Only `transform` and `opacity` animate. No `transition: all`.
 - Table text does not fade on entrance: transient opacity lowers contrast. Hover keeps the transform-only feedback.
 - `prefers-reduced-motion: reduce` removes entrances, reveals, sweeps, pulses, sliding and the CountUp (final value shown at once).
@@ -145,5 +144,5 @@ English, short, concrete. Labels say what is measured: "Rows in the last 12 uplo
 
 ## What this system does not do
 
-No dark theme, no i18n, no authentication screens, no stock photography. Charts use only real API data; where the API does not provide a figure, the
+No theme toggle, no i18n, no authentication screens, no stock photography. The dashboard-specific graphite scenario does not change the light ledger/intake/detail pages. Charts use only real API data; where the API does not provide a figure, the
 label states the period it covers.

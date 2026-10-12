@@ -11,7 +11,8 @@ it("API composition exposes shared read and write adapters", async () => {
   const harness = await workerHarness();
   const api = await createApiModule(harness.settings);
   try {
-    expect((await api.server.inject("/api/v1/uploads/stats")).json()).toEqual({ total: 0, completed: 0, inProgress: 0, failed: 0 });
+    expect((await api.server.inject("/api/v1/uploads/stats")).json()).toEqual({ total: 0, completed: 0, inProgress: 0,
+      failed: 0, pending: 0, processing: 0, processedRows: 0, rejectedRows: 0 });
     expect((await api.server.inject("/health/ready")).statusCode).toBe(200);
     expect((await api.server.inject("/metrics")).statusCode).toBe(404);
     const metrics = await api.metricsServer.inject("/metrics");

@@ -1,11 +1,11 @@
 import { api } from "./client";
-import type { CreatedUpload, Page, ResultRow, Upload, UploadStats } from "./models";
+import type { CreatedUpload, Page, ResultRow, Upload, UploadStats, UploadListFilters } from "./models";
 
 export async function getStats(): Promise<UploadStats> {
   return (await api.get<UploadStats>("/uploads/stats")).data;
 }
-export async function listUploads(page: number, limit: number): Promise<Page<Upload>> {
-  return (await api.get<Page<Upload>>("/uploads", { params: { page, limit } })).data;
+export async function listUploads(page: number, limit: number, filters: UploadListFilters = {}): Promise<Page<Upload>> {
+  return (await api.get<Page<Upload>>("/uploads", { params: { page, limit, ...filters } })).data;
 }
 export async function getUpload(id: string): Promise<Upload> {
   return (await api.get<Upload>(`/uploads/${encodeURIComponent(id)}`)).data;
