@@ -1,0 +1,34 @@
+## 0. Polish found in the M6 review
+
+- [x] 0.1 Uploads list on narrow screens: stacked rows (name, status badge, date) so the status is visible without horizontal scrolling at 360 px; the full table stays from 640 px
+
+## 1. Upload page
+
+- [x] 1.1 File validation function (extension, empty, size) with tests
+- [x] 1.2 Dropzone component: select, drop, remove, several files, keyboard
+- [x] 1.3 Upload action: progress, controls disabled, finishing label, redirect and invalidation
+- [x] 1.4 Cancel with abort
+- [x] 1.5 Server and network errors, request id
+
+## 2. Detail page
+
+- [x] 2.1 Header, back button, not found and error states
+- [x] 2.2 Waiting and working panels with the row counter
+- [x] 2.3 Polling transition, live announcement, crossfade and reduced motion
+- [x] 2.4 Finished panel: counts and paginated results table
+- [x] 2.5 Rejected rows notice
+- [x] 2.6 Failed panel
+
+## 3. End to end
+
+- [x] 3.1 Playwright setup and stack script (fresh database, three processes, teardown)
+- [ ] 3.2 Journeys: valid, invalid rows, wrong header (suite written and typechecked; browser evidence pending)
+- [ ] 3.3 Validation, size limit, cancel (suite written and typechecked; browser evidence pending)
+- [ ] 3.4 Dashboard, pagination, unknown id (suite written and typechecked; browser evidence pending)
+- [ ] 3.5 Axe checks (five-page audit written and typechecked; execution pending)
+- [ ] 3.6 Screenshots command and the README images (command written; image generation/review pending)
+
+## 4. Verification
+
+- [ ] 4.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test`, `bun run build`, `bun run e2e` pass (lint/types/unit green; final build/full E2E pending shared-stack release)
+- [ ] 4.2 Visual review at 360 and 1280 px, reduced motion, keyboard only walkthrough (assigned to worker2; findings pending)

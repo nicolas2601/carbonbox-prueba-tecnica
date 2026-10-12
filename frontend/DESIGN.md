@@ -47,6 +47,7 @@ Scale: 12 / 14 / 16 / 20 / 28 / 44 px. Line height 1.5 body, 1.15 display. Max l
 - Container max width 1080 px, side padding 20 px on mobile, 32 px from 768 px.
 - 4 px spacing unit; sections separated by 40 px.
 - Tables scroll horizontally inside their card on narrow screens; they never break the page.
+- Upload records are stacked as name, status and date below 640 px; full upload tables start at 640 px. Result tables retain their scroll region.
 - Single column below 640 px; stat cards 2 by 2 from 640 px, 4 across from 1024 px.
 
 ## Components

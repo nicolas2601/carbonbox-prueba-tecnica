@@ -17,6 +17,7 @@ what was verified, and what had to be corrected.
 - [Upload queries](ai-log/upload-queries.md)
 - [HTTP API](ai-log/http-api.md)
 - [Frontend foundation](ai-log/frontend-foundation.md)
+- [Frontend upload and detail](ai-log/frontend-upload-detail.md)
 
 Each entry is a dated, point-in-time record. Later modules may close limitations described
 in earlier entries. Review and assemble the relevant facts for the final `USO-DE-IA.md`

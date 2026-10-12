@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run --config config/vitest.config.mts"
+    "test": "vitest run --config config/vitest.config.mts",
+    "e2e": "bun scripts/run-e2e.ts",
+    "e2e:screenshots": "bun scripts/run-e2e.ts --screenshots"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.104.1",
@@ -17,6 +19,8 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.0",
     "@tailwindcss/turbopack": "^4",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",

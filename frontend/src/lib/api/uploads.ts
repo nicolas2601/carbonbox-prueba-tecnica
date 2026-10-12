@@ -17,11 +17,11 @@ export function uploadPercent(loaded: number, total?: number): number | undefine
   if (!total || !Number.isFinite(total) || total < 0 || !Number.isFinite(loaded)) return undefined;
   return Math.min(100, Math.max(0, Math.round(loaded / total * 100)));
 }
-export async function createUpload(file: File, onProgress?: (percent: number) => void): Promise<CreatedUpload> {
+export async function createUpload(file: File, onProgress?: (percent: number) => void, signal?: AbortSignal): Promise<CreatedUpload> {
   const body = new FormData();
   body.append("file", file);
   onProgress?.(0);
-  const response = await api.post<CreatedUpload>("/uploads", body, { onUploadProgress: event => {
+  const response = await api.post<CreatedUpload>("/uploads", body, { signal, onUploadProgress: event => {
     const percent = uploadPercent(event.loaded, event.total);
     if (percent !== undefined) onProgress?.(percent);
   } });
