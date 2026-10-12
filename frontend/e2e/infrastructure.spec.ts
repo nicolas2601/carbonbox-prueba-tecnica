@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 test("the owned stack starts healthy and serves the upload interface", async ({ page, request }) => {
   const api = process.env.E2E_API_URL;

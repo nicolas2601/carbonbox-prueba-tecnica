@@ -22,11 +22,11 @@
 ## 3. End to end
 
 - [x] 3.1 Playwright setup and stack script (fresh database, three processes, teardown)
-- [ ] 3.2 Journeys: valid, invalid rows, wrong header
-- [ ] 3.3 Validation, size limit, cancel
-- [ ] 3.4 Dashboard, pagination, unknown id
-- [ ] 3.5 Axe checks
-- [ ] 3.6 Screenshots command and the README images
+- [ ] 3.2 Journeys: valid, invalid rows, wrong header (suite written and typechecked; browser evidence pending)
+- [ ] 3.3 Validation, size limit, cancel (suite written and typechecked; browser evidence pending)
+- [ ] 3.4 Dashboard, pagination, unknown id (suite written and typechecked; browser evidence pending)
+- [ ] 3.5 Axe checks (five-page audit written and typechecked; execution pending)
+- [ ] 3.6 Screenshots command and the README images (command written; image generation/review pending)
 
 ## 4. Verification
 
