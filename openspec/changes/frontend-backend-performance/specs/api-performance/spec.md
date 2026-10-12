@@ -14,16 +14,16 @@ The system SHALL keep p95 at or under 50 ms for list, stats and a 25 row results
 - **WHEN** a results page of the 5000 row upload is requested at 20 concurrent connections for 15 seconds
 - **THEN** p95 is at or under 50 ms with no errors
 
-### Requirement: The results query has an index that fits it
-The system SHALL inspect the real results-query plan and timing on the reference dataset before changing indexes. It SHALL add an additive composite index on upload, date and id only when those measurements justify it, and SHALL compare the plans and timing afterward.
+### Requirement: Evidence governs results indexes
+The system SHALL inspect first/deep results-query plans, HTTP latency and worker throughput on the reference dataset before changing indexes. It SHALL NOT adopt a candidate that fails the agreed 30 percent HTTP p95 improvement gate or shows a write-throughput regression; rejection SHALL be documented without a production migration.
 
 #### Scenario: Plan
 - **WHEN** the baseline plan and timings identify a consequential results sort
 - **THEN** the before and after plans document whether the composite index removes it and improves the measured query
 
-#### Scenario: Migration is additive
-- **WHEN** an evidence-supported index migration is applied on a database with existing data
-- **THEN** no data is changed and the index exists
+#### Scenario: Candidate rejected
+- **WHEN** the measured candidate improves HTTP p95 only 4.79 percent and observed worker throughput is 10.09 percent lower
+- **THEN** the evidence records rejection and no production index migration is added
 
 ### Requirement: Responses are compressed
 The system SHALL compress JSON responses above a small threshold when the client accepts it.
