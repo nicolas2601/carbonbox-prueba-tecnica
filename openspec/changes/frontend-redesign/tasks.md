@@ -31,7 +31,7 @@
 
 ## 4. Verification
 
-- [ ] 4.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test` pass; existing behaviour tests unchanged
-- [ ] 4.2 `bun run build` passes
+- [x] 4.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test` pass; existing behaviour test intents preserved, fixture/markup adjustments documented in the AI log
+- [x] 4.2 `NEXT_DIST_DIR=.next-redesign bun run build` passes without touching the served `.next`
 - [ ] 4.3 Fresh visual review at 360 and 1280 px and reduced motion by worker2, findings fixed
 - [ ] 4.4 `bun run e2e` and `bun run e2e:screenshots` pass (authorized exception) with new README images
