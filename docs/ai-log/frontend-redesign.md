@@ -55,6 +55,7 @@ Date: 2026-10-11
 | Accent-strong on lower canvas: 4.1001699201908615:1 | Ink canvas links, accent decoration and surface links | Small text needs 4.5:1 without changing the pinned palette |
 | Button group opacity 0.85 on hover: primary text measured 3.815055195895125:1 | One-pixel transform feedback, text remains opaque | Hover must preserve the same AA guarantee as the default state |
 | Skip link at layer 10 under navigation at layer 30 | Skip link at layer 40, below modal layers | Keyboard focus must not disappear behind the fixed shell |
+| Light retry card inherited the graphite rail's light focus outline | Local accent-strong outline on the light error card | Recovery controls need contrast against their own surface, not the ancestor's surface |
 | Generated `transition-all` and default neutral classes | Token-only primitives and explicit transform/opacity | Deterministic motion and theme guards remain enforceable |
 | Entire chart scaled during entrance | SVG clip rectangle reveals only the area | Data geometry and axes remain stationary; reduced motion disables the reveal |
 | Generic table skeleton inside activity | Reserved activity and overview shapes | Loading matches content without fabricated figures |
@@ -77,6 +78,8 @@ Date: 2026-10-11
   opacity faded both the button and its text. Replacing it with a reduced-motion-safe
   one-pixel transform made all hover samples pass. A separate source stacking
   test observed skip-link layer 10 below navigation layer 30, then passed at 40.
+  The light error card in the graphite rail also receives its own strong focus
+  outline instead of inheriting the rail's light-on-dark outline.
 - RTL chart geometry uses an explicit 480 by 240 layout fixture because jsdom
   provides zero dimensions. It verifies area registration and zero-total paths,
   not browser layout or visual quality. No invented RED for presentation-only

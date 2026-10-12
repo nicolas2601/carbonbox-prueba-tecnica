@@ -62,6 +62,7 @@
 .rail-api { margin-top: 32px; }
 .rail-api .api-status { color: var(--on-graphite-muted); }
 .dashboard-rail .state-card { color: var(--text); }
+.dashboard-rail .state-card :focus-visible { outline-color: var(--accent-strong); }
 @media (min-width: 640px) { .dashboard-bento { grid-template-columns: repeat(12, minmax(0, 1fr)); } .activity-card, .latest-card { grid-column: span 12; } .completion-card { grid-column: span 5; } .status-card { grid-column: span 7; } }
 @media (min-width: 1024px) and (max-width: 1279px) { .dashboard-rail { grid-row: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; } .large-gauge { grid-column: 1; grid-row: 2 / span 3; } .rail-counts { grid-column: 2; grid-row: 2 / span 3; align-self: center; } .rail-context, .rail-api { margin: 0; } .rail-separator { display: none; } }
 @media (min-width: 1280px) { .dashboard-zones { grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; } .dashboard-rail { position: sticky; top: 28px; } }

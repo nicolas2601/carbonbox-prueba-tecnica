@@ -36,6 +36,7 @@ it("Defines the visible keyboard focus ring", () => {
   expect(css).toContain(":focus-visible");
   expect(css).toContain("outline: 2px solid var(--accent-strong)");
   expect(css).toContain("outline-offset: 2px");
+  expect(readFileSync(join(root, "styles/dashboard.css"), "utf8")).toContain(".dashboard-rail .state-card :focus-visible { outline-color: var(--accent-strong);");
 });
 it("Keeps the focused skip link above fixed and sticky navigation", () => {
   const shell = readFileSync(join(root, "styles/shell.css"), "utf8");
