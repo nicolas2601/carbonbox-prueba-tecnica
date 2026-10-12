@@ -67,7 +67,7 @@ export class LocalE2eStack implements StackLifecycle {
     if (this.runScreenshots) args.push("--grep", "@screenshot");
     const env = { ...this.createStackEnv(stack), E2E_BASE_URL: stack.baseURL, E2E_API_URL: stack.apiUrl,
       E2E_DATABASE_URL: stack.databaseUrl, E2E_STORAGE_DIR: stack.storageDir,
-      E2E_STACK_OWNED: stack.databaseName };
+      E2E_STACK_OWNED: stack.databaseName, E2E_WORKER_GROUP: String(this.services.get("worker")?.pid ?? "") };
     return this.runToCompletion(PLAYWRIGHT_BIN, args, FRONTEND_DIR, env, stack, true);
   }
 
