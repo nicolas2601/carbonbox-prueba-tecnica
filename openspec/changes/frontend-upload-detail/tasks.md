@@ -30,5 +30,5 @@
 
 ## 4. Verification
 
-- [ ] 4.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test`, `bun run build`, `bun run e2e` pass
-- [ ] 4.2 Visual review at 360 and 1280 px, reduced motion, keyboard only walkthrough
+- [ ] 4.1 `bun run lint`, `bunx tsc --noEmit`, `bun run test`, `bun run build`, `bun run e2e` pass (lint/types/unit green; final build/full E2E pending shared-stack release)
+- [ ] 4.2 Visual review at 360 and 1280 px, reduced motion, keyboard only walkthrough (assigned to worker2; findings pending)

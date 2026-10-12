@@ -48,15 +48,51 @@ Client errors are never retried; transient errors have bounded retries.
 
 ## Verification and scope
 
+### Browser execution authorization
+
+Nico directly authorized a narrow exception on 2026-10-11: only this frontend's
+`bun run e2e` and `bun run e2e:screenshots` scripts may launch headless Chromium.
+All other exploration, visual review and screenshot inspection uses Playwright MCP.
+This is not permission for another script or an ad-hoc command to launch a browser.
+
 Vitest tests use Testing Library and MSW 3 to intercept actual Axios requests.
 DOM tests choose the Fetch adapter only in test setup; production retains XHR
 first. Multipart wire tests use native Node Web APIs because mixing jsdom File
 objects with native Fetch produced empty blobs and parsing errors. Tests verify
 multipart headers, filename and file bytes, not just a mocked call.
 
-Current scope includes dashboard `/` and the paginated list `/uploads`. Creation
-and detail links intentionally target the next module's routes; those pages are
-not implemented yet. No authentication, dark mode, charts or i18n is included.
+Current routes include dashboard `/`, the paginated list `/uploads`, file selection
+and transfer `/uploads/new`, and live detail/results `/uploads/[id]`. Cancellation
+aborts transfer before Finishing, keeps selection and makes no rollback promise
+after all bytes have been sent. No authentication, dark mode, charts or i18n is included.
 Motion is limited to transform/opacity; reduced motion removes entrances, stagger
 and pulses. Processing pulses pause when offscreen. Verification also requires
 Playwright checks of layout, focus and real API behavior at mobile and desktop widths.
+
+### Reproducible browser suite
+
+```sh
+bunx playwright install chromium
+bun run e2e
+bun run e2e:screenshots
+```
+
+Only Chromium is required (its installer may also download its headless shell and
+FFmpeg). The suite connects to local PostgreSQL's `postgres` administrative database,
+creates a unique `carbonbox_e2e_*` database and temporary storage, migrates, starts
+API/worker/frontend on allocated test ports and cleans owned resources on success
+or failure. Configuration refuses the development/test database and an unowned
+stack. `E2E_ADMIN_DATABASE_URL` can override local credentials but must still target
+the local `postgres` database. Never run independent suites concurrently from the
+same frontend build directory.
+
+Cases cover valid/mixed/wrong-header CSVs, early validation, server limits,
+mid-transfer cancel/no orphan file, totals, URL pagination, unknown id and axe on
+five pages. Serious/critical axe issues fail the suite. Screenshots are generated
+into `docs/screenshots` for five pages at 1280 and 360 px; no fixed page sleeps are used.
+
+The E2E bootstrap passed and its owned DB/storage/process cleanup was checked after
+both a failing run and success. The full new suite and curated screenshots are not
+yet claimed green: browser execution/review was reassigned to `worker2`; final
+evidence and images are pending that pass. Unit/RTL, lint and type checks continue
+here. The final production build waits until the shared verification stack stops.
