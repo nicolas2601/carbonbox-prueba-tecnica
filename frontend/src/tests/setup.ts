@@ -9,6 +9,13 @@ import { api } from "@/lib/api/client";
 axios.defaults.adapter = "fetch";
 api.defaults.adapter = "fetch";
 
+class TestResizeObserver {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+}
+vi.stubGlobal("ResizeObserver", TestResizeObserver);
+
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 afterAll(() => server.close());
 afterEach(() => {
