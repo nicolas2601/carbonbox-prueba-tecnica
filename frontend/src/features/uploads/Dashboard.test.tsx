@@ -42,6 +42,7 @@ it("Retries a failed stats request with the same API contract", async () => {
 });
 it("Shows at most five recent files with dates, status and detail links", async () => {
   server.use(http.get(`${API_URL}/uploads`, ({ request }) => {
+    if (new URL(request.url).searchParams.get("limit") === "12") return HttpResponse.json(page([]));
     expect(new URL(request.url).searchParams.get("limit")).toBe("5");
     return HttpResponse.json(page(Array.from({ length: 7 }, (_, index) => upload(`recent-${index}`)), 7, 1, 5));
   }));
@@ -54,7 +55,7 @@ it("Shows at most five recent files with dates, status and detail links", async 
 });
 it("Invites the first file and recovers recent-list errors independently", async () => {
   let calls = 0;
-  server.use(http.get(`${API_URL}/uploads`, () => ++calls === 1
+  server.use(http.get(`${API_URL}/uploads`, ({ request }) => new URL(request.url).searchParams.get("limit") === "12" ? HttpResponse.json(page([])) : ++calls === 1
     ? HttpResponse.json({ error: { code: "FAILED", message: "Recent uploads unavailable" } }, { status: 500 })
     : HttpResponse.json(page([]))));
   render(<Dashboard />, { wrapper: queryHarness().wrapper });
@@ -62,4 +63,12 @@ it("Invites the first file and recovers recent-list errors independently", async
   await userEvent.setup().click(screen.getByRole("button", { name: "Try again" }));
   expect(await screen.findByText("No uploads yet")).toBeInTheDocument();
   expect(calls).toBe(2);
+});
+it("Shows real activity points, contextual completion and the graphite rail", async () => {
+  server.use(http.get(`${API_URL}/uploads`, () => HttpResponse.json(page(Array.from({ length: 7 }, (_, index) => upload(`activity-${index}`))))));
+  render(<Dashboard />, { wrapper: queryHarness().wrapper });
+  const table = await screen.findByRole("table", { name: "Rows in the last 12 uploads" });
+  expect(within(table).getAllByRole("row")).toHaveLength(8);
+  expect(screen.getByText("3 of 7 uploads completed")).toBeInTheDocument();
+  expect(screen.getByRole("complementary", { name: "Upload overview" })).toHaveAttribute("data-surface", "graphite");
 });

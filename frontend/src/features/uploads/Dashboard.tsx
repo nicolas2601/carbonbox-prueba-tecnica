@@ -3,31 +3,26 @@
 import { ErrorState } from "@/components/ErrorState";
 import { PageHeader } from "@/components/PageHeader";
 import { Skeleton } from "@/components/Skeleton";
-import { StatCard } from "@/components/StatCard";
 import { useUploadStats } from "./hooks";
 import { RecentUploads } from "./RecentUploads";
+import { ActivityCard } from "./dashboard/ActivityCard";
+import { CompletionCard, StatusCard } from "./dashboard/CompletionCard";
+import { LatestUpload } from "./dashboard/LatestUpload";
+import { UploadOverview } from "./dashboard/UploadOverview";
+import "@/styles/dashboard.css";
 
-const CARDS = [
-  { key: "total", label: "Total uploads", detail: "Files received" },
-  { key: "completed", label: "Completed", detail: "Ready for review" },
-  { key: "inProgress", label: "In progress", detail: "Queued or processing" },
-  { key: "failed", label: "Failed", detail: "Need attention" },
-] as const;
-
-function UploadTotals() {
-  const stats = useUploadStats();
-  if (stats.isPending) return <Skeleton kind="stats" />;
-  if (stats.isError) return <ErrorState error={stats.error} onRetry={() => stats.refetch()} />;
-  return <section aria-labelledby="totals-title">
-    <h2 id="totals-title" className="sr-only">Upload totals</h2>
-    <div className="stats-grid">{CARDS.map(card =>
-      <StatCard key={card.key} label={card.label} count={stats.data[card.key]} detail={card.detail} />)}</div>
-  </section>;
-}
 export function Dashboard() {
-  return <div className="space-y-10">
+  const stats = useUploadStats();
+  return <div className="dashboard">
     <PageHeader title="Your activity, in focus" description="A clear view of the files behind your emissions data." />
-    <UploadTotals />
-    <RecentUploads />
+    <div className="dashboard-zones"><div className="dashboard-content"><div className="dashboard-bento">
+      <ActivityCard />
+      {stats.data && <><CompletionCard stats={stats.data} /><StatusCard stats={stats.data} /></>}
+      <LatestUpload />
+    </div><RecentUploads /></div>
+      <aside className="graphite-panel dashboard-rail enter" data-surface="graphite" aria-label="Upload overview">
+        {stats.isPending ? <Skeleton kind="stats" /> : stats.isError ? <ErrorState error={stats.error} onRetry={() => stats.refetch()} /> : <UploadOverview stats={stats.data} />}
+      </aside>
+    </div>
   </div>;
 }
